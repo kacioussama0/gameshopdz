@@ -1,0 +1,1037 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import Header from "~/components/Header.vue";
+
+const text = ref();
+const copy = ref(false);
+
+function copyHandler() {
+  text.value = document.querySelector("#copyTarget")?.textContent;
+  navigator.clipboard.writeText(text.value);
+  copy.value = true;
+  setTimeout(() => {
+    copy.value = false;
+  }, 2000);
+}
+</script>
+
+<template>
+  <header class="site-header mo-left header">
+    <div class="top-bar bg-primary text-white">
+      <div class="container-fluid">
+        <div
+          class="dz-topbar-inner d-flex justify-content-between align-items-center"
+        >
+          <div class="dz-topbar-left">
+            <ul>
+              <li><NuxtLink to="/about-us">About Us</NuxtLink></li>
+              <li><NuxtLink to="/contact-us-1">Contact Us</NuxtLink></li>
+              <li><NuxtLink to="/faqs-2">Help Desk</NuxtLink></li>
+            </ul>
+          </div>
+          <div class="dz-topbar-right">
+            <ul>
+              <li><span>Share:</span></li>
+              <li>
+                <NuxtLink
+                  to="https://www.facebook.com/dexignzone"
+                  target="_blank"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></NuxtLink>
+              </li>
+              <li>
+                <NuxtLink
+                  to="https://www.linkedin.com/showcase/3686700/admin/"
+                  target="_blank"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></NuxtLink>
+              </li>
+              <li>
+                <NuxtLink
+                  to="https://www.instagram.com/dexignzone/"
+                  target="_blank"
+                  ><i class="fa-brands fa-instagram"></i
+                ></NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="https://twitter.com/dexignzones" target="_blank"
+                  ><i class="fa-brands fa-twitter"></i
+                ></NuxtLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Header />
+  </header>
+  <div class="page-content bg-light">
+    <!--Banner Start-->
+    <div class="dz-bnr-inr bg-secondary">
+      <div class="container">
+        <div class="dz-bnr-inr-entry">
+          <h1>Header Style 7</h1>
+          <nav aria-label="breadcrumb" class="breadcrumb-row">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><NuxtLink to="/"> Home</NuxtLink></li>
+              <li class="breadcrumb-item">Header Style 7</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!--Banner End-->
+
+    <div class="content-inner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="code-copy">
+            <NuxtLink to="" id="copyButton" class="btn" @click="copyHandler">{{
+              copy ? "!Copied" : "Copy"
+            }}</NuxtLink>
+            <pre class="code-box" id="copyTarget">
+&lt;!-- Header --&gt;
+&lt;header class="site-header mo-left header"&gt;
+
+	&lt;div class="top-bar bg-primary text-white"&gt;
+		&lt;div class="container-fluid"&gt;
+			&lt;div class="dz-topbar-inner d-flex justify-content-between align-items-center"&gt;
+				&lt;div class="dz-topbar-left"&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;a to="/about-us"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/contact-us-1"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/faqs-2"&gt;Help Desk&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;div class="dz-topbar-right"&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;span&gt;Share:&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/https://www.facebook.com/dexignzone" target="_blank"&gt;&lt;i class="fa-brands fa-facebook-f"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/https://www.linkedin.com/showcase/3686700/admin/" target="_blank"&gt;&lt;i class="fa-brands fa-linkedin-in"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/https://www.instagram.com/dexignzone/" target="_blank"&gt;&lt;i class="fa-brands fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a to="/s" target="_blank"&gt;&lt;i class="fa-brands fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!-- Main Header --&gt;
+	&lt;div class="sticky-header main-bar-wraper navbar-expand-lg"&gt;
+		&lt;div class="main-bar clearfix"&gt;
+			&lt;div class="container-fluid clearfix d-lg-flex d-block"&gt;
+
+				&lt;!-- Website Logo --&gt;
+				&lt;div class="logo-header logo-dark me-md-5"&gt;
+					&lt;a to="/"&gt;&lt;img src="images/logo.svg" alt="logo"&gt;&lt;/a&gt;
+				&lt;/div&gt;
+
+				&lt;!-- Nav Toggle Button --&gt;
+				&lt;button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"&gt;
+					&lt;span&gt;&lt;/span&gt;
+					&lt;span&gt;&lt;/span&gt;
+					&lt;span&gt;&lt;/span&gt;
+				&lt;/button&gt;
+
+				&lt;!-- Main Nav --&gt;
+				&lt;div class="header-nav w3menu navbar-collapse collapse justify-content-start" id="navbarNavDropdown"&gt;
+					&lt;div class="logo-header logo-dark"&gt;
+						&lt;a to="/"&gt;&lt;img src="images/logo.svg" alt=""&gt;&lt;/a&gt;
+					&lt;/div&gt;
+					&lt;ul class=" nav navbar-nav"&gt;
+						&lt;li class="has-mega-menu sub-menu-down auto-width menu-left"&gt;
+							&lt;a to=""&gt;&lt;span&gt;Home&lt;/span&gt;&lt;i class="fas fa-chevron-down tabindex" &gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;div class="mega-menu "&gt;
+								&lt;ul class="demo-menu mb-0"&gt;
+									&lt;li&gt;
+										&lt;a to="/"&gt;
+											&lt;img src="images/demo/demo-1.png" alt="/"&gt;
+											&lt;span class="menu-title"&gt;01 Home Page&lt;/span&gt;
+										&lt;/a&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="/index-2"&gt;
+											&lt;img src="images/demo/demo-2.png" alt="/"&gt;
+											&lt;span class="menu-title"&gt;02 Home Page&lt;/span&gt;
+										&lt;/a&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="/index-3"&gt;
+											&lt;img src="images/demo/demo-3.png" alt="/"&gt;
+											&lt;span class="menu-title"&gt;03 Home Page&lt;/span&gt;
+										&lt;/a&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+						&lt;li class="has-mega-menu sub-menu-down"&gt;
+							&lt;a to=""&gt;&lt;span&gt;Shop&lt;/span&gt;&lt;i class="fas fa-chevron-down tabindex" &gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;div class="mega-menu shop-menu"&gt;
+								&lt;ul&gt;
+									&lt;li class="side-left"&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="" class="menu-title"&gt;Shop Structure&lt;/a&gt;
+												&lt;ul&gt;
+													&lt;li&gt;&lt;a to="/shop-standard"&gt;Shop Standard&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-list"&gt;Shop List&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-with-category"&gt;Shop With Category&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-filters-top-bar"&gt;Shop Filters Top Bar&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-sidebar"&gt;Shop Sidebar&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-style-1"&gt;Shop Style 1&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-style-2"&gt;Shop Style 2&lt;/a&gt;&lt;/li&gt;
+												&lt;/ul&gt;
+											&lt;/li&gt;
+											&lt;li&gt;&lt;a to="" class="menu-title"&gt;Product Structure&lt;/a&gt;
+												&lt;ul&gt;
+													&lt;li&gt;&lt;a to="/product-default"&gt;Default&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/product-thumbnail"&gt;Thumbnail&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/product-grid-media"&gt;Grid Media&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/product-carousel"&gt;Carousel&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/product-full-width"&gt;Full Width&lt;/a&gt;&lt;/li&gt;
+												&lt;/ul&gt;
+											&lt;/li&gt;
+											&lt;li&gt;&lt;a to="" class="menu-title"&gt;Shop Pages&lt;/a&gt;
+												&lt;ul&gt;
+													&lt;li&gt;&lt;a to="/shop-wishlist"&gt;Wishlist&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-cart"&gt;Cart&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-checkout"&gt;Checkout&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-compare"&gt;Compare&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/shop-order-tracking"&gt;Order Tracking&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/login"&gt;Login&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/registration"&gt;Registration&lt;/a&gt;&lt;/li&gt;
+													&lt;li&gt;&lt;a to="/forget-password"&gt;Forget Password &lt;div class="badge badge-sm rounded badge-animated"&gt;New&lt;/div&gt;&lt;/a&gt;&lt;/li&gt;
+												&lt;/ul&gt;
+											&lt;/li&gt;
+											&lt;li class="month-deal"&gt;
+												&lt;div class="clearfix me-3"&gt;
+													&lt;h3&gt;Deal of the month&lt;/h3&gt;
+													&lt;p class="mb-0"&gt;Yes! Send me exclusive offers, personalised, and unique gift ideas, tips for shopping on Pixio &lt;a to="/shop-standard" class="dz-link-2"&gt;View All Products&lt;/a&gt;&lt;/p&gt;
+												&lt;/div&gt;
+												&lt;div class="sale-countdown"&gt;
+													&lt;div class="countdown text-center"&gt;
+														&lt;div class="date"&gt;
+															&lt;span class="time days text-primary"&gt;&lt;/span&gt;
+															&lt;span class="work-time"&gt;Days&lt;/span&gt;
+														&lt;/div&gt;
+														&lt;div class="date"&gt;
+															&lt;span class="time hours text-primary"&gt;&lt;/span&gt;
+															&lt;span class="work-time"&gt;Hours&lt;/span&gt;
+														&lt;/div&gt;
+														&lt;div class="date"&gt;
+															&lt;span class="time mins text-primary"&gt;&lt;/span&gt;
+															&lt;span class="work-time"&gt;Minutess&lt;/span&gt;
+														&lt;/div&gt;
+														&lt;div class="date"&gt;
+															&lt;span class="time secs text-primary"&gt;&lt;/span&gt;
+															&lt;span class="work-time"&gt;Second&lt;/span&gt;
+														&lt;/div&gt;
+													&lt;/div&gt;
+												&lt;/div&gt;
+											&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li class="side-right"&gt;
+										&lt;div class="adv-media"&gt;
+											&lt;img src="images/adv-1.png" alt="/"&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+						&lt;li class="has-mega-menu sub-menu-down auto-width"&gt;
+							&lt;a to=""&gt;&lt;span&gt;Blog&lt;/span&gt;&lt;i class="fas fa-chevron-down tabindex"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;div class="mega-menu"&gt;
+								&lt;ul&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Blog Dark Style&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/blog-dark-2-column"&gt;Blog 2 Column&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-dark-2-column-sidebar"&gt;Blog 2 Column Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-dark-3-column"&gt;Blog 3 Column&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-dark-half-image"&gt;Blog Half Image&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+										&lt;a to="" class="menu-title"&gt;Blog Light Style&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/blog-light-2-column"&gt;Blog 2 Column&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-light-2-column-sidebar"&gt;Blog 2 Column Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-light-half-image"&gt;Blog Half Image&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-exclusive"&gt;Blog Exclusive&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Blog Sidebar&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/blog-left-sidebar"&gt;Blog left Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-right-sidebar"&gt;Blog Right Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-both-sidebar"&gt;Blog Both Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-wide-sidebar"&gt;Blog Wide Sidebar&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+										&lt;a to="" class="menu-title"&gt;Blog Page&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/blog-archive"&gt;Blog Archive&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-author"&gt;Author&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-category"&gt;Blog Category&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/blog-tag"&gt;Blog Tag&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Blog Details&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/post-standard"&gt;Post Standard&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-left-sidebar"&gt;Post Left Sidebar&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-header-image"&gt;Post Header Image&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-slide-show"&gt;Post Slide Show&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-side-image"&gt;Post Side Image&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-gallery"&gt;Post Gallery&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-gallery-alternative"&gt;Post Gallery Alternative&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-open-gutenberg"&gt;Post Open Gutenberg&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-link"&gt;Post Link&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-audio"&gt;Post Audio&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/post-video"&gt;Post Video&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li class="post-menu"&gt;
+											&lt;a to="" class="menu-title"&gt;Recent Posts&lt;/a&gt;
+											&lt;div class="widget widget_post pt-2"&gt;
+												&lt;ul&gt;
+													&lt;li&gt;
+														&lt;div class="dz-media"&gt;
+															&lt;img src="images/shop/product/small/1.png" alt=""&gt;
+														&lt;/div&gt;
+														&lt;div class="dz-content"&gt;
+															&lt;h6 class="name"&gt;&lt;a to="/post-standard"&gt;Cozy Knit Cardigan Sweater&lt;/a&gt;&lt;/h6&gt;
+															&lt;span class="time"&gt;July 23, 2023&lt;/span&gt;
+														&lt;/div&gt;
+													&lt;/li&gt;
+													&lt;li&gt;
+														&lt;div class="dz-media"&gt;
+															&lt;img src="images/shop/product/small/2.png" alt=""&gt;
+														&lt;/div&gt;
+														&lt;div class="dz-content"&gt;
+															&lt;h6 class="name"&gt;&lt;a to="/post-standard"&gt;Sophisticated Swagger Suit&lt;/a&gt;&lt;/h6&gt;
+															&lt;span class="time"&gt;July 23, 2023&lt;/span&gt;
+														&lt;/div&gt;
+													&lt;/li&gt;
+													&lt;li&gt;
+														&lt;div class="dz-media"&gt;
+															&lt;img src="images/shop/product/small/3.png" alt=""&gt;
+														&lt;/div&gt;
+														&lt;div class="dz-content"&gt;
+															&lt;h6 class="name"&gt;&lt;a to="/post-standard"&gt;Athletic Mesh Sports Leggings&lt;/a&gt;&lt;/h6&gt;
+															&lt;span class="time"&gt;July 23, 2023&lt;/span&gt;
+														&lt;/div&gt;
+													&lt;/li&gt;
+													&lt;li&gt;
+														&lt;div class="dz-media"&gt;
+															&lt;img src="images/shop/product/small/4.png" alt=""&gt;
+														&lt;/div&gt;
+														&lt;div class="dz-content"&gt;
+															&lt;h6 class="name"&gt;&lt;a to="/post-standard"&gt;Satin Wrap Party Blouse&lt;/a&gt;&lt;/h6&gt;
+															&lt;span class="time"&gt;July 23, 2023&lt;/span&gt;
+														&lt;/div&gt;
+													&lt;/li&gt;
+												&lt;/ul&gt;
+											&lt;/div&gt;
+										&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+						&lt;li class="has-mega-menu sub-menu-down"&gt;
+							&lt;a to=""&gt;&lt;span&gt;Portfolio&lt;/span&gt;&lt;i class="fas fa-chevron-down tabindex"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;div class="mega-menu portfolio-menu"&gt;
+								&lt;ul&gt;
+									&lt;li class="side-left"&gt;
+										&lt;ul class="portfolio-nav-link"&gt;
+											&lt;li&gt;
+												&lt;a to="/portfolio-tiles"&gt;
+													&lt;img src="images/portfolio/icons/portfolio-tiles.svg" alt="/"&gt;
+													&lt;span&gt;Portfolio Tiles&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/collage-style-1"&gt;
+													&lt;img src="images/portfolio/icons/collage-style-1.svg" alt="/"&gt;
+													&lt;span&gt;Collage Style 1&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/collage-style-2"&gt;
+													&lt;img src="images/portfolio/icons/collage-style-2.svg" alt="/"&gt;
+													&lt;span&gt;Collage Style 2&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/masonry-grid"&gt;
+													&lt;img src="images/portfolio/icons/masonry-grid.svg" alt="/"&gt;
+													&lt;span&gt;Masonry Grid&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/cobble-style-1"&gt;
+													&lt;img src="images/portfolio/icons/cobble-style-1.svg" alt="/"&gt;
+													&lt;span&gt;Cobble Style 1&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/cobble-style-2"&gt;
+													&lt;img src="images/portfolio/icons/cobble-style-2.svg" alt="/"&gt;
+													&lt;span&gt;Cobble Style 2&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/portfolio-thumbs-slider"&gt;
+													&lt;img src="images/portfolio/icons/portfolio-thumbs-slider.svg" alt="/"&gt;
+													&lt;span&gt;Portfolio Thumbs Slider&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/portfolio-film-strip"&gt;
+													&lt;img src="images/portfolio/icons/portfolio-film-strip.svg" alt="/"&gt;
+													&lt;span&gt;Portfolio Film Strip&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/carousel-showcase"&gt;
+													&lt;img src="images/portfolio/icons/carousel-showcase.svg" alt="/"&gt;
+													&lt;span&gt;Carousel Showcase&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+											&lt;li&gt;
+												&lt;a to="/portfolio-split-slider"&gt;
+													&lt;img src="images/portfolio/icons/portfolio-split-slider.svg" alt="/"&gt;
+													&lt;span&gt;Portfolio Split Slider&lt;/span&gt;
+												&lt;/a&gt;
+											&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li class="side-right line-left"&gt;
+										&lt;a to="" class="menu-title"&gt;Portfolio Details&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/portfolio-details-1"&gt;Portfolio Details 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/portfolio-details-2"&gt;Portfolio Details 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/portfolio-details-3"&gt;Portfolio Details 3&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/portfolio-details-4"&gt;Portfolio Details 4&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/portfolio-details-5"&gt;Portfolio Details 5&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+						&lt;li class="has-mega-menu sub-menu-down wide-width"&gt;
+							&lt;a to=""&gt;&lt;span&gt;Pages&lt;/span&gt;&lt;i class="fas fa-chevron-down tabindex"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;div class="mega-menu"&gt;
+								&lt;ul&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Pages&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/about-us"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/about-me"&gt;About Me&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/pricing-table"&gt;Pricing Table&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/our-gift-vouchers"&gt;Our Gift Vouchers&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/what-we-do"&gt;What We Do&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/faqs-1"&gt;Faqs 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/faqs-2"&gt;Faqs 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/our-team"&gt;Our Team&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Contact Us&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/contact-us-1"&gt;Contact Us 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/"&gt;Contact Us 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/contact-us-3"&gt;Contact Us 3&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+										&lt;a to="" class="menu-title"&gt;Web Pages&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/error-1"&gt;Error 404 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/error-2"&gt;Error 404 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/coming-soon"&gt;Coming Soon&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/under-construction"&gt;Under Construction&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Banner Style&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/banner-with-bg-color"&gt;Banner with BG Color&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-with-image"&gt;Banner with Image&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-with-video"&gt;Banner with Video&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-with-kanbern"&gt;Banner with Kanbern&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-small"&gt;Banner Small&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-medium"&gt;Banner Medium&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/banner-large"&gt;Banner Large&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Header Style&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/header-style-1"&gt;Header Style 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-2"&gt;Header Style 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-3"&gt;Header Style 3&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-4"&gt;Header Style 4&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-5"&gt;Header Style 5&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-6"&gt;Header Style 6&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/header-style-7"&gt;Header Style 7&lt;/a&gt;&lt;/li&gt;
+											&lt;li class="w3menulink"&gt;&lt;a to="/w3menu"&gt;Menu Styles&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Footer Style&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/footer-style-1"&gt;Footer Style 1&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-2"&gt;Footer Style 2&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-3"&gt;Footer Style 3&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-4"&gt;Footer Style 4&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-5"&gt;Footer Style 5&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-6"&gt;Footer Style 6&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/footer-style-7"&gt;Footer Style 7&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;a to="" class="menu-title"&gt;Dashboard&lt;/a&gt;
+										&lt;ul&gt;
+											&lt;li&gt;&lt;a to="/account-dashboard"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-orders"&gt;Orders&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-order-details"&gt;Orders Details&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-order-confirmation"&gt;Orders Confirmation&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-downloads"&gt;Downloads&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-return-request"&gt;Return Request&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-return-request-detail"&gt;Return Request Detail&lt;/a&gt;&lt;/li&gt;
+											&lt;li&gt;&lt;a to="/account-refund-requests-confirmed"&gt;Return Request Confirmed&lt;/a&gt;&lt;/li&gt;
+										&lt;/ul&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/li&gt;
+						&lt;li class="sub-menu-down"&gt;
+							&lt;a to=""&gt;&lt;span&gt;My Account&lt;/span&gt; &lt;div class="badge badge-sm rounded badge-animated"&gt;New&lt;/div&gt;&lt;i class="fas fa-chevron-down tabindex"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;ul class="sub-menu"&gt;
+								&lt;li&gt;&lt;a to="/account-dashboard"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-orders"&gt;Orders&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-order-details"&gt;Orders Details&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-order-confirmation"&gt;Orders Confirmation&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-downloads"&gt;Downloads&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-return-request"&gt;Return Request&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-return-request-detail"&gt;Return Request Detail&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-refund-requests-confirmed"&gt;Return Request Confirmed&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-address"&gt;Address&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-shipping-methods"&gt;Shipping methods&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-payment-methods"&gt;Payment Methods&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-review"&gt;Review&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-billing-address"&gt;Billing address&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-shipping-address"&gt;Shipping address&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a to="/account-cancellation-requests"&gt;Cancellation Requests&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;div class="dz-social-icon"&gt;
+						&lt;ul&gt;
+							&lt;li&gt;&lt;a class="fab fa-facebook-f" target="_blank" to="/https://www.facebook.com/dexignzone"&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a class="fab fa-twitter" target="_blank" to="/s"&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a class="fab fa-linkedin-in" target="_blank" to="/https://www.linkedin.com/showcase/3686700/admin/"&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a class="fab fa-instagram" target="_blank" to="/https://www.instagram.com/dexignzone/"&gt;&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;!-- EXTRA NAV --&gt;
+				&lt;div class="extra-nav"&gt;
+					&lt;div class="extra-cell"&gt;
+						&lt;ul class="header-right"&gt;
+							&lt;li class="nav-item login-link"&gt;
+								&lt;a class="nav-link" to="/login"&gt;
+									Login / Register
+								&lt;/a&gt;
+							&lt;/li&gt;
+							&lt;li class="nav-item search-link"&gt;
+								&lt;a class="nav-link" to="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"&gt;
+									&lt;i class="iconly-Light-Search"&gt;&lt;/i&gt;
+								&lt;/a&gt;
+							&lt;/li&gt;
+							&lt;li class="nav-item wishlist-link"&gt;
+								&lt;a class="nav-link" to="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"&gt;
+									&lt;i class="iconly-Light-Heart2"&gt;&lt;/i&gt;
+								&lt;/a&gt;
+							&lt;/li&gt;
+							&lt;li class="nav-item cart-link"&gt;
+								&lt;a to="" class="nav-link cart-btn"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"&gt;
+									&lt;i class="iconly-Broken-Buy"&gt;&lt;/i&gt;
+									&lt;span class="badge badge-circle"&gt;5&lt;/span&gt;
+								&lt;/a&gt;
+							&lt;/li&gt;
+							&lt;li class="nav-item filte-link"&gt;
+								&lt;a to="" class="nav-link filte-btn"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"&gt;
+									&lt;svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 13" fill="none"&gt;
+										&lt;rect y="11" width="30" height="2" fill="black"/&gt;
+										&lt;rect width="30" height="2" fill="black"/&gt;
+									&lt;/svg&gt;
+								&lt;/a&gt;
+							&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- Main Header End --&gt;
+
+	&lt;!-- SearchBar --&gt;
+	&lt;div class="dz-search-area dz-offcanvas offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop"&gt;
+		&lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;
+			×
+		&lt;/button&gt;
+		&lt;div class="container"&gt;
+			&lt;form class="header-item-search"&gt;
+				&lt;div class="input-group search-input"&gt;
+					&lt;select class="default-select"&gt;
+						&lt;option&gt;All Categories&lt;/option&gt;
+						&lt;option&gt;Clothes&lt;/option&gt;
+						&lt;option&gt;UrbanSkirt&lt;/option&gt;
+						&lt;option&gt;VelvetGown&lt;/option&gt;
+						&lt;option&gt;LushShorts&lt;/option&gt;
+						&lt;option&gt;Vintage&lt;/option&gt;
+						&lt;option&gt;Wedding&lt;/option&gt;
+						&lt;option&gt;Cotton&lt;/option&gt;
+						&lt;option&gt;Linen&lt;/option&gt;
+						&lt;option&gt;Navy&lt;/option&gt;
+						&lt;option&gt;Urban&lt;/option&gt;
+						&lt;option&gt;Business Meeting&lt;/option&gt;
+						&lt;option&gt;Formal&lt;/option&gt;
+					&lt;/select&gt;
+					&lt;input type="search" class="form-control" placeholder="Search Product"&gt;
+					&lt;button class="btn" type="button"&gt;
+						&lt;i class="iconly-Light-Search"&gt;&lt;/i&gt;
+					&lt;/button&gt;
+				&lt;/div&gt;
+				&lt;ul class="recent-tag"&gt;
+					&lt;li class="pe-0"&gt;&lt;span&gt;Quick Search :&lt;/span&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a to="/shop-list"&gt;Clothes&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a to="/shop-list"&gt;UrbanSkirt&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a to="/shop-list"&gt;VelvetGown&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a to="/shop-list"&gt;LushShorts&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/form&gt;
+			&lt;div class="row"&gt;
+				&lt;div class="col-xl-12"&gt;
+					&lt;h5 class="mb-3"&gt;You May Also Like&lt;/h5&gt;
+					&lt;div class="swiper category-swiper2"&gt;
+						&lt;div class="swiper-wrapper"&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/1.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;SilkBliss Dress&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$40.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/3.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;GlamPants&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$30.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/4.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;ComfyLeggings&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$35.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/2.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;ClassicCapri&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$20.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/5.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;DapperCoat&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$70.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/6.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;ComfyLeggings&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$45.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/7.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;DenimDream Jeans&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$40.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="swiper-slide"&gt;
+								&lt;div class="shop-card"&gt;
+									&lt;div class="dz-media "&gt;
+										&lt;img src="images/shop/product/4.png" alt="image"&gt;
+									&lt;/div&gt;
+									&lt;div class="dz-content"&gt;
+										&lt;h6 class="title"&gt;&lt;a to="/shop-list"&gt;SilkBliss Dress&lt;/a&gt;&lt;/h6&gt;
+										&lt;h6 class="price"&gt;$60.00&lt;/h6&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- SearchBar --&gt;
+
+	&lt;!-- Sidebar cart --&gt;
+	&lt;div class="offcanvas dz-offcanvas offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight"&gt;
+		&lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;
+			×
+		&lt;/button&gt;
+		&lt;div class="offcanvas-body"&gt;
+			&lt;div class="product-description"&gt;
+				&lt;div class="dz-tabs"&gt;
+					&lt;ul class="nav nav-tabs center" id="myTab" role="tablist"&gt;
+						&lt;li class="nav-item" role="presentation"&gt;
+							&lt;button class="nav-link active" id="shopping-cart" data-bs-toggle="tab" data-bs-target="#shopping-cart-pane" type="button" role="tab" aria-controls="shopping-cart-pane" aria-selected="true"&gt;Shopping Cart
+								&lt;span class="badge badge-light"&gt;5&lt;/span&gt;
+							&lt;/button&gt;
+						&lt;/li&gt;
+						&lt;li class="nav-item" role="presentation"&gt;
+							&lt;button class="nav-link" id="wishlist" data-bs-toggle="tab" data-bs-target="#wishlist-pane" type="button" role="tab" aria-controls="wishlist-pane" aria-selected="false"&gt;Wishlist
+								&lt;span class="badge badge-light"&gt;2&lt;/span&gt;
+							&lt;/button&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;div class="tab-content pt-4" id="dz-shopcart-sidebar"&gt;
+						&lt;div class="tab-pane fade show active" id="shopping-cart-pane" role="tabpanel" aria-labelledby="shopping-cart" tabindex="0"&gt;
+							&lt;div class="shop-sidebar-cart"&gt;
+								&lt;ul class="sidebar-cart-list"&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic1.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Sophisticated Swagger Suit&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;div class="btn-quantity light quantity-sm me-3"&gt;
+														&lt;input type="text" value="1" name="demo_vertical2"&gt;
+													&lt;/div&gt;
+													&lt;h6 class="dz-price mb-0"&gt;$50.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic2.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Cozy Knit Cardigan Sweater&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;div class="btn-quantity light quantity-sm me-3"&gt;
+														&lt;input type="text" value="1" name="demo_vertical2"&gt;
+													&lt;/div&gt;
+													&lt;h6 class="dz-price mb-0"&gt;$40.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic3.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Athletic Mesh Sports Leggings&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;div class="btn-quantity light quantity-sm me-3"&gt;
+														&lt;input type="text" value="1" name="demo_vertical2"&gt;
+													&lt;/div&gt;
+													&lt;h6 class="dz-price  mb-0"&gt;$65.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+								&lt;div class="cart-total"&gt;
+									&lt;h5 class="mb-0"&gt;Subtotal:&lt;/h5&gt;
+									&lt;h5 class="mb-0"&gt;300.00$&lt;/h5&gt;
+								&lt;/div&gt;
+								&lt;div class="mt-auto"&gt;
+									&lt;div class="shipping-time"&gt;
+										&lt;div class="dz-icon"&gt;
+											&lt;i class="flaticon flaticon-ship"&gt;&lt;/i&gt;
+										&lt;/div&gt;
+										&lt;div class="shipping-content"&gt;
+											&lt;h6 class="title pe-4"&gt;Congratulations , you've got free shipping!&lt;/h6&gt;
+											&lt;div class="progress"&gt;
+												&lt;div class="progress-bar progress-animated border-0" style="width: 75%;" role="progressbar"&gt;
+													&lt;span class="sr-only"&gt;75% Complete&lt;/span&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+									&lt;a to="/shop-checkout" class="btn btn-outline-secondary btn-block m-b20"&gt;Checkout&lt;/a&gt;
+									&lt;a to="/shop-cart" class="btn btn-secondary btn-block"&gt;View Cart&lt;/a&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="tab-pane fade" id="wishlist-pane" role="tabpanel" aria-labelledby="wishlist" tabindex="0"&gt;
+							&lt;div class="shop-sidebar-cart"&gt;
+								&lt;ul class="sidebar-cart-list"&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic1.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Sophisticated Swagger Suit&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;h6 class="dz-price  mb-0"&gt;$50.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic2.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Cozy Knit Cardigan Sweater&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;h6 class="dz-price  mb-0"&gt;$40.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+									&lt;li&gt;
+										&lt;div class="cart-widget"&gt;
+											&lt;div class="dz-media me-3"&gt;
+												&lt;img src="images/shop/shop-cart/pic3.jpg" alt=""&gt;
+											&lt;/div&gt;
+											&lt;div class="cart-content"&gt;
+												&lt;h6 class="title"&gt;&lt;a to="/product-thumbnail"&gt;Athletic Mesh Sports Leggings&lt;/a&gt;&lt;/h6&gt;
+												&lt;div class="d-flex align-items-center"&gt;
+													&lt;h6 class="dz-price  mb-0"&gt;$65.00&lt;/h6&gt;
+												&lt;/div&gt;
+											&lt;/div&gt;
+											&lt;a to="" class="dz-close"&gt;
+												&lt;i class="ti-close"&gt;&lt;/i&gt;
+											&lt;/a&gt;
+										&lt;/div&gt;
+									&lt;/li&gt;
+								&lt;/ul&gt;
+								&lt;div class="mt-auto"&gt;
+									&lt;a to="/shop-wishlist" class="btn btn-secondary btn-block"&gt;Check Your Favourite&lt;/a&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- Sidebar cart --&gt;
+
+	&lt;!-- Sidebar finter --&gt;
+	&lt;div class="offcanvas dz-offcanvas offcanvas offcanvas-end " tabindex="-1" id="offcanvasLeft"&gt;
+		&lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"&gt;
+			×
+		&lt;/button&gt;
+		&lt;div class="offcanvas-body"&gt;
+			&lt;div class="product-description"&gt;
+				&lt;div class="widget widget_search"&gt;
+					&lt;div class="form-group"&gt;
+						&lt;div class="input-group"&gt;
+							&lt;input name="dzSearch" required="required" type="search" class="form-control" placeholder="Search Product"&gt;
+							&lt;div class="input-group-addon"&gt;
+								&lt;button name="submit" value="Submit" type="submit" class="btn"&gt;
+									&lt;i class="icon feather icon-search"&gt;&lt;/i&gt;
+								&lt;/button&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="widget"&gt;
+					&lt;h6 class="widget-title"&gt;Price&lt;/h6&gt;
+					&lt;div class="price-slide range-slider"&gt;
+						&lt;div class="price"&gt;
+							&lt;div class="range-slider style-1"&gt;
+								&lt;div id="slider-tooltips" class="mb-3"&gt;&lt;/div&gt;
+								&lt;span class="example-val" id="slider-margin-value-min"&gt;&lt;/span&gt;
+								&lt;span class="example-val" id="slider-margin-value-max"&gt;&lt;/span&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="widget"&gt;
+					&lt;h6 class="widget-title"&gt;Color&lt;/h6&gt;
+					&lt;div class="d-flex align-items-center flex-wrap color-filter ps-2"&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="#000000" aria-label="..." checked&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2" value="#9BD1FF" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel3" value="#21B290" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel4" value="#FEC4C4" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel5" value="#FF7354" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel6" value="#51EDC8" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel7" value="#B77CF3" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel8" value="#FF4A76" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel9" value="#3E68FF" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;div class="form-check"&gt;
+							&lt;input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabe20" value="#7BEF68" aria-label="..."&gt;
+							&lt;span&gt;&lt;/span&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+
+				&lt;div class="widget"&gt;
+					&lt;h6 class="widget-title"&gt;Size&lt;/h6&gt;
+					&lt;div class="btn-group product-size"&gt;
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio11" checked=""&gt;
+						&lt;label class="btn" for="btnradio11"&gt;4&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio21"&gt;
+						&lt;label class="btn" for="btnradio21"&gt;6&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio31"&gt;
+						&lt;label class="btn" for="btnradio31"&gt;8&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio41"&gt;
+						&lt;label class="btn" for="btnradio41"&gt;10&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio51"&gt;
+						&lt;label class="btn" for="btnradio51"&gt;12&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio61"&gt;
+						&lt;label class="btn" for="btnradio61"&gt;14&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio71"&gt;
+						&lt;label class="btn" for="btnradio71"&gt;16&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio81"&gt;
+						&lt;label class="btn" for="btnradio81"&gt;18&lt;/label&gt;
+
+						&lt;input type="radio" class="btn-check" name="btnradio1" id="btnradio91"&gt;
+						&lt;label class="btn" for="btnradio91"&gt;20&lt;/label&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="widget widget_categories"&gt;
+					&lt;h6 class="widget-title"&gt;Category&lt;/h6&gt;
+					&lt;ul&gt;
+						&lt;li class="cat-item cat-item-26"&gt;&lt;a to="/blog-category"&gt;Dresses&lt;/a&gt; (10)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-36"&gt;&lt;a to="/blog-category"&gt;Top &amp; Blouses&lt;/a&gt; (5)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-43"&gt;&lt;a to="/blog-category"&gt;Boots&lt;/a&gt; (17)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-27"&gt;&lt;a to="/blog-category"&gt;Jewelry&lt;/a&gt; (13)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-40"&gt;&lt;a to="/blog-category"&gt;Makeup&lt;/a&gt; (06)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-40"&gt;&lt;a to="/blog-category"&gt;Fragrances&lt;/a&gt; (17)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-40"&gt;&lt;a to="/blog-category"&gt;Shaving &amp; Grooming&lt;/a&gt; (13)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-43"&gt;&lt;a to="/blog-category"&gt;Jacket&lt;/a&gt; (06)&lt;/li&gt;
+						&lt;li class="cat-item cat-item-36"&gt;&lt;a to="/blog-category"&gt;Coat&lt;/a&gt; (22)&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+
+				&lt;div class="widget widget_tag_cloud"&gt;
+					&lt;h6 class="widget-title"&gt;Tags&lt;/h6&gt;
+					&lt;div class="tagcloud"&gt;
+						&lt;a to="/blog-tag"&gt;Vintage &lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Wedding&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Cotton&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Linen&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Navy&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Urban&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Business Meeting&lt;/a&gt;
+						&lt;a to="/blog-tag"&gt;Formal&lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;a to="" class="btn btn-sm font-14 btn-secondary btn-sharp"&gt;RESET&lt;/a&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- filter sidebar --&gt;
+
+&lt;/header&gt;
+&lt;!-- Header End --&gt;
+</pre
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Code Box End -->
+    </div>
+  </div>
+</template>

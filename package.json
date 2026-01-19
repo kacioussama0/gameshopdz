@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "sass": "sass --watch ./assets/scss/main.scss ./assets/css/style.css"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@types/isotope-layout": "^3.0.14",
+    "apexcharts": "^3.54.0",
+    "bootstrap": "^5.3.3",
+    "countup.js": "^2.8.0",
+    "lg-thumbnail": "^1.2.1",
+    "lg-zoom": "^1.3.0",
+    "lightgallery": "^2.7.2",
+    "nuxt": "^3.13.0",
+    "swiper": "^11.1.14",
+    "vue": "latest",
+    "vue-countup-v3": "^1.4.2",
+    "vue-router": "latest",
+    "vue3-apexcharts": "^1.6.0"
+  },
+  "devDependencies": {
+    "sass": "^1.97.2"
+  }
+}
