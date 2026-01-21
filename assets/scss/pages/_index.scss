@@ -1136,6 +1136,10 @@ del{
 		padding: 12px 0;
 		.item{
 			padding: 0 12px;
+			img {
+
+				object-fit: cover;
+			}
 		}
 		.companies-media{
 		    display: flex;

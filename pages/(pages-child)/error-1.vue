@@ -17,8 +17,8 @@ import Header from "~/components/Header.vue";
               </div>
               <div class="error-inner">
                 <h1 class="dz_error">404</h1>
-                <p class="error-head">Oh, no! This page does not exist.</p>
-                <RouterLink to="/" class="btn btn-secondary text-uppercase">Go to Main Page</RouterLink>
+                <p class="error-head">Ah non ! Cette page n'existe pas.</p>
+                <RouterLink to="/" class="btn btn-secondary text-uppercase">Aller à la page principale</RouterLink>
               </div>
             </div>
           </div>

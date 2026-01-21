@@ -40,668 +40,518 @@ onMounted(() => {
 
 <template>
   <ul class="nav navbar-nav">
+
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to=""
-        ><span>Home</span><i class="fas fa-chevron-down tabindex"></i
+      ><span>Accueil</span><i class="fas fa-chevron-down tabindex"></i
       ></RouterLink>
-      <div class="mega-menu demo-menu">
-        <div class="row">
-          <div class="col-md-4 col-6">
-            <RouterLink to="/"
-              ><img src="../assets/images/demo/demo-1.png" alt="/" />
-              <span class="menu-title">01 Home Page</span></RouterLink
-            >
-          </div>
-          <div class="col-md-4 col-6">
-            <RouterLink to="/index-2"
-              ><img src="../assets/images/demo/demo-2.png" alt="/" />
-              <span class="menu-title">02 Home Page</span></RouterLink
-            >
-          </div>
-          <div class="col-md-4 col-6">
-            <RouterLink to="/index-3"
-              ><img src="../assets/images/demo/demo-3.png" alt="/" />
-              <span class="menu-title">03 Home Page</span></RouterLink
-            >
-          </div>
-        </div>
-      </div>
+
     </li>
+
+
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to=""
-        ><span>Shop</span><i class="fas fa-chevron-down tabindex"></i
+        ><span>Jeux</span><i class="fas fa-chevron-down tabindex"></i
       ></RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Shop Structure</RouterLink>
+                <RouterLink to="" class="menu-title">Playstation 5</RouterLink>
                 <ul>
-                  <li>
-                    <RouterLink to="/shop-standard">Shop Standard</RouterLink>
-                  </li>
-                  <li><RouterLink to="/shop-list">Shop List</RouterLink></li>
-                  <li>
-                    <RouterLink to="/shop-with-category"
-                      >Shop With Category</RouterLink
-                    >
-                  </li>
-                  <li>
-                    <RouterLink to="/shop-filters-top-bar"
-                      >Shop Filters Top Bar</RouterLink
-                    >
-                  </li>
-                  <li>
-                    <RouterLink to="/shop-sidebar">Shop Sidebar</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/shop-style-1">Shop Style 1</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/shop-style-2">Shop Style 2</RouterLink>
-                  </li>
+                  <li><RouterLink to="/shop-standard">Jeux Playstation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Exclusivité Playstation</RouterLink></li>
                 </ul>
+
+                <RouterLink to="" class="menu-title">Playstation 4</RouterLink>
+
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeux PlayStation 4</RouterLink></li>
+                </ul>
+
               </div>
+
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title"
-                  >Product Structure</RouterLink
-                >
+                <RouterLink to="" class="menu-title">Xbox Series X & S</RouterLink>
                 <ul>
-                  <li>
-                    <RouterLink to="/product-default">Default</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/product-thumbnail">Thumbnail</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/product-grid-media">Grid Media</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/product-carousel">Carousel</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/product-full-width">Full Width</RouterLink>
-                  </li>
+                  <li><RouterLink to="/shop-standard">Jeux Xbox Series X|S</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Exclusivité Xbox</RouterLink></li>
                 </ul>
+
+                <RouterLink to="" class="menu-title">Xbox One</RouterLink>
+
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeux Xbox One</RouterLink></li>
+                </ul>
+
               </div>
+
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Shop Pages</RouterLink>
+                <RouterLink to="" class="menu-title">Nintendo Switch</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop-wishlist">Wishlist</RouterLink></li>
-                  <li><RouterLink to="/shop-cart">Cart</RouterLink></li>
-                  <li><RouterLink to="/shop-checkout">Checkout</RouterLink></li>
-                  <li><RouterLink to="/shop-compare">Compare</RouterLink></li>
-                  <li>
-                    <RouterLink to="/shop-order-tracking"
-                      >Order Tracking</RouterLink
-                    >
-                  </li>
-                  <li><RouterLink to="/login">Login</RouterLink></li>
-                  <li>
-                    <RouterLink to="/registration">Registration</RouterLink>
-                  </li>
-                  <li>
-                    <RouterLink to="/forget-password"
-                      >Forget Password
-                    </RouterLink>
-                  </li>
+                  <li><RouterLink to="/shop-standard">Jeux Nintendo Switch</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Exclusivité Nintendo Switch</RouterLink></li>
                 </ul>
+
+                <RouterLink to="" class="menu-title">Nintendo Switch 2</RouterLink>
+
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeux Nintendo Switch 2</RouterLink></li>
+                </ul>
+
               </div>
+
             </div>
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-games-Banner.png?w=896&ssl=1" alt="/"  />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Consoles</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
-              <div class="col-md-12">
-                <div class="month-deal">
-                  <div>
-                    <h3>Deal of the month</h3>
-                    <p class="mb-0">
-                      Yes! Send me exclusive offers, personalised, and unique
-                      gift ideas, tips for shopping on Pixio
-                      <RouterLink to="/shop-standard" class="dz-link-2"
-                        >View All Products</RouterLink
-                      >
-                    </p>
-                  </div>
-                  <div class="sale-countdown">
-                    <div class="countdown text-center">
-                      <div class="date">
-                        <span class="time days text-primary">{{
-                          timer.day
-                        }}</span>
-                        <span class="work-time">Days</span>
-                      </div>
-                      <div class="date">
-                        <span class="time hours text-primary">{{
-                          timer.hour
-                        }}</span>
-                        <span class="work-time">Hours</span>
-                      </div>
-                      <div class="date">
-                        <span class="time mins text-primary">{{
-                          timer.min
-                        }}</span>
-                        <span class="work-time">Minutess</span>
-                      </div>
-                      <div class="date">
-                        <span class="time secs text-primary">{{
-                          timer.sec
-                        }}</span>
-                        <span class="work-time">Second</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">PlayStation</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Playstation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Playstation 4</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Playstation Portal</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Playstation VR</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Playstation VR 2</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PlayStation 30th Anniversary</RouterLink></li>
+                </ul>
+
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Xbox</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Xbox Series X</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Xbox Series S</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Xbox One</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">Nintendo</RouterLink>
+
+                <ul>
+                  <li><RouterLink to="/shop-standard">Nintendo Switch</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Nintendo Switch 2</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Console portable</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Consoles PC Portables</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Emulation Portable</RouterLink></li>
+                </ul>
+
               </div>
             </div>
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="../assets/images/adv-1.png" alt="/" />
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-Consoles-Banner.png?w=896&ssl=1" alt="/"  />
             </div>
           </div>
-        </div>
-      </div>
-    </li>
-    <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-        ><span>Blog</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
-      <div class="mega-menu">
-        <div class="row">
-          <div class="col-md-3 col-sm-6 col-6">
-            <RouterLink to="" class="menu-title">Blog Dark Style</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/blog-dark-2-column">Blog 2 Column</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/blog-dark-2-column-sidebar"
-                  >Blog 2 Column Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-dark-3-column">Blog 3 Column</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/blog-dark-half-image"
-                  >Blog Half Image</RouterLink
-                >
-              </li>
-            </ul>
-            <RouterLink to="" class="menu-title">Blog Light Style</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/blog-light-2-column">Blog 2 Column</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/blog-light-2-column-sidebar"
-                  >Blog 2 Column Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-light-half-image"
-                  >Blog Half Image</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-exclusive">Blog Exclusive</RouterLink>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <RouterLink to="" class="menu-title">Blog Sidebar</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/blog-left-sidebar"
-                  >Blog left Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-right-sidebar"
-                  >Blog Right Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-both-sidebar"
-                  >Blog Both Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/blog-wide-sidebar"
-                  >Blog Wide Sidebar</RouterLink
-                >
-              </li>
-            </ul>
-            <RouterLink to="" class="menu-title">Blog Page</RouterLink>
-            <ul>
-              <li><RouterLink to="/blog-archive">Blog Archive</RouterLink></li>
-              <li><RouterLink to="/blog-author">Author</RouterLink></li>
-              <li>
-                <RouterLink to="/blog-category">Blog Category</RouterLink>
-              </li>
-              <li><RouterLink to="/blog-tag">Blog Tag</RouterLink></li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-sm-6 col-6">
-            <RouterLink to="" class="menu-title">Blog Details</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/post-standard">Post Standard</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/post-left-sidebar"
-                  >Post Left Sidebar</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/post-header-image"
-                  >Post Header Image</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/post-slide-show">Post Slide Show</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/post-side-image">Post Side Image</RouterLink>
-              </li>
-              <li><RouterLink to="/post-gallery">Post Gallery</RouterLink></li>
-              <li>
-                <RouterLink to="/post-gallery-alternative"
-                  >Post Gallery Alternative</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/post-open-gutenberg"
-                  >Post Open Gutenberg</RouterLink
-                >
-              </li>
-              <li><RouterLink to="/post-link">Post Link</RouterLink></li>
-              <li><RouterLink to="/post-audio">Post Audio</RouterLink></li>
-              <li><RouterLink to="/post-video">Post Video</RouterLink></li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-sm-6 col-12">
-            <RouterLink to="" class="menu-title">Recent Posts</RouterLink>
-            <div class="widget widget_post pt-2">
-              <ul>
-                <li>
-                  <div class="dz-media">
-                    <img
-                      src="../assets/images/shop/product/small/1.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="dz-content">
-                    <h6 class="name">
-                      <RouterLink to="/post-standard"
-                        >Cozy Knit Cardigan Sweater</RouterLink
-                      >
-                    </h6>
-                    <span class="time">July 23, 2023</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="dz-media">
-                    <img
-                      src="../assets/images/shop/product/small/2.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="dz-content">
-                    <h6 class="name">
-                      <RouterLink to="/post-standard"
-                        >Sophisticated Swagger Suit</RouterLink
-                      >
-                    </h6>
-                    <span class="time">July 23, 2023</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="dz-media">
-                    <img
-                      src="../assets/images/shop/product/small/3.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="dz-content">
-                    <h6 class="name">
-                      <RouterLink to="/post-standard"
-                        >Athletic Mesh Sports Leggings</RouterLink
-                      >
-                    </h6>
-                    <span class="time">July 23, 2023</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="dz-media">
-                    <img
-                      src="../assets/images/shop/product/small/4.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="dz-content">
-                    <h6 class="name">
-                      <RouterLink to="/post-standard"
-                        >Satin Wrap Party Blouse</RouterLink
-                      >
-                    </h6>
-                    <span class="time">July 23, 2023</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-        ><span>Portfolio</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
-      <div class="mega-menu portfolio-menu">
-        <div class="row">
-          <div class="col-xl-10 col-lg-9 col-md-9 pe-xl-5 pe-md-3 col-sm-8">
-            <ul class="row portfolio-nav-link">
-              <li class="col">
-                <RouterLink to="/portfolio-tiles"
-                  ><img
-                    src="../assets/images/portfolio/icons/portfolio-tiles.svg"
-                    alt="/"
-                  /><span>Portfolio Tiles</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/collage-style-1"
-                  ><img
-                    src="../assets/images/portfolio/icons/collage-style-1.svg"
-                    alt="/"
-                  /><span>Collage Style 1</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/collage-style-2"
-                  ><img
-                    src="../assets/images/portfolio/icons/collage-style-2.svg"
-                    alt="/"
-                  /><span>Collage Style 2</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/masonry-grid"
-                  ><img
-                    src="../assets/images/portfolio/icons/masonry-grid.svg"
-                    alt="/"
-                  /><span>Masonry Grid</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/cobble-style-1"
-                  ><img
-                    src="../assets/images/portfolio/icons/cobble-style-1.svg"
-                    alt="/"
-                  /><span>Cobble Style 1</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/cobble-style-2"
-                  ><img
-                    src="../assets/images/portfolio/icons/cobble-style-2.svg"
-                    alt="/"
-                  /><span>Cobble Style 2</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/portfolio-thumbs-slider"
-                  ><img
-                    src="../assets/images/portfolio/icons/portfolio-thumbs-slider.svg"
-                    alt="/"
-                  /><span>Portfolio Thumbs Slider</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/portfolio-film-strip"
-                  ><img
-                    src="../assets/images/portfolio/icons/portfolio-film-strip.svg"
-                    alt="/"
-                  /><span>Portfolio Film Strip</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/carousel-showcase"
-                  ><img
-                    src="../assets/images/portfolio/icons/carousel-showcase.svg"
-                    alt="/"
-                  /><span>Carousel Showcase</span></RouterLink
-                >
-              </li>
-              <li class="col">
-                <RouterLink to="/portfolio-split-slider"
-                  ><img
-                    src="../assets/images/portfolio/icons/portfolio-split-slider.svg"
-                    alt="/"
-                  /><span>Portfolio Split Slider</span></RouterLink
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-3 line-left ps-3 pe-0 col-sm-4">
-            <RouterLink to="" class="menu-title">Portfolio Details</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/portfolio-details-1"
-                  >Portfolio Details 1</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/portfolio-details-2"
-                  >Portfolio Details 2</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/portfolio-details-3"
-                  >Portfolio Details 3</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/portfolio-details-4"
-                  >Portfolio Details 4</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/portfolio-details-5"
-                  >Portfolio Details 5</RouterLink
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-        ><span>Pages</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
-      <div class="mega-menu">
-        <div class="row justify-content-md-between">
-          <div class="col-md-2 col-sm-4 col-6">
-            <RouterLink to="" class="menu-title">Pages</RouterLink>
-            <ul>
-              <li><RouterLink to="/about-us">About Us</RouterLink></li>
-              <li><RouterLink to="/about-me">About Me</RouterLink></li>
-              <li>
-                <RouterLink to="/pricing-table">Pricing Table</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/our-gift-vouchers"
-                  >Our Gift Vouchers</RouterLink
-                >
-              </li>
-              <li><RouterLink to="/what-we-do">What We Do</RouterLink></li>
-              <li><RouterLink to="/faqs-1">Faqs 1</RouterLink></li>
-              <li><RouterLink to="/faqs-2">Faqs 2</RouterLink></li>
-              <li><RouterLink to="/our-team">Our Team</RouterLink></li>
-            </ul>
-          </div>
-          <div class="col-md-2 col-sm-4 col-6">
-            <RouterLink to="" class="menu-title">Contact Us</RouterLink>
-            <ul>
-              <li><RouterLink to="/contact-us-1">Contact Us 1</RouterLink></li>
-              <li><RouterLink to="/">Contact Us 2</RouterLink></li>
-              <li><RouterLink to="/contact-us-3">Contact Us 3</RouterLink></li>
-            </ul>
-            <RouterLink to="" class="menu-title">Web Pages</RouterLink>
-            <ul>
-              <li><RouterLink to="/error-1">Error 404 1</RouterLink></li>
-              <li><RouterLink to="/error-2">Error 404 2</RouterLink></li>
-              <li><RouterLink to="/coming-soon">Coming Soon</RouterLink></li>
-              <li>
-                <RouterLink to="/under-construction"
-                  >Under Construction</RouterLink
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-2 col-sm-4 col-6">
-            <RouterLink to="" class="menu-title">Banner Style</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/banner-with-bg-color"
-                  >Banner with BG Color</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/banner-with-image"
-                  >Banner with Image</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/banner-with-video"
-                  >Banner with Video</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink to="/banner-with-kanbern"
-                  >Banner with Kanbern</RouterLink
-                >
-              </li>
-              <li><RouterLink to="/banner-small">Banner Small</RouterLink></li>
-              <li>
-                <RouterLink to="/banner-medium">Banner Medium</RouterLink>
-              </li>
-              <li><RouterLink to="/banner-large">Banner Large</RouterLink></li>
-            </ul>
-          </div>
-          <div class="col-md-2 col-sm-4 col-6">
-            <RouterLink to="" class="menu-title">Header Style</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/header-style-1">Header Style 1</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-2">Header Style 2</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-3">Header Style 3</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-4">Header Style 4</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-5">Header Style 5</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-6">Header Style 6</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/header-style-7">Header Style 7</RouterLink>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-2 col-sm-4 col-6">
-            <RouterLink to="" class="menu-title">Footer Style</RouterLink>
-            <ul>
-              <li>
-                <RouterLink to="/footer-style-1">Footer Style 1</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-2">Footer Style 2</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-3">Footer Style 3</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-4">Footer Style 4</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-5">Footer Style 5</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-6">Footer Style 6</RouterLink>
-              </li>
-              <li>
-                <RouterLink to="/footer-style-7">Footer Style 7</RouterLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="sub-menu-down">
-      <RouterLink to=""
-        ><span>My Account</span>
 
-        <i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
-      <ul class="sub-menu">
-        <li><RouterLink to="/account-dashboard">Dashboard</RouterLink></li>
-        <li><RouterLink to="/account-orders">Orders</RouterLink></li>
-        <li>
-          <RouterLink to="/account-order-details">Orders Details</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/account-order-confirmation"
-            >Orders Confirmation</RouterLink
-          >
-        </li>
-        <li><RouterLink to="/account-downloads">Downloads</RouterLink></li>
-        <li>
-          <RouterLink to="/account-return-request">Return Request</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/account-return-request-detail"
-            >Return Request Detail</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink to="/account-refund-requests-confirmed"
-            >Return Request Confirmed</RouterLink
-          >
-        </li>
-        <li><RouterLink to="/account-profile">Profile</RouterLink></li>
-        <li><RouterLink to="/account-address">Address</RouterLink></li>
-        <li>
-          <RouterLink to="/account-shipping-methods"
-            >Shipping methods</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink to="/account-payment-methods">Payment Methods</RouterLink>
-        </li>
-        <li><RouterLink to="/account-review">Review</RouterLink></li>
-        <li>
-          <RouterLink to="/account-billing-address">Billing address</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/account-shipping-address"
-            >Shipping address</RouterLink
-          >
-        </li>
-        <li>
-          <RouterLink to="/account-cancellation-requests"
-            >Cancellation Requests</RouterLink
-          >
-        </li>
-      </ul>
+        </div>
+
+      </div>
+
+
     </li>
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Occasions</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Jeux Vidéo</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 4</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Xbox Series X</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch 2</RouterLink></li>
+
+                </ul>
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Consoles</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Consoles PS5 Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Consoles PS4 Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Consoles Xbox Series X Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Consoles Xbox Series S Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Consoles Switch Occasion</RouterLink></li>
+                </ul>
+              </div>
+
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Jeux Vidéo</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 4</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Xbox Series X</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch 2</RouterLink></li>
+
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-occasion-Banner.png?w=896&ssl=1" alt="/" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Accessoires</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Accessoires Consoles</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Batterie Manette</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Station de Charges</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Station de refroidissement</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Support Manette</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Casques</RouterLink></li>
+                </ul>
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Manettes</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Manette PlayStation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette PlayStation 4</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Xbox</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Switch</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette PDP</RouterLink></li>
+
+                </ul>
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Utilitaires</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Skin Consoles</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Pochette Consoles</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Casque Gaming</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Casque PlayStation</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Casque Xbox</RouterLink></li>
+
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-accessoires-Banner.png?w=896&ssl=1" alt="/" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Digital</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Cartes Prépayées</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Cartes prépayées PS</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Cartes prépayées Xbox</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Cartes prépayées Steam</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Cartes prepayées Nintendo</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">100% Digital</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Jeu Digital</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Pass de Combat</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Abonnements</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Xbox Game Pass</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PlayStation Plus</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Nintendo Online</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">Console Digitale</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">PlayStation 5 Digital</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PlayStation 5 PRO</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Xbox Series S</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Streaming</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Netflix</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Crunchyroll</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Disney +</RouterLink></li>
+                </ul>
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/DIGTAL-GS.png?w=896&ssl=1" alt="/" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Collector & Goodies</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Collectors</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Steelbooks</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Collectors</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Console Editions</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">Miniature</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Hotwheels</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Majorette</RouterLink></li>
+                </ul>
+
+              </div>
+
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Décoration</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Lampe Gaming</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Porte Manette</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Figurines</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">Textile</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">T-Shirt</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Sac à dos</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Déco Setup</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Tapis de souris</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Porte casque</RouterLink></li>
+                </ul>
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Collector-GS.png?w=896&ssl=1" alt="/" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>PC</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+
+
+            <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Composants PC</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Processeur CPU</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Carte Graphique GPU</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">RAM</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">SSD</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Carte Mere</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Alimentation PC</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Boitier / Case</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Périphérique PC</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Ecrans PC / Moniteurs</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Clavier</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Souris</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Casque</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Tapis de souris</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Support Casque</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Microphones</RouterLink></li>
+                </ul>
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">PC et Pre-Builds</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Laptops</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PC Gamer</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PC Bureau</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Build Game Shop</RouterLink></li>
+                </ul>
+              </div>
+
+
+            </div>
+
+            </div>
+
+
+
+            <div class="col-md-4 d-none d-lg-block">
+              <div class="adv-media">
+                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/" />
+              </div>
+            </div>
+
+            </div>
+          </div>
+
+
+
+    </li>
+
+
+    <li class="has-mega-menu sub-menu-down">
+      <RouterLink to=""
+      ><span>Retro</span><i class="fas fa-chevron-down tabindex"></i
+      ></RouterLink>
+      <div class="mega-menu shop-menu">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="row">
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Console Retro</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">PlayStation 1 (PS1)</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">PlayStation 2 (PS2)</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Xbox Classic</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Nintendo 64</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">GameCube</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Game Boy / Advance</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Super Nintendo</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Autres Consoles</RouterLink></li>
+
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Jeux Retro</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Neuf sous blister</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Complet boîte + notice</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Jeux Rétro Occasion</RouterLink></li>
+                </ul>
+
+                <RouterLink to="" class="menu-title">Accessoires Rétro</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Manettes Rétro d’origine</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Mémoire & Connectique</RouterLink></li>
+                </ul>
+
+              </div>
+
+              <div class="col-md-4 col-6">
+                <RouterLink to="" class="menu-title">Collector & Goodies</RouterLink>
+                <ul>
+                  <li><RouterLink to="/shop-standard">Rétro Éditions collector</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Figurines Rétro</RouterLink></li>
+
+                </ul>
+              </div>
+
+
+            </div>
+
+          </div>
+          <div class="col-md-4 d-none d-lg-block">
+            <div class="adv-media">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Retro-GS.png?w=896&ssl=1" alt="/" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+
   </ul>
 </template>

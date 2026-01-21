@@ -1,5 +1,15 @@
 <script lang="ts" setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
+
+const images = [
+    '/_nuxt/assets/images/shadow.png',
+    '/_nuxt/images/yasoki.png',
+]
+
+
+
+const randomImage = images[Math.floor(Math.random() * images.length)];
+
+
 </script>
 
 <template>
@@ -11,7 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
             <div class="swiper-content">
               <div class="content-info">
                 <h1 class="offer-title mb-0" data-swiper-parallax="-20">
-                  Your Ultimate
+                  Leader Gaming
                   <span class="text-primary d-flex align-items-center"
                     ><svg
                       class="m-r10"
@@ -26,20 +36,17 @@ import { Swiper, SwiperSlide } from "swiper/vue";
                         fill="var(--primary)"
                       />
                     </svg>
-                    Online Store</span
-                  >for All Your Needs.
+                     Shop en Algérie</span
+                  >
                 </h1>
                 <p class="sub-title mb-0" data-swiper-parallax="-40">
-                  No code need. Plus free shippng on <span>$99+</span> orders!
+                  Découvrez notre sélection exclusive de produits gaming
+                  haut de gamme, conçus pour les passionnés comme vous.
                 </p>
               </div>
               <div class="content-btn" data-swiper-parallax="-60">
-                <NuxtLink class="btn btn-secondary me-3" to="/shop-cart"
-                  >ADD TO CART</NuxtLink
-                >
-                <NuxtLink class="btn btn-outline-secondary" to="/shop-standard"
-                  >VIEW DETAILS</NuxtLink
-                >
+                <NuxtLink class="btn btn-secondary me-3" to="/shop"
+                  >Découvrir la boutique</NuxtLink>
               </div>
             </div>
           </div>
@@ -50,10 +57,14 @@ import { Swiper, SwiperSlide } from "swiper/vue";
               <div class="border-shap2"></div>
 
               <div class="img-preview" data-swiper-parallax="-100">
+
+
                 <img
-                  src="../assets/images/main-slider/slider2/pic1.png"
+                  :src="randomImage"
                   alt="banner-media"
                 />
+
+
               </div>
               <div class="bnr-content-bx slideskew">
                 <div class="dz-media">
@@ -68,29 +79,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
                   </div>
                 </div>
               </div>
-              <div class="bnr-customer-bx slideskew">
-                <i class="icon feather icon-heart-on dz-heart"></i>
-                <ul>
-                  <li class="customer-image">
-                    <img
-                      src="../assets/images/testimonial/testimonial1.jpg"
-                      alt=""
-                    />
-                  </li>
-                  <li class="customer-image">
-                    <img
-                      src="../assets/images/testimonial/testimonial2.jpg"
-                      alt=""
-                    />
-                  </li>
-                  <li class="customer-image">
-                    <img
-                      src="../assets/images/testimonial/testimonial3.jpg"
-                      alt=""
-                    />
-                  </li>
-                </ul>
-              </div>
+
               <ul class="star-list">
                 <li class="star-1">
                   <svg

@@ -1,5 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    wcConsumerKey: process.env.WC_CONSUMER_KEY,
+    wcConsumerSecret: process.env.WC_CONSUMER_SECRET,
+    public: {
+      wcStoreUrl: process.env.WC_STORE_URL,
+    },
+  },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   css: [
@@ -15,7 +22,15 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: "Pixio: Shop & eCommerce NuxtJs Template | DexignZone",
+      title: "Gameshopdz - Leader Gaming Shop en Algérie",
+      meta: [
+
+        {
+          name: "description",
+          content:
+            "Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.",
+        },
+      ],
       link: [
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com" },

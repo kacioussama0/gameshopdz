@@ -1,16 +1,16 @@
 :root{
 	
 	/* Primary */
-	--primary: #CC0D39;
-	--primary-hover: #ad0b30;
-	--primary-dark: #ad0b30;
+	--primary: #046adb;
+	--primary-hover: #041345;
+	--primary-dark: #041345;
 	
 	--secondary: #000;
 	--secondary-hover: #000;
 	--secondary-light: #A7BFFE;
 	--title: #000;
 	--bg-light: #FFFAF3;
-	--light-dark: #FEEB9D;
+	--light-dark: #cfe8f4;
 	--theme-text-color: #000000;
 	--dark: #151F37;
     --dark-light: #F9F9F9;
@@ -27,7 +27,7 @@
 	--rgba-primary-9: rgba(204, 13, 57, 0.9);
 	
 	/* Gradient */
-	--gradient1: linear-gradient(307deg, #FEEB9D 1.9%, #FFDFE7 67.57%);
-	--gradient2: linear-gradient(307deg, #FFEA96 1.9%, #FFB0B0 85.96%);
+	--gradient1: linear-gradient(307deg, #A7BFFE 1.9%, #6b9bff 67.57%);
+	--gradient2: linear-gradient(307deg, #A7BFFE 1.9%, #6b9bff 85.96%);
 	
 }

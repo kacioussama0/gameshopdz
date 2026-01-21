@@ -85,7 +85,7 @@ onUnmounted(() => {
         <!-- Website Logo -->
         <div class="logo-header logo-dark me-md-5">
           <NuxtLink to="/"
-            ><img src="../assets/images/logo.svg" alt="logo"
+            ><img src="../assets/images/logo-white.svg" alt="logo"
           /></NuxtLink>
         </div>
 

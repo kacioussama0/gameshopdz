@@ -36554,6 +36554,9 @@ del {
 .tag-slider .item-wrap .item {
   padding: 0 12px;
 }
+.tag-slider .item-wrap .item img {
+  object-fit: cover;
+}
 .tag-slider .item-wrap .companies-media {
   display: flex;
   align-items: center;
@@ -36662,7 +36665,7 @@ del {
   background-repeat: no-repeat;
   transform: scale(2.5);
   z-index: -1;
-  background-image: url('data:image/svg+xml,<svg width="516" height="252" viewBox="0 0 516 252" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="257.602" cy="126" r="126" fill="%23FEEB9D"/><path d="M0 124.603C81.2 112.003 128.8 74.2031 182 25.2031L135.8 124.603H0Z" fill="%23FEEB9D"/><path d="M515.203 124.603C434.003 112.003 386.403 74.2031 333.203 25.2031L379.403 124.603H515.203Z" fill="%23FEEB9D"/></svg>');
+  background-image: url('data:image/svg+xml,<svg width="516" height="252" viewBox="0 0 516 252" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="257.602" cy="126" r="126" fill="%23FEEB9D"/><path d="M0 124.603C81.2 112.003 128.8 74.2031 182 25.2031L135.8 124.603H0Z" fill="#CFE8F4"/><path d="M515.203 124.603C434.003 112.003 386.403 74.2031 333.203 25.2031L379.403 124.603H515.203Z" fill="#CFE8F4"/></svg>');
 }
 @media only screen and (max-width: 991px) {
   .category-section .icon-button {
@@ -49502,7 +49505,7 @@ a {
   content: "";
   margin-left: 5px;
   margin-top: -5px;
-  background-image: url(../images/joystick.svg);
+  background-image: url(../images/star.svg);
   display: inline-block;
   width: 12px;
   height: 12px;

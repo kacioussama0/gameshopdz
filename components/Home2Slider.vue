@@ -3,16 +3,10 @@ import { IMAGES } from "@/constent/theme";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 
-const slideData = [
-  { img: IMAGES.product1, title: "Cozy Knit Cardigan Sweater" },
-  { img: IMAGES.product2, title: "Sophisticated Swagger Suit" },
-  { img: IMAGES.product3, title: "Classic Denim Skinny Jeans" },
-  { img: IMAGES.product4, title: "Athletic Mesh Sports Leggings" },
-  { img: IMAGES.product1, title: "Cozy Knit Cardigan Sweater" },
-  { img: IMAGES.product2, title: "Sophisticated Swagger Suit" },
-  { img: IMAGES.product3, title: "Classic Denim Skinny Jeans" },
-  { img: IMAGES.product4, title: "Athletic Mesh Sports Leggings" },
-];
+const props = defineProps<{
+  products: { id:number,images: string; name: string,slug: string,prices: object }[];
+}>();
+
 </script>
 
 <template>
@@ -34,10 +28,10 @@ const slideData = [
         240: { slidesPerView: 1 },
       }"
     >
-      <SwiperSlide class="swiper-slide" v-for="({ img, title }, ind) in slideData" :key="ind">
+      <SwiperSlide class="swiper-slide" v-if="products" v-for="(product, ind) in products" :key="product.id">
         <div class="shop-card wow fadeInUp">
-          <div class="dz-media">
-            <img :src="img" alt="image" />
+          <div class="dz-media border-1 border-primary">
+            <img :src="product.images.thumbnail" alt="image" class="object-fit-contain" style="width: 600px ; height: 450px"  />
             <div class="shop-meta">
               <RouterLink to="" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="fa-solid fa-eye d-md-none d-block"></i>
@@ -63,15 +57,15 @@ const slideData = [
               </div>
             </div>
           </div>
-          <div class="dz-content">
-            <h5 class="title">
-              <RouterLink to="/shop-list">{{ title }}</RouterLink>
+          <div class="dz-content d-flex flex-column">
+            <h5 class="title mb-1 fs-6 text-truncate">
+              <NuxtLink :to="`/shop/product/${product.slug}`" >{{ product.name }}</NuxtLink>
             </h5>
-            <h5 class="price">$80</h5>
+            <h5 class="price text-primary">{{product.prices['sale_price'] + ' DA'}}</h5>
           </div>
-          <div class="product-tag">
-            <span class="badge">Get 20% Off</span>
-          </div>
+<!--          <div class="product-tag">-->
+<!--            <span class="badge">Get 20% Off</span>-->
+<!--          </div>-->
         </div>
       </SwiperSlide>
     </Swiper>
