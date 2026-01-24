@@ -89,7 +89,7 @@ useFetch("/api/wc/products/", {
               <div class="dz-content">
                 <div class="dz-content-footer">
                   <div class="dz-content-start">
-                    <span class="badge bg-secondary mb-2">SALE 20% Off</span>
+                    <span class="badge text-bg-danger mb-2"  v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} % OFF</span>
                     <h4 class="title mb-1">
                       {{product.name}}
                     </h4>

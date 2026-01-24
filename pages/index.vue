@@ -236,8 +236,8 @@ let latestProducts = ref([]);
               data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title">Gardez un œil sur les nouveautés</h2>
-                <p>Des nouveaux, exclus et orignaux produits</p>
+                  <h2 class="title">Gardez un œil sur les nouveautés</h2>
+                  <p>Des nouveaux, exclus et orignaux produits</p>
               </div>
             </div>
           </div>
