@@ -4,8 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 
 const props = defineProps<{
-  products: { id:number,images: string; name: string,slug: string,prices: object }[];
+  products: { thumbnail: string, name: string,slug: string,price:number,regular_price:numbers, object,stock:string,occasion: boolean,on_sale: boolean}[];
 }>();
+
+
 
 </script>
 
@@ -28,46 +30,55 @@ const props = defineProps<{
         240: { slidesPerView: 1 },
       }"
     >
-      <SwiperSlide class="swiper-slide" v-if="products" v-for="(product, ind) in products" :key="product.id">
+      <SwiperSlide class="swiper-slide" v-if="products" v-for="(product, ind) in products" :key="ind">
         <div class="shop-card wow fadeInUp">
-          <div class="dz-media border-1 border-primary">
-            <img :src="product.images.thumbnail" alt="image" class="object-fit-contain" style="width: 600px ; height: 450px"  />
-            <div class="shop-meta">
-              <RouterLink to="" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-eye d-md-none d-block"></i>
-                <span class="d-md-block d-none">Quick View</span>
-              </RouterLink>
-              <div
-                class="btn btn-primary meta-icon dz-wishicon"
-                @click="(e)=>{
-                (e.target as HTMLElement).classList.toggle('active')
-              }"
-              >
-                <i class="icon feather icon-heart dz-heart"></i>
-                <i class="icon feather icon-heart-on dz-heart-fill"></i>
+          <div class="dz-media position-relative border-1 border-primary">
+
+            <img :src="product.thumbnail" alt="image" class="object-fit-contain" />
+
+            <div class="dz-content d-flex flex-column p-3">
+              <h5 class="mb-1 clamp-text-2"  style="height: 40px">
+                <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link">{{ product.name }}</NuxtLink>
+              </h5>
+              <span class="price fs-5" v-if="!product.on_sale">{{product.price}} DA</span>
+              <span class="price text-danger fs-5" v-else><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
+
+
+              <div>
+                 <span class=" text-success fw-bold rounded-pill" v-if="product.stock == 'instock'">
+                Available - Disponible - متوفر
+                </span>
+                <span class=" text-danger fw-bold rounded-pill" v-else>
+                Non disponible - غـيـر مـتـوفر
+              </span>
               </div>
-              <div
-                class="btn btn-primary meta-icon dz-carticon"
-                @click="(e)=>{
-                (e.target as HTMLElement).classList.toggle('active')
-              }"
-              >
-                <i class="flaticon flaticon-basket"></i>
-                <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
-              </div>
+
+
+
             </div>
+
           </div>
-          <div class="dz-content d-flex flex-column">
-            <h5 class="title mb-1 fs-6 text-truncate">
-              <NuxtLink :to="`/shop/product/${product.slug}`" >{{ product.name }}</NuxtLink>
-            </h5>
-            <h5 class="price text-primary">{{product.prices['sale_price'] + ' DA'}}</h5>
-          </div>
-<!--          <div class="product-tag">-->
-<!--            <span class="badge">Get 20% Off</span>-->
-<!--          </div>-->
+
+          <span class="badge text-bg-warning rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-if="product.occasion" style="font-size: 11px">Occasion</span>
+          <span class="badge text-bg-info rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-else="product.occasion" style="font-size: 11px">Neuf</span>
+          <span class="badge text-bg-danger rounded-pill position-absolute end-0  me-2  mt-2 top-0" v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} %</span>
+
         </div>
       </SwiperSlide>
     </Swiper>
   </div>
 </template>
+
+<style scoped>
+
+.clamp-text-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2   ; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  font-size: 14px;
+}
+
+
+</style>

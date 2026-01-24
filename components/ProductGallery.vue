@@ -14,7 +14,7 @@ const products = reactive([
   { img: IMAGES.product8, name: "Water-Resistant Windbreaker Jacket", tags: "ALL Tops" },
 ]);
 
-const buttons = [{ title: "ALL" }, { title: "Dresses" }, { title: "Tops" }, { title: "Outerwear" }, { title: "Jacket" }];
+const buttons = [{ title: "Tous" }, { title: "Jeux" }, { title: "Consoles" }, { title: "Accessoires" }, { title: "Retro" }];
 
 const productData = ref(products);
 
@@ -30,7 +30,7 @@ const filterHandler = (category: string) => {
     <div class="col-lg-6 col-md-12">
       <div class="section-head style-1 m-b30 wow fadeInUp" data-wow-delay="0.2s">
         <div class="left-content">
-          <h2 class="title">Most popular products</h2>
+          <h2 class="title">Notre produits</h2>
         </div>
       </div>
     </div>

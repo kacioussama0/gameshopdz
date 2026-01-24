@@ -31,29 +31,20 @@ onMounted(() => {
 let latestProducts = ref([]);
 
      useFetch("/api/wc/products", {
-      query: { per_page: 10, page: 1 }
+      query: { per_page: 10, page: 1 ,status:'publish'}
     }).then(( response) => {
-       console.log(response.data)
       latestProducts.value = response.data.value.map((product: any) => ({
-        id: product.id,
         name: product.name,
         slug: product.slug,
-        images: {
-          thumbnail: product.images[0]?.thumbnail || '',
-          gallery: product.images.map((img: any) => img.src) || []
-        },
-        prices: {
-          sale_price: product.price,
-        }
+        thumbnail: product.images[0]?.thumbnail || '',
+        price: product.price,
+        on_sale: product.on_sale,
+        regular_price: product.regular_price,
+        stock: product.stock_status,
+        occasion: product.categories.some((category) => category.slug == 'occasion')
       }));
     }).catch((error) => {
       console.error("Error fetching latest products:", error);
-
-
-
-
-
-
 });
 
 
@@ -73,7 +64,7 @@ let latestProducts = ref([]);
   <div class="page-content bg-light">
     <!--Swiper Banner Start -->
     <div class="main-slider style-2">
-      <MainBanner2 />
+      <MainBanner2 :product="latestProducts[0]" />
     </div>
     <!--Swiper Banner End-->
 
@@ -236,7 +227,7 @@ let latestProducts = ref([]);
 
 
     <!-- Tranding Start-->
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 overflow-hidden" v-if="latestProducts.length">
       <div class="container">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">

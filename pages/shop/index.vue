@@ -21,22 +21,9 @@ useFetch("/api/wc/products", {
   query: {
     per_page: 10,
     page: 1,
-    on_sale: 'onsale'
   }
 }).then(( response) => {
-  console.log(response.data)
-  allProducts.value = response.data.value.map((product: any) => ({
-    id: product.id,
-    name: product.name,
-    slug: product.slug,
-    images: {
-      thumbnail: product.images[0]?.thumbnail || '',
-      gallery: product.images.map((img: any) => img.src) || []
-    },
-    prices: {
-      sale_price: product.price,
-    }
-  }));
+  allProducts.value = response.data.value
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 
@@ -972,7 +959,7 @@ useFetch("/api/wc/products", {
                     <div class="col-6 col-xl-3 col-lg-4 col-md-4 col-sm-6 m-md-b15 m-b30" v-for="product in allProducts">
                       <div class="shop-card style-1 border-1 border-primary rounded-4">
                         <div class="dz-media">
-                          <img :src="product.images.thumbnail" alt="image" class="object-fit-contain" style="width: 600px ; height: 450px"  />
+                          <img :src="product.images[0].thumbnail" alt="image" class="object-fit-cover" style="width: 600px ; height: 450px"  />
                           <div class="shop-meta">
                             <RouterLink to="#" @click.prevent class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">
                               <i class="fa-solid fa-eye d-md-none d-block"></i>
@@ -998,15 +985,15 @@ useFetch("/api/wc/products", {
                             </div>
                           </div>
                         </div>
-                        <div class="dz-content d-flex flex-column">
-                          <h5 class="title"><RouterLink to="/shop-list">{{product.name}}</RouterLink></h5>
+                        <div class="dz-content p-3 d-flex flex-column">
+                          <h5 class="title"><RouterLink :to="`/shop/product/${product.slug}`">{{product.name}}</RouterLink></h5>
 
                           <h5 class="price text-primary">{{product.price}} DA</h5>
                         </div>
                         <div class="product-tag">
                           <span class="badge">Get 20% Off</span>
                         </div>
-                      </div>
+                      </div>c
                     </div>
 
                   </div>

@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const path = getRouterParam(event, "path") || ""
     const query = getQuery(event)
 
-    const url = new URL(`/wp-json/wc/v3/${path}`, storeUrl)
+    const url = new URL(`/wp-json/wc/v3/${path}`, 'https://gameshopdz.com')
     for (const [k, v] of Object.entries(query)) {
         if (v !== undefined) url.searchParams.set(k, String(v))
     }

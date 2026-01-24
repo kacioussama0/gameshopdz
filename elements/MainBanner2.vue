@@ -10,21 +10,23 @@ const images = [
 const randomImage = images[Math.floor(Math.random() * images.length)];
 
 
+defineProps(['product'])
+
 </script>
 
 <template>
   <div class="main-swiper2">
     <div class="container">
       <div class="banner-content">
-        <div class="row">
+        <div class="row text-center text-md-start">
           <div class="col-xl-7 col-lg-7 col-md-12 align-self-center">
             <div class="swiper-content">
               <div class="content-info">
                 <h1 class="offer-title mb-0" data-swiper-parallax="-20">
                   Leader Gaming
-                  <span class="text-primary d-flex align-items-center"
+                  <span class="text-primary d-flex align-items-center  justify-content-center justify-content-md-start"
                     ><svg
-                      class="m-r10"
+                      class="d-none d-md-block"
                       xmlns="http://www.w3.org/2000/svg"
                       width="68"
                       height="68"
@@ -50,33 +52,32 @@ const randomImage = images[Math.floor(Math.random() * images.length)];
               </div>
             </div>
           </div>
-          <div class="col-xl-5 col-lg-5 col-md-12">
+          <div class="col-xl-5 col-lg-5 col-md-12 d-none d-lg-block">
             <div class="banner-media">
               <div class="shap"></div>
               <div class="border-shap"></div>
               <div class="border-shap2"></div>
 
-              <div class="img-preview" data-swiper-parallax="-100">
+              <div class="img-preview border-0" data-swiper-parallax="-100">
 
 
                 <img
-                  :src="randomImage"
+                  src="../assets/images/yasoki.png"
                   alt="banner-media"
                 />
 
 
               </div>
-              <div class="bnr-content-bx slideskew">
+              <div class="bnr-content-bx slideskew" v-if="product">
                 <div class="dz-media">
-                  <img src="../assets/images/shop/product/small/1.png" alt="" />
+                  <img :src="product['thumbnail']" width="80" height="80" class="" alt="product-image" />
                 </div>
                 <div class="dz-info">
-                  <h5 class="dz-title">Cozy Knit Cardigan</h5>
-                  <h6 class="price text-primary">$80</h6>
-                  <div class="btn btn-primary meta-icon dz-carticon">
+                  <h5 class="dz-title">{{product.name}}</h5>
+                  <h6 class="price text-primary">{{product.price}} DA</h6>
+                  <NuxtLink :to="`/shop/product/${product.slug}`" class="btn btn-primary meta-icon dz-carticon">
                     <i class="flaticon flaticon-basket"></i>
-                    <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
-                  </div>
+                  </NuxtLink>
                 </div>
               </div>
 
