@@ -28,11 +28,14 @@ onMounted(() => {
   }, 10);
 });
 
-let latestProducts = ref([]);
+const latestProducts = ref([]);
+const newProducts = ref([]);
 
-     useFetch("/api/wc/products", {
-      query: { per_page: 10, page: 1 ,status:'publish'}
+useFetch("/api/wc/products", {
+      query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
     }).then(( response) => {
+
+
       latestProducts.value = response.data.value.map((product: any) => ({
         name: product.name,
         slug: product.slug,
@@ -43,10 +46,32 @@ let latestProducts = ref([]);
         stock: product.stock_status,
         occasion: product.categories.some((category) => category.slug == 'occasion')
       }));
+
+
     }).catch((error) => {
       console.error("Error fetching latest products:", error);
 });
 
+useFetch("/api/wc/products", {
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
+}).then(( response) => {
+
+
+  latestProducts.value = response.data.value.map((product: any) => ({
+    name: product.name,
+    slug: product.slug,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+
+
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
 
 
 
@@ -227,8 +252,8 @@ let latestProducts = ref([]);
 
 
     <!-- Tranding Start-->
-    <section class="content-inner-1 overflow-hidden" v-if="latestProducts.length">
-      <div class="container">
+    <section class="content-inner-1 overflow-hidden">
+      <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
             <div
@@ -236,13 +261,12 @@ let latestProducts = ref([]);
               data-wow-delay="0.2s"
             >
               <div class="left-content">
-                  <h2 class="title">Gardez un œil sur les nouveautés</h2>
-                  <p>Des nouveaux, exclus et orignaux produits</p>
+                  <h2 class="title">Nouveautés</h2>
               </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
-            <NuxtLink class="btn btn-secondary m-b30" to="/shop-cart">Voir tout</NuxtLink>
+            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
           </div>
         </div>
 

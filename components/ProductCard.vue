@@ -13,11 +13,10 @@ const props = defineProps<{
 
 <template>
 
-
-        <div class="shop-card wow fadeInUp">
+        <div class="shop-card bg-white rounded-4 wow fadeInUp" v-if="product">
           <div class="dz-media position-relative border-1 border-primary">
 
-            <img :src="product.thumbnail" alt="image" class="object-fit-contain" />
+            <img :src="product.thumbnail" alt="image" class="img-fluid" />
 
             <div class="dz-content d-flex flex-column p-3">
               <h5 class="mb-1 clamp-text-2"  style="height: 40px">
@@ -29,10 +28,10 @@ const props = defineProps<{
 
               <div>
                  <span class=" text-success fw-bold rounded-pill" v-if="product.stock == 'instock'">
-                Available - Disponible - متوفر
+                  Disponible - مـتـوفـــر
                 </span>
                 <span class=" text-danger fw-bold rounded-pill" v-else>
-                Non disponible - غـيـر مـتـوفر
+                 Non disponible - غـيـر مـتـوفر
               </span>
               </div>
 
@@ -41,12 +40,42 @@ const props = defineProps<{
 
           </div>
 
-          <span class="badge text-bg-warning rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-if="product.occasion" style="font-size: 11px">Occasion</span>
-          <span class="badge text-bg-info rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-else style="font-size: 11px">Neuf</span>
+          <span class="badge text-bg-warning rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-if="product.occasion || product.name.includes('OCCASION')" style="font-size: 11px">Occasion | مستعمل</span>
+          <span class="badge text-bg-info rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-else style="font-size: 11px">Neuf | جديد</span>
           <span class="badge text-bg-danger rounded-pill position-absolute end-0  me-2  mt-2 top-0" v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} %</span>
 
         </div>
 
+        <div class="shop-card bg-white rounded-4 wow fadeInUp" v-else>
+
+              <div class="dz-media position-relative border-1 border-primary">
+
+
+                  <div class="placeholder-glow" >
+                    <span class="placeholder col-12" style="height: 328px"></span>
+                  </div>
+
+                  <div class="dz-content d-flex flex-column p-3">
+
+                    <div class="placeholder-glow" >
+                      <span class="placeholder col-12"></span>
+                      <span class="placeholder col-12"></span>
+                    </div>
+
+
+                    <div class="placeholder-glow" >
+                      <span class="placeholder col-6"></span>
+                    </div>
+
+                    <div class="placeholder-glow" >
+                      <span class="placeholder col-10"></span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+        </div>
 
 </template>
 

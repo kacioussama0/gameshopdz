@@ -215,7 +215,7 @@ const product = [
             <h2 class="title mb-0">Related Projects</h2>
           </div>
         </div>
-        <ProductRelaited />
+        <RelatedProduct />
       </div>
     </section> -->
 

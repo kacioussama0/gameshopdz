@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import bg from "@/assets/images/portfolio/details/portfolio-detail-2/banner-bg.jpg";
-import ProductRelaited from "@/elements/ProductRelaited.vue";
+import RelatedProduct from "~/elements/RelatedProduct.vue";
 import Lightgallery from "lightgallery/vue";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -136,7 +136,7 @@ const data = [
             <h2 class="title mb-0">Related Projects</h2>
           </div>
         </div>
-        <ProductRelaited />
+        <RelatedProduct />
       </div>
     </section>
   </div>

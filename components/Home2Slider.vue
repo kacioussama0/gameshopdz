@@ -24,7 +24,7 @@ const props = defineProps<{
         delay: 1500,
       }"
       :breakpoints="{
-        1200: { slidesPerView: 4 },
+        1200: { slidesPerView: 5 },
         991: { slidesPerView: 3 },
         775: { slidesPerView: 2 },
         240: { slidesPerView: 2 },
@@ -33,6 +33,11 @@ const props = defineProps<{
       <SwiperSlide class="swiper-slide" v-if="products" v-for="(product, ind) in products" :key="ind">
         <ProductCard :product="product"/>
       </SwiperSlide>
+
+      <SwiperSlide class="swiper-slide" v-else v-for="product in 10">
+        <ProductCard :product="product"/>
+      </SwiperSlide>
+
     </Swiper>
   </div>
 </template>

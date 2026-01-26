@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
-import ProductRelaited from "@/elements/ProductRelaited.vue";
+import RelatedProduct from "~/elements/RelatedProduct.vue";
 import Lightgallery from "lightgallery/vue";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -803,7 +803,7 @@ function removeHover(e: any) {
             <i class="icon feather icon-chevron-right font-18"></i>
           </NuxtLink>
         </div>
-        <ProductRelaited />
+        <RelatedProduct />
       </div>
     </section>
   </div>

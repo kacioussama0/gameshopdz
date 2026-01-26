@@ -42,7 +42,7 @@ onMounted(() => {
   <ul class="nav navbar-nav">
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
+      <RouterLink to="/"
       ><span>Accueil</span><i class="fas fa-chevron-down tabindex"></i
       ></RouterLink>
 
@@ -58,13 +58,19 @@ onMounted(() => {
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Playstation 5</RouterLink>
+                <RouterLink to="" class="menu-title" style="color: #00439C ">
+                  <i class="fa fa-brands fa-playstation" />
+                  Playstation 5
+                </RouterLink>
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux Playstation 5</RouterLink></li>
                   <li><RouterLink to="/shop-standard">Exclusivité Playstation</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Playstation 4</RouterLink>
+                <RouterLink to="" class="menu-title" style="color: #0070D1">
+                  <i class="fa fa-brands fa-playstation" />
+                  Playstation 4
+                </RouterLink>
 
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux PlayStation 4</RouterLink></li>
@@ -73,13 +79,19 @@ onMounted(() => {
               </div>
 
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Xbox Series X & S</RouterLink>
+                <RouterLink to="" class="menu-title" style="color: #107C10">
+                  <i class="fa fa-brands fa-xbox" />
+                  Xbox Series X & S
+                </RouterLink>
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux Xbox Series X|S</RouterLink></li>
                   <li><RouterLink to="/shop-standard">Exclusivité Xbox</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Xbox One</RouterLink>
+                <RouterLink to="" class="menu-title" style="color: #3A3A3A">
+                  <i class="fa fa-brands fa-xbox" />
+                  Xbox One
+                </RouterLink>
 
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux Xbox One</RouterLink></li>
@@ -88,13 +100,19 @@ onMounted(() => {
               </div>
 
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Nintendo Switch</RouterLink>
+                <RouterLink to="" class="menu-title" style="color:#E60F11">
+                  <i class="fa fa-gamepad" />
+                  Nintendo Switch
+                </RouterLink>
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux Nintendo Switch</RouterLink></li>
                   <li><RouterLink to="/shop-standard">Exclusivité Nintendo Switch</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Nintendo Switch 2</RouterLink>
+                <RouterLink to="" class="menu-title" style="color:#E60F11">
+                  <i class="fa fa-gamepad" />
+                  Nintendo Switch 2
+                </RouterLink>
 
                 <ul>
                   <li><RouterLink to="/shop-standard">Jeux Nintendo Switch 2</RouterLink></li>
@@ -208,13 +226,12 @@ onMounted(() => {
 
 
               <div class="col-md-4 col-6">
-                <RouterLink to="" class="menu-title">Jeux Vidéo</RouterLink>
+                <RouterLink to="" class="menu-title">Manettes</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 5</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Jeux Occasion PlayStation 4</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Jeux Occasion Xbox Series X</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Jeux Occasion Switch 2</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Occasion PlayStation 5</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Occasion PlayStation 4</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Occasion Xbox</RouterLink></li>
+                  <li><RouterLink to="/shop-standard">Manette Occasion Switch</RouterLink></li>
 
                 </ul>
               </div>

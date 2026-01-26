@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductRelaited from "@/elements/ProductRelaited.vue";
+import RelatedProduct from "~/elements/RelatedProduct.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
 import { ref } from "vue";
@@ -740,7 +740,7 @@ const qty = ref(1);
             <i class="icon feather icon-chevron-right font-18"></i>
           </NuxtLink>
         </div>
-        <ProductRelaited />
+        <RelatedProduct />
       </div>
     </section>
   </div>

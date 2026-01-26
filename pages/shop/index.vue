@@ -19,7 +19,7 @@ let allProducts = ref([]);
 
 useFetch("/api/wc/products", {
   query: {
-    per_page: 10,
+    per_page: 12,
     page: 1,
   }
 }).then(( response) => {

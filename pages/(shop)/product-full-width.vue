@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductRelaited from "@/elements/ProductRelaited.vue";
+import RelatedProduct from "~/elements/RelatedProduct.vue";
 import { SwiperSlide, Swiper } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
 import { ref } from "vue";
@@ -781,7 +781,7 @@ const setThumbsSwiper = (swiper: null) => {
             <i class="icon feather icon-chevron-right font-18"></i>
           </NuxtLink>
         </div>
-        <ProductRelaited />
+        <RelatedProduct />
       </div>
     </section>
   </div>
