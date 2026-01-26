@@ -9,6 +9,8 @@ import Header3 from "~/components/Header3.vue";
 const qty = ref(1);
 const thumbsSwiper = ref(null);
 
+
+
 function getShortDescription(description, maxLength = 240) {
 
   if (!description) return ''
@@ -64,6 +66,7 @@ useFetch("/api/wc/products/", {
 
       relatedProducts.value = response.data.value.map((product) => {
           return {
+            id: product.id,
             name: product.name,
             slug: product.slug,
             thumbnail: product.images[0]?.thumbnail || '',
@@ -438,13 +441,11 @@ useFetch("/api/wc/products/", {
 <!--                  </div>-->
                 </div>
                 <div class="btn-group cart-btn">
-                  <button class="btn btn-secondary text-uppercase" :disabled="product.stock_status != 'instock'">Acheter maintenant</button>
-                  <button
-                      class="btn btn-outline-secondary btn-icon"
-                      :disabled="product.stock_status != 'instock'"
-                  >
-                    <i class="fa fa-shopping-cart "></i>
+                  <button class="btn btn-secondary text-uppercase" @click="addItem(product.id,qty)" :disabled="product.stock_status != 'instock'">
+                    <i class="fa fa-shopping-cart me-2"></i>
+                    Ajouter Panier
                   </button>
+
                 </div>
                 <div class="dz-info">
                   <ul v-if="product.sku">

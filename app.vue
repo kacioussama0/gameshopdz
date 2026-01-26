@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import PreviewModel from "./elements/PreviewModel.vue";
+const { refresh } = useWcCart()
+onMounted(() => refresh())
 </script>
 
 <template>

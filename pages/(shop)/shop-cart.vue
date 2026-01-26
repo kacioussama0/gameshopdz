@@ -138,7 +138,7 @@ function quantity(btntype: string, index: number) {
                   </tr>
                 </tbody>
               </table>
-              <RouterLink to="/shop-checkout" class="btn btn-secondary w-100">PLACE ORDER</RouterLink>
+              <RouterLink to="/shop-checkout" class="btn btn-secondary w-100">Valider la commande</RouterLink>
             </div>
           </div>
         </div>
