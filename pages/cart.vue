@@ -123,7 +123,7 @@ const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
                   </tr>
                 </tbody>
               </table>
-              <RouterLink to="/shop-checkout" class="btn btn-secondary w-100" >Valider la commande</RouterLink>
+              <RouterLink to="/checkout" class="btn btn-secondary w-100" >Valider la commande</RouterLink>
             </div>
           </div>
         </div>

@@ -30,13 +30,15 @@ onMounted(() => {
 
 const latestProducts = ref([]);
 const newProducts = ref([]);
+const consoles = ref([])
+
 
 useFetch("/api/wc/products", {
       query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
     }).then(( response) => {
 
 
-      latestProducts.value = response.data.value.map((product: any) => ({
+      latestProducts.value = response.data.value.products.map((product: any) => ({
         name: product.name,
         slug: product.slug,
         thumbnail: product.images[0]?.thumbnail || '',
@@ -57,7 +59,7 @@ useFetch("/api/wc/products", {
 }).then(( response) => {
 
 
-  latestProducts.value = response.data.value.map((product: any) => ({
+  latestProducts.value = response.data.value.products.map((product: any) => ({
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -72,6 +74,31 @@ useFetch("/api/wc/products", {
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
+
+
+
+useFetch("/api/wc/products", {
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
+}).then(( response) => {
+
+
+  latestProducts.value = response.data.value.products.map((product: any) => ({
+    name: product.name,
+    slug: product.slug,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+
+
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
+
+
 
 
 
@@ -589,7 +616,38 @@ useFetch("/api/wc/products", {
     <!-- Products  Section Start-->
     <section class="content-inner">
       <div class="container">
-        <ProductGallery />
+<!--        <ProductGallery />-->
+
+        <div class="row">
+
+          <div class="col-md-4">
+            <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_997.png?resize=531%2C1024&ssl=1" class="h-100 rounded-4" alt="">
+          </div>
+
+
+          <div class="col-md-8">
+
+            <div class="left-content mb-3">
+              <h2 class="title mb-0 ">Découvrez nos nouvelles consoles en magasin !</h2>
+              <p class="mb-0">Nouvelles consoles en stock !</p>
+            </div>
+
+            <div class="row gy-3 gx-3">
+
+              <div class="col-md-4" v-for="i in 6">
+
+                  <ProductCardSkeleton  />
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        </div>
+
       </div>
     </section>
     <!-- Products Section Start-->

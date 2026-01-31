@@ -5,11 +5,31 @@ import { Thumbs } from "swiper/modules";
 import { ref } from "vue";
 import Header from "~/components/Header.vue";
 import Header3 from "~/components/Header3.vue";
+import img1 from "assets/images/products/lady-1.png";
+import img2 from "assets/images/products/lady-2.png";
+import img3 from "assets/images/products/lady-3.png";
 
 const qty = ref(1);
 const thumbsSwiper = ref(null);
 
 
+const addedCart = ref(false)
+
+
+const addToCart = async (productId) => {
+
+  try {
+
+    addedCart.value = true
+
+    return await useWcCart().addItem(productId)
+
+  }catch (error) {
+    console.log(error)
+  }
+
+
+}
 
 function getShortDescription(description, maxLength = 240) {
 
@@ -35,12 +55,17 @@ const id = useRoute().params.id;
 
 
 useFetch("/api/wc/products/", {
+
   params: {
     slug: id,
-  },
-}).then(( response) => {
-  product.value = response.data.value[0];
+  }
 
+}).then(( response) => {
+
+
+  console.log(response)
+
+  product.value = response.data.value.products[0];
 
   useHead({
     title: product.value.name + ' - Gameshopdz',
@@ -64,7 +89,7 @@ useFetch("/api/wc/products/", {
       }
     }).then((response)=> {
 
-      relatedProducts.value = response.data.value.map((product) => {
+      relatedProducts.value = response.data.value.products.map((product) => {
           return {
             id: product.id,
             name: product.name,
@@ -85,6 +110,7 @@ useFetch("/api/wc/products/", {
   console.error("Error fetching latest products:", error);
 });
 
+const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
 
 </script>
 
@@ -106,7 +132,57 @@ useFetch("/api/wc/products/", {
     <section class="content-inner py-0 bg-light">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+
+          <div class="col-xl-6 col-md-6">
+            <div class="dz-product-detail sticky-top">
+              <!-- <Lightgallery :settings="{ speed: 500, plugins: [lgThumbnail, lgZoom], selector: '.lg-item' }" class="swiper-btn-center-lr"> -->
+              <Swiper
+                  class="swiper product-gallery-swiper2"
+                  :modules="[Thumbs]"
+                  v-if="product.images"
+                  :thumbs="{ swiper: thumbsSwiper }"
+              >
+                <SwiperSlide
+                    class="swiper-slide"
+                    v-for="(img, ind) in product.images"
+                    :key="ind"
+                >
+
+                  <div class="dz-media DZoomImage rounded">
+                    <a class="mfp-link lg-item" :href="img.thumbnail" :data-src="img.thumbnail">
+                      <i
+                          class="feather icon-maximize dz-maximize top-right"
+                      ></i>
+                      <img :src="img.src" alt="image" class="d-none" />
+                    </a>
+                    <img
+                        @mouseenter="hoverEffect"
+                        @mouseout="removeHover"
+                        :src="img.src"
+                        style="height: 600px"
+                        class="object-fit-covers"
+                        alt="image"
+                    />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+              <!-- @vue-skip -->
+              <Swiper
+                  class="swiper product-gallery-swiper thumb-swiper-lg swiper-vertical"
+                  :modules="[Thumbs]"
+                  watch-slides-progress
+                  @swiper="setThumbsSwiper"
+              >
+                <SwiperSlide class="swiper-slide" v-for="(img, ind) in product.images">
+                  <img :src="img.thumbnail" alt="image" />
+                </SwiperSlide>
+
+              </Swiper>
+              <!-- </Lightgallery> -->
+            </div>
+          </div>
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 d-none">
+
 
             <div class="dz-product-detail sticky-top style-3">
               <div class="swiper-btn-center-lr ">
@@ -154,9 +230,11 @@ useFetch("/api/wc/products/", {
               <div class="dz-content">
                 <div class="dz-content-footer">
                   <div class="dz-content-start">
-                    <span class="badge text-bg-danger mb-2"  v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} % OFF</span>
+                    <span class="badge text-bg-primary mb-2"  v-if="product.on_sale">Promo - تخـفيــض</span>
                     <h4 class="title mb-1" v-if="product.name">
                       {{product.name}}
+                      <span class="badge text-bg-danger rounded-circle d-inline-flex justify-content-center align-items-center fw-bolder" style="width: 40px ; height: 40px"  v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} % </span>
+
                     </h4>
 
                     <div class="placeholder-glow" v-else>
@@ -441,10 +519,17 @@ useFetch("/api/wc/products/", {
 <!--                  </div>-->
                 </div>
                 <div class="btn-group cart-btn">
-                  <button class="btn btn-secondary text-uppercase" @click="addItem(product.id,qty)" :disabled="product.stock_status != 'instock'">
+                  <button class="btn btn-secondary text-uppercase" @click="addToCart(product.id)" :disabled="product.stock_status != 'instock'">
                     <i class="fa fa-shopping-cart me-2"></i>
                     Ajouter Panier
                   </button>
+
+                  <div class="alert alert-info my-3 w-100 d-flex align-items-center justify-content-between" v-if="addedCart">
+
+                    <span>Produit a été ajouté à votre panier.</span>
+                    <NuxtLink to="/cart" class="link-primary">Voir Panier</NuxtLink>
+
+                  </div>
 
                 </div>
                 <div class="dz-info">
@@ -463,7 +548,7 @@ useFetch("/api/wc/products/", {
                   <ul v-if="product.tags">
                     <li><strong>Mot clés :</strong></li>
                     <li v-for="(tag,index) in product.tags">
-                      <NuxtLink :to="`/shop?category=${tag.id}`">{{tag.name}} {{product.tags.length != index + 1 ? "," : ""}}</NuxtLink>
+                      <NuxtLink :to="`/shop?tag=${tag.id}`">{{tag.name}} {{product.tags.length != index + 1 ? "," : ""}}</NuxtLink>
                     </li>
                   </ul>
                   <ul class="social-icon">

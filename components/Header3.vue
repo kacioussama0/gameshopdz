@@ -8,6 +8,9 @@ import Canvas from "@/components/Canvas.vue";
 
 const menu = ref(false);
 
+const { itemsCount, pending } = useWcCart()
+
+
 const isMenu = ref(false);
 const isFixed = ref(false);
 
@@ -221,29 +224,15 @@ onUnmounted(() => {
                   <i class="iconly-Light-Search"></i>
                 </NuxtLink>
               </li>
-              <li class="nav-item wishlist-link">
-                <NuxtLink
-                  class="nav-link"
-                  to="#"
-                  @click.prevent
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasRight"
-                  aria-controls="offcanvasRight"
-                >
-                  <i class="iconly-Light-Heart2"></i>
-                </NuxtLink>
-              </li>
               <li class="nav-item cart-link">
                 <NuxtLink
-                  to="#"
-                  @click.prevent
+                  to="/shop-cart"
                   class="nav-link cart-btn"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasRight"
-                  aria-controls="offcanvasRight"
+
                 >
-                  <i class="iconly-Broken-Buy"></i>
-                  <span class="badge badge-circle">5</span>
+                  <i class="iconly-Broken-Buy" ></i>
+                  <span class="badge badge-circle"> {{itemsCount}}</span>
+
                 </NuxtLink>
               </li>
             </ul>

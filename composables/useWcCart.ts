@@ -4,11 +4,8 @@ export const useWcCart = () => {
 
     const itemsCount = computed(() => {
         const items = cart.value?.items || []
-        // Woo store api: كل item فيه quantity
         return items.reduce((sum: number, it: any) => sum + (it.quantity || 0), 0)
     })
-
-    const total = computed(() => cart.value?.totals?.total_price ?? cart.value?.totals?.total ?? null)
 
     const refresh = async () => {
         pending.value = true
@@ -19,20 +16,74 @@ export const useWcCart = () => {
         }
     }
 
+    // ✅ Local helpers
+    const ensureCart = () => {
+        if (!cart.value) cart.value = { items: [], totals: {} }
+    }
+
+    const addLocal = (id: number, quantity: number) => {
+        ensureCart()
+        // ملاحظة: بعض APIs ترجع product_id أو id، عدّل حسب اللي عندك
+        const item = cart.value.items.find((i: any) => i.id === id || i.product_id === id)
+        if (item) item.quantity = (item.quantity || 0) + quantity
+        else cart.value.items.push({ id, product_id: id, quantity })
+    }
+
+    const updateLocal = (key: string, quantity: number) => {
+        ensureCart()
+        const item = cart.value.items.find((i: any) => i.key === key)
+        if (!item) return
+        if (quantity <= 0) cart.value.items = cart.value.items.filter((i: any) => i.key !== key)
+        else item.quantity = quantity
+    }
+
+    const removeLocal = (key: string) => {
+        ensureCart()
+        cart.value.items = cart.value.items.filter((i: any) => i.key !== key)
+    }
+
+    // ✅ Actions (instant UI + refresh confirm)
     const addItem = async (id: number, quantity = 1) => {
-        await $fetch("/api/wc/cart/add", { method: "POST", body: { id, quantity } })
+        addLocal(id, quantity)               // 👈 فوري
+        try {
+            await $fetch("/api/wc/cart/add-item", { method: "POST", body: { id, quantity } })
+        } catch (e) {
+            await refresh()                    // رجّع الحالة الصحيحة إذا فشل
+            throw e
+        }
         await refresh()
     }
 
     const updateItem = async (key: string, quantity: number) => {
-        await $fetch("/api/wc/cart/update", { method: "POST", body: { key, quantity } })
+        updateLocal(key, quantity)           // 👈 فوري
+        try {
+            await $fetch("/api/wc/cart/update", { method: "POST", body: { key, quantity } })
+        } catch (e) {
+            await refresh()
+            throw e
+        }
         await refresh()
     }
 
     const removeItem = async (key: string) => {
-        await $fetch("/api/wc/cart/remove", { method: "POST", body: { key } })
+        removeLocal(key)                     // 👈 فوري
+        try {
+            await $fetch("/api/wc/cart/remove-item", { method: "POST", body: { key } })
+        } catch (e) {
+            await refresh()
+            throw e
+        }
         await refresh()
     }
 
-    return { cart, pending, itemsCount, total, refresh, addItem, updateItem, removeItem }
+    // ✅ auto-load once
+    if (process.client) {
+        const loaded = useState("wc_cart_loaded", () => false)
+        if (!loaded.value) {
+            loaded.value = true
+            refresh()
+        }
+    }
+
+    return { cart, pending, itemsCount, refresh, addItem, updateItem, removeItem }
 }

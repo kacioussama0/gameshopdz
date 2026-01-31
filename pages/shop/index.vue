@@ -1,57 +1,125 @@
 <script setup lang="ts">
-import bg from "@/assets/images/background/bg1.jpg";
-import CommonBanner from "@/elements/CommonBanner.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper/modules";
-import ShopSidebar from "@/elements/ShopSidebar.vue";
-import CustomeSelect from "@/elements/CustomeSelect.vue";
-import Header from "~/components/Header.vue";
-import Header3 from "~/components/Header3.vue";
-import {ref} from "vue";
 
-const removeFilter = (e: any) => {
-  e.target.parentNode.remove();
-};
+import ShopSidebar from "~/elements/ShopSidebar.vue";
 
 
+const route = useRoute()
+const category = computed(() => route.query.category as string | undefined)
+const tag = computed(() => route.query.tag as string | undefined)
 
-let allProducts = ref([]);
 
-useFetch("/api/wc/products", {
-  query: {
-    per_page: 12,
-    page: 1,
+const currentPage = ref(1)
+const perPage = ref(12)
+const total = ref(0)
+const totalPages = ref(0)
+const delta = 2
+
+const loading = ref(false)
+const allProducts = ref<any[]>([])
+
+const start = computed(() =>
+    total.value ? (currentPage.value - 1) * perPage.value + 1 : 0
+)
+
+const end = computed(() => {
+  if (!total.value) return 0
+  const realEnd = (currentPage.value - 1) * perPage.value + allProducts.value.length
+  return Math.min(realEnd, total.value)
+})
+
+const paginationItems = computed(() => {
+  const pages: (number | string)[] = []
+  if (totalPages.value <= 1) return pages
+
+  if (totalPages.value <= 7) {
+    return Array.from({ length: totalPages.value }, (_, i) => i + 1)
   }
-}).then(( response) => {
+
+  const left = Math.max(2, currentPage.value - delta)
+  const right = Math.min(totalPages.value - 1, currentPage.value + delta)
+
+  pages.push(1)
+  if (left > 2) pages.push("...")
+
+  for (let i = left; i <= right; i++) pages.push(i)
+
+  if (right < totalPages.value - 1) pages.push("...")
+  pages.push(totalPages.value)
+
+  return pages
+})
+
+const fetchProducts = async () => {
 
 
-  allProducts.value = response.data.value.map((product: any) => ({
-    name: product.name,
-    slug: product.slug,
-    thumbnail: product.images[0]?.thumbnail || '',
-    price: product.price,
-    on_sale: product.on_sale,
-    regular_price: product.regular_price,
-    stock: product.stock_status,
-    occasion: product.categories.some((category) => category.slug == 'occasion')
-  }));
+  try {
 
-}).catch((error) => {
-  console.error("Error fetching latest products:", error);
+    loading.value = true
+
+    const res = await $fetch("/api/wc/products", {
+      query: {
+        per_page: perPage.value,
+        page: currentPage.value,
+        stock_status: "instock",
+        category: category.value,
+        tag: tag.value
+      },
+    })
+
+    total.value = res.total
+    totalPages.value = res.totalPages
+
+    allProducts.value = res.products.map((product: any) => ({
+      name: product.name,
+      slug: product.slug,
+      thumbnail: product.images?.[0]?.thumbnail || product.images?.[0]?.src || "",
+      price: product.price,
+      on_sale: product.on_sale,
+      regular_price: product.regular_price,
+      stock: product.stock_status,
+      occasion: product.categories?.some((c: any) => c.slug === "occasion"),
+    }))
+
+  } catch (error) {
+    console.error("Error fetching products:", error)
+  } finally {
+    loading.value = false;
+  }
+}
+
+const goTo = async (page: number) => {
+  loading.value = true
+  try {
+    if (page < 1 || page > totalPages.value) return
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    currentPage.value = page
+    await fetchProducts()
+  }catch (error) {
+    console.error("Error fetching products:", error)
+  }finally {
+    loading.value = false
+  }
+}
 
 
+onMounted(async ()=> {
+
+  await fetchProducts()
 
 
-});
+})
 
 
 
 </script>
+
 <template>
 
   <header class="site-header mo-left header style-2">
     <Header3 />
   </header>
+
+
   <div class="page-content bg-light">
     <!--Banner Start-->
     <CommonBanner :img="bg" name="Home" title="Notre Shop" />
@@ -187,7 +255,8 @@ useFetch("/api/wc/products", {
 <!--                    </RouterLink>-->
 <!--                  </li>-->
 <!--                </ul>-->
-                <span>Showing 1–5 Of 50 Results</span>
+                <span>Affichage de {{ start }} à {{ end }} sur {{ total }} résultats</span>
+
               </div>
               <div class="filter-right-area">
                 <RouterLink to="" class="panel-btn">
@@ -207,7 +276,7 @@ useFetch("/api/wc/products", {
                   Filter
                 </RouterLink>
                 <div class="form-group">
-                  <div class="dropdown bootstrap-select default-select">
+                  <div class= "dropdown bootstrap-select default-select">
                     <CustomeSelect :options="[{ title: 'Latest' }, { title: 'Popularity' }, { title: 'Average rating' }, { title: 'Latest' }, { title: 'Low to high' }, { title: 'high to Low' }]" />
                   </div>
                 </div>
@@ -966,10 +1035,18 @@ useFetch("/api/wc/products", {
 
                   </div>
                 </div>
-                <div class="tab-pane fade active show" id="tab-list-grid" v-if="allProducts" role="tabpanel" aria-labelledby="tab-list-grid-btn">
+                <div class="tab-pane fade active show" id="tab-list-grid" role="tabpanel" aria-labelledby="tab-list-grid-btn">
                   <div class="row gx-xl-4 gy-3">
-                    <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30" v-for="product in allProducts">
-                      <ProductCard :product="product" />
+
+                    <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30"  v-if="!loading" v-for="product in allProducts">
+                      <ProductCard :product="product"/>
+                    </div>
+
+
+                    <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30" v-for="i in 12"  v-else>
+
+                      <ProductCardSkeleton  />
+
                     </div>
                   </div>
                 </div>
@@ -977,17 +1054,40 @@ useFetch("/api/wc/products", {
             </div>
             <div class="row page mt-0">
               <div class="col-md-6">
-                <p class="page-text">Showing 1–5 Of 50 Results</p>
+                <p class="page-text">Affichage de {{ start }} à {{ end }} sur {{ total }} résultats</p>
               </div>
               <div class="col-md-6">
                 <nav aria-label="Blog Pagination">
+
                   <ul class="pagination style-1">
-                    <li class="page-item"><RouterLink class="page-link prev" to="">Prev</RouterLink></li>
-                    <li class="page-item"><RouterLink class="page-link active" to="">1</RouterLink></li>
-                    <li class="page-item"><RouterLink class="page-link" to="">2</RouterLink></li>
-                    <li class="page-item"><RouterLink class="page-link" to="">3</RouterLink></li>
-                    <li class="page-item"><RouterLink class="page-link next" to="">Next</RouterLink></li>
+                    <li class="page-item">
+                      <a href="#" class="page-link prev"
+                         :class="{ disabled: currentPage === 1 }"
+                         @click.prevent="goTo(currentPage - 1)">
+                        Prev
+                      </a>
+                    </li>
+
+                    <li v-for="(p, idx) in paginationItems" :key="idx"
+                        class="page-item" :class="{ disabled: p === '...' }">
+                      <span v-if="p === '...'" class="page-link">…</span>
+
+                      <a v-else href="#" class="page-link"
+                         :class="{ active: p === currentPage }"
+                         @click.prevent="goTo(Number(p))">
+                        {{ p }}
+                      </a>
+                    </li>
+
+                    <li class="page-item">
+                      <a href="#" class="page-link next"
+                         :class="{ disabled: currentPage === totalPages }"
+                         @click.prevent="goTo(currentPage + 1)">
+                        Next
+                      </a>
+                    </li>
                   </ul>
+
                 </nav>
               </div>
             </div>

@@ -95,7 +95,7 @@ onUnmounted(() => {
           <div class="logo-header me-5">
             <RouterLink to="/">
               <img
-                src="../assets/images/logo.svg"
+                src="../assets/images/logo-white.svg"
                 class="logo-dark"
                 alt="logo"
               />
@@ -111,11 +111,7 @@ onUnmounted(() => {
           <div class="extra-nav">
             <div class="extra-cell">
               <ul class="header-right">
-                <li class="nav-item login-link">
-                  <RouterLink class="nav-link" to="/login">
-                    Login / Register
-                  </RouterLink>
-                </li>
+
                 <li class="nav-item search-link">
                   <RouterLink
                     class="nav-link"

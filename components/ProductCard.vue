@@ -16,7 +16,7 @@ const props = defineProps<{
         <div class="shop-card bg-white rounded-4 wow fadeInUp" v-if="product">
           <div class="dz-media position-relative border-1 border-primary">
 
-            <img :src="product.thumbnail" alt="image" class="img-fluid" />
+            <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" />
 
             <div class="dz-content d-flex flex-column p-3">
               <h5 class="mb-1 clamp-text-2"  style="height: 40px">
@@ -46,36 +46,6 @@ const props = defineProps<{
 
         </div>
 
-        <div class="shop-card bg-white rounded-4 wow fadeInUp" v-else>
-
-              <div class="dz-media position-relative border-1 border-primary">
-
-
-                  <div class="placeholder-glow" >
-                    <span class="placeholder col-12" style="height: 328px"></span>
-                  </div>
-
-                  <div class="dz-content d-flex flex-column p-3">
-
-                    <div class="placeholder-glow" >
-                      <span class="placeholder col-12"></span>
-                      <span class="placeholder col-12"></span>
-                    </div>
-
-
-                    <div class="placeholder-glow" >
-                      <span class="placeholder col-6"></span>
-                    </div>
-
-                    <div class="placeholder-glow" >
-                      <span class="placeholder col-10"></span>
-                    </div>
-
-                  </div>
-
-                </div>
-
-        </div>
 
 </template>
 
