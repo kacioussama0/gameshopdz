@@ -52,10 +52,10 @@ onUnmounted(() => {
         <!-- Website Logo -->
         <div class="logo-header me-md-5">
           <NuxtLink class="logo-light" to="/"
-            ><img src="../assets/images/logo-white.svg" alt="logo"
+            ><img src="../assets/images/logo-white.png" alt="logo"
           /></NuxtLink>
           <NuxtLink class="logo-dark" to="/"
-            ><img src="../assets/images/" alt="logo"
+            ><img src="../assets/images/logo.png" alt="logo"
           /></NuxtLink>
         </div>
 

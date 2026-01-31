@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       wcStoreUrl: process.env.WC_STORE_URL,
     },
   },
+  nitro: {
+    preset: 'vercel'
+  },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   css: [
