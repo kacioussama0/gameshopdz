@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import Home2Slider from "~/components/Home2Slider.vue";
-import ProductGallery from "~/components/ProductGallery.vue";
 import MainBanner2 from "~/elements/MainBanner2.vue";
-import modelBg from "assets/images/background/bg2.jpg";
 import { onMounted, ref } from "vue";
 import ModelVideo from "~/elements/ModelVideo.vue";
 import Header3 from "~/components/Header3.vue";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
 
 const isOpen = ref(false);
 
@@ -113,12 +114,48 @@ useFetch("/api/wc/products", {
   <header class="site-header mo-left header style-2">
     <Header3 />
   </header>
+
   <div class="page-content bg-light">
-    <!--Swiper Banner Start -->
-    <div class="main-slider style-2">
-      <MainBanner2 :product="latestProducts[0]" />
-    </div>
-    <!--Swiper Banner End-->
+
+      <section class="pt-0 z-index-unset bg-white overflow-hidden">
+
+        <div class="container-fluid p-0">
+          <Swiper
+              class="swiper portfolio-gallery2"
+              :space-between="30"
+              :modules="[Autoplay, Navigation]"
+              :loop="true"
+              :autoplay="{ delay: 1500 }"
+              :speed="1500"
+              :navigation="{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }"
+          >
+            <SwiperSlide class="swiper-slide">
+              <div class="portfolio-box style-2 rounded-0">
+                <div class="dz-media">
+                  <RouterLink to="/portfolio-details-1">
+                    <img src="https://media.gqmagazine.fr/photos/646b7d71a35e700534ed9802/16:9/w_2560%2Cc_limit/100-best-games-hp-b.jpg" alt="/" />
+                  </RouterLink>
+                </div>
+                <div class="dz-content">
+                  <div class="product-tag">
+                    <RouterLink to="/portfolio-details-1">
+                      <span class="badge badge-secondary">Sweater</span>
+                    </RouterLink>
+                  </div>
+                  <h4 class="title">
+                    <RouterLink to="/portfolio-details-1">Elevate your style with our exclusive shirt collection.</RouterLink>
+                  </h4>
+                </div>
+              </div>
+            </SwiperSlide>
+
+          </Swiper>
+        </div>
+        <div class="swiper-pagination-two"></div>
+      </section>
 
     <!--Featured Section Start-->
     <div class="content-inner category-section">
