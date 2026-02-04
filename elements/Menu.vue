@@ -39,15 +39,10 @@ onMounted(() => {
 </script>
 
 <template>
+
+
+
   <ul class="nav navbar-nav">
-
-    <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="/"
-      ><span>Accueil</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
-
-    </li>
-
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to=""

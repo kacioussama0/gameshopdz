@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 
 const props = defineProps<{
   product: Object;
+  showStock: {type:boolean,required:false}
 }>();
 
 
@@ -13,8 +14,8 @@ const props = defineProps<{
 
 <template>
 
-        <div class="shop-card bg-white rounded-4 wow fadeInUp" v-if="product">
-          <div class="dz-media position-relative border-1 border-primary">
+        <div class="shop-card bg-white rounded-0 wow fadeInUp" v-if="product">
+          <div class="dz-media position-relative rounded-0 border-1 border-primary">
 
             <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" />
 
@@ -22,11 +23,13 @@ const props = defineProps<{
               <h5 class="mb-1 clamp-text-2"  style="height: 40px">
                 <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link">{{ product.name }}</NuxtLink>
               </h5>
-              <span class="price fs-5" v-if="!product.on_sale">{{product.price}} DA</span>
-              <span class="price text-danger fs-5" v-else><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
 
 
-              <div>
+              <span class="price fs-5 text-primary" v-if="!product.on_sale" style="font-size: 16px !important">{{product.price}} DA</span>
+              <span class="price text-danger fs-5" v-else><del class="text-muted">{{product.regular_price}} DA</del> {{product.price}} DA</span>
+
+
+              <div v-if="showStock">
                  <span class=" text-success fw-bold rounded-pill" v-if="product.stock == 'instock'">
                   Disponible - مـتـوفـــر
                 </span>
@@ -36,13 +39,23 @@ const props = defineProps<{
               </div>
 
 
+              <button class="btn btn-primary rounded-0 mt-3" style="font-size: 12px !important;">
+                <i class="fa fa-cart-plus me-2"></i>
+                Ajouter au Panier
+              </button>
+
+
             </div>
+
+
+
 
           </div>
 
-          <span class="badge text-bg-warning rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-if="product.occasion || product.name.includes('OCCASION')" style="font-size: 11px">Occasion | مستعمل</span>
-          <span class="badge text-bg-info rounded-pill position-absolute start-0  ms-2 mt-2 top-0 " v-else style="font-size: 11px">Neuf | جديد</span>
-          <span class="badge text-bg-danger rounded-pill position-absolute end-0  me-2  mt-2 top-0" v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} %</span>
+          <span class="badge text-bg-warning  position-absolute start-0 rounded-0  ms-2 mt-2 top-0 " v-if="product.occasion || product.name.includes('OCCASION')" style="font-size: 11px">Occasion | مستعمل</span>
+          <span class="badge text-bg-info position-absolute start-0 rounded-0  ms-2 mt-2 top-0 " v-else style="font-size: 11px">Neuf | جديد</span>
+          <span class="badge text-bg-danger position-absolute end-0 rounded-0  me-2  mt-2 top-0" v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} %</span>
+
 
         </div>
 

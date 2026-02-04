@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import Header from "~/components/Header.vue";
+
 const { refresh } = useWcCart()
 onMounted(() => refresh())
 
@@ -19,6 +21,8 @@ router.afterEach(() => {
 </script>
 
 <template>
+
+
 
   <div class="page-wraper">
 

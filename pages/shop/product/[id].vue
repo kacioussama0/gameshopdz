@@ -160,7 +160,7 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                         @mouseout="removeHover"
                         :src="img.src"
                         style="height: 600px"
-                        class="object-fit-covers"
+                        class="object-fit-contain"
                         alt="image"
                     />
                   </div>

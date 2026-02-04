@@ -1039,7 +1039,7 @@ onMounted(async ()=> {
                   <div class="row gx-xl-4 gy-3">
 
                     <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30"  v-if="!loading" v-for="product in allProducts">
-                      <ProductCard :product="product"/>
+                      <ProductCard :product="product" :show-stock="true"/>
                     </div>
 
 

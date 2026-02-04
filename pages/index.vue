@@ -10,6 +10,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const isOpen = ref(false);
 
+const discountProducts = ref([]);
 const openVideo = () => {
   isOpen.value = true;
 };
@@ -61,6 +62,29 @@ useFetch("/api/wc/products", {
 
 
   latestProducts.value = response.data.value.products.map((product: any) => ({
+    name: product.name,
+    slug: product.slug,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+
+
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
+
+
+
+useFetch("/api/wc/products", {
+  query: { per_page: 10, page: 1 ,status:'publish',on_sale:true,stock_status:'instock'}
+}).then(( response) => {
+
+
+  discountProducts.value = response.data.value.products.map((product: any) => ({
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -136,22 +160,54 @@ useFetch("/api/wc/products", {
               <div class="portfolio-box style-2 rounded-0">
                 <div class="dz-media">
                   <RouterLink to="/portfolio-details-1">
-                    <img src="https://media.gqmagazine.fr/photos/646b7d71a35e700534ed9802/16:9/w_2560%2Cc_limit/100-best-games-hp-b.jpg" alt="/" />
+                    <video src="https://gmedia.playstation.com/is/content/SIEPDC/global_pdc/en/games/pdps/c/ca/call-of-duty--black-ops-7/hero/call-of-duty-black-ops-7-animated-hero-desktop-01-en-11aug25.mp4" muted autoplay loop class="img-fluid object-fit-cover" ></video>
                   </RouterLink>
                 </div>
-                <div class="dz-content">
-                  <div class="product-tag">
-                    <RouterLink to="/portfolio-details-1">
-                      <span class="badge badge-secondary">Sweater</span>
-                    </RouterLink>
+                <div class="dz-content justify-content-end">
+
+
+                  <div class="container">
+                    <h6 class="sub-title text-light mb-1 fw-light">DECOUVREZ</h6>
+                    <h1 class="title mb-3">
+                      <RouterLink to="/portfolio-details-1">CALL OF DUTY BO7</RouterLink>
+                    </h1>
+
+                    <p class="mb-4 w-50 text-light ">CALL OF DUTY : BLACK OPS 7 | PS5 Le retour explosif de la saga culte sur nouvelle génération Plongez dans l’univers de Call of Duty : Black Ops 7 sur PlayStation 5, un nouvel opus riche en action, en coopération et en adrénaline. Conçu pour…</p>
+
+                    <RouterLink  to="/shop/product/call-of-duty-black-ops-7" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
+
                   </div>
-                  <h4 class="title">
-                    <RouterLink to="/portfolio-details-1">Elevate your style with our exclusive shirt collection.</RouterLink>
-                  </h4>
+
+
                 </div>
               </div>
             </SwiperSlide>
+            <SwiperSlide class="swiper-slide">
+              <div class="portfolio-box style-2 rounded-0">
+                <div class="dz-media">
+                  <RouterLink to="/portfolio-details-1">
+                    <video src="https://gmedia.playstation.com/is/content/SIEPDC/global_pdc/en/games/pdps/c/ca/call-of-duty--black-ops-7/hero/call-of-duty-black-ops-7-animated-hero-desktop-01-en-11aug25.mp4" muted autoplay loop class="img-fluid object-fit-cover" ></video>
+                  </RouterLink>
+                </div>
+                <div class="dz-content justify-content-end">
 
+
+                  <div class="container">
+                    <h6 class="sub-title text-light mb-1 fw-light">DECOUVREZ</h6>
+                    <h1 class="title mb-3">
+                      <RouterLink to="/portfolio-details-1">CALL OF DUTY BO5</RouterLink>
+                    </h1>
+
+                    <p class="mb-4 w-50 text-light ">CALL OF DUTY : BLACK OPS 7 | PS5 Le retour explosif de la saga culte sur nouvelle génération Plongez dans l’univers de Call of Duty : Black Ops 7 sur PlayStation 5, un nouvel opus riche en action, en coopération et en adrénaline. Conçu pour…</p>
+
+                    <RouterLink  to="/shop/product/call-of-duty-black-ops-7" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
+
+                  </div>
+
+
+                </div>
+              </div>
+            </SwiperSlide>
           </Swiper>
         </div>
         <div class="swiper-pagination-two"></div>
@@ -230,89 +286,45 @@ useFetch("/api/wc/products", {
 
         </div>
       </div>
-      <NuxtLink class="icon-button" to="/shop-with-category">
-        <div class="text-row word-rotate-box c-black border-white">
-          <svg
-            class="badge__emoji"
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-          >
-            <g clip-path="url(#clip0_161_568)">
-              <path
-                d="M10.7239 31.3072L19.0059 39.5891C19.2696 39.8523 19.627 40.0001 19.9995 40.0001C20.3721 40.0001 20.7295 39.8523 20.9932 39.5891L29.2752 31.3072C29.4582 31.1236 29.5608 30.8748 29.5606 30.6156C29.5604 30.3564 29.4573 30.1078 29.274 29.9245C29.0907 29.7412 28.8421 29.6381 28.5829 29.6379C28.3237 29.6377 28.075 29.7404 27.8913 29.9234L20.9781 36.8368V0.978516C20.9781 0.718997 20.875 0.470108 20.6915 0.286601C20.508 0.103093 20.2591 0 19.9995 0C19.74 0 19.4911 0.103093 19.3076 0.286601C19.1241 0.470108 19.021 0.718997 19.021 0.978516V36.8368L12.1077 29.9234C11.9241 29.7404 11.6754 29.6377 11.4162 29.6379C11.1569 29.6381 10.9084 29.7412 10.7251 29.9245C10.5418 30.1078 10.4387 30.3564 10.4385 30.6156C10.4383 30.8748 10.5409 31.1236 10.7239 31.3072Z"
-                fill="#000"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_161_568">
-                <rect width="40" height="40" fill="#000"></rect>
-              </clipPath>
-            </defs>
-          </svg>
-          <span class="text__char" style="--char-rotate: 0deg">c</span
-          ><span class="text__char" style="--char-rotate: 17.142857142857142deg"
-            >a</span
-          ><span class="text__char" style="--char-rotate: 34.285714285714285deg"
-            >t</span
-          ><span class="text__char" style="--char-rotate: 51.42857142857143deg"
-            >e</span
-          ><span class="text__char" style="--char-rotate: 68.57142857142857deg"
-            >g</span
-          ><span class="text__char" style="--char-rotate: 85.71428571428571deg"
-            >o</span
-          ><span class="text__char" style="--char-rotate: 102.85714285714286deg"
-            >r</span
-          ><span class="text__char" style="--char-rotate: 120deg">y</span
-          ><span
-            class="text__char"
-            style="--char-rotate: 137.14285714285714deg"
-          >
-          </span
-          ><span class="text__char" style="--char-rotate: 154.28571428571428deg"
-            >-</span
-          ><span
-            class="text__char"
-            style="--char-rotate: 171.42857142857142deg"
-          >
-          </span
-          ><span class="text__char" style="--char-rotate: 188.57142857142856deg"
-            >c</span
-          ><span class="text__char" style="--char-rotate: 205.71428571428572deg"
-            >a</span
-          ><span class="text__char" style="--char-rotate: 222.85714285714286deg"
-            >t</span
-          ><span class="text__char" style="--char-rotate: 240deg">e</span
-          ><span class="text__char" style="--char-rotate: 257.1428571428571deg"
-            >g</span
-          ><span class="text__char" style="--char-rotate: 274.2857142857143deg"
-            >o</span
-          ><span class="text__char" style="--char-rotate: 291.42857142857144deg"
-            >r</span
-          ><span class="text__char" style="--char-rotate: 308.57142857142856deg"
-            >y</span
-          ><span class="text__char" style="--char-rotate: 325.7142857142857deg">
-          </span
-          ><span class="text__char" style="--char-rotate: 342.85714285714283deg"
-            >-</span
-          >
-        </div>
-      </NuxtLink>
     </div>
     <!--Featured Section End-->
 
 
 
 
-    <section class="content-inner overflow-hidden">
+    <section class="content-inner pb-0  overflow-hidden">
       <div class="container">
         <NuxtLink to="/shop-with-category">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
         </NuxtLink>
       </div>
     </section>
+
+
+    <!-- Discount Start-->
+    <section class="content-inner-1 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title text-warning" >
+                  <i class="fa fa-percentage me-1"></i>
+                  Promotion
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <Home2Slider :products="discountProducts"/>
+      </div>
+    </section>
+    <!-- Discount Stop-->
 
 
     <!-- Tranding Start-->
@@ -325,7 +337,10 @@ useFetch("/api/wc/products", {
               data-wow-delay="0.2s"
             >
               <div class="left-content">
-                  <h2 class="title">Nouveautés</h2>
+                  <h2 class="title text-info">
+                    <i class="fa fa-plus me-1"></i>
+                    Nouveautés
+                  </h2>
               </div>
             </div>
           </div>
