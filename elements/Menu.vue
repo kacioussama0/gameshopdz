@@ -45,9 +45,10 @@ onMounted(() => {
   <ul class="nav navbar-nav">
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-        ><span>Jeux</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-gamepad me-2"></span>
+        <span>Jeux</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -127,9 +128,12 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Consoles</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+
+        <span class="fa-brands fa-playstation me-2"></span>
+        <span>Consoles</span>
+
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -189,9 +193,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Occasions</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-box-open me-2"></span>
+        <span>Occasions</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -244,9 +249,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Accessoires</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-headset me-2"></span>
+        <span>Accessoires</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -299,9 +305,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Digital</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-download me-2"></span>
+        <span>Digital</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -367,9 +374,10 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Collector & Goodies</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-book-open-reader me-2"></span>
+        <span>Collector & Goodies</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -432,9 +440,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>PC</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-desktop me-2"></span>
+        <span>PC</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
 
@@ -501,9 +510,10 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to=""
-      ><span>Retro</span><i class="fas fa-chevron-down tabindex"></i
-      ></RouterLink>
+      <RouterLink to="">
+        <span class="fa fa-camera-retro me-2"></span>
+        <span>Retro</span>
+      </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">

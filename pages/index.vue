@@ -8,6 +8,7 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 
+
 const isOpen = ref(false);
 
 const discountProducts = ref([]);
@@ -35,11 +36,11 @@ const newProducts = ref([]);
 const consoles = ref([])
 
 
+
 useFetch("/api/wc/products", {
       query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
     }).then(( response) => {
-
-
+    console.log(response.data)
       latestProducts.value = response.data.value.products.map((product: any) => ({
         name: product.name,
         slug: product.slug,
@@ -50,8 +51,6 @@ useFetch("/api/wc/products", {
         stock: product.stock_status,
         occasion: product.categories.some((category) => category.slug == 'occasion')
       }));
-
-
     }).catch((error) => {
       console.error("Error fetching latest products:", error);
 });
@@ -59,8 +58,6 @@ useFetch("/api/wc/products", {
 useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
 }).then(( response) => {
-
-
   latestProducts.value = response.data.value.products.map((product: any) => ({
     name: product.name,
     slug: product.slug,
@@ -71,8 +68,6 @@ useFetch("/api/wc/products", {
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
   }));
-
-
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
@@ -82,8 +77,6 @@ useFetch("/api/wc/products", {
 useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',on_sale:true,stock_status:'instock'}
 }).then(( response) => {
-
-
   discountProducts.value = response.data.value.products.map((product: any) => ({
     name: product.name,
     slug: product.slug,
@@ -94,19 +87,14 @@ useFetch("/api/wc/products", {
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
   }));
-
-
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
 
 
-
 useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
 }).then(( response) => {
-
-
   latestProducts.value = response.data.value.products.map((product: any) => ({
     name: product.name,
     slug: product.slug,
@@ -117,14 +105,27 @@ useFetch("/api/wc/products", {
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
   }));
-
-
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
 
 
-
+useFetch("/api/wc/products", {
+  query: { per_page: 6, page: 1 ,status:'publish',category: '821'}
+}).then(( response) => {
+  consoles.value = response.data.value.products.map((product: any) => ({
+    name: product.name,
+    slug: product.slug,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
 
 
 </script>
@@ -143,7 +144,7 @@ useFetch("/api/wc/products", {
 
       <section class="pt-0 z-index-unset bg-white overflow-hidden">
 
-        <div class="container-fluid p-0">
+        <div class="container p-0">
           <Swiper
               class="swiper portfolio-gallery2"
               :space-between="30"
@@ -294,11 +295,39 @@ useFetch("/api/wc/products", {
 
     <section class="content-inner pb-0  overflow-hidden">
       <div class="container">
-        <NuxtLink to="/shop-with-category">
+        <NuxtLink to="/shop">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
         </NuxtLink>
       </div>
     </section>
+
+
+
+    <!-- Gameshop hits Start-->
+    <section class="content-inner-1 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title text-danger" >
+                  <i class="fa fa-gamepad me-1"></i>
+                  Gameshop Hits
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <Home2Slider :products="discountProducts"/>
+      </div>
+    </section>
+    <!-- Gameshop hits Stop-->
+
 
 
     <!-- Discount Start-->
@@ -311,7 +340,7 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-warning" >
+                <h2 class="title text-success" >
                   <i class="fa fa-percentage me-1"></i>
                   Promotion
                 </h2>
@@ -327,7 +356,7 @@ useFetch("/api/wc/products", {
     <!-- Discount Stop-->
 
 
-    <!-- Tranding Start-->
+    <!-- New Sart-->
     <section class="content-inner-1 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
@@ -352,7 +381,36 @@ useFetch("/api/wc/products", {
         <Home2Slider :products="latestProducts"/>
       </div>
     </section>
-    <!-- Tranding Stop-->
+    <!-- New Stop-->
+
+
+    <!-- Selection Sart-->
+    <section class="content-inner-1 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title text-warning">
+                  <i class="fa fa-star me-1"></i>
+                  Notre Sélection
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
+            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
+          </div>
+        </div>
+
+        <Home2Slider :products="latestProducts"/>
+      </div>
+    </section>
+    <!-- Selection Stop-->
+
 
     <section class="video-section">
       <div
@@ -686,9 +744,9 @@ useFetch("/api/wc/products", {
 
             <div class="row gy-3 gx-3">
 
-              <div class="col-md-4" v-for="i in 6">
+              <div class="col-md-4" v-for="console in consoles">
 
-                  <ProductCardSkeleton  />
+                  <ProductCard :product="console"  />
 
               </div>
 

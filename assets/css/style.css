@@ -37523,10 +37523,7 @@ del {
     padding: 10px 0;
   }
 }
-.header-menu .header-nav .nav > li.sub-menu-down > a:after {
-  background-image: url(../images/star-white.svg);
-  float: right;
-}
+
 .header-menu .header-nav .nav > li > .mega-menu, .header-menu .header-nav .nav > li > .sub-menu {
   margin-left: 50px;
   left: 100%;
@@ -49501,15 +49498,7 @@ a {
     width: 100%;
   }
 }
-.header-nav .nav > li.menu-item-has-children > a:after, .header-nav .nav > li.sub-menu-down > a:after {
-  content: "";
-  margin-left: 5px;
-  margin-top: -5px;
-  background-image: url(../images/star.svg);
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-}
+
 @media only screen and (max-width: 991px) {
   .header-nav .nav > li.menu-item-has-children > a:after, .header-nav .nav > li.sub-menu-down > a:after {
     display: none;
@@ -50109,9 +50098,7 @@ a {
 .header-transparent.header-text-white .is-fixed .extra-nav .extra-cell ul li.login-link a {
   border-bottom: 1px solid var(--secondary);
 }
-.header-transparent.header-text-white .is-fixed .header-nav .nav > li > a:after {
-  background-image: url(../images/star.svg);
-}
+
 .header-transparent.header-text-white .is-fixed .extra-nav .extra-cell > * {
   --title: var(--secondary);
   --white: var(--secondary);

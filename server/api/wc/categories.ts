@@ -5,13 +5,10 @@ export default defineEventHandler(async (event) => {
     const cs = 'cs_0b640d5a089e7d9b3b0d7b031b78411a16b68efe'
 
     return await $fetch(
-        'https://gameshopdz.com/wp-json/wc/v3/products/categories',
+            'https://gameshopdz.com/wp-json/wc/v3/products/categories',
         {
             query: {
                 per_page: 100,
-                parent: 0,              // ✅ ONLY parent categories
-                hide_empty: true,
-                orderby: "menu_order",
                 order: "asc",
             },
             headers: {
