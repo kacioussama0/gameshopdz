@@ -140,7 +140,7 @@ useFetch("/api/wc/products", {
     <Header3 />
   </header>
 
-  <div class="page-content bg-light">
+  <div class="page-content bg-light mb-5">
 
       <section class="pt-0 z-index-unset bg-white overflow-hidden">
 

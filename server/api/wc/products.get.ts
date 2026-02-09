@@ -7,7 +7,10 @@ export default defineEventHandler(async (event) => {
     const res = await $fetch.raw(
         'https://gameshopdz.com/wp-json/wc/v3/products',
         {
-            query,
+            query: {
+                ...query,
+                status: 'publish',
+            },
             headers: {
                 Authorization:
                     "Basic " +
@@ -19,7 +22,27 @@ export default defineEventHandler(async (event) => {
     )
 
     return {
-        products: res._data,
+        products: res._data.map((product)=> {
+            return {
+                'id': product.id,
+                'name': product.name,
+                'slug': product.slug,
+                'sku': product.sku,
+                'type': product.type,
+                'description': product.description,
+                'short_description': product.short_description,
+                'price': product.price,
+                'regular_price': product.regular_price,
+                'sale_price': product.sale_price,
+                'on_sale': product.on_sale,
+                'purchasable': product.purchasable,
+                'categories': product.categories,
+                'tags': product.tags,
+                'images': product.images,
+                'related_ids': product.related_ids,
+                'stock_status': product.stock_status,
+            }
+        }),
         total: Number(res.headers.get("x-wp-total")),
         totalPages: Number(res.headers.get("x-wp-totalpages")),
     }

@@ -54,12 +54,12 @@ onUnmounted(() => {
     }`"
   >
     <div class="main-bar clearfix">
-      <div class="container clearfix d-lg-flex d-block">
+      <div class="container clearfix d-lg-flex align-items-center d-block">
         <!-- Website Logo -->
         <div class="logo-header logo-dark">
-          <NuxtLink to="/"
-            ><img src="../assets/images/logo.svg" alt="logo"
-          /></NuxtLink>
+          <NuxtLink to="/">
+            <img src="../assets/images/logo.svg" alt="logo"/>
+          </NuxtLink>
         </div>
 
         <!-- Nav Toggle Button -->
@@ -77,7 +77,7 @@ onUnmounted(() => {
 
         <!-- Main Nav -->
         <div
-          :class="`header-nav navbar-collapse ${
+          :class="`header-nav  justify-content-between navbar-collapse  ${
             isMenu ? 'show' : ''
           }`"
           id="navbarNavDropdown"
@@ -88,7 +88,7 @@ onUnmounted(() => {
             /></NuxtLink>
           </div>
 
-          <Menu />
+          <Menu class="w-100 justify-content-center" />
           <div class="dz-social-icon">
             <ul>
               <li>
