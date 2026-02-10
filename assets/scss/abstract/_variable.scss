@@ -3,18 +3,22 @@ $enable-deprecation-messages: false;
 $ignore-warning             : true;
 
 // Color
-$primary   : #046adb;
-$secondary : #041345 !default;
-$success   : #31A56D !default;
-$info      : #0194D9 !default;
-$warning   : #E79600 !default;
-$danger    : #D23636 !default;
-$light     : #edf9ff !default;
-$dark      : #444444 !default;
+$primary   : #0A63D8;   // improved brand blue
+$secondary : #0F1E4A !default; // softer navy
+$success   : #2FBF71 !default;
+$info      : #1DA1F2 !default;
+$warning   : #F5A524 !default;
+$danger    : #E5484D !default;
+$light     : #F5F8FC !default;
+$dark      : #1F2937 !default;
 
 // Body
-$body-bg   : #ffffff;
-$body-color: #5E626F;
+$body-bg    : #ffffff;
+$body-color : #4B5563; // warmer, modern gray
+$text-muted : rgba(107, 114, 128, 0.55);
+
+
+
 
 // Typography
 $font-family-base : 'DM Sans', sans-serif;

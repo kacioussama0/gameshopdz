@@ -33,18 +33,6 @@ console.log(categories)
             Filter
           </h6>
         </div>
-        <div class="widget widget_search">
-          <div class="form-group">
-            <div class="input-group">
-              <input name="dzSearch" required type="search" class="form-control" placeholder="Search Product" />
-              <div class="input-group-addon">
-                <button name="submit" value="Submit" type="submit" class="btn">
-                  <i class="icon feather icon-search"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="widget">
           <h6 class="widget-title">Filtrer par prix</h6>
           <MultiRangeSlide />

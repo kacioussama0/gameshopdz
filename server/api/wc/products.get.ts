@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const res = await $fetch.raw(
         'https://gameshopdz.com/wp-json/wc/v3/products',
         {
-            query: {
+            params: {
                 ...query,
                 status: 'publish',
             },

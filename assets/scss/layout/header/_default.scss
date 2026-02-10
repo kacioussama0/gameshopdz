@@ -551,7 +551,7 @@ a{
 			&.sub-menu-down{
 				&>a {
 					&:after{
-						content: "";
+						//content: "";
 						margin-#{$dz-pos-left}: 5px;
 						margin-top: -5px;
 						background-image: url(../images/star.svg);
@@ -1117,7 +1117,7 @@ a{
 			}
 		}
 		.header-nav .nav > li > a:after{
-			background-image: url(../images/star-white.svg);
+			//background-image: url(../images/star-white.svg);
 		}
 		.logo-dark{
 			display:none;
@@ -1137,7 +1137,7 @@ a{
 				border-bottom: 1px solid var(--secondary);
 			}
 			.header-nav .nav > li > a:after{
-				background-image: url(../images/star.svg);
+			//	background-image: url(../images/star.svg);
 			}
 			.extra-nav .extra-cell > *{
 				--title: var(--secondary);

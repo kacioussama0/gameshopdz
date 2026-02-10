@@ -291,8 +291,6 @@ useFetch("/api/wc/products", {
     <!--Featured Section End-->
 
 
-
-
     <section class="content-inner pb-0  overflow-hidden">
       <div class="container">
         <NuxtLink to="/shop">
@@ -303,7 +301,7 @@ useFetch("/api/wc/products", {
 
 
 
-    <!-- Gameshop hits Start-->
+    <!-- New Sart-->
     <section class="content-inner-1 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
@@ -313,20 +311,22 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-danger" >
-                  <i class="fa fa-gamepad me-1"></i>
-                  Gameshop Hits
+                <h2 class="title text-info">
+                  <i class="fa fa-plus me-1"></i>
+                  Nouveautés
                 </h2>
               </div>
             </div>
           </div>
-
+          <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
+            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
+          </div>
         </div>
 
-        <ProductSlider variant="danger" :products="discountProducts"/>
+        <ProductSlider variant="info" :products="latestProducts"/>
       </div>
     </section>
-    <!-- Gameshop hits Stop-->
+    <!-- New Stop-->
 
 
 
@@ -356,32 +356,34 @@ useFetch("/api/wc/products", {
     <!-- Discount Stop-->
 
 
-    <!-- New Sart-->
+
+
+    <!-- Gameshop hits Start-->
     <section class="content-inner-1 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
             <div
-              class="section-head style-1 m-b30 wow fadeInUp"
-              data-wow-delay="0.2s"
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
             >
               <div class="left-content">
-                  <h2 class="title text-info">
-                    <i class="fa fa-plus me-1"></i>
-                    Nouveautés
-                  </h2>
+                <h2 class="title text-danger" >
+                  <i class="fa fa-gamepad me-1"></i>
+                  Gameshop Hits
+                </h2>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
-            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
-          </div>
+
         </div>
 
-        <ProductSlider variant="info" :products="latestProducts"/>
+        <ProductSlider variant="danger" :products="discountProducts"/>
       </div>
     </section>
-    <!-- New Stop-->
+    <!-- Gameshop hits Stop-->
+
+
 
 
     <!-- Selection Sart-->

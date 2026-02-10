@@ -19,6 +19,10 @@ const wilaya = ref(null)
 const daira = ref(null)
 const commune = ref(null)
 
+watch(wilaya,()=> {
+
+})
+
 const form = reactive({
   first_name: '',
   last_name: '',
@@ -182,11 +186,11 @@ onMounted(() => {
                     <td>Sous-total</td>
                     <td class="price">{{totalPrice}} DA</td>
                   </tr>
-                  <tr class="title">
+                  <tr class="title" v-if="wilaya">
                     <td><h6 class="title font-weight-500">Expédition (التوصيل)</h6></td>
                     <td></td>
                   </tr>
-                  <tr class="shipping">
+                  <tr class="shipping" v-if="wilaya">
                     <td>
                       <div class="custom-control custom-checkbox">
                         <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
@@ -201,7 +205,7 @@ onMounted(() => {
                   </tr>
                   <tr class="total">
                     <td>Total</td>
-                    <td class="price">$125.75</td>
+                    <td class="price fw-bold">{{totalPrice}} DA</td>
                   </tr>
                 </tbody>
               </table>
