@@ -6,7 +6,12 @@ import ShopSidebar from "~/elements/ShopSidebar.vue";
 const route = useRoute()
 const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
+const searchProduct = ref("")
 
+
+watch(category, async () => {
+  await fetchProducts()
+})
 
 
 
@@ -1040,7 +1045,7 @@ onMounted(async ()=> {
                 <div class="tab-pane fade active show" id="tab-list-grid" role="tabpanel" aria-labelledby="tab-list-grid-btn">
                   <div class="row gx-xl-4 gy-3">
 
-                    <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30"  v-if="!loading" v-for="product in allProducts">
+                    <div class="col-12 col-sm-6 col-xl-2 col-lg-3 col-lg-4 col-md-4  m-md-b15 m-b30"  v-if="!loading" v-for="product in allProducts">
                       <ProductCard :product="product" :show-stock="true"/>
                     </div>
 

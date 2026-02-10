@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Home2Slider from "~/components/Home2Slider.vue";
+import ProductSlider from "~/components/ProductSlider.vue";
 import MainBanner2 from "~/elements/MainBanner2.vue";
 import { onMounted, ref } from "vue";
 import ModelVideo from "~/elements/ModelVideo.vue";
@@ -323,7 +323,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <Home2Slider :products="discountProducts"/>
+        <ProductSlider variant="danger" :products="discountProducts"/>
       </div>
     </section>
     <!-- Gameshop hits Stop-->
@@ -350,7 +350,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <Home2Slider :products="discountProducts"/>
+        <ProductSlider variant="success" :products="discountProducts"/>
       </div>
     </section>
     <!-- Discount Stop-->
@@ -378,7 +378,7 @@ useFetch("/api/wc/products", {
           </div>
         </div>
 
-        <Home2Slider :products="latestProducts"/>
+        <ProductSlider variant="info" :products="latestProducts"/>
       </div>
     </section>
     <!-- New Stop-->
@@ -406,7 +406,7 @@ useFetch("/api/wc/products", {
           </div>
         </div>
 
-        <Home2Slider :products="latestProducts"/>
+        <ProductSlider variant="warning" :products="latestProducts"/>
       </div>
     </section>
     <!-- Selection Stop-->

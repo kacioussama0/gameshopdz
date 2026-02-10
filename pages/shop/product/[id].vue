@@ -16,6 +16,8 @@ const thumbsSwiper = ref(null);
 const addedCart = ref(false)
 
 
+
+
 const addToCart = async (productId) => {
 
   try {
@@ -63,7 +65,6 @@ useFetch("/api/wc/products/", {
 }).then(( response) => {
 
 
-  console.log(response)
 
   product.value = response.data.value.products[0];
 

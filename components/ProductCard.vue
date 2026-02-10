@@ -1,13 +1,10 @@
 <script lang="ts" setup>
-import { IMAGES } from "@/constent/theme";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper/modules";
 
 const props = defineProps<{
   product: Object;
-  showStock: {type:boolean,required:false}
+  showStock: {type:boolean,required:false},
+  variant: {type:String,required:false,default:'primary'}
 }>();
-
 
 
 </script>
@@ -15,17 +12,17 @@ const props = defineProps<{
 <template>
 
         <div class="shop-card bg-white rounded-0 wow fadeInUp" v-if="product">
-          <div class="dz-media position-relative rounded-0 border-1 border-primary">
+          <div class="dz-media position-relative rounded-0 border-1 " :class="`border-${variant ?? 'primary'}`">
 
-            <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" />
+            <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" loading="lazy" />
 
             <div class="dz-content d-flex flex-column p-3">
-              <h5 class="mb-1 clamp-text-2"  style="height: 40px">
-                <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link">{{ product.name }}</NuxtLink>
+              <h5 class="mb-1 clamp-text-2 "  style="height: 40px" >
+                <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link"  :class="`text-${variant ?? 'primary'}`">{{ product.name }}</NuxtLink>
               </h5>
 
 
-              <span class="price fs-5 text-primary" v-if="!product.on_sale" style="font-size: 16px !important">{{product.price}} DA</span>
+              <span class="price fs-5" :class="`text-${variant ?? 'primary'}`" v-if="!product.on_sale" style="font-size: 16px !important">{{product.price}} DA</span>
               <span class="price text-danger fs-5" v-else><del class="text-muted">{{product.regular_price}} DA</del> {{product.price}} DA</span>
 
 
@@ -39,7 +36,7 @@ const props = defineProps<{
               </div>
 
 
-              <button class="btn btn-primary rounded-0 mt-3" style="font-size: 12px !important;">
+              <button class="btn rounded-0 mt-3" style="font-size: 12px !important;" :class="`btn-${variant ?? 'primary'}`">
                 <i class="fa fa-cart-plus me-2"></i>
                 Ajouter au Panier
               </button>

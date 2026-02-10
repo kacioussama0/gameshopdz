@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
 
-const inputReactive = reactive({ min: 40, max: 346 });
+const inputReactive = reactive({ min: 0, max: 199000 });
 </script>
 
 <template>
   <div class="range_container">
     <div class="sliders_control">
-      <input id="fromSlider" type="range" min="0" max="400" steps="10" v-model="inputReactive.min" />
-      <input id="toSlider" type="range" min="0" max="400" steps="10" v-model="inputReactive.max" />
+      <input id="fromSlider" type="range" min="0" max="199000" steps="10" v-model="inputReactive.min" />
+      <input id="toSlider" type="range" min="0" max="199000" steps="10" v-model="inputReactive.max" />
     </div>
-    <div data-v-fa9342e8="" class="sliders_control mt-3">
-      <span class="example-val" id="slider-margin-value-min">Min Price: ${{ inputReactive.min }}</span>
-      <span class="example-val" id="slider-margin-value-max">Max Price: ${{ inputReactive.max }}</span>
+    <div class="sliders_control mt-3 d-flex justify-content-between align-items-center">
+      <span class="example-val" id="slider-margin-value-min">{{ inputReactive.min }} DA   </span>
+      <span class="example-val" id="slider-margin-value-max">{{ inputReactive.max }} DA</span>
     </div>
   </div>
 </template>

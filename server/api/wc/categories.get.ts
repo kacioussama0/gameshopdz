@@ -16,6 +16,8 @@ export default defineEventHandler(async (event) => {
             query: {
                 per_page: 100,
                 order: "asc",
+
+                parent: 0
             },
             headers: {
                 Authorization:

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Autoplay } from "swiper/modules";
+import {Autoplay, Navigation} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
 </script>
 <template>
@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
     :slides-per-view="4"
     :space-between="30"
     :speed="1200"
-    :modules="[Autoplay]"
+    :modules="[Autoplay,Navigation]"
     :autoplay="{ delay: 1500 }"
     :loop="true"
     :breakpoints="{
