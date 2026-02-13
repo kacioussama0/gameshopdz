@@ -10,7 +10,7 @@ export default defineEventHandler(async () => {
     const base = 'https://gameshopdz.com/wp-json/wc/v3' // مثال: https://gameshopdz.com/wp-json/wc/v3
 
     // 1) zones
-    const zones: Array<{ id: number; name: string; order: number }> = await $fetch(
+    const zones = await $fetch(
         `${base}/shipping/zones`,
         { headers: { Authorization: auth } }
     )
@@ -22,24 +22,12 @@ export default defineEventHandler(async () => {
         }
     })
 
-    // 2) methods + locations لكل zone
-    const zonesFull = await Promise.all(
-        zones.map(async (z) => {
-            const [locations] = await Promise.all([
 
-                $fetch(`${base}/shipping/zones/${z.id}/methods`, {
-                    headers: { Authorization: auth }
-                })
-            ])
-
-            return { ...z, locations }
-        })
-    )
 
     // 3) “Rest of the world” (zone id = 0) optional
     // بعض المتاجر تحتاج تعالجها وحدها:
     // const restMethods = await $fetch(`${base}/shipping/zones/0/regions`, { headers: { Authorization: auth } })
     // zonesFull.unshift({ id: 0, name: "Rest of the world", order: 0, locations: [], methods: restMethods })
 
-    return zonesFull
+    return zones
 })

@@ -40,7 +40,7 @@ const consoles = ref([])
 useFetch("/api/wc/products", {
       query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
     }).then(( response) => {
-    console.log(response.data)
+
       latestProducts.value = response.data.value.products.map((product: any) => ({
         name: product.name,
         slug: product.slug,
@@ -111,7 +111,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 6, page: 1 ,status:'publish',category: '821'}
+  query: { per_page: 6, page: 2  ,status:'publish',category: '821'}
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
     name: product.name,

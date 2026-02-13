@@ -76,8 +76,7 @@ export default defineEventHandler(async () => {
             return {
                 zone_id: z.id,
                 zone_name: z.name,
-                regions: locations.map(l => ({
-                    type: l.type,
+                region: locations.map(l => ({
                     code: getWilayaNumber(l.code)
                 })),
                 methods: simplifiedMethods

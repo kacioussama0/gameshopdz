@@ -5,7 +5,7 @@ import CustomeSelect from "@/elements/CustomeSelect.vue";
 import Header from "~/components/Header.vue";
 import Header3 from "~/components/Header3.vue";
 import cities from '../assets/cities.json'
-
+import shipping from "../assets/shipping.json"
 
 const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
   credentials: 'include',
@@ -13,15 +13,16 @@ const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
 
 const items = computed(() => cart.value?.items ?? [])
 const itemsCount = computed(() => cart.value?.items_count ?? 0)
-const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
+const shippingCost = ref(0)
+
+const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_price)  ?? 0)
+const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + shippingCost.value ?? 0)
 
 const wilaya = ref(null)
 const daira = ref(null)
 const commune = ref(null)
 
-watch(wilaya,()=> {
-
-})
+const zone = ref({})
 
 const form = reactive({
   first_name: '',
@@ -30,6 +31,12 @@ const form = reactive({
   wilaya: null,
   commune: null,
   note: ''
+})
+
+
+
+watch(shippingCost, (newValue, oldValue) => {
+    totalPrice.value = totalPrice.value + newValue
 })
 
 
@@ -44,8 +51,10 @@ const communeOptions = ref([
 
 function getCommune(wilayaCode) {
 
+
+
   form.commune = null;
-  const wilaya = cities.filter((city) => city.wilaya_name_ascii === wilayaCode);
+  const wilaya = cities.filter((city) => city.wilaya_code === wilayaCode);
 
   const communes = wilaya.map((commune) => {
         return {
@@ -60,7 +69,12 @@ function getCommune(wilayaCode) {
           index === self.findIndex(x => x.title === w.title)
   ).sort((a, b) => {
     return a.title.localeCompare(b.title);
-  });;
+  });
+
+  zone.value = shipping[wilayaCode];
+  shippingCost.value = zone.value.methods[0].cost
+
+
 
   communeOptions.value.unshift({ value: null, title: 'Veuillez sélectionner votre commune' , disabled: true , selected: true })
 
@@ -74,7 +88,7 @@ onMounted(() => {
 
         return {
           'title': `${wilaya.wilaya_code} - ${wilaya.wilaya_name_ascii} | ${wilaya.wilaya_name}`,
-          "value": wilaya.wilaya_name_ascii,
+          "value": wilaya.wilaya_code,
         }
       }
 
@@ -184,24 +198,21 @@ onMounted(() => {
                 <tbody>
                   <tr class="subtotal">
                     <td>Sous-total</td>
-                    <td class="price">{{totalPrice}} DA</td>
+                    <td class="price">{{subTotal}} DA</td>
                   </tr>
                   <tr class="title" v-if="wilaya">
                     <td><h6 class="title font-weight-500">Expédition (التوصيل)</h6></td>
                     <td></td>
                   </tr>
-                  <tr class="shipping" v-if="wilaya">
+                  <tr class="shipping" v-if="zone.methods">
                     <td>
-                      <div class="custom-control custom-checkbox">
-                        <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                        <label class="form-check-label" for="flexRadioDefault1"> Free shipping </label>
+                      <div class="custom-control custom-checkbox" v-for="(method,index) in zone.methods">
+                        <input class="form-check-input radio" type="radio" name="shipping-radio" :checked="index == 0" :id="`shipping-radio-${index+1}`" :value="method.cost" v-model="shippingCost" />
+                        <label class="form-check-label" :for="`shipping-radio-${index+1}`"> {{method.name}} </label>
                       </div>
-                      <div class="custom-control custom-checkbox">
-                        <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                        <label class="form-check-label" for="flexRadioDefault2"> Flat Rate: </label>
-                      </div>
+
                     </td>
-                    <td class="price">25.75</td>
+                    <td class="price">{{shippingCost}} DA</td>
                   </tr>
                   <tr class="total">
                     <td>Total</td>

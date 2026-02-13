@@ -1,0 +1,1143 @@
+{
+
+    "01": {
+      "zone_id": 4,
+      "zone_name": "Adrar",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 4,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1500
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 101,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    },
+    "02": {
+      "zone_id": 5,
+      "zone_name": "Chlef",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 5,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 93,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "03": {
+      "zone_id": 6,
+      "zone_name": "Laghouat",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 6,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1000
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 94,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "04": {
+      "zone_id": 7,
+      "zone_name": "Oum El Bouaghi",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 7,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 8,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "05": {
+      "zone_id": 8,
+      "zone_name": "Batna",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 9,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 10,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "06": {
+      "zone_id": 9,
+      "zone_name": "Béjaïa",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 11,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 12,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "07": {
+      "zone_id": 10,
+      "zone_name": "Biskra",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 13,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 14,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "08": {
+      "zone_id": 11,
+      "zone_name": "Béchar",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 15,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1200
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 16,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "09": {
+      "zone_id": 12,
+      "zone_name": "Blida",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 17,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 700
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 104,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 400
+        }
+      ]
+    },
+    "10": {
+      "zone_id": 13,
+      "zone_name": "Bouira",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 19,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 800
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 20,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "11": {
+      "zone_id": 14,
+      "zone_name": "Tamanrasset",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 21,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1800
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 22,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 950
+        }
+      ]
+    },
+    "12": {
+      "zone_id": 15,
+      "zone_name": "Tébessa",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 23,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 24,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "13": {
+      "zone_id": 16,
+      "zone_name": "Tlemcen",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 25,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 26,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "14": {
+      "zone_id": 17,
+      "zone_name": "Tiaret",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 27,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 28,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "15": {
+      "zone_id": 18,
+      "zone_name": "Tizi Ouzou",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 29,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 800
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 110,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "16": {
+      "zone_id": 1,
+      "zone_name": "Alger",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 1,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 600
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 103,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 400
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 140,
+          "label": "Retrait Magasin",
+          "label_fr": "Retrait Magasin",
+          "label_ar": "الاستلام من المتجر",
+          "name": "Retrait Magasin - الاستلام من المتجر",
+          "cost": 0
+        }
+      ]
+    },
+    "17": {
+      "zone_id": 19,
+      "zone_name": "Djelfa",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 31,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1100
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 32,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "18": {
+      "zone_id": 20,
+      "zone_name": "Jijel",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 33,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 34,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "19": {
+      "zone_id": 21,
+      "zone_name": "Sétif",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 35,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 36,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "20": {
+      "zone_id": 22,
+      "zone_name": "Saïda",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 37,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 38,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "21": {
+      "zone_id": 23,
+      "zone_name": "Skikda",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 39,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 40,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "22": {
+      "zone_id": 24,
+      "zone_name": "Sidi Bel Abbès",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 41,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 42,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "23": {
+      "zone_id": 25,
+      "zone_name": "Annaba",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 43,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 44,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "24": {
+      "zone_id": 26,
+      "zone_name": "Guelma",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 45,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 46,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "25": {
+      "zone_id": 2,
+      "zone_name": "Constantine",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 2,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 800
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 91,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "26": {
+      "zone_id": 27,
+      "zone_name": "Médéa",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 47,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 800
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 112,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "27": {
+      "zone_id": 28,
+      "zone_name": "Mostaganem",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 49,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 50,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "28": {
+      "zone_id": 29,
+      "zone_name": "M'Sila",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 51,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 52,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "29": {
+      "zone_id": 30,
+      "zone_name": "Mascara",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 53,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 54,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "30": {
+      "zone_id": 31,
+      "zone_name": "Ouargla",
+      "methods": [
+        {
+          "method_id": "local_pickup",
+          "instance_id": 134,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1000
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 135,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "31": {
+      "zone_id": 32,
+      "zone_name": "Oran",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 57,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 800
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 58,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "32": {
+      "zone_id": 33,
+      "zone_name": "El Bayadh",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 59,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1100
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 60,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    },
+    "33": {
+      "zone_id": 34,
+      "zone_name": "Illizi",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 61,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 2100
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 62,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 1200
+        }
+      ]
+    },
+    "34": {
+      "zone_id": 35,
+      "zone_name": "Bordj Bou Arreridj",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 63,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 64,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "35": {
+      "zone_id": 36,
+      "zone_name": "Boumerdès",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 65,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 700
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 108,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 400
+        }
+      ]
+    },
+    "36": {
+      "zone_id": 37,
+      "zone_name": "El Tarf",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 67,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 68,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "37": {
+      "zone_id": 38,
+      "zone_name": "Tindouf",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 69,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1700
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 70,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    },
+    "38": {
+      "zone_id": 39,
+      "zone_name": "Tissemsilt",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 71,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 72,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "39": {
+      "zone_id": 40,
+      "zone_name": "El Oued",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 73,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1100
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 74,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    },
+    "40": {
+      "zone_id": 41,
+      "zone_name": "Khenchela",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 75,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 76,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "41": {
+      "zone_id": 42,
+      "zone_name": "Souk Ahras",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 77,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 78,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "42": {
+      "zone_id": 43,
+      "zone_name": "Tipaza",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 79,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 700
+        }
+      ]
+    },
+    "43": {
+      "zone_id": 49,
+      "zone_name": "Mila",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 96,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 136,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "44": {
+      "zone_id": 44,
+      "zone_name": "Aïn Defla",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 81,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 82,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "45": {
+      "zone_id": 45,
+      "zone_name": "Naâma",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 83,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1200
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 84,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    },
+    "46": {
+      "zone_id": 46,
+      "zone_name": "Aïn Témouchent",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 85,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 86,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "47": {
+      "zone_id": 47,
+      "zone_name": "Ghardaïa",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 87,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1000
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 88,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "48": {
+      "zone_id": 48,
+      "zone_name": "Relizane",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 89,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 900
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 90,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 500
+        }
+      ]
+    },
+    "49": {
+      "zone_id": 54,
+      "zone_name": "Timimoun",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 121,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1600
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 137,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 800
+        }
+      ]
+    },
+    "51": {
+      "zone_id": 55,
+      "zone_name": "Ouled Djellal",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 122,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1000
+        },
+        {
+          "method_id": "local_pickup",
+          "instance_id": 138,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 600
+        }
+      ]
+    },
+    "52": {
+      "zone_id": 56,
+      "zone_name": "Beni Abbes",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 123,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1300
+        }
+      ]
+    },
+    "53": {
+      "zone_id": 57,
+      "zone_name": "In Salah",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 124,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 2000
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 125,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 1400
+        }
+      ]
+    },
+    "55": {
+      "zone_id": 58,
+      "zone_name": "Touggourt",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 126,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1000
+        }
+      ]
+    },
+    "57": {
+      "zone_id": 59,
+      "zone_name": "El M'ghair",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 128,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1200
+        }
+      ]
+    },
+    "58": {
+      "zone_id": 60,
+      "zone_name": "El Mnia",
+      "methods": [
+        {
+          "method_id": "flat_rate",
+          "instance_id": 129,
+          "label": "A Domicile",
+          "label_fr": "A Domicile",
+          "label_ar": "توصيل للمنزل",
+          "name": "A Domicile - توصيل للمنزل",
+          "cost": 1100
+        },
+        {
+          "method_id": "flat_rate",
+          "instance_id": 130,
+          "name": "Au Bureau - توصيل للمكتب",
+          "cost": 700
+        }
+      ]
+    }
+}

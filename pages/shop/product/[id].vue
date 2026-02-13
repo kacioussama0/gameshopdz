@@ -161,7 +161,7 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                         @mouseout="removeHover"
                         :src="img.src"
                         style="height: 600px"
-                        class="object-fit-contain"
+                        class="object-fit-contain image-slider"
                         alt="image"
                     />
                   </div>
@@ -198,6 +198,7 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                     <img
                         :src="image.src"
                         alt="image"
+
                     />
                   </SwiperSlide>
 
@@ -397,7 +398,6 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                     </div>
                   </div>
                 </div>
-
 
 
                 <div class="product-num">
@@ -676,3 +676,14 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
     </section>
   </div>
 </template>
+
+<style>
+
+
+@media screen and (max-width: 600px) {
+  .image-slider {
+    height: 250px !important;
+  }
+}
+
+</style>
