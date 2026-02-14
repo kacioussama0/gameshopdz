@@ -19,7 +19,7 @@ const props = defineProps<{
       :slides-per-view="4"
       :space-between="30"
       :loop="true"
-      :modules="[Autoplay,Navigation]"
+      :modules="[Autoplay]"
       :speed="1500"
       :autoplay="{
         delay: 1500,
@@ -43,16 +43,13 @@ const props = defineProps<{
         <ProductCard :product="product" :variant="variant"/>
       </SwiperSlide>
 
+
+      <SwiperSlide class="swiper-slide" v-else v-for="p in 10" >
+        <ProductCardSkeleton />
+      </SwiperSlide>
+
     </Swiper>
 
-    <div class="pagination-align">
-      <div class="tranding-button-prev btn-prev">
-        <i class="flaticon flaticon-left-chevron"></i>
-      </div>
-      <div class="tranding-button-next btn-next">
-        <i class="flaticon flaticon-chevron"></i>
-      </div>
-    </div>
 
 
 

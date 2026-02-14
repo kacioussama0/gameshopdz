@@ -142,9 +142,9 @@ useFetch("/api/wc/products", {
 
   <div class="page-content bg-light mb-5">
 
-      <section class="pt-0 z-index-unset bg-white overflow-hidden">
+    <section class="pt-0 z-index-unset bg-white overflow-hidden">
 
-        <div class="container p-0">
+        <div class="container-fluid p-0">
           <Swiper
               class="swiper portfolio-gallery2"
               :space-between="30"
@@ -160,48 +160,20 @@ useFetch("/api/wc/products", {
             <SwiperSlide class="swiper-slide">
               <div class="portfolio-box style-2 rounded-0">
                 <div class="dz-media">
-                  <RouterLink to="/portfolio-details-1">
-                    <video src="https://gmedia.playstation.com/is/content/SIEPDC/global_pdc/en/games/pdps/c/ca/call-of-duty--black-ops-7/hero/call-of-duty-black-ops-7-animated-hero-desktop-01-en-11aug25.mp4" muted autoplay loop class="img-fluid object-fit-cover" ></video>
-                  </RouterLink>
+                  <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3681010/c65877619b70c51d6be030c20b5c37bcfaf2e248/ss_c65877619b70c51d6be030c20b5c37bcfaf2e248.1920x1080.jpg?t=1770859764" alt="">
                 </div>
                 <div class="dz-content justify-content-end">
 
 
                   <div class="container">
-                    <h6 class="sub-title text-light mb-1 fw-light">DECOUVREZ</h6>
+                    <h6 class="sub-title text-light mb-1 fw-light" style="letter-spacing: 4px">DECOUVREZ</h6>
                     <h1 class="title mb-3">
-                      <RouterLink to="/portfolio-details-1">CALL OF DUTY BO7</RouterLink>
+                      <RouterLink to="/shop/product/nioh-3-ps5">NIOH 3</RouterLink>
                     </h1>
 
-                    <p class="mb-4 w-50 text-light ">CALL OF DUTY : BLACK OPS 7 | PS5 Le retour explosif de la saga culte sur nouvelle génération Plongez dans l’univers de Call of Duty : Black Ops 7 sur PlayStation 5, un nouvel opus riche en action, en coopération et en adrénaline. Conçu pour…</p>
+                    <p class="mb-4 w-50 text-light ">NIOH 3 | PS5 Préparez-vous à affronter les ténèbres une nouvelle fois avec Nioh 3, l’évolution ultime du "Masocore" de la Team NINJA, exclusivement conçue pour la PlayStation 5. Plongez dans une version fantastique et brutale de l’histoire …</p>
 
-                    <RouterLink  to="/shop/product/call-of-duty-black-ops-7" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
-
-                  </div>
-
-
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide">
-              <div class="portfolio-box style-2 rounded-0">
-                <div class="dz-media">
-                  <RouterLink to="/portfolio-details-1">
-                    <video src="https://gmedia.playstation.com/is/content/SIEPDC/global_pdc/en/games/pdps/c/ca/call-of-duty--black-ops-7/hero/call-of-duty-black-ops-7-animated-hero-desktop-01-en-11aug25.mp4" muted autoplay loop class="img-fluid object-fit-cover" ></video>
-                  </RouterLink>
-                </div>
-                <div class="dz-content justify-content-end">
-
-
-                  <div class="container">
-                    <h6 class="sub-title text-light mb-1 fw-light">DECOUVREZ</h6>
-                    <h1 class="title mb-3">
-                      <RouterLink to="/portfolio-details-1">CALL OF DUTY BO5</RouterLink>
-                    </h1>
-
-                    <p class="mb-4 w-50 text-light ">CALL OF DUTY : BLACK OPS 7 | PS5 Le retour explosif de la saga culte sur nouvelle génération Plongez dans l’univers de Call of Duty : Black Ops 7 sur PlayStation 5, un nouvel opus riche en action, en coopération et en adrénaline. Conçu pour…</p>
-
-                    <RouterLink  to="/shop/product/call-of-duty-black-ops-7" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
+                    <RouterLink  to="/shop/product/nioh-3-ps5" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
 
                   </div>
 
@@ -214,90 +186,8 @@ useFetch("/api/wc/products", {
         <div class="swiper-pagination-two"></div>
       </section>
 
-    <!--Featured Section Start-->
-    <div class="content-inner category-section">
-      <div class="container">
-        <div class="row gx-xl-4 g-3">
-          <div
-            class="col-xl-4 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.2s"
-          >
-            <div class="category-product left product-1">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS4.png?w=1080&ssl=1" alt="" />
-                <div class="category-badge">Jeux Video</div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-3 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.3s"
-          >
-            <div class="category-product left product-2">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS0.png?w=572&ssl=1" alt="" />
-                <div class="category-badge">Consoles</div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-5 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.4s"
-          >
-            <div class="category-product left product-3">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2025/04/ARGS99.png?w=1080&ssl=1" alt="" />
-                <div class="category-badge">Jeux d'occasions</div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-4 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.5s"
-          >
-            <div class="category-product right product-4">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS7.png?w=1080&ssl=1" alt="" />
-                <div class="category-badge">Cartes & Abonnement</div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-5 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.6s"
-          >
-            <div class="category-product right product-5">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS129.png?w=1080&ssl=1" alt="" />
-                <div class="category-badge">Accessoires Consoles</div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-3 col-lg-4 col-md-4 col-6 wow fadeInUp"
-            data-wow-delay="0.7s"
-          >
-            <div class="category-product right product-6">
-              <NuxtLink to="/shop-with-category">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS9.png?w=1080&ssl=1" alt="" />
-                <div class="category-badge">Collectors</div>
-              </NuxtLink>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--Featured Section End-->
 
 
-    <section class="content-inner pb-0  overflow-hidden">
-      <div class="container">
-        <NuxtLink to="/shop">
-          <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
-        </NuxtLink>
-      </div>
-    </section>
 
 
 
@@ -318,12 +208,10 @@ useFetch("/api/wc/products", {
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
-            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
-          </div>
+
         </div>
 
-        <ProductSlider variant="info" :products="latestProducts"/>
+        <ProductSlider :products="latestProducts"/>
       </div>
     </section>
     <!-- New Stop-->
@@ -331,7 +219,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Discount Start-->
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 pt-0 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -350,7 +238,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <ProductSlider variant="success" :products="discountProducts"/>
+        <ProductSlider :products="discountProducts"/>
       </div>
     </section>
     <!-- Discount Stop-->
@@ -359,7 +247,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Gameshop hits Start-->
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 pt-0 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -378,7 +266,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <ProductSlider variant="danger" :products="discountProducts"/>
+        <ProductSlider  :products="discountProducts"/>
       </div>
     </section>
     <!-- Gameshop hits Stop-->
@@ -387,7 +275,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Selection Sart-->
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 py-0 overflow-hidden">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -403,15 +291,125 @@ useFetch("/api/wc/products", {
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-4 col-sm-12 text-md-end">
-            <NuxtLink class="btn btn-secondary m-b30" to="/shop">Voir tout</NuxtLink>
-          </div>
+
         </div>
 
-        <ProductSlider variant="warning" :products="latestProducts"/>
+        <ProductSlider :products="latestProducts"/>
       </div>
     </section>
     <!-- Selection Stop-->
+
+
+
+
+    <section class="content-inner pb-0  overflow-hidden">
+      <div class="container-fluid">
+        <NuxtLink to="/shop">
+          <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
+        </NuxtLink>
+      </div>
+    </section>
+
+    <!--Featured Section Start-->
+    <div class="content-inner category-section my-5">
+
+      <div class="container">
+        <div class="clearfix">
+          <ul class=" row g-5">
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/shop?category=815">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-games-Banner.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/shop?category=821">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-Consoles-Banner.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/shop?category=854">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-occasion-Banner.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/shop?category=829">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-accessoires-Banner.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/portfolio-details-1">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/DIGTAL-GS.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+            <li class="card-container col-xl-4 col-lg-4 col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/shop?category=846">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Collector-GS.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+
+            <li class="card-container col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/portfolio-details-1">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+
+            <li class="card-container  col-md-6">
+
+              <div class="dz-media rounded-5">
+                <RouterLink to="/portfolio-details-1">
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Retro-GS.png?w=896&ssl=1" alt="/"  />
+                </RouterLink>
+              </div>
+
+            </li>
+
+
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <!--Featured Section End-->
 
 
     <section class="video-section">
@@ -826,292 +824,58 @@ useFetch("/api/wc/products", {
       </div>
 
       <div class="container-fluid">
-        <div
-          class="tag-slider style-1 wow fadeInUp"
-          data-wow-delay="0.2s"
-          id="tagSlider"
-          style="
-            visibility: visible;
-            animation-delay: 0.2s;
-            animation-name: fadeInUp;
-          "
-        >
+
+
           <div
-            class="item-wrap"
-            :style="`transform: translateX(-${xVal}px); animation-name: slide`"
-            :slides-per-view="6"
+            class="item-wrap g-5 row mt-5"
           >
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
+            <div class="item col-md-4">
+              <NuxtLink to="" class=" rounded-5 overflow-hidden companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" c />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
+            <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
+            <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
+            <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
+            <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
+            <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS18-1.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS18.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS127.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS22.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/hyperx.png?w=230&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/dissney.png?w=230&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/google_play.png?w=230&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/prime.png?w=230&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo5.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo6.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo7.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo8.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo1.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo2.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
+
+
           </div>
         </div>
-        <div
-          class="tag-slider wow fadeInUp"
-          data-wow-delay="0.4s"
-          id="tagSlider2"
-          style="
-            visibility: visible;
-            animation-delay: 0.4s;
-            animation-name: fadeInUp;
-          "
-        >
-          <div
-            class="item-wrap"
-            :style="`transform: translateX(-${1500 - xVal}px)`"
-          >
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS18-1.png?w=448&ssl=1" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo2.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo3.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo4.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo5.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo6.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo7.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo8.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo1.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="../assets/images/companies/logo2.png" alt="" />
-                </div>
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </section>
 
     <!-- Blog Start -->
@@ -1342,3 +1106,22 @@ useFetch("/api/wc/products", {
     <!-- Feature Box End -->
   </div>
 </template>
+
+<style scoped>
+
+.swiper-wrapper,.swiper-slide ,.portfolio-box{
+  min-height: 50vh!important;
+  max-height: 40vh!important;
+}
+
+
+.swiper .dz-media video ,.swiper .dz-media img {
+  min-height: 50vh!important;
+  max-height: 40vh!important;
+  width: 100%;
+  object-fit: cover !important;
+}
+
+
+
+</style>

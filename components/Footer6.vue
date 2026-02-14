@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 <template>
   <footer class="site-footer footer-map footer-dark">
     <!-- Footer Top -->
@@ -7,7 +8,7 @@
         <div class="col-md-4 col-lg-4 col-sm-12 px-0">
           <div class="map-iframe map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.3825624477!2d75.65046970649679!3d26.88544791796718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C+Rajasthan!5e0!3m2!1sen!2sin!4v1500819483219"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1598.8926975884606!2d3.1540340000000002!3d36.727715!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e526db9752f07%3A0x63b2fec8afa5c3e5!2sGame%20Shop!5e0!3m2!1sen!2sus!4v1771103548678!5m2!1sen!2sus"
               style="
                 border: 0;
                 width: 100%;
@@ -28,76 +29,27 @@
                       ><img src="../assets/images/logo-white.svg" alt=""
                     /></NuxtLink>
                   </div>
+                  <p>Magasin spécialisé dans la vente, achat, échange et réparation de jeux video en Algérie.</p>
+                </div>
+              </div>
+              <div class="col-xl-6 col-6">
+                <div class="widget widget_about">
+                  <h5 class="footer-title">Le Magazin</h5>
                   <ul class="widget-address">
                     <li>
-                      <p><span>Address</span> : 451 Wall Street, UK, London</p>
+                      <p><span>Address</span> : 77 Bis 01 Rue Ouled Sidi Chikh Mohammadia, Alger</p>
                     </li>
                     <li>
-                      <p><span>E-mail</span> : example@info.com</p>
+                      <p><span>E-mail</span> : contact@gamezonedz.com</p>
                     </li>
                     <li>
-                      <p><span>Phone</span> : (064) 332-1233</p>
+                      <p><span>Phone</span> : (213) 550-779-973</p>
                     </li>
                   </ul>
-                  <div class="subscribe_widget">
-                    <h6 class="title fw-medium text-capitalize">
-                      subscribe to our newsletter
-                    </h6>
-                    <form
-                      class="dzSubscribe style-1"
-                      action="script/mailchamp.php"
-                      method="post"
-                    >
-                      <div class="dzSubscribeMsg"></div>
-                      <div class="form-group">
-                        <div class="input-group mb-0">
-                          <input
-                            name="dzEmail"
-                            type="email"
-                            class="form-control"
-                            placeholder="Your Email Address"
-                          />
-                          <div class="input-group-addon">
-                            <button
-                              name="submit"
-                              value="Submit"
-                              type="submit"
-                              class="btn"
-                            >
-                              <i class="icon feather icon-arrow-right"></i>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+
                 </div>
               </div>
-              <div class="col-xl-3 col-6">
-                <div class="widget widget_services">
-                  <h5 class="footer-title">Useful Links</h5>
-                  <ul>
-                    <li><NuxtLink to="">Privacy Policy</NuxtLink></li>
-                    <li><NuxtLink to="">Returns</NuxtLink></li>
-                    <li><NuxtLink to="">Terms &amp; Conditions</NuxtLink></li>
-                    <li><NuxtLink to="">Contact Us</NuxtLink></li>
-                    <li><NuxtLink to="">Latest News</NuxtLink></li>
-                    <li><NuxtLink to="">Our Sitemap</NuxtLink></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-xl-3 col-6">
-                <div class="widget widget_services">
-                  <h5 class="footer-title">Footer Menu</h5>
-                  <ul>
-                    <li><NuxtLink to="">Instagram profile</NuxtLink></li>
-                    <li><NuxtLink to="">New Collection</NuxtLink></li>
-                    <li><NuxtLink to="">Woman Dress</NuxtLink></li>
-                    <li><NuxtLink to="">Contact Us</NuxtLink></li>
-                    <li><NuxtLink to="">Latest News</NuxtLink></li>
-                  </ul>
-                </div>
-              </div>
+
             </div>
           </div>
           <!-- Footer Bottom -->
@@ -105,11 +57,10 @@
             <div class="fb-inner">
               <div class="text-start">
                 <p class="copyright-text">
-                  © <span class="current-year">2024</span>
-                  <NuxtLink to="https://www.dexignzone.com/"
-                    >DexignZone</NuxtLink
-                  >
-                  Theme. All Rights Reserved.
+                  ©
+                  <span class="current-year">{{ new Date().getFullYear() }}</span>
+                  <NuxtLink to="https://www.gameshopdz.com/" class="mx-1">GameShopDZ</NuxtLink>
+                  Tous les droits sont réservés.
                 </p>
               </div>
             </div>

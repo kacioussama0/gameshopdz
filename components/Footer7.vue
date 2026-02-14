@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 <template>
   <footer class="site-footer footer-dark">
     <!-- Footer Top -->
@@ -81,17 +82,19 @@
         <div class="row fb-inner">
           <div class="col-lg-6 col-md-12 text-start">
             <p class="copyright-text">
-              © <span class="current-year">2024</span>
-              <NuxtLink to="https://www.dexignzone.com/">DexignZone</NuxtLink>
-              Theme. All Rights Reserved.
+              ©
+              <span class="current-year">{{ new Date().getFullYear() }}</span>
+              <NuxtLink to="https://www.gameshopdz.com/" class="mx-1">GameShopDZ</NuxtLink>
+              Tous les droits sont réservés.
             </p>
           </div>
           <div class="col-lg-6 col-md-12 text-end">
             <div
               class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-lg-end"
             >
-              <span class="me-3">We Accept: </span>
-              <img src="../assets/images/footer-img.png" alt="" />
+              <span class="me-3">Nous acceptons: </span>
+              <img src="https://airalgerie.dz/wp-content/uploads/2022/10/algerie-post.svg" alt="" class="me-3" />
+              <img src="https://airalgerie.dz/wp-content/uploads/2022/10/cib.svg" alt="" />
             </div>
           </div>
         </div>

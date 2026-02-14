@@ -11,8 +11,8 @@ const props = defineProps<{
 
 <template>
 
-        <div class="shop-card bg-white rounded-0 wow fadeInUp" v-if="product">
-          <div class="dz-media position-relative rounded-0 border-1 " :class="`border-${variant ?? 'primary'}`">
+        <div class="shop-card bg-white rounded-0 wow fadeInUp"  v-if="product">
+          <div class="dz-media position-relative rounded-0 border-1 rounded-4" :class="`border-${variant ?? 'primary'}`">
 
             <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" loading="lazy" />
 
