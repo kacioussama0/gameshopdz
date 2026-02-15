@@ -902,233 +902,101 @@ useFetch("/api/wc/products", {
 
     </section>
 
-    <!-- Blog Start -->
+    <!-- Services Start -->
     <section class="content-inner">
       <div class="container">
         <div
           class="section-head style-1 wow fadeInUp d-md-flex justify-content-between align-items-center"
           data-wow-delay="0.1s"
         >
-          <div class="left-content">
-            <h2 class="title">latest Post</h2>
-            <p>Discover the most trending products in Pixio.</p>
-          </div>
-          <NuxtLink class="btn btn-secondary" to="/blog-archive"
-            >View All</NuxtLink
-          >
         </div>
         <div class="row blog-shap">
-          <div
-            class="col-lg-6 col-md-6 col-sm-12 m-lg-b30 m-b50 wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="dz-card blog-half style-6 card-1">
-              <div class="dz-media">
-                <img
-                  src="../assets/images/blog/blogpost-4/pic1.jpg"
-                  alt="/"
-                />
-              </div>
-              <div class="dz-info">
-                <div class="dz-meta">
-                  <ul>
-                    <li class="post-date">18 May 2023</li>
-                  </ul>
-                </div>
-                <h4 class="dz-title">
-                  <NuxtLink to="/blog-both-sidebar"
-                    >Trendsetter Chronicles: Unveiling the Latest in
-                    Fashion</NuxtLink
-                  >
-                </h4>
-                <NuxtLink
-                  to="/blog-both-sidebar"
-                  class="btn btn-theme text-uppercase"
-                  >Read more<i class="fa-solid fa-arrow-right"></i
-                ></NuxtLink>
-              </div>
-            </div>
+          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
+
+            <i class="fa fa-3x fa-shield text-dark"></i>
+            <h3>Garantie Gameshop</h3>
+
           </div>
-          <div
-            class="col-lg-6 col-md-6 col-sm-12 m-lg-b30 m-b50 wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="dz-card blog-half style-6 card-2">
-              <div class="dz-media">
-                <img
-                  src="../assets/images/blog/blogpost-4/pic2.jpg"
-                  alt="/"
-                />
-              </div>
-              <div class="dz-info">
-                <div class="dz-meta">
-                  <ul>
-                    <li class="post-date">15 Aug 2023</li>
-                  </ul>
-                </div>
-                <h4 class="dz-title">
-                  <NuxtLink to="/blog-both-sidebar"
-                    >Runway Rundown: Decoding Fashion Week’s Best
-                    Looks</NuxtLink
-                  >
-                </h4>
-                <NuxtLink
-                  to="/blog-both-sidebar"
-                  class="btn btn-theme text-uppercase"
-                  >Read more<i class="fa-solid fa-arrow-right"></i
-                ></NuxtLink>
-              </div>
-            </div>
+
+
+
+          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
+
+            <i class="fa fa-3x fa-truck-fast text-dark"></i>
+            <h3>Livraision Express</h3>
+
           </div>
-          <div
-            class="col-lg-6 col-md-6 col-sm-12 m-lg-b30 m-b50 wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="dz-card blog-half style-6 card-3">
-              <div class="dz-media">
-                <img
-                  src="../assets/images/blog/blogpost-4/pic3.jpg"
-                  alt="/"
-                />
-              </div>
-              <div class="dz-info">
-                <div class="dz-meta">
-                  <ul>
-                    <li class="post-date">22 Sep 2023</li>
-                  </ul>
-                </div>
-                <h4 class="dz-title">
-                  <NuxtLink to="/blog-both-sidebar"
-                    >loset Confidential: Behind-the-Scenes of a
-                    Fashionista</NuxtLink
-                  >
-                </h4>
-                <NuxtLink
-                  to="/blog-both-sidebar"
-                  class="btn btn-theme text-uppercase"
-                  >Read more<i class="fa-solid fa-arrow-right"></i
-                ></NuxtLink>
-              </div>
-            </div>
+
+          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
+
+            <i class="fa fa-3x fa-users text-dark"></i>
+            <h3>Service Client Dynamique</h3>
+
           </div>
-          <div
-            class="col-lg-6 col-md-6 col-sm-12 m-lg-b30 m-b50 wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="dz-card blog-half style-6 card-4">
-              <div class="dz-media">
-                <img
-                  src="../assets/images/blog/blogpost-4/pic4.jpg"
-                  alt="/"
-                />
-              </div>
-              <div class="dz-info">
-                <div class="dz-meta">
-                  <ul>
-                    <li class="post-date">20 Feb 2023</li>
-                  </ul>
-                </div>
-                <h4 class="dz-title">
-                  <NuxtLink to="/blog-both-sidebar"
-                    >DIY Couture: Crafting Your Own Fashion
-                    Masterpieces</NuxtLink
-                  >
-                </h4>
-                <NuxtLink
-                  to="/blog-both-sidebar"
-                  class="btn btn-theme text-uppercase"
-                  >Read more<i class="fa-solid fa-arrow-right"></i
-                ></NuxtLink>
-              </div>
-            </div>
+
+          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
+
+            <i class="fa fa-3x fa-certificate text-dark"></i>
+            <h3>Produits certifiés</h3>
+
           </div>
+
         </div>
       </div>
     </section>
-    <!-- Blog End -->
+    <!-- Services End -->
 
     <!-- Feature Box -->
     <div class="content-inner py-0 image-wrapper">
-      <div class="container-fluid px-0">
-        <div class="row gx-0">
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.1s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/1.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.2s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/2.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.3s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/3.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.4s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/4.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.5s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/5.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <div
-            class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn"
-            data-wow-delay="0.6s"
-          >
-            <div class="insta-post dz-media dz-img-effect rotate">
-              <NuxtLink to="/portfolio-tiles">
-                <img src="../assets/images/clothe/feature/6.png" alt="" />
-              </NuxtLink>
-            </div>
-          </div>
-          <NuxtLink
-            to="https://www.instagram.com/dexignzone/"
-            class="instagram-link"
-          >
-            <div class="follow-link wow bounceIn" data-wow-delay="0.1s">
-              <div class="follow-link-icon">
-                <img src="../assets/images/insta-follow.png" alt="" />
-              </div>
-              <div class="follow-link-content">
-                <p class="m-0">Follow @Pixio</p>
-              </div>
-            </div>
-          </NuxtLink>
+      <div class="container px-0">
+
+
+        <h3 class="text-center">Rejoignez nous sur nos réseaux officiels</h3>
+
+
+          <ul class="hstack gap-4 align-items-center justify-content-center py-5">
+            <li>
+              <NuxtLink
+                  class="fa-brands fa-3x  fa-facebook"
+                  style="color:#4267B2"
+                  target="_blank"
+                  to="https://www.facebook.com/gameshopdz2"
+              ></NuxtLink>
+            </li>
+
+            <li>
+              <NuxtLink
+                  class="fab fa-3x fa-tiktok"
+                  style="  color: #25F4EE;"
+                  target="_blank"
+                  to="https://www.tiktok.com/@gameshop.dz"
+              ></NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                  style="color: #833AB4"
+                  class="fab fa-3x fa-instagram"
+                  target="_blank"
+                  to="https://www.instagram.com/gameshop.dz/"
+              ></NuxtLink>
+            </li>
+
+            <li>
+              <NuxtLink
+                  style="color: #b8b71c"
+                  class="fab fa-3x fa-snapchat-ghost"
+                  target="_blank"
+                  to="https://www.snapchat.com/add/gameshop.dz?sender_web_id=1626268c-ffd5-4cbb-9b2d-4025523a74d7&device_type=desktop&is_copy_url=true"
+              ></NuxtLink>
+            </li>
+
+          </ul>
         </div>
+
+
       </div>
     </div>
     <!-- Feature Box End -->
-  </div>
 </template>
 
 <style scoped>
@@ -1144,6 +1012,20 @@ useFetch("/api/wc/products", {
   max-height: 40vh!important;
   width: 100%;
   object-fit: cover !important;
+}
+
+@media screen and (max-width: 1440px) {
+  .swiper-wrapper,.swiper-slide ,.portfolio-box{
+    min-height: 60vh!important;
+    max-height: 60vh!important;
+  }
+
+  .swiper .dz-media video ,.swiper .dz-media img {
+    min-height: 60vh!important;
+    max-height: 60vh!important;
+    width: 100%;
+    object-fit: cover !important;
+  }
 }
 
 
