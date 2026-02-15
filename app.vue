@@ -31,6 +31,8 @@ router.afterEach(() => {
     <NuxtLayout>
       <NuxtPage />
       <Footer />
+
+
     </NuxtLayout>
   </div>
 </template>

@@ -8,6 +8,13 @@ const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
 const search = ref("")
 
+useHead({
+  title: 'Gameshopdz - Leader Gaming Shop en Algérie',
+  meta: [
+    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
+  ],
+})
+
 
 
 watch(search,async ()=> {

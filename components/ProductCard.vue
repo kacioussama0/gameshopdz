@@ -25,7 +25,7 @@ const addToCart = async (productId) => {
 <template>
 
         <div class="shop-card bg-white rounded-0 wow fadeInUp"  v-if="product">
-          <div class="dz-media position-relative rounded-0 border-1 h-100" :class="`border-${variant ?? 'primary'}`">
+          <div class="dz-media position-relative rounded-0 shadow-sm h-100" :class="`border-${variant ?? 'primary'}`">
 
             <img :src="product.thumbnail" alt="image" class="image-card" height="250" loading="lazy" />
 

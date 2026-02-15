@@ -7,6 +7,12 @@ import Header3 from "~/components/Header3.vue";
 import {Swiper, SwiperSlide} from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
+useHead({
+  title: 'Gameshopdz - Leader Gaming Shop en Algérie',
+  meta: [
+    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
+  ],
+})
 
 
 const isOpen = ref(false);
@@ -35,6 +41,8 @@ const latestProducts = ref([]);
 const newProducts = ref([]);
 const consoles = ref([])
 const carousel = ref([])
+
+
 
 
 useFetch("/api/wc/products", {
