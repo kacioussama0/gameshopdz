@@ -32,7 +32,7 @@
                   <p>Magasin spécialisé dans la vente, achat, échange et réparation de jeux video en Algérie.</p>
                 </div>
               </div>
-              <div class="col-xl-6 col-6">
+              <div class="col-md-8 col-lg-4 col-sm-12">
                 <div class="widget widget_about">
                   <h5 class="footer-title">Le Magazin</h5>
                   <ul class="widget-address">

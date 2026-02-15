@@ -176,7 +176,7 @@ useFetch("/api/wc/products", {
                       <RouterLink to="/shop/product/nioh-3-ps5">NIOH 3</RouterLink>
                     </h1>
 
-                    <p class="mb-4 w-50 text-light ">NIOH 3 | PS5 Préparez-vous à affronter les ténèbres une nouvelle fois avec Nioh 3, l’évolution ultime du "Masocore" de la Team NINJA, exclusivement conçue pour la PlayStation 5. Plongez dans une version fantastique et brutale de l’histoire …</p>
+                    <p class="mb-4 w-50 text-light  d-none d-lg-block">NIOH 3 | PS5 Préparez-vous à affronter les ténèbres une nouvelle fois avec Nioh 3, l’évolution ultime du "Masocore" de la Team NINJA, exclusivement conçue pour la PlayStation 5. Plongez dans une version fantastique et brutale de l’histoire …</p>
 
                     <RouterLink  to="/shop/product/nioh-3-ps5" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
 

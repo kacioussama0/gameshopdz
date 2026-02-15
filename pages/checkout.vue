@@ -27,12 +27,6 @@ const checkoutSchema = z.object({
   commune: z.string()
       .min(2, "Veuillez sélectionner votre commune"),
 
-  shipping_method: z.object({
-    method_id: z.string().min(1, "Choisissez un mode de livraison"),
-    method_title: z.string(),
-    total: z.number().min(0)
-  }),
-
   terms: z.boolean().refine(val => val === true, {
     message: "Vous devez accepter les conditions"
   }),
@@ -62,16 +56,12 @@ if(!items.value.length) {
   navigateTo('/cart')
 }
 
-
 const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_price)  ?? 0)
 const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
 
 const wilaya = ref(null)
 const commune = ref(null)
-
 const zone = ref({})
-
-
 const form = reactive({
   first_name: '',
   last_name: '',
@@ -82,21 +72,16 @@ const form = reactive({
   acceptedTerms: false,
 
 })
-
 const validateCheckout = () => {
-
   const result = checkoutSchema.safeParse({
     first_name: form.first_name,
     last_name: form.last_name,
     phone: form.phone,
     wilaya: form.wilaya,
     commune: form.commune,
-    shipping_method: selectedMethod.value,
     terms: form.acceptedTerms,
     note: form.note
   })
-
-
 
   if (!result.success) {
     errors.value = {}
@@ -120,11 +105,10 @@ const validateCheckout = () => {
 
 const submitOrder = async () => {
 
-
    if(!validateCheckout()) return;
 
-
     isLoading.value = true
+
     try {
       const order = await useFetch("/api/wc/order", {
         method: "POST",
@@ -168,23 +152,22 @@ const submitOrder = async () => {
 
       })
 
+      await useFetch('/api/wc/cart/clear-cart',{
+        method: "POST"
+      });
+
       navigateTo('/success?orderId=' + order.data.value.id)
+
+
 
     }catch (error) {
       errors.value = {}
     }finally {
       isLoading.value = false
     }
-
-
-
-
-
-
 }
 
 watch(selectedMethod, (newValue, oldValue) => {
-
     totalPrice.value = totalPrice.value + selectedMethod.cost
 })
 
@@ -197,10 +180,7 @@ const communeOptions = ref([
   { value: '', title: 'Veuillez sélectionner votre commune' , disabled: true , selected: true }
 ])
 
-
 function getCommune(wilayaCode) {
-
-
 
   form.commune = null;
   const wilaya = cities.filter((city) => city.wilaya_code === wilayaCode);
