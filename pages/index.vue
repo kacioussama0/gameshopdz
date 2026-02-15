@@ -172,7 +172,7 @@ useFetch("/api/wc/products", {
     <Header3 />
   </header>
 
-  <div class="page-content bg-light mb-5">
+  <div class="page-content bg-light mb-0">
 
     <section class="pt-0 z-index-unset bg-white overflow-hidden">
 
@@ -955,18 +955,18 @@ useFetch("/api/wc/products", {
     <!-- Services End -->
 
     <!-- Feature Box -->
-    <div class="content-inner py-0 image-wrapper">
+    <div class="content-inner py-0  image-wrapper">
       <div class="container px-0">
 
 
         <h3 class="text-center">Rejoignez nous sur nos réseaux officiels</h3>
 
 
-          <ul class="hstack gap-4 align-items-center justify-content-center py-5">
+          <ul class="hstack gap-4 align-items-center justify-content-center social-media py-5">
             <li>
               <NuxtLink
-                  class="fa-brands fa-3x  fa-facebook"
-                  style="color:#4267B2"
+                  class="fa-brands  fa-3x  fa-facebook"
+
                   target="_blank"
                   to="https://www.facebook.com/gameshopdz2"
               ></NuxtLink>
@@ -975,14 +975,14 @@ useFetch("/api/wc/products", {
             <li>
               <NuxtLink
                   class="fab fa-3x fa-tiktok"
-                  style="  color: #25F4EE;"
+
                   target="_blank"
                   to="https://www.tiktok.com/@gameshop.dz"
               ></NuxtLink>
             </li>
             <li>
               <NuxtLink
-                  style="color: #833AB4"
+
                   class="fab fa-3x fa-instagram"
                   target="_blank"
                   to="https://www.instagram.com/gameshop.dz/"
@@ -991,7 +991,7 @@ useFetch("/api/wc/products", {
 
             <li>
               <NuxtLink
-                  style="color: #b8b71c"
+
                   class="fab fa-3x fa-snapchat-ghost"
                   target="_blank"
                   to="https://www.snapchat.com/add/gameshop.dz?sender_web_id=1626268c-ffd5-4cbb-9b2d-4025523a74d7&device_type=desktop&is_copy_url=true"
@@ -1036,6 +1036,34 @@ useFetch("/api/wc/products", {
   }
 }
 
+.social-media  li {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0F1E4A;
+  transition: .3s;
+  cursor: pointer;
+}
 
+.social-media li a {
+  font-size: 25px;
+  color: #ffff;
+}
+
+
+.social-media li:hover {
+
+  background: #FFFFFF;
+  border: 1px solid #0F1E4A;
+}
+
+.social-media li:hover a{
+
+  color: #0F1E4A;
+
+}
 
 </style>
