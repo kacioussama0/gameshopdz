@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     const ck = 'ck_72b4dc376adad9c2bd355b1b9cf448393d83b4e6'
     const cs = 'cs_0b640d5a089e7d9b3b0d7b031b78411a16b68efe'
 
-    if (!base || !key || !secret) {
+    if (!base || !ck || !cs) {
         throw createError({ statusCode: 500, statusMessage: "Missing WC config" })
     }
 
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        return await $fetch(`${base}/wp-json/wc/v3/orders`, {
+        return await $fetch(`${base}/orders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

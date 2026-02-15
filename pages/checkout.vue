@@ -9,7 +9,7 @@ import shipping from "../assets/shipping.json"
 import {navigateTo} from "nuxt/app";
 import { z } from "zod"
 
-
+const isLoading = ref(false);
 const checkoutSchema = z.object({
   first_name: z.string()
       .min(2, "Le prénom est requis")
@@ -45,6 +45,7 @@ const errors = ref<any>({})
 
 
 
+
 const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
   credentials: 'include',
 })
@@ -55,7 +56,7 @@ const items = computed(() => cart.value?.items ?? [])
 
 
 const itemsCount = computed(() => cart.value?.items_count ?? 0)
-const shippingCost = ref(0)
+const selectedMethod = ref({})
 
 if(!items.value.length) {
   navigateTo('/cart')
@@ -63,7 +64,7 @@ if(!items.value.length) {
 
 
 const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_price)  ?? 0)
-const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + shippingCost.value ?? 0)
+const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
 
 const wilaya = ref(null)
 const daira = ref(null)
@@ -71,7 +72,6 @@ const commune = ref(null)
 
 const zone = ref({})
 
-console.log(zone.value)
 
 const form = reactive({
   first_name: '',
@@ -91,7 +91,7 @@ const validateCheckout = () => {
     phone: form.phone,
     wilaya: form.wilaya,
     commune: form.commune,
-    shipping_method: zone.value,
+    shipping_method: selectedMethod.value,
     terms: form.acceptedTerms,
     note: form.note
   })
@@ -114,60 +114,78 @@ const validateCheckout = () => {
 
 }
 
+
+
+
+
 const submitOrder = async () => {
 
-  if(!validateCheckout()) return;
 
-  const order = await $fetch("/api/order", {
-    method: "POST",
-    body: {
-      payment_method: "cod",
-      payment_method_title: "Paiement à la livraison",
+   if(!validateCheckout()) return;
 
-      items: items.value.map(i => ({
-        product_id: i.id,
-        quantity: i.qty,
-        variation_id: i.variation_id || undefined
-      })),
 
-      billing: {
-        first_name: form.first_name,
-        last_name: form.last_name,
-        phone: form.phone,
-        email: "guest@gameshopdz.com",
-        address_1: form.commune,
-        city: form.commune,
-        state: `DZ-${form.wilaya}`,
-        country: "DZ",
-        postcode: "00000"
-      },
+    isLoading.value = true
+    try {
+      const order = await useFetch("/api/wc/order", {
+        method: "POST",
+        body: {
+          payment_method: "cod",
+          payment_method_title: "Paiement à la livraison",
 
-      shipping_address: {
-        first_name: form.first_name,
-        last_name: form.last_name,
-        address_1: form.commune,
-        city: form.commune,
-        state: `DZ-${form.wilaya}`,
-        country: "DZ",
-        postcode: "00000"
-      },
+          items: items.value.map((i: { id: any; quantity: any; variation_id: any; }) => ({
+            product_id: i.id,
+            quantity: i.quantity,
+            variation_id: i.variation_id || null
+          })),
 
-      shipping_method: {
-        method_id: "flat_rate",
-        method_title: zone.value.name,
-        total: zone.value.cost
-      },
+          billing: {
+            first_name: form.first_name,
+            last_name: form.last_name,
+            phone: form.phone,
+            city: form.commune,
+            state: `DZ-${form.wilaya}`,
+            country: "DZ",
+            postcode: "00000"
+          },
 
-      note: form.note
+          shipping: {
+            first_name: form.first_name,
+            last_name: form.last_name,
+            city: form.commune,
+            state: `DZ-${form.wilaya}`,
+            country: "DZ",
+            postcode: "00000"
+          },
+
+          shipping_method: {
+            method_id: "flat_rate",
+            method_title: selectedMethod.value.name,
+            total: selectedMethod.value.cost
+          },
+
+          note: form.note
+        }
+
+      })
+
+      navigateTo('/success?orderId=' + order.data.value.id)
+
+    }catch (error) {
+      errors.value = {}
+    }finally {
+      isLoading.value = false
     }
-  })
 
-  console.log(order)
+
+
+
+
+
 }
 
+watch(selectedMethod, (newValue, oldValue) => {
 
-watch(shippingCost, (newValue, oldValue) => {
-    totalPrice.value = totalPrice.value + newValue
+    totalPrice.value = totalPrice.value + selectedMethod.cost
 })
 
 
@@ -203,7 +221,7 @@ function getCommune(wilayaCode) {
   });
 
   zone.value = shipping[wilayaCode];
-  shippingCost.value = zone.value.methods[0].cost
+  selectedMethod.value = zone.value.methods[0]
 
 
 
@@ -237,7 +255,6 @@ onMounted(() => {
 })
 
 
-
 </script>
 
 <template>
@@ -262,11 +279,11 @@ onMounted(() => {
           <div class="col-xl-8">
             <h4 class="title m-b15">Facturation & Expédition</h4>
 
-            <form class="row">
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-group m-b25">
                   <label class="label-title">Prénom الإ سم <span class="text-danger">*</span></label>
-                  <input  v-model="form.first_name" class="form-control" />
+                  <input  v-model="form.first_name" class="form-control" :disabled="isLoading" />
                   <p v-if="errors.first_name" class="text-danger">
                     {{ errors.first_name }}
                   </p>
@@ -275,7 +292,7 @@ onMounted(() => {
               <div class="col-md-6">
                 <div class="form-group m-b25">
                   <label class="label-title">Nom اللقب <span class="text-danger">*</span></label>
-                  <input v-model="form.last_name"  class="form-control" />
+                  <input v-model="form.last_name"  class="form-control" :disabled="isLoading" />
                   <p v-if="errors.last_name" class="text-danger">
                     {{ errors.last_name }}
                   </p>
@@ -284,7 +301,7 @@ onMounted(() => {
               <div class="col-md-12">
                 <div class="form-group m-b25">
                   <label class="label-title">Téléphone رقم هاتف <span class="text-danger">*</span></label>
-                  <input v-model="form.phone"  class="form-control" />
+                  <input v-model="form.phone"  class="form-control" :disabled="isLoading"/>
                   <p v-if="errors.phone" class="text-danger">
                     {{ errors.phone }}
                   </p>
@@ -295,7 +312,7 @@ onMounted(() => {
               <div class="col-md-12">
                 <div class="m-b25">
                   <label class="label-title">Wilaya / ولاية <span class="text-danger">*</span></label>
-                  <select class="form-control"  v-model="form.wilaya"  @click="getCommune(form.wilaya)">
+                  <select class="form-control"  v-model="form.wilaya"  @click="getCommune(form.wilaya)" :disabled="isLoading">
                     <option v-for="wilaya in wilayaOptions" :value="wilaya.value" :disabled="wilaya.disabled" :selected="wilaya.selected">
                       {{wilaya.title}}
                     </option>
@@ -312,7 +329,7 @@ onMounted(() => {
               <div class="col-md-12">
                 <div class="m-b25">
                   <label class="label-title">Commune البلدية <span class="text-danger">*</span></label>
-                  <select class="form-control" v-model="form.commune" >
+                  <select class="form-control" v-model="form.commune" :disabled="isLoading">
                     <option v-for="commune in communeOptions" :value="commune.value" :disabled="commune.disabled" :selected="commune.selected">
                       {{commune.title}}
                     </option>
@@ -331,10 +348,10 @@ onMounted(() => {
               <div class="col-md-12 m-b25">
                 <div class="form-group">
                   <label class="label-title">معلومات إضافية حول طلبك (facultatif) </label>
-                  <textarea id="comments" v-model="form.note"  placeholder="ملاحظة حول طلبك, إذا لزم الأمر" class="form-control" name="comment" cols="90" rows="5"></textarea>
+                  <textarea id="comments" v-model="form.note" :disabled="isLoading"  placeholder="ملاحظة حول طلبك, إذا لزم الأمر" class="form-control" name="comment" cols="90" rows="5"></textarea>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
           <div class="col-xl-4 side-bar">
             <h4 class="title m-b15">Votre commande</h4>
@@ -364,12 +381,12 @@ onMounted(() => {
                   <tr class="shipping" v-if="zone.methods">
                     <td>
                       <div class="custom-control custom-checkbox" v-for="(method,index) in zone.methods">
-                        <input class="form-check-input radio" type="radio" name="shipping-radio" :checked="index == 0" :id="`shipping-radio-${index+1}`" :value="method.cost" v-model="shippingCost" />
+                        <input class="form-check-input radio" type="radio" name="shipping-radio" :checked="index == 0" :id="`shipping-radio-${index+1}`" :value="method" v-model="selectedMethod" />
                         <label class="form-check-label" :for="`shipping-radio-${index+1}`"> {{method.name}} </label>
                       </div>
 
                     </td>
-                    <td class="price">{{shippingCost}} DA</td>
+                    <td class="price">{{selectedMethod.cost}} DA</td>
                   </tr>
                   <tr class="total">
                     <td>Total</td>
@@ -418,7 +435,7 @@ onMounted(() => {
                   {{ errors.terms }}
                 </p>
               </div>
-              <button @click="validateCheckout"  class="btn btn-secondary w-100">Commander (طلب)</button>
+              <button @click.once="submitOrder"  class="btn btn-secondary w-100" :disabled="isLoading">{{isLoading ? 'Patienter ...' : 'Commander (طلب)'}}</button>
             </div>
           </div>
         </div>
@@ -426,5 +443,5 @@ onMounted(() => {
     </div>
   </div>
 
-  {{form}}
+
 </template>

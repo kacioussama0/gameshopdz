@@ -303,7 +303,7 @@ useFetch("/api/wc/products", {
 
 
     <section class="content-inner pb-0  overflow-hidden">
-      <div class="container-fluid">
+      <div class=" container-md">
         <NuxtLink to="/shop">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
         </NuxtLink>
