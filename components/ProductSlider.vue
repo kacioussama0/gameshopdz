@@ -24,13 +24,12 @@ const props = defineProps<{
       :autoplay="{
         delay: 1500,
       }"
-      :breakpoints="{
 
-        1600: { slidesPerView: 6 },
-        1200: { slidesPerView: 5 },
-        991: { slidesPerView: 3 },
-        500: { slidesPerView: 2 },
-        240: { slidesPerView: 1 },
+      :breakpoints="{
+          1600: { slidesPerView: 4 },
+          991: { slidesPerView: 3 },
+          500: { slidesPerView: 2 },
+          0: { slidesPerView: 1 }
       }"
 
 

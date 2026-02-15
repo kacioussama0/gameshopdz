@@ -124,4 +124,6 @@ const filterHandler = (category: string) => {
 .card-container {
   transition: all 0.5s ease;
 }
+
+
 </style>

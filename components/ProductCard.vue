@@ -12,19 +12,18 @@ const props = defineProps<{
 <template>
 
         <div class="shop-card bg-white rounded-0 wow fadeInUp"  v-if="product">
-          <div class="dz-media position-relative rounded-0 border-1 rounded-4" :class="`border-${variant ?? 'primary'}`">
+          <div class="dz-media position-relative rounded-0 border-1 " :class="`border-${variant ?? 'primary'}`">
 
-            <img :src="product.thumbnail" alt="image" class="img-fluid" height="250" loading="lazy" />
+            <img :src="product.thumbnail" alt="image" class="image-card" height="250" loading="lazy" />
 
             <div class="dz-content d-flex flex-column p-3">
-              <h5 class="mb-1 clamp-text-2 "  style="height: 40px" >
+              <h5 class="mb-1 "  style="min-height: 0px" >
                 <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link"  :class="`text-${variant ?? 'primary'}`">{{ product.name }}</NuxtLink>
               </h5>
 
 
               <span class="price fs-5" :class="`text-${variant ?? 'primary'}`" v-if="!product.on_sale" style="font-size: 16px !important">{{product.price}} DA</span>
               <span class="price text-danger fs-5" v-else><del class="text-muted">{{product.regular_price}} DA</del> {{product.price}} DA</span>
-
 
               <div v-if="showStock">
                  <span class=" text-success fw-bold rounded-pill" v-if="product.stock == 'instock'">
@@ -67,8 +66,24 @@ const props = defineProps<{
   -webkit-line-clamp: 2   ; /* Number of lines to show */
   -webkit-box-orient: vertical;
   line-clamp: 2;
-  font-size: 14px;
 }
+
+
+@media screen and (max-width: 500px) {
+  span {
+    font-size: 12px !important;
+  }
+
+  h5 {
+    font-size: 12px !important;
+  }
+
+  button {
+    display: none;
+    font-size: 8px !important;
+  }
+}
+
 
 
 </style>
