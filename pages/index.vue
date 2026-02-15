@@ -34,7 +34,7 @@ onMounted(() => {
 const latestProducts = ref([]);
 const newProducts = ref([]);
 const consoles = ref([])
-
+const carousel = ref([])
 
 
 useFetch("/api/wc/products", {
@@ -132,6 +132,25 @@ useFetch("/api/wc/products", {
   console.error("Error fetching latest products:", error);
 });
 
+useFetch("/api/wc/products", {
+  query: { per_page: 4, page: 1  ,status:'publish',category: '3039'}
+}).then(( response) => {
+  carousel.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
+    name: product.name,
+    slug: product.slug,
+    images: product.images,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
+
 
 </script>
 
@@ -162,10 +181,10 @@ useFetch("/api/wc/products", {
             nextEl: '.swiper-button-next',
           }"
           >
-            <SwiperSlide class="swiper-slide">
+            <SwiperSlide class="swiper-slide" v-for="product in carousel">
               <div class="portfolio-box style-2 rounded-0">
                 <div class="dz-media">
-                  <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3681010/c65877619b70c51d6be030c20b5c37bcfaf2e248/ss_c65877619b70c51d6be030c20b5c37bcfaf2e248.1920x1080.jpg?t=1770859764" alt="">
+                  <img :src="product.images[1].src" class="img-fluid" alt="">
                 </div>
                 <div class="dz-content justify-content-end">
 
@@ -173,12 +192,12 @@ useFetch("/api/wc/products", {
                   <div class="container">
                     <h6 class="sub-title text-light mb-1 fw-light" style="letter-spacing: 4px">DECOUVREZ</h6>
                     <h1 class="title mb-3">
-                      <RouterLink to="/shop/product/nioh-3-ps5">NIOH 3</RouterLink>
+                      <RouterLink to="/shop/product/nioh-3-ps5">{{product.name}}</RouterLink>
                     </h1>
 
                     <p class="mb-4 w-50 text-light  d-none d-lg-block">NIOH 3 | PS5 Préparez-vous à affronter les ténèbres une nouvelle fois avec Nioh 3, l’évolution ultime du "Masocore" de la Team NINJA, exclusivement conçue pour la PlayStation 5. Plongez dans une version fantastique et brutale de l’histoire …</p>
 
-                    <RouterLink  to="/shop/product/nioh-3-ps5" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
+                    <RouterLink  :to="'/shop/product/' + product.slug" class="btn btn-outline-light mb-5">ACHETEZ MAINTENANT</RouterLink>
 
                   </div>
 
