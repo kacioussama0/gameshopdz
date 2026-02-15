@@ -67,7 +67,6 @@ const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_pric
 const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
 
 const wilaya = ref(null)
-const daira = ref(null)
 const commune = ref(null)
 
 const zone = ref({})
@@ -85,6 +84,7 @@ const form = reactive({
 })
 
 const validateCheckout = () => {
+
   const result = checkoutSchema.safeParse({
     first_name: form.first_name,
     last_name: form.last_name,
@@ -312,7 +312,7 @@ onMounted(() => {
               <div class="col-md-12">
                 <div class="m-b25">
                   <label class="label-title">Wilaya / ولاية <span class="text-danger">*</span></label>
-                  <select class="form-control"  v-model="form.wilaya"  @click="getCommune(form.wilaya)" :disabled="isLoading">
+                  <select class="form-control"  v-model="form.wilaya" @change="getCommune(form.wilaya)" :disabled="isLoading">
                     <option v-for="wilaya in wilayaOptions" :value="wilaya.value" :disabled="wilaya.disabled" :selected="wilaya.selected">
                       {{wilaya.title}}
                     </option>
@@ -378,7 +378,7 @@ onMounted(() => {
                     <td><h6 class="title font-weight-500 mt-3"><i class="fa fa-truck-fast me-2"></i> Mode de livraison</h6></td>
                     <td></td>
                   </tr>
-                  <tr class="shipping" v-if="zone.methods">
+                  <tr class="shipping" v-if="zone != null">
                     <td>
                       <div class="custom-control custom-checkbox" v-for="(method,index) in zone.methods">
                         <input class="form-check-input radio" type="radio" name="shipping-radio" :checked="index == 0" :id="`shipping-radio-${index+1}`" :value="method" v-model="selectedMethod" />

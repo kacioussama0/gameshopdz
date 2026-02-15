@@ -84,6 +84,7 @@ const fetchProducts = async () => {
     totalPages.value = res.totalPages
 
     allProducts.value = res.products.map((product: any) => ({
+      id: product.id,
       name: product.name,
       slug: product.slug,
       thumbnail: product.images?.[0]?.thumbnail || product.images?.[0]?.src || "",
@@ -307,7 +308,7 @@ onMounted(async ()=> {
               </div>
 
 
-              <div class="col-12 col-sm-6 col-xl-3 col-lg-4 col-md-4  m-md-b15 m-b30" v-for="i in 12"  v-else>
+              <div class="col-6 col-xl-3 col-xxxl-2 col-lg-4 col-md-4   m-md-b15 m-b30" v-for="i in 12"  v-else>
 
                 <ProductCardSkeleton  />
 

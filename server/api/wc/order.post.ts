@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
         payment_method: body.payment_method || "cod",
         payment_method_title: body.payment_method_title || "Cash on delivery",
         set_paid: false,
-
+        status: 'processing',
         billing: body.billing,
         shipping: body.shipping,
 

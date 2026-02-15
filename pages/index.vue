@@ -42,6 +42,7 @@ useFetch("/api/wc/products", {
     }).then(( response) => {
 
       latestProducts.value = response.data.value.products.map((product: any) => ({
+        id: product.id,
         name: product.name,
         slug: product.slug,
         thumbnail: product.images[0]?.thumbnail || '',
@@ -59,6 +60,7 @@ useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
 }).then(( response) => {
   latestProducts.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -78,6 +80,7 @@ useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',on_sale:true,stock_status:'instock'}
 }).then(( response) => {
   discountProducts.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -96,6 +99,7 @@ useFetch("/api/wc/products", {
   query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
 }).then(( response) => {
   latestProducts.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -114,6 +118,7 @@ useFetch("/api/wc/products", {
   query: { per_page: 6, page: 2  ,status:'publish',category: '821'}
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',

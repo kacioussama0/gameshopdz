@@ -9,7 +9,7 @@
 
         <div class="shop-card bg-white rounded-0 wow fadeInUp">
 
-              <div class="dz-media position-relative  rounded-4 border-1 border-primary">
+              <div class="dz-media position-relative rounded-0 border-1 border-primary">
 
 
                   <div class="placeholder-glow" >
