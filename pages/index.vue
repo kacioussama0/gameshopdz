@@ -46,7 +46,7 @@ const carousel = ref([])
 
 
 useFetch("/api/wc/products", {
-      query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
+      query: { per_page: 10, page: 1 ,status:'publish',stock_status: 'instock',category: '3035'}
     }).then(( response) => {
 
       latestProducts.value = response.data.value.products.map((product: any) => ({
@@ -104,7 +104,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3035',stock_status:'instock'}
 }).then(( response) => {
   latestProducts.value = response.data.value.products.map((product: any) => ({
     id: product.id,
@@ -123,7 +123,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 6, page: 2  ,status:'publish',category: '821'}
+  query: { per_page: 6, page: 2  ,status:'publish',category: '821',stock_status:'instock'}
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
     id: product.id,
@@ -141,7 +141,7 @@ useFetch("/api/wc/products", {
 });
 
 useFetch("/api/wc/products", {
-  query: { per_page: 4, page: 1  ,status:'publish',category: '3039'}
+  query: { per_page: 4, page: 1  ,status:'publish',category: '3039',stock_status:'instock'}
 }).then(( response) => {
   carousel.value = response.data.value.products.map((product: any) => ({
     id: product.id,
@@ -333,7 +333,7 @@ useFetch("/api/wc/products", {
 
 
 
-    <section class="content-inner pb-0  overflow-hidden">
+    <section class="content-inner pb-0  overflow-hidden d-none d-lg-block">
       <div class=" container-md">
         <NuxtLink to="/shop">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">

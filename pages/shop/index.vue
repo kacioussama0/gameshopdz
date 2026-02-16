@@ -80,7 +80,6 @@ const fetchProducts = async () => {
       query: {
         per_page: perPage.value,
         page: currentPage.value,
-        stock_status: "instock",
         search: search.value,
         category: category.value,
         tag: tag.value
