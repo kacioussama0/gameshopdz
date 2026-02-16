@@ -46,7 +46,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-gamepad me-2"></span>
+        <span class="iconly-Curved-Game me-2"></span>
         <span>Jeux</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -130,7 +130,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
 
-        <span class="fa-brands fa-playstation me-2"></span>
+        <span class="fa-brands iconly-Curved-Bag me-2"></span>
         <span>Consoles</span>
 
       </RouterLink>
@@ -194,7 +194,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-box-open me-2"></span>
+        <span class="iconly-Curved-Discount me-2"></span>
         <span>Occasions</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -250,7 +250,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-headset me-2"></span>
+        <span class="iconly-Curved-Setting me-2"></span>
         <span>Accessoires</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -306,7 +306,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-download me-2"></span>
+        <span class="iconly-Curved-Wallet me-2"></span>
         <span>Digital</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -375,7 +375,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-book-open-reader me-2"></span>
+        <span class="iconly-Curved-Star me-2"></span>
         <span>Collector & Goodies</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -441,7 +441,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-desktop me-2"></span>
+        <span class="iconly-Curved-Category me-2"></span>
         <span>PC</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
@@ -511,7 +511,7 @@ onMounted(() => {
 
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="">
-        <span class="fa fa-camera-retro me-2"></span>
+        <span class="iconly-Curved-TimeCircle me-2"></span>
         <span>Retro</span>
       </RouterLink>
       <div class="mega-menu shop-menu">

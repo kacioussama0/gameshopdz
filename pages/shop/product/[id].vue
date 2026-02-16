@@ -521,7 +521,7 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                 </div>
                 <div class="btn-group cart-btn">
                   <button class="btn btn-secondary text-uppercase rounded-0" @click="addToCart(product.id)" :disabled="product.stock_status != 'instock'">
-                    <i class="fa fa-shopping-cart me-2"></i>
+                    <i class="iconly-Curved-Bag2 me-2"></i>
                     Ajouter Panier
                   </button>
 

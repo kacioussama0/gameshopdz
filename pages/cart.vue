@@ -62,7 +62,7 @@ const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
                 <tbody>
                   <tr v-for="(item, ind) in items" :key="ind">
                     <td class="product-item-img"><img :src="item.images[0].thumbnail" alt="/" /></td>
-                    <td class="product-item-name">{{ item.name }}</td>
+                    <td class="fs-6" style="width: 10%">{{ item.name }}</td>
                     <td class="product-item-price">{{item.prices.price}} DA</td>
                     <td class="product-item-quantity">
                       <div class="quantity btn-quantity style-1 me-3">
@@ -91,26 +91,49 @@ const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
             </div>
           </div>
           <div class="col-lg-4">
-            <h4 class="title mb15">Cart Total</h4>
+            <h4 class="title mb15">Total</h4>
             <div class="cart-detail">
-              <RouterLink to="" class="btn btn-outline-secondary w-100 m-b20">Bank Offer 5% Cashback</RouterLink>
               <div class="icon-bx-wraper style-4 m-b15">
                 <div class="icon-bx">
-                  <i class="flaticon flaticon-ship"></i>
+                  <i class="flaticon flaticon-delivery-truck"></i>
                 </div>
-                <div class="icon-content">
-                  <span class="font-14">FREE</span>
-                  <h6 class="dz-title">Enjoy The Product</h6>
+                <div class="icon-content fw-bolder">
+                  <div class="font-14">Le montant de la livraison comprend les frais de transport , emballage et de service</div>
+                  <div class="font-14">الدفع عند الإستلام يشمل رسوم الخدمة التغليف والشحن</div>
                 </div>
+
+
+
               </div>
-              <div class="icon-bx-wraper style-4 m-b30">
-                <div class="icon-bx">
-                  <img src="../../assets/images/shop/shop-cart/icon-box/pic2.png" alt="/" />
-                </div>
-                <div class="icon-content">
-                  <h6 class="dz-title">Enjoy The Product</h6>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                </div>
+
+              <div class=" text-center mb-3 hstack align-items-center gap-3 wow fadeInUp">
+
+                <i class="iconly-Curved-ShieldDone text-dark"></i>
+                <h5 class="mb-0">Garantie Gameshop</h5>
+
+              </div>
+
+
+
+              <div class=" text-center mb-3 hstack gap-3  wow fadeInUp">
+
+                <i class="iconly-Curved-TimeSquare text-dark"></i>
+                <h5 class="mb-0">Livraision Express</h5>
+
+              </div>
+
+              <div class=" text-center mb-3 hstack gap-3  wow fadeInUp">
+
+                <i class="iconly-Curved-User text-dark"></i>
+                <h5 class="mb-0">Service Client Dynamique</h5>
+
+              </div>
+
+              <div class=" text-center mb-3 hstack gap-3 wow fadeInUp">
+
+                <i class="iconly-Curved-Star text-dark"></i>
+                <h5 class="mb-0">Produits certifiés</h5>
+
               </div>
 
               <table>

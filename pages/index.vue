@@ -233,8 +233,8 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-info">
-                  <i class="fa fa-plus me-1"></i>
+                <h2 class="title">
+                  <i class="iconly-Curved-Plus me-1"></i>
                   Nouveautés
                 </h2>
               </div>
@@ -260,8 +260,8 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-success" >
-                  <i class="fa fa-percentage me-1"></i>
+                <h2 class="title " >
+                  <i class="iconly-Curved-Discount me-1"></i>
                   Promotion
                 </h2>
               </div>
@@ -288,8 +288,8 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-danger" >
-                  <i class="fa fa-gamepad me-1"></i>
+                <h2 class="title" >
+                  <i class="iconly-Curved-Game me-1"></i>
                   Gameshop Hits
                 </h2>
               </div>
@@ -316,8 +316,8 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title text-warning">
-                  <i class="fa fa-star me-1"></i>
+                <h2 class="title ">
+                  <i class="iconly-Curved-TicketStar me-1"></i>
                   Notre Sélection
                 </h2>
               </div>
