@@ -73,10 +73,11 @@
     <!-- Footer Top End -->
 
     <section class="position-fixed bottom-0 end-0 w-100 border-top d-block d-lg-none bg-white z-3 ">
-      <div class="d-flex justify-content-between align-items-center container w-100 py-3">
-        <NuxtLink to="/"><i class="fa fa-home text-dark fa-2xl"></i></NuxtLink>
-        <NuxtLink to="/shop"><i class="fa fa-search  text-dark  fa-2xl"></i></NuxtLink>
-        <NuxtLink to="/contact"><i class="fa fa-cart-shopping fa-2xl  text-dark "></i></NuxtLink>
+      <div class="d-flex justify-content-between  align-items-center container w-100 py-3">
+        <NuxtLink to="/" class="vstack text-dark align-items-center"><i class="iconly-Curved-Home text-dark"></i>Accueil</NuxtLink>
+        <NuxtLink to="/shop" class="vstack text-dark align-items-center"><i class="iconly-Curved-Search text-dark"></i>Recharche</NuxtLink>
+        <NuxtLink to="/contact" class="vstack text-dark align-items-center"><i class="iconly-Curved-Bag2 text-dark "></i>Shop</NuxtLink>
+        <NuxtLink to="/contact" class="vstack text-dark align-items-center"><i class="iconly-Curved-Call text-dark "></i>Contact</NuxtLink>
       </div>
     </section>
 

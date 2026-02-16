@@ -63,18 +63,32 @@ onUnmounted(() => {
         </div>
 
         <!-- Nav Toggle Button -->
-        <button
-          :class="`navbar-toggler collapsed navicon justify-content-end ${
+        <div class="d-flex flex-row-reverse align-items-center">
+          <button
+              :class="`navbar-toggler rounded-3 collapsed navicon justify-content-end ${
             isMenu ? 'open' : ''
           }`"
-          type="button"
-          @click="isMenu = !isMenu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+              type="button"
+              @click="isMenu = !isMenu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
 
+          <span class="cart-link position-relative">
+          <NuxtLink
+              to="/shop"
+              class="cart-btn"
+
+          >
+            <i class="iconly-Broken-Buy" ></i>
+            <span class="badge  position-absolute top-0 end-0" style="font-size: 8px"> {{itemsCount}}</span>
+
+          </NuxtLink>
+        </span>
+
+        </div>
         <!-- Main Nav -->
         <div
           :class="`header-nav  justify-content-between navbar-collapse  ${
@@ -127,7 +141,6 @@ onUnmounted(() => {
         <div class="extra-nav">
           <div class="extra-cell">
             <ul class="header-right">
-
               <li class="nav-item search-link">
                 <NuxtLink
                   class="nav-link"
@@ -140,7 +153,7 @@ onUnmounted(() => {
                   <i class="iconly-Light-Search"></i>
                 </NuxtLink>
               </li>
-              <li class="nav-item cart-link">
+              <li class="nav-item cart-link ">
                 <NuxtLink
                   to="/shop-cart"
                   class="nav-link cart-btn"
@@ -349,3 +362,12 @@ onUnmounted(() => {
 
   <Canvas />
 </template>
+
+
+<style scoped>
+
+.cart-link {
+  display: block !important;
+}
+
+</style>
