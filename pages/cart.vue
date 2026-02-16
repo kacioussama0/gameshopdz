@@ -37,14 +37,19 @@ const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
 
 
   <div class="page-content bg-light">
-    <!--Banner Start-->
-    <CommonBanner :img="bg" name="Accueil" title="Panier" />
-    <!--Banner End-->
+
+
 
     <!-- contact area -->
     <section class="content-inner shop-account">
       <!-- Product -->
       <div class="container">
+
+        <h1 class="fw-bolder mb-4">
+          <i class="iconly-Curved-Bag" style="font-size: 30px"></i>
+          Panier
+        </h1>
+
         <div class="row">
           <div class="col-lg-8">
             <div class="table-responsive">

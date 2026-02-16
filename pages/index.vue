@@ -215,7 +215,6 @@ useFetch("/api/wc/products", {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div class="swiper-pagination-two"></div>
       </section>
 
 
@@ -1035,6 +1034,22 @@ useFetch("/api/wc/products", {
     object-fit: cover !important;
   }
 }
+
+
+@media screen and (max-width: 767px) {
+  .swiper-wrapper,.swiper-slide ,.portfolio-box{
+    min-height: 40vh!important;
+    max-height: 40vh!important;
+  }
+
+  .swiper .dz-media video ,.swiper .dz-media img {
+    min-height: 40vh!important;
+    max-height: 40vh!important;
+    width: 100%;
+    object-fit: cover !important;
+  }
+}
+
 
 .social-media  li {
   width: 60px;

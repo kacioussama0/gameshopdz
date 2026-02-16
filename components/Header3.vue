@@ -76,7 +76,7 @@ onUnmounted(() => {
             <span></span>
           </button>
 
-          <span class="cart-link position-relative">
+          <span class="d-md-none d-block">
           <NuxtLink
               to="/shop"
               class="cart-btn"
