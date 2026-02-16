@@ -59,7 +59,7 @@ useFetch("/api/wc/categories").then(( response) => {
                     <span class="badge badge-primary"></span>
                   </RouterLink>
                 </div>
-                <h4 class="title"><RouterLink :to="'/shop?category='+ category.id">{{category.name}}</RouterLink></h4>
+                <h4 class="title"><RouterLink class="stretched-link" :to="'/shop?category='+ category.id">{{category.name}}</RouterLink></h4>
               </div>
             </div>
           </div>
