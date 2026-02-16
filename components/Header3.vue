@@ -65,7 +65,7 @@ onUnmounted(() => {
         <!-- Nav Toggle Button -->
         <div class="d-flex flex-row-reverse align-items-center">
           <button
-              :class="`navbar-toggler rounded-3 collapsed navicon justify-content-end ${
+              :class="`navbar-toggler rounded-2 collapsed navicon justify-content-end ${
             isMenu ? 'open' : ''
           }`"
               type="button"
@@ -80,10 +80,8 @@ onUnmounted(() => {
           <NuxtLink
               to="/shop"
               class="cart-btn"
-
           >
             <i class="iconly-Broken-Buy" ></i>
-            <span class="badge  position-absolute top-0 end-0" style="font-size: 8px"> {{itemsCount}}</span>
 
           </NuxtLink>
         </span>
@@ -369,5 +367,7 @@ onUnmounted(() => {
 .cart-link {
   display: block !important;
 }
+
+
 
 </style>
