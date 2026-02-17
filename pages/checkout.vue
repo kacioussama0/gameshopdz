@@ -246,13 +246,17 @@ onMounted(() => {
 
 
   <div class="page-content bg-light">
-    <!--Banner Start-->
-    <CommonBanner :img="bg" name="Home" title="Validation de la commande" />
-    <!--Banner End-->
+
+
 
     <!-- inner page banner End-->
     <div class="content-inner-1">
       <div class="container">
+        <h1 class="mb-5">
+          <img src="/assets/checkout-astro.png" alt="" width="50px">
+          Validation de la commande
+        </h1>
+
         <div class="row shop-checkout">
           <div class="col-xl-8">
             <h4 class="title m-b15">Facturation & Expédition</h4>

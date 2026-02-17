@@ -45,10 +45,11 @@ const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
       <!-- Product -->
       <div class="container">
 
-        <h1 class="fw-bolder mb-4">
-          <i class="iconly-Curved-Bag" style="font-size: 30px"></i>
-          Panier
+        <h1 class="mb-5">
+          <img src="/assets/images/astro-cart.png" alt="" width="50px">
+          Validation de la commande
         </h1>
+
 
         <div class="row">
           <div class="col-lg-8">
