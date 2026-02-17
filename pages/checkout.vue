@@ -8,6 +8,7 @@ import cities from '../assets/cities.json'
 import shipping from "../assets/shipping.json"
 import {navigateTo} from "nuxt/app";
 import { z } from "zod"
+import {useWcCart} from "#imports";
 
 const isLoading = ref(false);
 const checkoutSchema = z.object({
@@ -151,9 +152,7 @@ const submitOrder = async () => {
 
       })
 
-      await useFetch('/api/wc/cart/clear-cart',{
-        method: "POST"
-      });
+      useWcCart().clearCart()
 
       navigateTo('/success?orderId=' + order.data.value.id)
 
@@ -252,10 +251,13 @@ onMounted(() => {
     <!-- inner page banner End-->
     <div class="content-inner-1">
       <div class="container">
-        <h1 class="mb-5">
-          <img src="/assets/checkout-astro.png" alt="" width="50px">
-          Validation de la commande
-        </h1>
+
+        <span class="d-flex align-items-center mb-5">
+          <img src="/assets/checkout-astro.png" alt="" width="80px">
+          <h1>
+            Validation de la commande
+          </h1>
+        </span>
 
         <div class="row shop-checkout">
           <div class="col-xl-8">
