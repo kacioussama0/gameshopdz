@@ -102,7 +102,6 @@ const validateCheckout = () => {
 
 
 
-
 const submitOrder = async () => {
 
    if(!validateCheckout()) return;
@@ -157,7 +156,6 @@ const submitOrder = async () => {
       });
 
       navigateTo('/success?orderId=' + order.data.value.id)
-
 
 
     }catch (error) {
@@ -415,7 +413,7 @@ onMounted(() => {
                   {{ errors.terms }}
                 </p>
               </div>
-              <button @click.once="submitOrder"  class="btn btn-secondary w-100" :disabled="isLoading">{{isLoading ? 'Patienter ...' : 'Commander (طلب)'}}</button>
+              <button @click="submitOrder"  class="btn btn-secondary w-100" :disabled="isLoading">{{isLoading ? 'Patienter ...' : 'Commander (طلب)'}}</button>
             </div>
           </div>
         </div>

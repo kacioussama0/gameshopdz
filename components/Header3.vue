@@ -153,7 +153,7 @@ onUnmounted(() => {
               </li>
               <li class="nav-item cart-link ">
                 <NuxtLink
-                  to="/shop-cart"
+                  to="/cart"
                   class="nav-link cart-btn"
 
                 >

@@ -3,6 +3,7 @@ import CommonBanner from "@/elements/CommonBanner.vue";
 import bg from "@/assets/images/background/bg1.jpg";
 import MyAccountSidebar from "@/elements/MyAccountSidebar.vue";
 import Header from "~/components/Header.vue";
+import Header3 from "~/components/Header3.vue";
 
 
 const route = useRoute();
@@ -11,28 +12,67 @@ const orderId = route.query.orderId
 </script>
 
 <template>
-  <header class="site-header mo-left header">
-    <Header />
+  <header class="site-header mo-left header style-2">
+    <Header3 />
   </header>
   <div class="page-content bg-light">
-    <!--Banner Start-->
-    <CommonBanner :img="bg" name="Home" title="Commande reçue" />
-    <!--Banner End-->
-
-
 
 
     <div class="content-inner-1">
       <div class="container">
 
         <div class="confirmation-card account-card">
-          <div class="thumb">
-            <img src="assets/images/confirmation.png" alt="" />
+          <div class="thumb d-flex justify-content-center align-items-center  ">
+            <img src="assets/images/sucess-checkout.webp"  alt="" />
           </div>
           <div class="text-center mt-4">
-            <h4 class="mb-3 text-capitalize">Votre commande est terminée !</h4>
-            <p class="mb-2">Nous vous contacterons également par téléphone afin de confirmer votre commande et organiser son expédition.</p>
-            <p class="mb-0">ID de commande : {{orderId}}</p>
+            <h4 class="mb-1 text-capitalize">
+              <i class="fa fa-check-circle text-success fa-1 me-1"></i>
+              Merci pour votre commande !
+            </h4>
+            <p class="mb-2">Notre avons bien reçu votre demande.</p>
+
+            <div class="alert alert-warning">
+              <h4 class="alert-heading">
+                <i class="fa fa-warning"></i>
+                Important
+              </h4>
+              <p class="mb-0">Si nous ne parvenons pas à vous joindre, la commande pourra être annulée.</p>
+
+            </div>
+
+<!--            <p class="mb-0">ID de commande : {{orderId}}</p>-->
+            <div class="row my-5">
+
+              <div class="col-md-4">
+               <div class="card">
+                 <div class="card-body">
+                   <i class="iconly-Broken-TwoUsers me-2"></i>
+                   <p>Notre équipe vous contactera bientôt pour confirmer votre commande.</p>
+                 </div>
+               </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <i class="iconly-Broken-Bag me-2"></i>
+                    <p>Votre commande sera préparé et expédié rapidement.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <i class="iconly-Broken-Buy me-2"></i>
+                    <p>Le paiement se fait à la livraison (Cash on Delivery)</p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
             <div class="mt-4 d-sm-flex gap-3 justify-content-center">
               <RouterLink to="/account-order-details" class="btn my-1 btn-secondary">Voir la commande</RouterLink>
               <RouterLink to="/" class="btn btn-outline-secondary my-1 btnhover20">Retour à l’accueil</RouterLink>
