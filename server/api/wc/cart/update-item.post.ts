@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
      */
 
     const res = await $fetch.raw(
-        "https://gameshopdz.com/wp-json/wc/store/cart/update-item",
+        "https://woo.gameshopdz.com/wp-json/wc/store/cart/update-item",
         {
             method: "POST",
             headers: {

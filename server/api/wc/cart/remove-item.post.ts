@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     const cartToken = getCookie(event, "wc_cart_token") || ""
     const nonce = getCookie(event, "wc_cart_nonce") || ""
 
-    const res = await $fetch.raw("https://gameshopdz.com/wp-json/wc/store/cart/remove-item", {
+    const res = await $fetch.raw("https://woo.gameshopdz.com/wp-json/wc/store/cart/remove-item", {
         method: "POST",
         headers: {
             cookie,

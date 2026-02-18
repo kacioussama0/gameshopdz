@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
     const cookie = getHeader(event, "cookie") || ""
 
-    const res = await $fetch.raw("https://gameshopdz.com/wp-json/wc/store/cart", {
+    const res = await $fetch.raw("https://woo.gameshopdz.com/wp-json/wc/store/cart", {
         method: "GET",
         headers: { cookie },
         credentials: "include",
