@@ -18,6 +18,7 @@ useHead({
 const isOpen = ref(false);
 
 const discountProducts = ref([]);
+const hitsProducts = ref([])
 const openVideo = () => {
   isOpen.value = true;
 };
@@ -65,9 +66,9 @@ useFetch("/api/wc/products", {
 });
 
 useFetch("/api/wc/products", {
-  query: { per_page: 10, page: 1 ,status:'publish',category: '3035'}
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3040'}
 }).then(( response) => {
-  latestProducts.value = response.data.value.products.map((product: any) => ({
+  hitsProducts.value = response.data.value.products.map((product: any) => ({
     id: product.id,
     name: product.name,
     slug: product.slug,
@@ -135,7 +136,7 @@ useFetch("/api/wc/products", {
     regular_price: product.regular_price,
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
-  }));
+  }));z
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
@@ -297,7 +298,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <ProductSlider  :products="discountProducts"/>
+        <ProductSlider  :products="hitsProducts"/>
       </div>
     </section>
     <!-- Gameshop hits Stop-->
