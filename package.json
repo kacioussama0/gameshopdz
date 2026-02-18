@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxi build",
+    "build": "npm run build",
     "dev": "nuxi dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
