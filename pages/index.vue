@@ -123,7 +123,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 6, page: 2  ,status:'publish',category: '821',stock_status:'instock'}
+  query: { per_page: 6, page: 1  ,status:'publish',category: '821',stock_status:'instock'}
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
     id: product.id,
