@@ -26,7 +26,7 @@ const orderId = route.query.orderId
             Jouez Avec Game Shop !
           </h1>
           <div class="thumb d-flex justify-content-center align-items-center  ">
-            <img src="assets/images/sucess-checkout.webp"  alt="" />
+            <img src="../assets/images/sucess-checkout.webp"  alt="" />
           </div>
           <div class="text-center mt-4">
             <h4 class="mb-1 text-capitalize">
