@@ -17,8 +17,7 @@ useHead({
 
 const isOpen = ref(false);
 
-const discountProducts = ref([]);
-const hitsProducts = ref([])
+
 const openVideo = () => {
   isOpen.value = true;
 };
@@ -38,10 +37,12 @@ onMounted(() => {
   }, 10);
 });
 
-const latestProducts = ref([]);
+const ourSelection = ref([]);
 const newProducts = ref([]);
 const consoles = ref([])
 const carousel = ref([])
+const discountProducts = ref([]);
+const hitsProducts = ref([])
 
 
 
@@ -50,7 +51,7 @@ useFetch("/api/wc/products", {
       query: { per_page: 10, page: 1 ,status:'publish',stock_status: 'instock',category: '3035'}
     }).then(( response) => {
 
-      latestProducts.value = response.data.value.products.map((product: any) => ({
+  newProducts.value = response.data.value.products.map((product: any) => ({
         id: product.id,
         name: product.name,
         slug: product.slug,
@@ -105,9 +106,9 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 10, page: 1 ,status:'publish',category: '3035',stock_status:'instock'}
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3041',stock_status:'instock'}
 }).then(( response) => {
-  latestProducts.value = response.data.value.products.map((product: any) => ({
+  ourSelection.value = response.data.value.products.map((product: any) => ({
     id: product.id,
     name: product.name,
     slug: product.slug,
@@ -164,18 +165,14 @@ useFetch("/api/wc/products", {
 </script>
 
 <template>
-  <ModelVideo
-    :isClose="closeModel"
-    :isVideoModalOpen="isOpen"
-    videoId="YwYoyQ1JdpQ"
-  />
+
   <header class="site-header mo-left header style-2">
     <Header3 />
   </header>
 
   <div class="page-content bg-light mb-0">
 
-    <section class="pt-0 z-index-unset bg-white overflow-hidden">
+    <section class="pt-0 z-index-unset bg-white overflow-hidden" v-if="carousel.length">
 
         <div class="container-fluid p-0">
           <Swiper
@@ -224,7 +221,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- New Sart-->
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 overflow-hidden" v-if="newProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -242,8 +239,7 @@ useFetch("/api/wc/products", {
           </div>
 
         </div>
-
-        <ProductSlider :products="latestProducts"/>
+        <ProductSlider :products="newProducts"/>
       </div>
     </section>
     <!-- New Stop-->
@@ -251,7 +247,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Discount Start-->
-    <section class="content-inner-1 pt-0 overflow-hidden">
+    <section class="content-inner-1 pt-0 overflow-hidden" v-if="discountProducts">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -279,7 +275,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Gameshop hits Start-->
-    <section class="content-inner-1 pt-0 overflow-hidden">
+    <section class="content-inner-1 pt-0 overflow-hidden" v-if="hitsProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -307,7 +303,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Selection Sart-->
-    <section class="content-inner-1 py-0 overflow-hidden">
+    <section class="content-inner-1 py-0 overflow-hidden" v-if="ourSelection.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -326,7 +322,7 @@ useFetch("/api/wc/products", {
 
         </div>
 
-        <ProductSlider :products="latestProducts"/>
+        <ProductSlider :products="ourSelection"/>
       </div>
     </section>
     <!-- Selection Stop-->
@@ -450,7 +446,7 @@ useFetch("/api/wc/products", {
         :style="`background-image: url(https://lh3.googleusercontent.com/p/AF1QipN19apdG8TofDnbwxWFcRNsYi1oSl2YzxrwbsdL=s1360-w1360-h1020-rw)`"
       >
         <div class="container">
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center d-none">
             <NuxtLink
               class="icon-button popup-youtube"
               to=""
