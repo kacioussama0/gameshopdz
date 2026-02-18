@@ -15,7 +15,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@types/isotope-layout": "^3.0.14",
-    "apexcharts": "^3.54.0",
+    "apexcharts": "^4.0.0",
     "bootstrap": "^5.3.3",
     "countup.js": "^2.8.0",
     "lg-thumbnail": "^1.2.1",
@@ -26,7 +26,7 @@
     "vue": "latest",
     "vue-countup-v3": "^1.4.2",
     "vue-router": "latest",
-    "vue3-apexcharts": "^1.6.0",
+    "vue3-apexcharts": "^1.10.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
