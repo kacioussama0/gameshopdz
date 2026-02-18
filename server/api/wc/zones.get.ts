@@ -7,7 +7,7 @@ export default defineEventHandler(async () => {
         'Basic ' +
         Buffer.from(`${ck}:${cs}`).toString('base64')
 
-    const base = 'https://gameshopdz.com/wp-json/wc/v3' // مثال: https://gameshopdz.com/wp-json/wc/v3
+    const base = 'https://woo.gameshopdz.com/wp-json/wc/v3' // مثال: https://gameshopdz.com/wp-json/wc/v3
 
     // 1) zones
     const zones = await $fetch(

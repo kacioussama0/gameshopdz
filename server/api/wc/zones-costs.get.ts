@@ -18,7 +18,7 @@ function getWilayaNumber(code: string): string | null {
 
 function getBasicAuth() {
 
-    const base = 'https://gameshopdz.com/wp-json/wc/v3' // https://example.com/wp-json/wc/v3
+    const base = 'https://woo.gameshopdz.com/wp-json/wc/v3' // https://example.com/wp-json/wc/v3
     const key = 'ck_72b4dc376adad9c2bd355b1b9cf448393d83b4e6'
     const secret = 'cs_0b640d5a089e7d9b3b0d7b031b78411a16b68efe'
     if (!base || !key || !secret) {

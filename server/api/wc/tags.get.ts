@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     const cs = 'cs_0b640d5a089e7d9b3b0d7b031b78411a16b68efe'
 
     const response = await $fetch.raw(
-        'https://gameshopdz.com/wp-json/wc/v3/products/tags',
+        'https://woo.gameshopdz.com/wp-json/wc/v3/products/tags',
         {
             query: {
                 per_page: 100,
