@@ -6,6 +6,8 @@ import ShopSidebar from "~/elements/ShopSidebar.vue";
 const route = useRoute()
 const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
+const brand = computed(() => route.query.brand as string | undefined)
+
 const search = ref("")
 
 useHead({
@@ -23,6 +25,16 @@ watch(search,async ()=> {
 
 
 watch(category, async () => {
+  await fetchProducts()
+})
+
+
+watch(tag, async () => {
+  await fetchProducts()
+})
+
+
+watch(brand, async () => {
   await fetchProducts()
 })
 
@@ -82,7 +94,8 @@ const fetchProducts = async () => {
         page: currentPage.value,
         search: search.value,
         category: category.value,
-        tag: tag.value
+        tag: tag.value,
+        brand: brand.value,
       },
     })
 

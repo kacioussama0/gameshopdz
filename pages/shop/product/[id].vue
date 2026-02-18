@@ -24,7 +24,7 @@ const addToCart = async (productId) => {
 
     addedCart.value = true
 
-    return await useWcCart().addItem(productId)
+    return await useWcCart().addItem(productId,qty.value)
 
   }catch (error) {
     console.log(error)
