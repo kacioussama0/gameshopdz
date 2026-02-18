@@ -8,11 +8,9 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
-  nitro: {
-    preset: 'static'
-  },
+  nitro: { preset: 'node-server' },
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: [
     "lightgallery/css/lg-zoom.css",
     "lightgallery/css/lg-thumbnail.css",
