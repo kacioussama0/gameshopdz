@@ -168,17 +168,17 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                 </SwiperSlide>
               </Swiper>
               <!-- @vue-skip -->
-              <Swiper
-                  class="swiper product-gallery-swiper thumb-swiper-lg swiper-vertical"
-                  :modules="[Thumbs]"
-                  watch-slides-progress
-                  @swiper="setThumbsSwiper"
-              >
-                <SwiperSlide class="swiper-slide" v-for="(img, ind) in product.images">
-                  <img :src="img.thumbnail" alt="image" />
-                </SwiperSlide>
+<!--              <Swiper-->
+<!--                  class="swiper product-gallery-swiper thumb-swiper-lg swiper-vertical overf"-->
+<!--                  :modules="[Thumbs]"-->
+<!--                  watch-slides-progress-->
+<!--                  @swiper="setThumbsSwiper"-->
+<!--              >-->
+<!--                <SwiperSlide class="swiper-slide" v-for="(img, ind) in product.images">-->
+<!--                  <img :src="img.thumbnail" alt="image" />-->
+<!--                </SwiperSlide>-->
 
-              </Swiper>
+<!--              </Swiper>-->
               <!-- </Lightgallery> -->
             </div>
           </div>

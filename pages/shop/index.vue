@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import ShopSidebar from "~/elements/ShopSidebar.vue";
+import {use} from "h3";
 
 
 const route = useRoute()
@@ -18,10 +19,20 @@ useHead({
 })
 
 
+const searchProduct = async ()=> {
 
-watch(search,async ()=> {
-  await fetchProducts()
-})
+  const response = useFetch('https://woo.gameshopdz.com/fibosearch/?s=' + search.value)
+
+
+  const filtredIds = response.data.value.suggestions.filter((product) => {
+      return product.type == 'product' && product.post_id != ''
+    }).map((product) => {return product.post_id});
+
+  await fetchProducts(filtredIds)
+};
+
+
+
 
 
 watch(category, async () => {
@@ -81,7 +92,7 @@ const paginationItems = computed(() => {
   return pages
 })
 
-const fetchProducts = async () => {
+const fetchProducts = async (productIds = []) => {
 
 
   try {
@@ -92,10 +103,10 @@ const fetchProducts = async () => {
       query: {
         per_page: perPage.value,
         page: currentPage.value,
-        search: search.value,
         category: category.value,
         tag: tag.value,
         brand: brand.value,
+        include: productIds.join(',')
       },
     })
 
@@ -277,7 +288,7 @@ onMounted(async ()=> {
             <div class="widget widget_search ">
               <div class="form-group">
                 <div class="input-group">
-                  <input name="dzSearch" required type="search" v-model="search"  class="form-control" placeholder="Rechercher un produit...." />
+                  <input name="dzSearch" required type="search" @input="searchProduct" v-model="search"  class="form-control" placeholder="Rechercher un produit...." />
                   <div class="input-group-addon">
                     <button name="submit" value="Submit" type="submit" class="btn">
                       <i class="icon feather icon-search"></i>
