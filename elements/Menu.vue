@@ -437,73 +437,73 @@ onMounted(() => {
       </div>
     </li>
 
-    <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="">
-        <span class="iconly-Curved-Category me-2"></span>
-        <span>PC</span>
-      </RouterLink>
-      <div class="mega-menu shop-menu">
-        <div class="row">
+<!--    <li class="has-mega-menu sub-menu-down">-->
+<!--      <RouterLink to="">-->
+<!--        <span class="iconly-Curved-Category me-2"></span>-->
+<!--        <span>PC</span>-->
+<!--      </RouterLink>-->
+<!--      <div class="mega-menu shop-menu">-->
+<!--        <div class="row">-->
 
 
-            <div class="col-lg-8 col-md-12 col-sm-12">
-            <div class="row">
+<!--            <div class="col-lg-8 col-md-12 col-sm-12">-->
+<!--            <div class="row">-->
 
-              <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Composants PC</RouterLink>
-                <ul>
-                  <li><RouterLink to="/shop?tag=2358">Processeur CPU</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=92">Carte Graphique GPU</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=685">RAM</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1106">SSD</RouterLink></li>
-                  <li><RouterLink to="/shop?search=carte+mere">Carte Mere</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=572">Alimentation PC</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1323">Boitier / Case</RouterLink></li>
-                </ul>
+<!--              <div class="col-md-4 col-sm-6">-->
+<!--                <RouterLink to="" class="menu-title">Composants PC</RouterLink>-->
+<!--                <ul>-->
+<!--                  <li><RouterLink to="/shop?tag=2358">Processeur CPU</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=92">Carte Graphique GPU</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=685">RAM</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=1106">SSD</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?search=carte+mere">Carte Mere</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=572">Alimentation PC</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=1323">Boitier / Case</RouterLink></li>-->
+<!--                </ul>-->
 
-              </div>
+<!--              </div>-->
 
-              <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Périphérique PC</RouterLink>
-                <ul>
-                  <li><RouterLink to="/shop?tag=1614">Ecrans PC / Moniteurs</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=43">Clavier</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=585">Souris</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=562">Casque</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=676">Tapis de souris</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2731">Support Casque</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=913">Microphones</RouterLink></li>
-                </ul>
-              </div>
+<!--              <div class="col-md-4 col-sm-6">-->
+<!--                <RouterLink to="" class="menu-title">Périphérique PC</RouterLink>-->
+<!--                <ul>-->
+<!--                  <li><RouterLink to="/shop?tag=1614">Ecrans PC / Moniteurs</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=43">Clavier</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=585">Souris</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=562">Casque</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=676">Tapis de souris</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=2731">Support Casque</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?tag=913">Microphones</RouterLink></li>-->
+<!--                </ul>-->
+<!--              </div>-->
 
-              <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">PC et Pre-Builds</RouterLink>
-                <ul>
-                  <li><RouterLink to="/shop?category=1795">Laptops</RouterLink></li>
-                  <li><RouterLink to="/shop?search=pc+gamer">PC Gamer</RouterLink></li>
-                  <li><RouterLink to="/shop?search=pc">PC Bureau</RouterLink></li>
-                </ul>
-              </div>
-
-
-            </div>
-
-            </div>
+<!--              <div class="col-md-4 col-sm-6">-->
+<!--                <RouterLink to="" class="menu-title">PC et Pre-Builds</RouterLink>-->
+<!--                <ul>-->
+<!--                  <li><RouterLink to="/shop?category=1795">Laptops</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?search=pc+gamer">PC Gamer</RouterLink></li>-->
+<!--                  <li><RouterLink to="/shop?search=pc">PC Bureau</RouterLink></li>-->
+<!--                </ul>-->
+<!--              </div>-->
 
 
+<!--            </div>-->
 
-            <div class="col-md-4 d-none d-lg-block">
-              <div class="adv-media">
-                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/" />
-              </div>
-            </div>
-
-            </div>
-          </div>
+<!--            </div>-->
 
 
 
-    </li>
+<!--            <div class="col-md-4 d-none d-lg-block">-->
+<!--              <div class="adv-media">-->
+<!--                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/" />-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
+
+
+<!--    </li>-->
 
 
     <li class="has-mega-menu sub-menu-down">

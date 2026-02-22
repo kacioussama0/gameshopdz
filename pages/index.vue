@@ -247,7 +247,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Discount Start-->
-    <section class="content-inner-1 pt-0 overflow-hidden" v-if="discountProducts">
+    <section class="content-inner-1 pt-0 overflow-hidden" v-if="discountProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -256,7 +256,7 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title " >
+                <h2 class="title text-danger">
                   <i class="iconly-Curved-Discount me-1"></i>
                   Promotion
                 </h2>
@@ -391,7 +391,7 @@ useFetch("/api/wc/products", {
             <li class="card-container col-xl-4 col-lg-4 col-md-6">
 
               <div class="dz-media rounded-5">
-                <RouterLink to="/portfolio-details-1">
+                <RouterLink to="/shop?category=844">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/DIGTAL-GS.png?w=896&ssl=1" alt="/"  />
                 </RouterLink>
               </div>
@@ -412,7 +412,7 @@ useFetch("/api/wc/products", {
             <li class="card-container col-md-6">
 
               <div class="dz-media rounded-5">
-                <RouterLink to="/portfolio-details-1">
+                <RouterLink to="/shop?category=836">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/"  />
                 </RouterLink>
               </div>
@@ -423,7 +423,7 @@ useFetch("/api/wc/products", {
             <li class="card-container  col-md-6">
 
               <div class="dz-media rounded-5">
-                <RouterLink to="/portfolio-details-1">
+                <RouterLink to="/shop?category=2714">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Retro-GS.png?w=896&ssl=1" alt="/"  />
                 </RouterLink>
               </div>
@@ -442,7 +442,7 @@ useFetch("/api/wc/products", {
 
     <section class="video-section">
       <div
-        class="video-wrapper bg-parallax"
+        class="video-wrapper bg-img-fix"
         :style="`background-image: url(https://lh3.googleusercontent.com/p/AF1QipN19apdG8TofDnbwxWFcRNsYi1oSl2YzxrwbsdL=s1360-w1360-h1020-rw)`"
       >
         <div class="container">
@@ -951,7 +951,7 @@ useFetch("/api/wc/products", {
     <!-- Services End -->
 
     <!-- Feature Box -->
-    <div class="content-inner py-0  image-wrapper">
+    <div class="content-inner py-0">
       <div class="container px-0">
 
 
@@ -962,7 +962,6 @@ useFetch("/api/wc/products", {
             <li>
               <NuxtLink
                   class="fa-brands  fa-3x  fa-facebook"
-
                   target="_blank"
                   to="https://www.facebook.com/gameshopdz2"
               ></NuxtLink>

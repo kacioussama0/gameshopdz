@@ -593,14 +593,12 @@ legend {
   padding: 0;
   margin-bottom: 0.5rem;
   font-size: calc(1.275rem + 0.3vw);
+  line-height: inherit;
 }
 @media (min-width: 1200px) {
   legend {
     font-size: 1.5rem;
   }
-}
-legend {
-  line-height: inherit;
 }
 legend + * {
   clear: left;
@@ -674,80 +672,68 @@ progress {
 
 .display-1 {
   font-size: calc(1.625rem + 4.5vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-1 {
     font-size: 5rem;
   }
 }
-.display-1 {
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 .display-2 {
   font-size: calc(1.575rem + 3.9vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-2 {
     font-size: 4.5rem;
   }
 }
-.display-2 {
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 .display-3 {
   font-size: calc(1.525rem + 3.3vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-3 {
     font-size: 4rem;
   }
 }
-.display-3 {
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 .display-4 {
   font-size: calc(1.475rem + 2.7vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-4 {
     font-size: 3.5rem;
   }
 }
-.display-4 {
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 .display-5 {
   font-size: calc(1.425rem + 2.1vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-5 {
     font-size: 3rem;
   }
 }
-.display-5 {
-  font-weight: 300;
-  line-height: 1.2;
-}
 
 .display-6 {
   font-size: calc(1.375rem + 1.5vw);
+  font-weight: 300;
+  line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-6 {
     font-size: 2.5rem;
   }
-}
-.display-6 {
-  font-weight: 300;
-  line-height: 1.2;
 }
 
 .list-unstyled {
@@ -2567,16 +2553,13 @@ select {
   border: var(--bs-border-width) solid var(--bs-border-color);
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-select,
   select {
     transition: none;
   }
-}
-.form-select,
-select {
-  appearance: none;
 }
 .form-select:focus,
 select:focus {
@@ -2787,14 +2770,12 @@ select:-moz-focusring {
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-webkit-slider-thumb {
     transition: none;
   }
-}
-.form-range::-webkit-slider-thumb {
-  appearance: none;
 }
 .form-range::-webkit-slider-thumb:active {
   background-color: rgb(181.5, 208.2, 243.3);
@@ -2815,14 +2796,12 @@ select:-moz-focusring {
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-range::-moz-range-thumb {
     transition: none;
   }
-}
-.form-range::-moz-range-thumb {
-  appearance: none;
 }
 .form-range::-moz-range-thumb:active {
   background-color: rgb(181.5, 208.2, 243.3);
@@ -5119,23 +5098,19 @@ fieldset:disabled .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce-cart-form .table tr .woocommerce .btn-group-vertical > input.button ~ .button,
 .woocommerce .woocommerce-cart-form .table tr .btn-group-vertical > input.button ~ .button,
 .woocommerce-cart-form .table tr .woocommerce .btn-group-vertical > #place_order ~ .button,
-.woocommerce .woocommerce-cart-form .table tr .btn-group-vertical > #place_order ~ .button, .woocommerce-cart-form .table tr .woocommerce-cart .wc-proceed-to-checkout .btn-group-vertical > a.checkout-button ~ .button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .btn-group-vertical > a.checkout-button ~ .button, .woocommerce-cart-form .table tr .btn-group-vertical > .button ~ .button, .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ .btn, .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ input#submit,
+.woocommerce .woocommerce-cart-form .table tr .btn-group-vertical > #place_order ~ .button, .woocommerce-cart-form .table tr .woocommerce-cart .wc-proceed-to-checkout .btn-group-vertical > a.checkout-button ~ .button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .btn-group-vertical > a.checkout-button ~ .button, .woocommerce-cart-form .table tr .btn-group-vertical > .button ~ .button, .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ .btn,
 .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ a.button,
 .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ button.button,
-.woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ input.button,
-.woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ #place_order, .woocommerce #review_form #respond .form-submit .woocommerce-cart .wc-proceed-to-checkout .btn-group-vertical > input ~ a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ a.checkout-button, .woocommerce #review_form #respond .form-submit .woocommerce-cart-form .table tr .btn-group-vertical > input ~ .button, .woocommerce-cart-form .table tr .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ .button, .woocommerce #review_form #respond .form-submit .btn-group-vertical > .btn ~ input, .woocommerce #review_form #respond .form-submit .btn-group-vertical > input#submit ~ input,
+.woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ #place_order, .woocommerce #review_form #respond .form-submit .woocommerce-cart .wc-proceed-to-checkout .btn-group-vertical > input ~ a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ a.checkout-button, .woocommerce #review_form #respond .form-submit .woocommerce-cart-form .table tr .btn-group-vertical > input ~ .button, .woocommerce-cart-form .table tr .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ .button, .woocommerce #review_form #respond .form-submit .btn-group-vertical > .btn ~ input,
 .woocommerce #review_form #respond .form-submit .btn-group-vertical > a.button ~ input,
 .woocommerce #review_form #respond .form-submit .btn-group-vertical > button.button ~ input,
-.woocommerce #review_form #respond .form-submit .btn-group-vertical > input.button ~ input,
 .woocommerce #review_form #respond .form-submit .btn-group-vertical > #place_order ~ input, .woocommerce #review_form #respond .form-submit .woocommerce-cart .wc-proceed-to-checkout .btn-group-vertical > a.checkout-button ~ input, .woocommerce-cart .wc-proceed-to-checkout .woocommerce #review_form #respond .form-submit .btn-group-vertical > a.checkout-button ~ input, .woocommerce #review_form #respond .form-submit .woocommerce-cart-form .table tr .btn-group-vertical > .button ~ input, .woocommerce-cart-form .table tr .woocommerce #review_form #respond .form-submit .btn-group-vertical > .button ~ input, .woocommerce #review_form #respond .form-submit .btn-group-vertical > input ~ input, .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ .btn, .woocommerce .widget_shopping_cart .buttons #respond .btn-group-vertical > a ~ input#submit, .woocommerce #respond .widget_shopping_cart .buttons .btn-group-vertical > a ~ input#submit,
-.woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ a.button,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ button.button,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ input.button,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ #place_order, .woocommerce .widget_shopping_cart .buttons .woocommerce-cart-form .table tr .btn-group-vertical > a ~ .button, .woocommerce-cart-form .table tr .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ .button, .woocommerce .widget_shopping_cart .buttons #review_form #respond .form-submit .btn-group-vertical > a ~ input, .woocommerce #review_form #respond .form-submit .widget_shopping_cart .buttons .btn-group-vertical > a ~ input,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ .btn,
 .woocommerce.widget_shopping_cart .buttons #respond .btn-group-vertical > a ~ input#submit,
 .woocommerce.widget_shopping_cart #respond .buttons .btn-group-vertical > a ~ input#submit,
-.woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ a.button,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ button.button,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ input.button,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ #place_order,
@@ -5143,14 +5118,12 @@ fieldset:disabled .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce-cart-form .table tr .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a ~ .button,
 .woocommerce.widget_shopping_cart .buttons #review_form #respond .form-submit .btn-group-vertical > a ~ input,
 .woocommerce.widget_shopping_cart #review_form #respond .form-submit .buttons .btn-group-vertical > a ~ input, .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > .btn ~ a, .woocommerce .widget_shopping_cart .buttons #respond .btn-group-vertical > input#submit ~ a, .woocommerce #respond .widget_shopping_cart .buttons .btn-group-vertical > input#submit ~ a,
-.woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a.button ~ a,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > button.button ~ a,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > input.button ~ a,
 .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > #place_order ~ a, .woocommerce .widget_shopping_cart .buttons .woocommerce-cart-form .table tr .btn-group-vertical > .button ~ a, .woocommerce-cart-form .table tr .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > .button ~ a, .woocommerce .widget_shopping_cart .buttons #review_form #respond .form-submit .btn-group-vertical > input ~ a, .woocommerce #review_form #respond .form-submit .widget_shopping_cart .buttons .btn-group-vertical > input ~ a, .woocommerce .widget_shopping_cart .buttons .btn-group-vertical > a ~ a,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > .btn ~ a,
 .woocommerce.widget_shopping_cart .buttons #respond .btn-group-vertical > input#submit ~ a,
 .woocommerce.widget_shopping_cart #respond .buttons .btn-group-vertical > input#submit ~ a,
-.woocommerce.widget_shopping_cart .buttons .btn-group-vertical > a.button ~ a,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > button.button ~ a,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > input.button ~ a,
 .woocommerce.widget_shopping_cart .buttons .btn-group-vertical > #place_order ~ a,
@@ -6884,14 +6857,12 @@ fieldset:disabled .woocommerce.widget_shopping_cart .buttons a,
 }
 .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out;
+  transform: translate(0, -50px);
 }
 @media (prefers-reduced-motion: reduce) {
   .modal.fade .modal-dialog {
     transition: none;
   }
-}
-.modal.fade .modal-dialog {
-  transform: translate(0, -50px);
 }
 .modal.show .modal-dialog {
   transform: none;
@@ -19482,11 +19453,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row .default-select.select2-choice a.button,
 .woocommerce form .form-row .default-select.select2-choice button.button,
 .woocommerce form .form-row .default-select.select2-choice input.button,
-.woocommerce form .form-row .default-select.select2-choice #place_order, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit, .woocommerce #respond .woocommerce-checkout.checkout form .form-row textarea.default-select input#submit,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select button.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select input.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #place_order,
+.woocommerce form .form-row .default-select.select2-choice #place_order, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .btn,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select #respond input#submit,
 .woocommerce #respond .woocommerce-checkout.checkout form .form-row select.default-select input#submit,
@@ -19512,7 +19479,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .form-control.default-select a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=text] a.checkout-button, .woocommerce-EditAccountForm.edit-account .woocommerce-cart .wc-proceed-to-checkout input.default-select[type=text] a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=email] a.checkout-button,
@@ -19538,7 +19505,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-selection a.checkout-button,
 .woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-selection a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-choice a.checkout-button,
-.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.checkout-button, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout textarea.default-select a.checkout-button,
+.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout select.default-select a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select a.checkout-button,
@@ -19554,7 +19521,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart-form .table tr .button,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart-form .table tr .button,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart-form .table tr .button,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart-form .table tr .button,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart-form .table tr .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart-form .table tr .button, .woocommerce-cart-form .table tr .form-control.default-select .button, .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .button, .woocommerce-EditAccountForm.edit-account .woocommerce-cart-form .table tr input.default-select[type=text] .button,
 .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .button,
@@ -19580,25 +19547,13 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-selection .button,
 .woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-selection .button,
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-choice .button,
-.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button, .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .button, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr textarea.default-select .button,
+.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr select.default-select .button,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr input.default-select .button, .woocommerce-cart-form .table tr .quantity input.default-select .btn, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #respond input#submit, .woocommerce #respond .woocommerce-cart-form .table tr .quantity input.default-select input#submit,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce a.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select a.button,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce button.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select button.button,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce input.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select input.button,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #place_order,
 .woocommerce .woocommerce-cart-form .table tr .quantity input.default-select #place_order, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .quantity input.default-select a.checkout-button, .woocommerce-cart-form .table tr .quantity input.default-select .button, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .btn, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #respond input#submit, .woocommerce #respond .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input#submit,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce a.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.button,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce button.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text button.button,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce input.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input.button,
 .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #place_order,
 .woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text #place_order, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.checkout-button, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .button, .form-control.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .woocommerce #review_form #respond .form-submit input,
 .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .woocommerce #review_form #respond .form-submit input,
@@ -19612,33 +19567,21 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce #review_form #respond .form-submit input,
 .woocommerce form .form-row input.default-select.input-text .woocommerce #review_form #respond .form-submit input,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce #review_form #respond .form-submit input,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce #review_form #respond .form-submit input,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce #review_form #respond .form-submit input,
-.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input, .woocommerce #review_form #respond .form-submit .form-control.default-select input, .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=text] input, .woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=email] input,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=email] input,
+.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input, .woocommerce #review_form #respond .form-submit .form-control.default-select input,
 .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=password] input,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
-.woocommerce #review_form #respond .form-submit .login input.default-select[type=text] input,
-.login .woocommerce #review_form #respond .form-submit input.default-select[type=text] input, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
-.woocommerce #review_form #respond .form-submit .woocommerce-ResetPassword.lost_reset_password input.default-select[type=text] input,
-.woocommerce-ResetPassword.lost_reset_password .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=text] input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=email] input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=email] input,
+.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=tel] input,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=tel] input,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout .default-select.select2-choice input,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit .default-select.select2-choice input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout textarea.default-select input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit textarea.default-select input,
 .woocommerce #review_form #respond .form-submit form .form-row input.default-select.input-text input,
 .woocommerce form .form-row #review_form #respond .form-submit input.default-select.input-text input,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-selection input,
 .woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-selection input,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-choice input,
-.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input, .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row textarea.default-select input, .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit textarea.default-select input,
+.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row select.default-select input,
 .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit select.default-select input,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row input.default-select input,
@@ -19682,7 +19625,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce form .form-row input.default-select.input-text .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce .widget_shopping_cart .buttons a,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce .widget_shopping_cart .buttons a, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce .widget_shopping_cart .buttons a, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce .widget_shopping_cart .buttons a, .woocommerce #review_form #respond input.default-select[type=text] .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce #review_form #respond textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
@@ -19710,7 +19653,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-selection a,
 .woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-selection a,
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-choice a,
-.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a, .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a,
+.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a,
 .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons select.default-select a,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row input.default-select a,
@@ -19734,7 +19677,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row input.default-select.input-text .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-choice .woocommerce.widget_shopping_cart .buttons a,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce.widget_shopping_cart .buttons a,
@@ -19771,7 +19713,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-selection a,
 .woocommerce.widget_shopping_cart .buttons form .form-row .default-select.select2-choice a,
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-choice a,
-.woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons textarea.default-select a,
 .woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons select.default-select a,
@@ -19954,11 +19895,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row .default-select.select2-choice a.button:focus,
 .woocommerce form .form-row .default-select.select2-choice button.button:focus,
 .woocommerce form .form-row .default-select.select2-choice input.button:focus,
-.woocommerce form .form-row .default-select.select2-choice #place_order:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit:focus, .woocommerce #respond .woocommerce-checkout.checkout form .form-row textarea.default-select input#submit:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select button.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select input.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #place_order:focus,
+.woocommerce form .form-row .default-select.select2-choice #place_order:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .btn:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select #respond input#submit:focus,
 .woocommerce #respond .woocommerce-checkout.checkout form .form-row select.default-select input#submit:focus,
@@ -19984,7 +19921,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .form-control.default-select a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=text] a.checkout-button:focus, .woocommerce-EditAccountForm.edit-account .woocommerce-cart .wc-proceed-to-checkout input.default-select[type=text] a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=email] a.checkout-button:focus,
@@ -20010,7 +19947,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-selection a.checkout-button:focus,
 .woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-selection a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-choice a.checkout-button:focus,
-.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.checkout-button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout textarea.default-select a.checkout-button:focus,
+.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout select.default-select a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select a.checkout-button:focus,
@@ -20026,7 +19963,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart-form .table tr .button:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart-form .table tr .button:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart-form .table tr .button:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart-form .table tr .button:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart-form .table tr .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart-form .table tr .button:focus, .woocommerce-cart-form .table tr .form-control.default-select .button:focus, .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .button:focus, .woocommerce-EditAccountForm.edit-account .woocommerce-cart-form .table tr input.default-select[type=text] .button:focus,
 .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .button:focus,
@@ -20052,25 +19989,13 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-selection .button:focus,
 .woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-selection .button:focus,
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-choice .button:focus,
-.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button:focus, .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr textarea.default-select .button:focus,
+.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button:focus,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr select.default-select .button:focus,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr input.default-select .button:focus, .woocommerce-cart-form .table tr .quantity input.default-select .btn:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #respond input#submit:focus, .woocommerce #respond .woocommerce-cart-form .table tr .quantity input.default-select input#submit:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce a.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select a.button:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce button.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select button.button:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce input.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select input.button:focus,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #place_order:focus,
 .woocommerce .woocommerce-cart-form .table tr .quantity input.default-select #place_order:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .quantity input.default-select a.checkout-button:focus, .woocommerce-cart-form .table tr .quantity input.default-select .button:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .btn:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #respond input#submit:focus, .woocommerce #respond .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input#submit:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce a.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.button:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce button.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text button.button:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce input.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input.button:focus,
 .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #place_order:focus,
 .woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text #place_order:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.checkout-button:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .button:focus, .form-control.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .woocommerce #review_form #respond .form-submit input:focus,
@@ -20084,33 +20009,21 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce #review_form #respond .form-submit input:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce #review_form #respond .form-submit input:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce #review_form #respond .form-submit input:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input:focus, .woocommerce #review_form #respond .form-submit .form-control.default-select input:focus, .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=text] input:focus, .woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=email] input:focus,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=email] input:focus,
+.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input:focus, .woocommerce #review_form #respond .form-submit .form-control.default-select input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=password] input:focus,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
-.woocommerce #review_form #respond .form-submit .login input.default-select[type=text] input:focus,
-.login .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input:focus, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
-.woocommerce #review_form #respond .form-submit .woocommerce-ResetPassword.lost_reset_password input.default-select[type=text] input:focus,
-.woocommerce-ResetPassword.lost_reset_password .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=text] input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=email] input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=email] input:focus,
+.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input:focus, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=tel] input:focus,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=tel] input:focus,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout .default-select.select2-choice input:focus,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit .default-select.select2-choice input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout textarea.default-select input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit textarea.default-select input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row input.default-select.input-text input:focus,
 .woocommerce form .form-row #review_form #respond .form-submit input.default-select.input-text input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-selection input:focus,
 .woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-selection input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-choice input:focus,
-.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input:focus, .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row textarea.default-select input:focus, .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit textarea.default-select input:focus,
+.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row select.default-select input:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit select.default-select input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row input.default-select input:focus,
@@ -20154,7 +20067,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce .widget_shopping_cart .buttons a:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce #review_form #respond input.default-select[type=text] .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce #review_form #respond textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
@@ -20182,7 +20095,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-selection a:focus,
 .woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-selection a:focus,
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-choice a:focus,
-.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a:focus, .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a:focus,
+.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a:focus,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons select.default-select a:focus,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row input.default-select a:focus,
@@ -20206,7 +20119,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row input.default-select.input-text .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-choice .woocommerce.widget_shopping_cart .buttons a:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
@@ -20243,7 +20155,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-selection a:focus,
 .woocommerce.widget_shopping_cart .buttons form .form-row .default-select.select2-choice a:focus,
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-choice a:focus,
-.woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a:focus,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons textarea.default-select a:focus,
 .woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a:focus,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons select.default-select a:focus,
@@ -20270,7 +20181,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .wp-block-button__link:focus,
 .woocommerce form .form-row input.default-select.input-text .wp-block-button__link:focus,
 .woocommerce form .form-row .default-select.select2-selection .wp-block-button__link:focus,
-.woocommerce form .form-row .default-select.select2-choice .wp-block-button__link:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .wp-block-button__link:focus,
+.woocommerce form .form-row .default-select.select2-choice .wp-block-button__link:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .wp-block-button__link:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .wp-block-button__link:focus, .woocommerce-cart-form .table tr .quantity input.default-select .wp-block-button__link:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .wp-block-button__link:focus, .woocommerce #review_form #respond input.default-select[type=text] .wp-block-button__link:focus,
 .woocommerce #review_form #respond textarea.default-select .wp-block-button__link:focus,
@@ -21519,11 +21430,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row .default-select.select2-choice a.button,
 .woocommerce form .form-row .default-select.select2-choice button.button,
 .woocommerce form .form-row .default-select.select2-choice input.button,
-.woocommerce form .form-row .default-select.select2-choice #place_order, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit, .woocommerce #respond .woocommerce-checkout.checkout form .form-row textarea.default-select input#submit,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select button.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select input.button,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #place_order,
+.woocommerce form .form-row .default-select.select2-choice #place_order, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .btn,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select #respond input#submit,
 .woocommerce #respond .woocommerce-checkout.checkout form .form-row select.default-select input#submit,
@@ -21549,7 +21456,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .form-control.default-select a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=text] a.checkout-button, .woocommerce-EditAccountForm.edit-account .woocommerce-cart .wc-proceed-to-checkout input.default-select[type=text] a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=email] a.checkout-button,
@@ -21575,7 +21482,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-selection a.checkout-button,
 .woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-selection a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-choice a.checkout-button,
-.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.checkout-button, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout textarea.default-select a.checkout-button,
+.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select a.checkout-button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout select.default-select a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select a.checkout-button,
@@ -21591,7 +21498,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart-form .table tr .button,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart-form .table tr .button,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart-form .table tr .button,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart-form .table tr .button,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart-form .table tr .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart-form .table tr .button, .woocommerce-cart-form .table tr .form-control.default-select .button, .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .button, .woocommerce-EditAccountForm.edit-account .woocommerce-cart-form .table tr input.default-select[type=text] .button,
 .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .button,
@@ -21617,25 +21524,13 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-selection .button,
 .woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-selection .button,
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-choice .button,
-.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button, .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .button, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr textarea.default-select .button,
+.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr select.default-select .button,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .button,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr input.default-select .button, .woocommerce-cart-form .table tr .quantity input.default-select .btn, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #respond input#submit, .woocommerce #respond .woocommerce-cart-form .table tr .quantity input.default-select input#submit,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce a.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select a.button,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce button.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select button.button,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce input.button,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select input.button,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #place_order,
 .woocommerce .woocommerce-cart-form .table tr .quantity input.default-select #place_order, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .quantity input.default-select a.checkout-button, .woocommerce-cart-form .table tr .quantity input.default-select .button, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .btn, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #respond input#submit, .woocommerce #respond .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input#submit,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce a.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.button,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce button.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text button.button,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce input.button,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input.button,
 .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #place_order,
 .woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text #place_order, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.checkout-button, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .button, .form-control.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .woocommerce #review_form #respond .form-submit input,
 .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .woocommerce #review_form #respond .form-submit input,
@@ -21649,33 +21544,21 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce #review_form #respond .form-submit input,
 .woocommerce form .form-row input.default-select.input-text .woocommerce #review_form #respond .form-submit input,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce #review_form #respond .form-submit input,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce #review_form #respond .form-submit input,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce #review_form #respond .form-submit input,
-.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input, .woocommerce #review_form #respond .form-submit .form-control.default-select input, .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=text] input, .woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=email] input,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=email] input,
+.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input, .woocommerce #review_form #respond .form-submit .form-control.default-select input,
 .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=password] input,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
-.woocommerce #review_form #respond .form-submit .login input.default-select[type=text] input,
-.login .woocommerce #review_form #respond .form-submit input.default-select[type=text] input, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
-.woocommerce #review_form #respond .form-submit .woocommerce-ResetPassword.lost_reset_password input.default-select[type=text] input,
-.woocommerce-ResetPassword.lost_reset_password .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=text] input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=text] input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=email] input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=email] input,
+.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=tel] input,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=tel] input,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout .default-select.select2-choice input,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit .default-select.select2-choice input,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout textarea.default-select input,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit textarea.default-select input,
 .woocommerce #review_form #respond .form-submit form .form-row input.default-select.input-text input,
 .woocommerce form .form-row #review_form #respond .form-submit input.default-select.input-text input,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-selection input,
 .woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-selection input,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-choice input,
-.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input, .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row textarea.default-select input, .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit textarea.default-select input,
+.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row select.default-select input,
 .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit select.default-select input,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row input.default-select input,
@@ -21719,7 +21602,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce form .form-row input.default-select.input-text .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce .widget_shopping_cart .buttons a,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce .widget_shopping_cart .buttons a, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce .widget_shopping_cart .buttons a, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce .widget_shopping_cart .buttons a, .woocommerce #review_form #respond input.default-select[type=text] .woocommerce .widget_shopping_cart .buttons a,
 .woocommerce #review_form #respond textarea.default-select .woocommerce .widget_shopping_cart .buttons a,
@@ -21747,7 +21630,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-selection a,
 .woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-selection a,
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-choice a,
-.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a, .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a,
+.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a,
 .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons select.default-select a,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row input.default-select a,
@@ -21771,7 +21654,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row input.default-select.input-text .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce form .form-row .default-select.select2-choice .woocommerce.widget_shopping_cart .buttons a,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce.widget_shopping_cart .buttons a,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce.widget_shopping_cart .buttons a,
@@ -21808,7 +21690,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-selection a,
 .woocommerce.widget_shopping_cart .buttons form .form-row .default-select.select2-choice a,
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-choice a,
-.woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons textarea.default-select a,
 .woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons select.default-select a,
@@ -21991,11 +21872,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row .default-select.select2-choice a.button:focus,
 .woocommerce form .form-row .default-select.select2-choice button.button:focus,
 .woocommerce form .form-row .default-select.select2-choice input.button:focus,
-.woocommerce form .form-row .default-select.select2-choice #place_order:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .btn:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #respond input#submit:focus, .woocommerce #respond .woocommerce-checkout.checkout form .form-row textarea.default-select input#submit:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select button.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select input.button:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select #place_order:focus,
+.woocommerce form .form-row .default-select.select2-choice #place_order:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .btn:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select #respond input#submit:focus,
 .woocommerce #respond .woocommerce-checkout.checkout form .form-row select.default-select input#submit:focus,
@@ -22021,7 +21898,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .form-control.default-select a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=text] a.checkout-button:focus, .woocommerce-EditAccountForm.edit-account .woocommerce-cart .wc-proceed-to-checkout input.default-select[type=text] a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce-EditAccountForm.edit-account input.default-select[type=email] a.checkout-button:focus,
@@ -22047,7 +21924,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-selection a.checkout-button:focus,
 .woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-selection a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce form .form-row .default-select.select2-choice a.checkout-button:focus,
-.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select a.checkout-button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout textarea.default-select a.checkout-button:focus,
+.woocommerce form .form-row .woocommerce-cart .wc-proceed-to-checkout .default-select.select2-choice a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select a.checkout-button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart .wc-proceed-to-checkout select.default-select a.checkout-button:focus,
 .woocommerce-cart .wc-proceed-to-checkout .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select a.checkout-button:focus,
@@ -22063,7 +21940,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce-cart-form .table tr .button:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce-cart-form .table tr .button:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce-cart-form .table tr .button:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce-cart-form .table tr .button:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce-cart-form .table tr .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce-cart-form .table tr .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce-cart-form .table tr .button:focus, .woocommerce-cart-form .table tr .form-control.default-select .button:focus, .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .button:focus, .woocommerce-EditAccountForm.edit-account .woocommerce-cart-form .table tr input.default-select[type=text] .button:focus,
 .woocommerce-cart-form .table tr .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .button:focus,
@@ -22089,25 +21966,13 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-selection .button:focus,
 .woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-selection .button:focus,
 .woocommerce-cart-form .table tr .woocommerce form .form-row .default-select.select2-choice .button:focus,
-.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button:focus, .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .button:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr textarea.default-select .button:focus,
+.woocommerce form .form-row .woocommerce-cart-form .table tr .default-select.select2-choice .button:focus,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr select.default-select .button:focus,
 .woocommerce-cart-form .table tr .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .button:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .woocommerce-cart-form .table tr input.default-select .button:focus, .woocommerce-cart-form .table tr .quantity input.default-select .btn:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #respond input#submit:focus, .woocommerce #respond .woocommerce-cart-form .table tr .quantity input.default-select input#submit:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce a.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select a.button:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce button.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select button.button:focus,
-.woocommerce-cart-form .table tr .quantity input.default-select .woocommerce input.button:focus,
-.woocommerce .woocommerce-cart-form .table tr .quantity input.default-select input.button:focus,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #place_order:focus,
 .woocommerce .woocommerce-cart-form .table tr .quantity input.default-select #place_order:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr .quantity input.default-select a.checkout-button:focus, .woocommerce-cart-form .table tr .quantity input.default-select .button:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .btn:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #respond input#submit:focus, .woocommerce #respond .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input#submit:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce a.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.button:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce button.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text button.button:focus,
-.woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce input.button:focus,
-.woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text input.button:focus,
 .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #place_order:focus,
 .woocommerce .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text #place_order:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:focus, .woocommerce-cart .wc-proceed-to-checkout .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text a.checkout-button:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .button:focus, .form-control.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-EditAccountForm.edit-account input.default-select[type=text] .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce-EditAccountForm.edit-account input.default-select[type=email] .woocommerce #review_form #respond .form-submit input:focus,
@@ -22121,33 +21986,21 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce #review_form #respond .form-submit input:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce #review_form #respond .form-submit input:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce #review_form #respond .form-submit input:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce #review_form #respond .form-submit input:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input:focus, .woocommerce #review_form #respond .form-submit .form-control.default-select input:focus, .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=text] input:focus, .woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=email] input:focus,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=email] input:focus,
+.woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce #review_form #respond .form-submit input:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce #review_form #respond .form-submit input:focus, .woocommerce #review_form #respond .form-submit .form-control.default-select input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-EditAccountForm.edit-account input.default-select[type=password] input:focus,
-.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
-.woocommerce #review_form #respond .form-submit .login input.default-select[type=text] input:focus,
-.login .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input:focus, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
-.woocommerce #review_form #respond .form-submit .woocommerce-ResetPassword.lost_reset_password input.default-select[type=text] input:focus,
-.woocommerce-ResetPassword.lost_reset_password .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=text] input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=text] input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=email] input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=email] input:focus,
+.woocommerce-EditAccountForm.edit-account .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus, .woocommerce #review_form #respond .form-submit .login input.default-select[type=password] input:focus, .login .woocommerce #review_form #respond .form-submit input.default-select[type=password] input:focus,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout input.default-select[type=tel] input:focus,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit input.default-select[type=tel] input:focus,
 .woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout .default-select.select2-choice input:focus,
 .checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit .default-select.select2-choice input:focus,
-.woocommerce #review_form #respond .form-submit .checkout.woocommerce-checkout textarea.default-select input:focus,
-.checkout.woocommerce-checkout .woocommerce #review_form #respond .form-submit textarea.default-select input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row input.default-select.input-text input:focus,
 .woocommerce form .form-row #review_form #respond .form-submit input.default-select.input-text input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-selection input:focus,
 .woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-selection input:focus,
 .woocommerce #review_form #respond .form-submit form .form-row .default-select.select2-choice input:focus,
-.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input:focus, .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row textarea.default-select input:focus, .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit textarea.default-select input:focus,
+.woocommerce form .form-row #review_form #respond .form-submit .default-select.select2-choice input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row select.default-select input:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row #review_form #respond .form-submit select.default-select input:focus,
 .woocommerce #review_form #respond .form-submit .woocommerce-checkout.checkout form .form-row input.default-select input:focus,
@@ -22191,7 +22044,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row input.default-select.input-text .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce .widget_shopping_cart .buttons a:focus,
-.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
+.woocommerce form .form-row .default-select.select2-choice .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .woocommerce .widget_shopping_cart .buttons a:focus, .woocommerce #review_form #respond input.default-select[type=text] .woocommerce .widget_shopping_cart .buttons a:focus,
 .woocommerce #review_form #respond textarea.default-select .woocommerce .widget_shopping_cart .buttons a:focus,
@@ -22219,7 +22072,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-selection a:focus,
 .woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-selection a:focus,
 .woocommerce .widget_shopping_cart .buttons form .form-row .default-select.select2-choice a:focus,
-.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a:focus, .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a:focus,
+.woocommerce form .form-row .widget_shopping_cart .buttons .default-select.select2-choice a:focus, .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons textarea.default-select a:focus,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row .widget_shopping_cart .buttons select.default-select a:focus,
 .woocommerce .widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row input.default-select a:focus,
@@ -22243,7 +22096,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce form .form-row input.default-select.input-text .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-selection .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce form .form-row .default-select.select2-choice .woocommerce.widget_shopping_cart .buttons a:focus,
-.woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
 .woocommerce-cart-form .table tr .quantity input.default-select .woocommerce.widget_shopping_cart .buttons a:focus,
@@ -22280,7 +22132,6 @@ select.btn-group .dropdown-toggle .caret:before {
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-selection a:focus,
 .woocommerce.widget_shopping_cart .buttons form .form-row .default-select.select2-choice a:focus,
 .woocommerce.widget_shopping_cart form .form-row .buttons .default-select.select2-choice a:focus,
-.woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row textarea.default-select a:focus,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons textarea.default-select a:focus,
 .woocommerce.widget_shopping_cart .buttons .woocommerce-checkout.checkout form .form-row select.default-select a:focus,
 .woocommerce.widget_shopping_cart .woocommerce-checkout.checkout form .form-row .buttons select.default-select a:focus,
@@ -22307,7 +22158,7 @@ select.btn-group .dropdown-toggle .caret:before {
 .checkout.woocommerce-checkout textarea.default-select .wp-block-button__link:focus,
 .woocommerce form .form-row input.default-select.input-text .wp-block-button__link:focus,
 .woocommerce form .form-row .default-select.select2-selection .wp-block-button__link:focus,
-.woocommerce form .form-row .default-select.select2-choice .wp-block-button__link:focus, .woocommerce .woocommerce-checkout.checkout form .form-row textarea.default-select .wp-block-button__link:focus,
+.woocommerce form .form-row .default-select.select2-choice .wp-block-button__link:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row select.default-select .wp-block-button__link:focus,
 .woocommerce .woocommerce-checkout.checkout form .form-row input.default-select .wp-block-button__link:focus, .woocommerce-cart-form .table tr .quantity input.default-select .wp-block-button__link:focus, .woocommerce-cart-form .table tr td.actions .coupon .default-select.input-text .wp-block-button__link:focus, .woocommerce #review_form #respond input.default-select[type=text] .wp-block-button__link:focus,
 .woocommerce #review_form #respond textarea.default-select .wp-block-button__link:focus,
@@ -25010,7 +24861,7 @@ btn:focus {
   background: -moz-linear-gradient(left, rgb(196, 39, 128) 9%, rgb(26, 29, 188) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left, rgb(196, 39, 128) 9%, rgb(26, 29, 188) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, rgb(196, 39, 128) 9%, rgb(26, 29, 188) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c42780', endColorstr='#1a1dbc',GradientType=1 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#c42780", endColorstr="#1a1dbc",GradientType=1 ); /* IE6-9 */
   box-shadow: none;
 }
 .dz-accordion.gradient-bg .accordion-header .accordion-button.collapsed {
@@ -27205,6 +27056,7 @@ footer:not(.style-4) .widget_rss ul li {
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   -o-transform: translateX(0);
+  color: #ffffff;
 }
 .service_menu_nav ul li:hover a:before, .service_menu_nav ul li.current-menu-item a:before, .service_menu_nav ul li.active a:before {
   opacity: 1;
@@ -27219,9 +27071,6 @@ footer:not(.style-4) .widget_rss ul li {
 }
 .service_menu_nav ul li:hover a:after, .service_menu_nav ul li.current-menu-item a:after, .service_menu_nav ul li.active a:after {
   opacity: 1;
-}
-.service_menu_nav ul li:hover a, .service_menu_nav ul li.current-menu-item a, .service_menu_nav ul li.active a {
-  color: #ffffff;
 }
 
 .dz-related-post {
@@ -34894,13 +34743,11 @@ del {
     display: flex;
     justify-content: center;
     transform: none;
+    padding-top: 20px;
+    padding-bottom: 10px;
   }
   .swiper-pagination-two:not(.style-2) {
     position: unset;
-  }
-  .swiper-pagination-two {
-    padding-top: 20px;
-    padding-bottom: 10px;
   }
 }
 @media only screen and (max-width: 575px) {
@@ -39125,6 +38972,12 @@ del {
 .blog-single.dz-blog .post-tags {
   margin-bottom: 0;
 }
+.blog-single.style-1 {
+  box-shadow: unset;
+  border-radius: 0;
+  overflow: unset;
+  margin-bottom: 60px;
+}
 .blog-single.style-1 .post-header .dz-title {
   margin-right: auto;
   margin-left: auto;
@@ -39135,12 +38988,6 @@ del {
 }
 .blog-single.style-1 ul li:before {
   display: none !important;
-}
-.blog-single.style-1 {
-  box-shadow: unset;
-  border-radius: 0;
-  overflow: unset;
-  margin-bottom: 60px;
 }
 @media only screen and (max-width: 991px) {
   .blog-single.style-1 {
@@ -40744,6 +40591,9 @@ pre {
   position: relative;
 }
 
+.wp-block-latest-comments {
+  padding: 0 !important;
+}
 .wp-block-latest-comments .avatar {
   width: 3.4375rem;
   height: 3.4375rem;
@@ -40768,9 +40618,6 @@ pre {
 .wp-block-latest-comments img + article .wp-block-latest-comments__comment .wp-block-latest-comments__comment-meta {
   margin-left: 4.375rem;
 }
-.wp-block-latest-comments {
-  padding: 0 !important;
-}
 .wp-block-latest-comments .wp-block-latest-comments__comment-meta time {
   display: block;
   width: 100%;
@@ -40783,13 +40630,13 @@ pre {
   line-height: 1.5 !important;
   margin-bottom: 0.5rem !important;
 }
-.wp-block-latest-comments li:before {
-  content: none !important;
-}
 .wp-block-latest-comments li {
   padding: 0 !important;
   border-bottom: 0.0625rem solid #eee;
   padding-bottom: 0.5rem !important;
+}
+.wp-block-latest-comments li:before {
+  content: none !important;
 }
 
 .wp-block-latest-comments__comment-avatar {
@@ -45017,6 +44864,8 @@ body .working-location img {
 }
 .dz-product-detail .dz-info {
   margin-bottom: 40px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
 }
 @media only screen and (max-width: 991px) {
   .dz-product-detail .dz-info {
@@ -45027,10 +44876,6 @@ body .working-location img {
   .dz-product-detail .dz-info {
     margin-bottom: 0;
   }
-}
-.dz-product-detail .dz-info {
-  border-top: 1px solid var(--border-color);
-  padding-top: 20px;
 }
 .dz-product-detail .dz-info ul {
   display: flex;
@@ -45584,6 +45429,14 @@ body .working-location img {
 .dz-box.product .item-box .item-info-in ul li .yith-wcwl-add-to-wishlist {
   margin-top: 0;
 }
+.dz-box.product:hover {
+  box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-15px);
+  -moz-transform: translateY(-15px);
+  -webkit-transform: translateY(-15px);
+  -ms-transform: translateY(-15px);
+  -o-transform: translateY(-15px);
+}
 .dz-box.product:hover .item-box .item-img:after {
   opacity: 0.7;
 }
@@ -45594,14 +45447,6 @@ body .working-location img {
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   opacity: 1;
-}
-.dz-box.product:hover {
-  box-shadow: 0 10px 60px 0 rgba(0, 0, 0, 0.15);
-  transform: translateY(-15px);
-  -moz-transform: translateY(-15px);
-  -webkit-transform: translateY(-15px);
-  -ms-transform: translateY(-15px);
-  -o-transform: translateY(-15px);
 }
 
 .woocommerce div.product .dz-box .woocommerce-product-rating {
@@ -49529,9 +49374,6 @@ a {
   }
 }
 @media only screen and (max-width: 991px) and (max-width: 991px) {
-  .header-nav .nav > li.menu-item-has-children > a i:before, .header-nav .nav > li.sub-menu-down > a i:before {
-    content: "\f054";
-  }
   .header-nav .nav > li.menu-item-has-children > a i, .header-nav .nav > li.sub-menu-down > a i {
     background-color: var(--secondary);
     color: #fff;
@@ -49544,6 +49386,9 @@ a {
     float: right;
     font-size: 11px;
     margin: 0;
+  }
+  .header-nav .nav > li.menu-item-has-children > a i:before, .header-nav .nav > li.sub-menu-down > a i:before {
+    content: "\f054";
   }
 }
 @media only screen and (max-width: 991px) {
@@ -49958,7 +49803,6 @@ a {
 }
 
 .mega-menu {
-  max-width: 1200px;
   left: 80px !important;
   height: auto;
   overflow-y: auto;
@@ -49995,9 +49839,6 @@ a {
   .mega-menu .line-left:after {
     content: none;
   }
-}
-.mega-menu.shop-menu {
-  max-width: 1140px;
 }
 @media only screen and (max-width: 1199px) {
   .mega-menu.shop-menu {
@@ -50648,9 +50489,6 @@ a {
   }
 }
 @media only screen and (max-width: 991px) and (max-width: 991px) {
-  .header-nav.w3menu .nav > li.menu-item-has-children > a i:before, .header-nav.w3menu .nav > li.sub-menu-down > a i:before {
-    content: "\f054";
-  }
   .header-nav.w3menu .nav > li.menu-item-has-children > a i, .header-nav.w3menu .nav > li.sub-menu-down > a i {
     background-color: var(--secondary);
     color: #fff;
@@ -50663,6 +50501,9 @@ a {
     float: right;
     font-size: 11px;
     margin: 0;
+  }
+  .header-nav.w3menu .nav > li.menu-item-has-children > a i:before, .header-nav.w3menu .nav > li.sub-menu-down > a i:before {
+    content: "\f054";
   }
 }
 @media only screen and (max-width: 991px) {

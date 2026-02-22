@@ -11,6 +11,39 @@ const menu = ref(false);
 const { itemsCount, pending } = useWcCart()
 
 
+const suggSearch = ref('');
+const suggProducts = ref([]);
+
+const searchProduct = async () => {
+  try {
+
+    const { data, error } = await useFetch(
+        `https://woo.gameshopdz.com/fibosearch/?s=${suggSearch.value}`
+    )
+
+    if (error.value) {
+      console.error("Search error:", error.value)
+      return
+    }
+
+    if (!data.value?.suggestions) return
+
+
+    const filtredProducts = data.value.suggestions
+        .filter(product => product.type === 'product' && product.post_id)
+
+
+    console.log(filtredProducts)
+
+    suggProducts.value = filtredProducts;
+
+
+  } catch (err) {
+    console.error("Unexpected error:", err)
+  }
+}
+
+
 const isMenu = ref(false);
 const isFixed = ref(false);
 
@@ -107,21 +140,21 @@ onUnmounted(() => {
                 <NuxtLink
                   class="fab fa-facebook-f"
                   target="_blank"
-                  to="https://www.facebook.com/dexignzone"
+                  to="https://web.facebook.com/gameshopdz2"
                 ></NuxtLink>
               </li>
               <li>
                 <NuxtLink
-                  class="fab fa-twitter"
+                  class="fab fa-snapchat"
                   target="_blank"
-                  to="https://twitter.com/dexignzones"
+                  to="https://www.snapchat.com/@gameshop.dz?sender_web_id=1626268c-ffd5-4cbb-9b2d-4025523a74d7&device_type=desktop&is_copy_url=true"
                 ></NuxtLink>
               </li>
               <li>
                 <NuxtLink
-                  class="fab fa-linkedin-in"
+                  class="fab fa-tiktok"
                   target="_blank"
-                  to="https://www.linkedin.com/showcase/3686700/admin/"
+                  to="https://www.tiktok.com/@gameshop.dz"
                 ></NuxtLink>
               </li>
               <li>
@@ -136,7 +169,7 @@ onUnmounted(() => {
         </div>
 
         <!-- EXTRA NAV -->
-        <div class="extra-nav">
+        <div class="extra-nav d-none d-lg-flex">
           <div class="extra-cell">
             <ul class="header-right">
               <li class="nav-item search-link">
@@ -188,43 +221,20 @@ onUnmounted(() => {
     <div class="container">
       <form class="header-item-search">
         <div class="input-group search-input">
-          <div class="dropdown bootstrap-select default-select">
-            <CustomeSelect
-              :options="[
-                { title: 'All Categories' },
-                { title: 'Clothes' },
-                { title: 'UrbanSkirt' },
-                { title: 'VelvetGown' },
-                { title: 'LushShorts' },
-                { title: 'Vintage' },
-                { title: 'Wedding' },
-                { title: 'Cotton' },
-                { title: 'Linen' },
-                { title: 'Navy' },
-                { title: 'Urban' },
-                { title: 'Business Meeting' },
-                { title: 'Formal' },
-              ]"
-            />
-          </div>
           <input
             type="search"
             class="form-control"
             placeholder="Search Product"
+            v-model="suggSearch"
+            @input="searchProduct"
           />
           <button class="btn" type="button">
             <i class="iconly-Light-Search"></i>
           </button>
         </div>
-        <ul class="recent-tag">
-          <li class="pe-0"><span>Quick Search :</span></li>
-          <li><NuxtLink to="/shop-list">Clothes</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">UrbanSkirt</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">VelvetGown</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">LushShorts</NuxtLink></li>
-        </ul>
+
       </form>
-      <div class="row">
+      <div class="row"  v-if="suggProducts.length">
         <div class="col-xl-12">
           <h5 class="mb-3">You May Also Like</h5>
           <Swiper
@@ -241,109 +251,20 @@ onUnmounted(() => {
               240: { slidesPerView: 2 },
             }"
           >
-            <SwiperSlide class="swiper-slide">
+
+            <SwiperSlide class="swiper-slide" v-for="product in suggProducts" :key="product.post_id">
               <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/2.png" alt="image" />
+                <div class="dz-media mb-3" v-html="product.thumb_html" />
+
+
                 </div>
                 <div class="dz-content">
                   <h6 class="title">
-                    <NuxtLink to="/shop-list">ClassicCapri</NuxtLink>
+                    <NuxtLink :to="`/shop/product/${product.url.split('/produit/')[1].replace('/', '')}`" class="stretched-link">{{product.value}}</NuxtLink>
                   </h6>
-                  <h6 class="price">$20.00</h6>
+                  <h6 class="price" v-html="product.price"></h6>
                 </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide swiper-slide-prev">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/5.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">DapperCoat</NuxtLink>
-                  </h6>
-                  <h6 class="price">$70.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide swiper-slide-active">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/6.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">ComfyLeggings</NuxtLink>
-                  </h6>
-                  <h6 class="price">$45.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide swiper-slide-next">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/7.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">DenimDream Jeans</NuxtLink>
-                  </h6>
-                  <h6 class="price">$40.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/4.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">SilkBliss Dress</NuxtLink>
-                  </h6>
-                  <h6 class="price">$60.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/1.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">SilkBliss Dress</NuxtLink>
-                  </h6>
-                  <h6 class="price">$40.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/3.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">GlamPants</NuxtLink>
-                  </h6>
-                  <h6 class="price">$30.00</h6>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide class="swiper-slide">
-              <div class="shop-card">
-                <div class="dz-media">
-                  <img src="../assets/images/shop/product/4.png" alt="image" />
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink to="/shop-list">ComfyLeggings</NuxtLink>
-                  </h6>
-                  <h6 class="price">$35.00</h6>
-                </div>
-              </div>
+
             </SwiperSlide>
 
             <span

@@ -11,11 +11,17 @@ import img3 from "assets/images/products/lady-3.png";
 
 const qty = ref(1);
 const thumbsSwiper = ref(null);
+const route = useRoute()
+const currentUrl = computed(() => {
+  return process.client
+      ? window.location.origin + route.fullPath
+      : ''
+})
+
+
 
 
 const addedCart = ref(false)
-
-
 
 
 const addToCart = async (productId) => {
@@ -111,7 +117,18 @@ useFetch("/api/wc/products/", {
   console.error("Error fetching latest products:", error);
 });
 
-const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
+
+useHead({
+  meta: [
+    { property: 'og:title', content: product.value.name },
+    { property: 'og:description', content: product.value.short_description },
+    { property: 'og:image', content: product.value.thumbnail },
+    { property: 'og:url', content: currentUrl.value },
+    { property: 'og:type', content: 'product' },
+  ]
+})
+
+
 
 </script>
 
@@ -125,7 +142,7 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
     <div class="d-flex  justify-content-between container-fluid py-3 bg-light" v-if="product.name">
       <nav aria-label="breadcrumb" class="breadcrumb-row">
         <ul class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><NuxtLink to="/shop"> Shop</NuxtLink></li>
+          <li class="breadcrumb-item"><NuxtLink to="/shop"> Store</NuxtLink></li>
           <li class="breadcrumb-item">{{product.name}}</li>
         </ul>
       </nav>
@@ -554,37 +571,41 @@ const slide = [{ img: img1 }, { img: img2 }, { img: img3 }];
                   </ul>
                   <ul class="social-icon">
                     <li><strong>Partager:</strong></li>
+
                     <li>
-                      <NuxtLink
-                          to="https://www.facebook.com/dexignzone"
+                      <a
+                          :href="`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`"
                           target="_blank"
                       >
                         <i class="fa-brands fa-facebook-f"></i>
-                      </NuxtLink>
+                      </a>
                     </li>
+
                     <li>
-                      <NuxtLink
-                          to="https://www.linkedin.com/showcase/3686700/admin/"
+                      <a
+                          :href="`https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`"
                           target="_blank"
                       >
                         <i class="fa-brands fa-linkedin-in"></i>
-                      </NuxtLink>
+                      </a>
                     </li>
+
                     <li>
-                      <NuxtLink
-                          to="https://www.instagram.com/dexignzone/"
-                          target="_blank"
-                      >
-                        <i class="fa-brands fa-instagram"></i>
-                      </NuxtLink>
-                    </li>
-                    <li>
-                      <NuxtLink
-                          to="https://twitter.com/dexignzones"
+                      <a
+                          :href="`https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareText}`"
                           target="_blank"
                       >
                         <i class="fa-brands fa-twitter"></i>
-                      </NuxtLink>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                          :href="`https://wa.me/?text=${shareText}%20${currentUrl}`"
+                          target="_blank"
+                      >
+                        <i class="fa-brands fa-whatsapp"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>

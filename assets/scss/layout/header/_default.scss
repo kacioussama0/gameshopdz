@@ -988,7 +988,7 @@ a{
 	}
 }
 .mega-menu{
-	max-width:1200px;
+
 	#{$dz-pos-left}: 80px !important;
 	height: auto;
     overflow-y: auto;
@@ -1021,7 +1021,7 @@ a{
 		}
 	}
 	&.shop-menu{
-		max-width:1140px;
+
 		@include respond('tab-land'){
 			max-width:100%;
 		}
@@ -1146,7 +1146,11 @@ a{
 			.header-nav .nav > li > a{
 				--title: var(--secondary);
 				--white: var(--secondary);
+
+
 			}
+
+
 			.header-nav .nav > li.active > a,
 			.header-nav .nav > li:hover > a{
 				color:var(--primary);

@@ -19,18 +19,37 @@ useHead({
 })
 
 
-const searchProduct = async ()=> {
+const searchProduct = async () => {
+  try {
 
-  const response = useFetch('https://woo.gameshopdz.com/fibosearch/?s=' + search.value)
+    const { data, error } = await useFetch(
+        `https://woo.gameshopdz.com/fibosearch/?s=${search.value}`
+    )
+
+    if (error.value) {
+      console.error("Search error:", error.value)
+      return
+    }
+
+    if (!data.value?.suggestions) return
 
 
-  const filtredIds = response.data.value.suggestions.filter((product) => {
-      return product.type == 'product' && product.post_id != ''
-    }).map((product) => {return product.post_id});
+    tag.value = ''
+    brand.value = ''
+    category.value = ''
 
-  await fetchProducts(filtredIds)
-};
+    const filteredIds = data.value.suggestions
+        .filter(product => product.type === 'product' && product.post_id)
+        .map(product => product.post_id)
 
+    if (filteredIds.length) {
+      await fetchProducts(filteredIds)
+    }
+
+  } catch (err) {
+    console.error("Unexpected error:", err)
+  }
+}
 
 
 
@@ -167,9 +186,6 @@ onMounted(async ()=> {
 
 
   <div class="page-content bg-light">
-    <!--Banner Start-->
-    <CommonBanner :img="bg" name="Home" title="Notre Shop" />
-    <!--Banner End-->
 
 
 
@@ -182,107 +198,6 @@ onMounted(async ()=> {
           </div>
           <div class="col-80 col-xl-9">
 
-<!--            <h4 class="mb-3">Category</h4>-->
-<!--            <div class="row">-->
-<!--              <div class="col-xl-12">-->
-<!--                <Swiper-->
-<!--                  class="swiper category-swiper"-->
-<!--                  :slides-per-view="7"-->
-<!--                  :space-between="30"-->
-<!--                  :loop="true"-->
-<!--                  :modules="[Autoplay]"-->
-<!--                  :autoplay="{ delay: 2500 }"-->
-<!--                  :breakpoints="{-->
-<!--                    1200: { slidesPerView: 7 },-->
-<!--                    1440: { slidesPerView: 5 },-->
-<!--                    991: { slidesPerView: 4 },-->
-<!--                    575: { slidesPerView: 3 },-->
-<!--                    240: { slidesPerView: 2 },-->
-<!--                  }"-->
-<!--                >-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/1.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">SilkBliss Dress</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/3.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">GlamPants</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/4.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">ComfyLeggings</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/2.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">ClassicCapri</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/3.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">DapperCoat</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/4.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">ComfyLeggings</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/2.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">DenimDream Jeans</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                  <SwiperSlide class="swiper-slide">-->
-<!--                    <div class="shop-card">-->
-<!--                      <div class="dz-media rounded">-->
-<!--                        <img src="../../assets/images/shop/product/4.png" alt="image" />-->
-<!--                      </div>-->
-<!--                      <div class="dz-content">-->
-<!--                        <h6 class="title"><RouterLink to="/shop-list">SilkBliss Dress</RouterLink></h6>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </SwiperSlide>-->
-<!--                </Swiper>-->
-<!--              </div>-->
-<!--            </div>-->
 
 
             <div class="widget widget_search ">
