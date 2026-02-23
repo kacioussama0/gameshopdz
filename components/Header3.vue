@@ -36,7 +36,6 @@ const searchProduct = async () => {
 
     suggProducts.value = filtredProducts;
 
-
   } catch (err) {
     console.error("Unexpected error:", err)
   }

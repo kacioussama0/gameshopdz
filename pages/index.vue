@@ -137,7 +137,7 @@ useFetch("/api/wc/products", {
     regular_price: product.regular_price,
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
-  }));z
+  }));
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
