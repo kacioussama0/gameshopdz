@@ -3,7 +3,6 @@
 const props = defineProps<{
   product: Object;
   showStock: {type:boolean,required:false},
-  variant: {type:String,required:false,default:'primary'}
 }>();
 
 

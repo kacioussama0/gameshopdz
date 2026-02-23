@@ -39,7 +39,12 @@ const checkoutSchema = z.object({
 const errors = ref<any>({})
 
 
-
+useHead({
+  title: 'Gameshopdz - Confirmation de votre Commande',
+  meta: [
+    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
+  ],
+})
 
 const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
   credentials: 'include',

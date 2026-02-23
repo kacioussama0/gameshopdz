@@ -33,7 +33,6 @@ const searchProduct = async () => {
         .filter(product => product.type === 'product' && product.post_id)
 
 
-    console.log(filtredProducts)
 
     suggProducts.value = filtredProducts;
 

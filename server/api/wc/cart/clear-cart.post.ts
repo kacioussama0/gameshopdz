@@ -1,13 +1,17 @@
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
+    const cookie = getHeader(event, 'cookie') || ''
+    const nonce  = getHeader(event, 'x-wp-nonce') || ''
 
-    const response = await $fetch(
+    return await $fetch(
         `https://woo.gameshopdz.com/wp-json/wc/store/v1/cart/items`,
         {
             method: "DELETE",
-            credentials: "include"
+            credentials: "include",
+            headers: {
+                cookie,
+                'X-WP-Nonce': nonce,
+            }
         }
     )
-
-    return response
 })

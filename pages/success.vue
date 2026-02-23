@@ -9,6 +9,14 @@ import Header3 from "~/components/Header3.vue";
 const route = useRoute();
 const orderId = route.query.orderId
 
+
+useHead({
+  title: 'Gameshopdz - Merci Pour Votre Commande',
+  meta: [
+    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
+  ],
+})
+
 </script>
 
 <template>

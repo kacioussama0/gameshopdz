@@ -5,7 +5,6 @@ import {Autoplay, Navigation} from "swiper/modules";
 
 const props = defineProps<{
   products: Object,
-  variant: {type:String,required:false,default:'primary'}
 }>();
 
 

@@ -74,16 +74,6 @@ useFetch("/api/wc/products/", {
 
   product.value = response.data.value.products[0];
 
-  useHead({
-    title: product.value.name + ' - Gameshopdz',
-    meta: [
-      { name: 'description', content: 'My amazing site.' },
-    ],
-    bodyAttrs: {
-      class: 'test',
-    },
-    script: [{ innerHTML: 'console.log(\'Hello world\')' }],
-  })
 
 
   const ids = product.value['related_ids'];
@@ -112,21 +102,27 @@ useFetch("/api/wc/products/", {
     })
   }
 
+  useHead({
+
+    title: product.value.name + ' - Gameshopdz',
+
+    meta: [
+      { name: 'description', content: getShortDescription(product.value.description) },
+      { property: 'og:title', content: product.value.name },
+      { property: 'og:description', content: getShortDescription(product.value.description) },
+      { property: 'og:image', content: product.value.thumbnail },
+      { property: 'og:url', content: currentUrl.value },
+      { property: 'og:type', content: 'product' },
+    ]
+  })
+
+
 
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
 
 
-useHead({
-  meta: [
-    { property: 'og:title', content: product.value.name },
-    { property: 'og:description', content: product.value.short_description },
-    { property: 'og:image', content: product.value.thumbnail },
-    { property: 'og:url', content: currentUrl.value },
-    { property: 'og:type', content: 'product' },
-  ]
-})
 
 
 

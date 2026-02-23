@@ -26,6 +26,14 @@ const itemsCount = computed(() => cart.value?.items_count ?? 0)
 const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
 
 
+useHead({
+  title: 'Gameshopdz - Panier',
+  meta: [
+    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
+  ],
+})
+
+
 </script>
 
 <template>
