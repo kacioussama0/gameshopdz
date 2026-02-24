@@ -20,25 +20,42 @@ const currentUrl = computed(() => {
 
 const { $aa } = useNuxtApp()
 
-
-
-
 const addedCart = ref(false)
 
 
 const addToCart = async (productId) => {
-
   try {
-
     addedCart.value = true
 
-    return await useWcCart().addItem(productId,qty.value)
+    const result = await useWcCart().addItem(productId, qty.value)
 
-  }catch (error) {
+    const objectID = String(product.value?.objectID || product.value?.id || productId)
+    if (!objectID) return result
+
+    const qid = localStorage.getItem('algolia:lastQueryID')
+    const qidAt = Number(localStorage.getItem('algolia:lastQueryIDAt') || 0)
+    const TTL_MS = 30 * 60 * 1000
+    const isFresh = qid && qidAt && (Date.now() - qidAt) < TTL_MS
+
+    if (isFresh) {
+      $aa('convertedObjectIDsAfterSearch', {
+        eventName: 'Product Added To Cart',
+        index: 'products',
+        objectIDs: [String(objectID)],
+        queryID: qid,
+      })
+    } else {
+      $aa('convertedObjectIDs', {
+        eventName: 'Product Added To Cart',
+        index: 'products',
+        objectIDs: [String(objectID)],
+      })
+    }
+
+    return result
+  } catch (error) {
     console.log(error)
   }
-
-
 }
 
 function getShortDescription(description, maxLength = 240) {
@@ -103,24 +120,6 @@ useFetch("/api/wc/products/", {
 
     })
 
-    const queryID = localStorage.getItem('algolia:lastQueryID')
-    const objectID = product.value?.id
-    if (!objectID) return
-
-    if (queryID) {
-      $aa('convertedObjectIDsAfterSearch', {
-        eventName: 'Product Viewed (as conversion)',
-        index: 'products',
-        objectIDs: [String(objectID)],
-        queryID,
-      })
-    } else {
-      $aa('convertedObjectIDs', {
-        eventName: 'Product Viewed (as conversion)',
-        index: 'products',
-        objectIDs: [String(objectID)],
-      })
-    }
 
   }
 

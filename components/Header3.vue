@@ -47,11 +47,22 @@ watch(suggSearch, (value) => {
 
     if (searchId !== currentSearchId) return
 
-    suggProducts.value = res.hits
-    lastQueryID = res.queryID || null
+    const qid = res.queryID || null
+    lastQueryID = qid
 
-    localStorage.setItem('algolia:lastQueryID', res.queryID)
+    // ✅ خزن queryID + وقت التخزين (باش تقدر TTL)
+    if (process.client) {
+      localStorage.setItem('algolia:lastQueryID', qid || '')
+      localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
+    }
 
+    // ✅ اربط queryID بكل hit (باش click يستعمل الصحيح)
+    suggProducts.value = (res.hits || []).map(h => ({
+      ...h,
+      __queryID: qid,
+    }))
+
+    // ✅ viewedObjectIDs ما تقبلش queryID
     if (res.hits?.length) {
       $aa('viewedObjectIDs', {
         eventName: 'Autocomplete Results Viewed',
@@ -63,16 +74,20 @@ watch(suggSearch, (value) => {
 })
 
 function onSuggestionClick(hit) {
-  if (!lastQueryID) return
+  if (!hit.__queryID) return
 
   $aa('clickedObjectIDsAfterSearch', {
     eventName: 'Product Clicked',
     index: 'products',
     objectIDs: [String(hit.objectID)],
-    queryID: lastQueryID,
+    queryID: hit.__queryID,
+    positions: [hit.__position]
   })
 
+  localStorage.setItem('algolia:lastQueryID', hit.__queryID)
+  localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
 
+  navigateTo(`/shop/product/${hit.slug}`)
 }
 
 

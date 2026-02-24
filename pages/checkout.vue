@@ -9,6 +9,7 @@ import shipping from "../assets/shipping.json"
 import {navigateTo} from "nuxt/app";
 import { z } from "zod"
 import {useWcCart} from "#imports";
+const { $aa } = useNuxtApp()
 
 const isLoading = ref(false);
 const checkoutSchema = z.object({
@@ -157,7 +158,41 @@ const submitOrder = async () => {
 
       })
 
+      const orderId = order?.data.value.id
+
+      if (orderId) {
+        // ✅ objectIDs = products في السلة (لازم يطابقوا Algolia objectID)
+        const objectIDs = items.value.map(i => String(i.id))
+
+        // ✅ queryID من localStorage مع TTL
+        const qid = localStorage.getItem('algolia:lastQueryID')
+        const qidAt = Number(localStorage.getItem('algolia:lastQueryIDAt') || 0)
+        const TTL_MS = 30 * 60 * 1000
+        const isFresh = qid && qidAt && (Date.now() - qidAt) < TTL_MS
+
+        if (isFresh) {
+          $aa('convertedObjectIDsAfterSearch', {
+            eventName: 'Order Placed (COD)',
+            index: 'products',
+            objectIDs,
+            queryID: qid,
+          })
+        } else {
+          $aa('convertedObjectIDs', {
+            eventName: 'Order Placed (COD)',
+            index: 'products',
+            objectIDs,
+          })
+        }
+
+        // ✅ بعد checkout امسح queryID
+        localStorage.removeItem('algolia:lastQueryID')
+        localStorage.removeItem('algolia:lastQueryIDAt')
+      }
+
       useWcCart().clearCart()
+
+
 
       navigateTo('/success?orderId=' + order.data.value.id)
 
