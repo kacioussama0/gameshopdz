@@ -97,7 +97,7 @@ useHead({
                       <i class="fa-brands fa-3x fa-whatsapp"></i>
                       <span>
                         <h5 class="mb-0">Discuter sur WhatsApp</h5>
-                        <a href="https://wa.me/213550779976" class="stretched-link"></a>
+                        <a href="https://wa.me/213550779973" class="stretched-link"></a>
                       </span>
                     </div>
                   </div>
@@ -109,7 +109,7 @@ useHead({
                       <i class="fa fa-3x fa-phone"></i>
                       <span>
                          <h5 class="mb-0">Assistance téléphonique</h5>
-                         <a href="tel:+213550779976" class="stretched-link"></a>
+                         <a href="tel:+213550779973" class="stretched-link"></a>
                       </span>
                     </div>
                   </div>
@@ -122,7 +122,7 @@ useHead({
             </div>
 
             <div class="mt-4 d-sm-flex gap-3 justify-content-center">
-              <RouterLink to="/account-order-details" class="btn my-1 btn-secondary">Voir la commande</RouterLink>
+              <RouterLink to="/shop" class="btn my-1 btn-secondary">Retour à la boutique</RouterLink>
               <RouterLink to="/" class="btn btn-outline-secondary my-1 btnhover20">Retour à l’accueil</RouterLink>
             </div>
           </div>

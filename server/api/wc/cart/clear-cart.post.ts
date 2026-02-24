@@ -1,17 +1,17 @@
 export default defineEventHandler(async (event) => {
-    const config = useRuntimeConfig()
-    const cookie = getHeader(event, 'cookie') || ''
-    const nonce  = getHeader(event, 'x-wp-nonce') || ''
+    const cartToken = getRequestHeader(event, "cart-token") || ""
+    const nonce = getRequestHeader(event, "x-wc-store-api-nonce") || ""
 
-    return await $fetch(
-        `https://woo.gameshopdz.com/wp-json/wc/store/v1/cart/items`,
-        {
-            method: "DELETE",
-            credentials: "include",
-            headers: {
-                cookie,
-                'X-WP-Nonce': nonce,
-            }
+    if (!nonce) {
+        throw createError({ statusCode: 401, statusMessage: "Missing X-WC-Store-API-Nonce" })
+    }
+
+    return await $fetch("https://woo.gameshopdz.com/wp-json/wc/store/v1/cart/items", {
+        method: "DELETE",
+        headers: {
+            "X-WC-Store-API-Nonce": nonce,
+            ...(cartToken ? { "Cart-Token": cartToken } : {}),
+            "Content-Type": "application/json",
         }
-    )
+    })
 })

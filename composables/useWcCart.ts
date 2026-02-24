@@ -87,12 +87,18 @@ export const useWcCart = () => {
 
 
     const clearCart = async () => {
-
         clearLocal()
+
+        const cartToken = useCookie("wc_cart_token").value
+        const wcNonce = useCookie("wc_cart_nonce").value
 
         try {
             await $fetch("/api/wc/cart/clear-cart", {
-                method: "POST"
+                method: "POST",
+                headers: {
+                    "Cart-Token": cartToken,
+                    "X-WC-Store-API-Nonce": wcNonce,
+                }
             })
         } catch (e) {
             await refresh()

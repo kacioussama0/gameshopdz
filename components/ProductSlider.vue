@@ -25,20 +25,21 @@ const props = defineProps<{
       }"
 
       :breakpoints="{
-          2200: { slidesPerView: 5 },
-          991: { slidesPerView: 4 },
-          500: { slidesPerView: 2 },
-          0: { slidesPerView: 1 }
+
+        0: { slidesPerView: 2, spaceBetween: 15 },
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        992: { slidesPerView: 4, spaceBetween: 20 },
+        1400: { slidesPerView: 5, spaceBetween: 25 },
+        2000: { slidesPerView: 6, spaceBetween: 30 },
+        2500: { slidesPerView: 7, spaceBetween: 35 }
       }"
-
-
       :navigation="{
         prevEl: '.btn-prev',
         nextEl: '.btn-next',
       }"
     >
       <SwiperSlide class="swiper-slide" v-if="products" v-for="(product, ind) in products" :key="ind">
-        <ProductCard :product="product" :variant="variant"/>
+        <ProductCard :product="product"/>
       </SwiperSlide>
 
 

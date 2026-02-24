@@ -10,10 +10,10 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 500, statusMessage: "Missing WC config" })
     }
 
-    // Basic Auth (server-side only)
+
     const auth = Buffer.from(`${ck}:${cs}`).toString("base64")
 
-    // Minimal validation
+
     if (!body?.items?.length) {
         throw createError({ statusCode: 400, statusMessage: "items required" })
     }
@@ -40,10 +40,11 @@ export default defineEventHandler(async (event) => {
             method_title: body.shipping_method.method_title,
             total: String(body.shipping_method.total)
         }],
+        note: body.note
     }
 
     try {
-        return await $fetch(`${base}/orders`, {
+        const order = await $fetch(`${base}/orders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,6 +52,25 @@ export default defineEventHandler(async (event) => {
             },
             body: orderPayload,
         })
+
+        if (orderPayload.note && orderPayload.note.trim() !== '') {
+
+            await $fetch(`${base}/orders/${order.id}/notes`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Basic ${auth}`,
+                },
+                body: {
+                    note: orderPayload.note,
+                    customer_note: true
+                }
+            })
+
+        }
+
+        return order
+
     } catch (e: any) {
 
         throw createError({

@@ -246,10 +246,17 @@ onMounted(async ()=> {
 
 
 
-            <div class="row gx-xl-4 gy-3">
+            <div class="row g-4">
 
-              <div class="col-6 col-xl-3 col-xxxl-2 col-lg-4 col-md-4  m-md-b15 m-b30"  v-if="!loading" v-for="product in allProducts">
-                <ProductCard :product="product" :show-stock="true"/>
+              <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-4"
+                   v-if="!loading"
+                   v-for="product in allProducts"
+                   :key="product.id">
+
+                <ProductCard
+                    :product="product"
+                    :show-stock="true"
+                />
               </div>
 
 

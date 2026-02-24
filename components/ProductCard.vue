@@ -22,98 +22,178 @@ const addToCart = async (productId) => {
 </script>
 
 <template>
+  <div class="shop-card" v-if="product">
+    <div class="dz-media position-relative shadow-sm h-100">
+      <img
+          :src="product.thumbnail"
+          :alt="product.name"
+          class="product-img"
+          loading="lazy"
+      />
 
-        <div class="shop-card bg-white rounded-0 wow fadeInUp"  v-if="product">
-          <div class="dz-media position-relative rounded-0 shadow-sm h-100" :class="`border-${variant ?? 'primary'}`">
+      <div class="dz-content d-flex flex-column p-3">
+        <h5 class="title mb-1 fw-bolder clamp-text-2">
+          <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link text-primary">
+            {{ product.name }}
+          </NuxtLink>
+        </h5>
 
-            <img :src="product.thumbnail" alt="image" class="image-card" height="250" loading="lazy" />
-
-            <div class="dz-content d-flex flex-column p-3">
-              <h5 class="mb-1 fw-bolder clamp-text-2">
-                <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link"  :class="`text-${variant ?? 'primary'}`">{{ product.name }}</NuxtLink>
-              </h5>
-
-
-              <span class="price fs-5" :class="`text-${variant ?? 'primary'}`" v-if="!product.on_sale" style="font-size: 16px !important">{{product.price}} DA</span>
-              <span class="price text-danger fs-5" v-else><del class="text-muted">{{product.regular_price}} DA</del> {{product.price}} DA</span>
-
-              <div v-if="showStock">
-                 <span class=" text-success fw-bold rounded-pill" v-if="product.stock == 'instock'">
-                  Disponible - مـتـوفـــر
-                </span>
-                <span class=" text-danger fw-bold rounded-pill" v-else>
-                 Non disponible - غـيـر مـتـوفر
-              </span>
-              </div>
-
-
-              <button class="btn rounded-0 mt-3" @click="addToCart(product.id)" style="font-size: 12px !important;" :class="`btn-${variant ?? 'primary'}`" v-if="product.stock == 'instock'">
-                <i class="fa fa-cart-plus me-2"></i>
-                Ajouter au Panier
-              </button>
-
-
-              <NuxtLink :to="`/shop/product/${product.slug}`" class="btn rounded-0 mt-3" style="font-size: 12px !important;" :class="`btn-${variant ?? 'primary'}`" v-else>
-                <i class="fa fa-cart-plus me-2"></i>
-                Lire la suite
-              </NuxtLink>
-
-
-
-            </div>
-
-
-
-
-          </div>
-
-          <span class="badge text-bg-warning  position-absolute start-0 rounded-0  ms-2 mt-2 top-0 " v-if="product.occasion || product.name.includes('OCCASION')" style="font-size: 11px">Occasion | مستعمل</span>
-          <span class="badge text-bg-info position-absolute start-0 rounded-0  ms-2 mt-2 top-0 " v-else style="font-size: 11px">Neuf | جديد</span>
-          <span class="badge text-bg-danger position-absolute end-0 rounded-0  me-2  mt-2 top-0" v-if="product.on_sale">{{Math.floor(((product.regular_price - product.price) / product.regular_price) * 100)}} %</span>
-
-
+        <div class="price-line mt-1">
+          <span class="price" v-if="!product.on_sale">{{ product.price }} DA</span>
+          <span class="price text-danger" v-else>
+            <del class="text-muted me-1">{{ product.regular_price }} DA</del>
+            {{ product.price }} DA
+          </span>
         </div>
 
+        <div v-if="showStock" class="stock mt-1">
+          <span class="text-success fw-bold" v-if="product.stock == 'instock'">Disponible - متوفر</span>
+          <span class="text-danger fw-bold" v-else>Non disponible - غير متوفر</span>
+        </div>
 
+        <button
+            class="btn btn-primary add-btn mt-3"
+            @click="addToCart(product.id)"
+            v-if="product.stock == 'instock'"
+        >
+          <i class="fa fa-cart-plus me-2"></i>
+          Ajouter au Panier
+        </button>
+
+        <NuxtLink
+            :to="`/shop/product/${product.slug}`"
+            class="btn btn-primary add-btn mt-3"
+            v-else
+        >
+          <i class="fa fa-cart-plus me-2"></i>
+          Lire la suite
+        </NuxtLink>
+      </div>
+
+      <!-- Badges داخل dz-media باش position absolute تخدم صح -->
+      <span class="badge badge-left"
+            v-if="product.occasion || product.name.includes('OCCASION')">Occasion | مستعمل</span>
+      <span class="badge badge-left badge-info" v-else>Neuf | جديد</span>
+      <span class="badge badge-right"
+            v-if="product.on_sale">{{ Math.floor(((product.regular_price - product.price) / product.regular_price) * 100) }}%</span>
+    </div>
+  </div>
 </template>
 
+
 <style scoped>
+.shop-card {
+  background: #fff;
+}
 
+/* card container */
+.dz-media {
+  border-radius: 0;
+  overflow: hidden; /* مهم باش الصورة والبادجات ما يخرجوش */
+}
 
+/* image */
+.product-img {
+  width: 100%;
+  height: 320px;              /* default desktop */
+  object-fit: contain;
+  background: #fff;
+  display: block;
+}
 
-@media screen and (max-width: 500px) {
-  span {
-    font-size: 12px !important;
+/* title clamp */
+.clamp-text-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+}
+
+/* title */
+.title {
+  font-size: 14px;
+  min-height: 42px;
+}
+
+/* price */
+.price-line .price {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* stock */
+.stock span {
+  font-size: 13px;
+}
+
+/* button */
+.add-btn {
+  border-radius: 0;
+  font-size: 12px;
+  padding: 10px 12px;
+  line-height: 1.1;
+}
+
+/* badges */
+.badge {
+  position: absolute;
+  top: 10px;
+  font-size: 11px;
+  border-radius: 0;
+  padding: 6px 8px;
+}
+.badge-left { left: 10px; background: #ffc107; color: #111; }
+.badge-left.badge-info { background: #0dcaf0; color: #111; }
+.badge-right { right: 10px; background: #dc3545; color: #fff; }
+
+/* ✅ Phones */
+@media (max-width: 576px) {
+  .product-img {
+    height: 190px;            /* أصغر بكثير في الهاتف */
   }
 
-  h5 {
-    font-size: 12px !important;
+  .dz-content {
+    padding: 12px !important;
   }
 
-  button {
-    display: none;
-    font-size: 6px !important;
+  .title {
+    font-size: 12.5px;
+    min-height: 36px;
+  }
+
+  .price-line .price {
+    font-size: 14px;
+  }
+
+  .stock span {
+    font-size: 12px;
+  }
+
+  .add-btn {
+    font-size: 11px;
+    padding: 9px 10px;
+  }
+
+  .badge {
+    top: 8px;
+    font-size: 10px;
+    padding: 5px 7px;
   }
 }
 
-@media screen and (min-width: 500px) {
-  .clamp-text-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2   ; /* Number of lines to show */
-    -webkit-box-orient: vertical;
-    line-clamp: 2;
-  }
-
-  h5 {
-    min-height: 50px;
-  }
-
-  button {
-    font-size: 10px !important;
-  }
+/* very small phones */
+@media (max-width: 360px) {
+  .product-img { height: 165px; }
+  .add-btn { font-size: 10.5px; padding: 8px 9px; }
 }
 
-
+@media (max-width: 576px) {
+  .add-btn { width: 100%; }
+  .product-img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
 
 </style>

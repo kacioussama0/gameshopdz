@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
         credentials: "include",
     })
 
-    // ✅ تحديث Token/Nonce إذا تبدلو
+
     const newToken = res.headers.get("cart-token")
     const newNonce = res.headers.get("nonce")
     if (newToken) setCookie(event, "wc_cart_token", newToken, { path: "/" })
