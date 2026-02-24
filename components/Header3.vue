@@ -109,10 +109,14 @@ onUnmounted(() => {
 
           <span class="d-md-none d-block">
           <NuxtLink
-              to="/shop"
-              class="cart-btn"
+              class="nav-link"
+              to="#"
+              @click.prevent
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasTop"
+              aria-controls="offcanvasTop"
           >
-            <i class="iconly-Broken-Buy" ></i>
+                  <i class="iconly-Light-Search"></i>
 
           </NuxtLink>
         </span>
