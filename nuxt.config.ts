@@ -7,10 +7,12 @@ export default defineNuxtConfig({
       wcStoreUrl: process.env.WC_STORE_URL,
     },
   },
+
   ssr: true,
   nitro: { preset: 'node-server' },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
+
   css: [
     "lightgallery/css/lg-zoom.css",
     "lightgallery/css/lg-thumbnail.css",
@@ -19,9 +21,11 @@ export default defineNuxtConfig({
     "~/assets/css/skin/skin-1.css",
     "~/assets/css/style.css",
   ],
+
   plugins: [
     // "~/plugins/bootstrap.client.mjs",
   ],
+
   app: {
     head: {
       title: "Gameshopdz - Leader Gaming Shop en Algérie",
@@ -48,6 +52,8 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  modules: ["@nuxtjs/algolia"]
 });
 
 declare class Isotope {

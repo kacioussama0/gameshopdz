@@ -96,7 +96,7 @@ const addToCart = async (productId) => {
 .product-img {
   width: 100%;
   height: 320px;              /* default desktop */
-  object-fit: contain;
+  object-fit: cover;
   background: #fff;
   display: block;
 }

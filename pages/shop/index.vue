@@ -1,15 +1,10 @@
 <script setup lang="ts">
 
 import ShopSidebar from "~/elements/ShopSidebar.vue";
-import {use} from "h3";
-
-
 const route = useRoute()
 const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
 const brand = computed(() => route.query.brand as string | undefined)
-
-const search = ref("")
 
 useHead({
   title: 'Gameshopdz - Leader Gaming Shop en Algérie',
@@ -17,41 +12,6 @@ useHead({
     { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
   ],
 })
-
-
-const searchProduct = async () => {
-  try {
-
-    const { data, error } = await useFetch(
-        `https://woo.gameshopdz.com/fibosearch/?s=${search.value}`
-    )
-
-    if (error.value) {
-      console.error("Search error:", error.value)
-      return
-    }
-
-    if (!data.value?.suggestions) return
-
-
-    tag.value = ''
-    brand.value = ''
-    category.value = ''
-
-    const filteredIds = data.value.suggestions
-        .filter(product => product.type === 'product' && product.post_id)
-        .map(product => product.post_id)
-
-    if (filteredIds.length) {
-      await fetchProducts(filteredIds)
-    }
-
-  } catch (err) {
-    console.error("Unexpected error:", err)
-  }
-}
-
-
 
 
 watch(category, async () => {
@@ -200,20 +160,6 @@ onMounted(async ()=> {
 
 
 
-            <div class="widget widget_search ">
-              <div class="form-group">
-                <div class="input-group">
-                  <input name="dzSearch" required type="search" @input="searchProduct" v-model="search"  class="form-control" placeholder="Rechercher un produit...." />
-                  <div class="input-group-addon">
-                    <button name="submit" value="Submit" type="submit" class="btn">
-                      <i class="icon feather icon-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
             <div class="filter-wrapper p-t10">
 
               <div class="filter-left-area">
@@ -241,9 +187,6 @@ onMounted(async ()=> {
 
               </div>
             </div>
-
-
-
 
 
             <div class="row g-4">

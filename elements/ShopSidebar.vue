@@ -7,7 +7,8 @@ const categories = ref([]);
 useFetch("/api/wc/categories", {
 }).then(( response) => {
 
-  categories.value = response.data.value;
+  console.log(response.data.value);
+  categories.value = response.data.value.filter(category => category.parent == 0 && category.id != 29 && category.id != 3039 && category.id != 2216);
 
 }).catch((error) => {
   console.error("Error fetching categories:", error);
@@ -47,20 +48,6 @@ console.log(categories)
           </ul>
         </div>
 
-        <div class="widget widget_tag_cloud">
-          <h6 class="widget-title">Tags</h6>
-          <div class="tagcloud">
-            <RouterLink to="/blog-tag">Vintage </RouterLink>
-            <RouterLink to="/blog-tag">Wedding</RouterLink>
-            <RouterLink to="/blog-tag">Cotton</RouterLink>
-            <RouterLink to="/blog-tag">Linen</RouterLink>
-            <RouterLink to="/blog-tag">Navy</RouterLink>
-            <RouterLink to="/blog-tag">Urban</RouterLink>
-            <RouterLink to="/blog-tag">Business Meeting</RouterLink>
-            <RouterLink to="/blog-tag">Formal</RouterLink>
-          </div>
-        </div>
-        <RouterLink to="?" class="btn btn-sm font-14 btn-secondary btn-sharp">RESET</RouterLink>
       </RouterLinkside>
     </div>
   </div>

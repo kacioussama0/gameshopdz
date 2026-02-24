@@ -6,7 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 import Canvas from "@/components/Canvas.vue";
 
+const { $algolia } = useNuxtApp()
+
 const menu = ref(false);
+
+
+
 
 const { itemsCount, pending } = useWcCart()
 
@@ -14,36 +19,70 @@ const { itemsCount, pending } = useWcCart()
 const suggSearch = ref('');
 const suggProducts = ref([]);
 
-const searchProduct = async () => {
-  try {
 
-    const { data, error } = await useFetch(
-        `https://woo.gameshopdz.com/fibosearch/?s=${suggSearch.value}`
-    )
+let timeout: any = null
+let currentSearchId = 0
+let lastQueryID: string | null = null
 
-    if (error.value) {
-      console.error("Search error:", error.value)
+const { $aa } = useNuxtApp()
+
+watch(suggSearch, (value) => {
+  clearTimeout(timeout)
+
+  timeout = setTimeout(async () => {
+    const term = value.trim()
+    if (!term) {
+      suggProducts.value = []
       return
     }
 
-    if (!data.value?.suggestions) return
+    const searchId = ++currentSearchId
+    const index = $algolia.initIndex('products')
 
+    const res = await index.search(term, {
+      hitsPerPage: 6,
+      clickAnalytics: true,
+      analytics: true,
+    })
 
-    const filtredProducts = data.value.suggestions
-        .filter(product => product.type === 'product' && product.post_id)
+    if (searchId !== currentSearchId) return
 
+    suggProducts.value = res.hits
+    lastQueryID = res.queryID || null
 
+    if (res.hits?.length) {
+      $aa('viewedObjectIDs', {
+        eventName: 'Autocomplete Results Viewed',
+        index: 'products',
+        objectIDs: res.hits.map(h => String(h.objectID)),
+      })
+    }
+  }, 250)
+})
 
-    suggProducts.value = filtredProducts;
+function onSuggestionClick(hit, position) {
+  if (!lastQueryID) return
 
-  } catch (err) {
-    console.error("Unexpected error:", err)
-  }
+  $aa('clickedObjectIDsAfterSearch', {
+    eventName: 'Autocomplete Product Clicked',
+    index: 'products',
+    objectIDs: [String(hit.objectID)],
+    positions: [position],
+    queryID: lastQueryID,
+  })
+
+  // navigate بعدها
 }
 
 
 const isMenu = ref(false);
 const isFixed = ref(false);
+
+onUpdated(()=> {
+  document.body.style.overflow = ""
+  document.documentElement.style.overflow = ""
+})
+
 
 onMounted(() => {
   const menus = document.querySelectorAll(".navbar-nav > li");
@@ -206,7 +245,7 @@ onUnmounted(() => {
   <!-- Main Header End -->
   <!-- SearchBar -->
   <div
-    class="dz-search-area dz-offcanvas offcanvas offcanvas-top"
+    class="dz-search-area py-3 dz-offcanvas offcanvas offcanvas-top"
     tabindex="-1"
     id="offcanvasTop"
     aria-modal="true"
@@ -228,7 +267,6 @@ onUnmounted(() => {
             class="form-control"
             placeholder="Search Product"
             v-model="suggSearch"
-            @input="searchProduct"
           />
           <button class="btn" type="button">
             <i class="iconly-Light-Search"></i>
@@ -238,7 +276,7 @@ onUnmounted(() => {
       </form>
       <div class="row"  v-if="suggProducts.length">
         <div class="col-xl-12">
-          <h5 class="mb-3">You May Also Like</h5>
+
           <Swiper
             class="swiper category-swiper2 swiper-initialized swiper-horizontal swiper-backface-hidden"
             :slides-per-view="6"
@@ -254,19 +292,34 @@ onUnmounted(() => {
             }"
           >
 
-            <SwiperSlide class="swiper-slide" v-for="product in suggProducts" :key="product.post_id">
+            <SwiperSlide class="swiper-slide" v-for="(product,index) in suggProducts" :key="product.objectID">
               <div class="shop-card">
-                <div class="dz-media mb-3" v-html="product.thumb_html" />
+                <NuxtLink :to="`/shop/product/${product.slug}`" class="card-link" @click="onSuggestionClick(product,index+1)">
 
+                  <div class="dz-media">
+                    <img
+                        :src="product.image"
+                        :alt="product.name"
+                        loading="lazy"
+                        decoding="async"
+                        width="300"
+                        height="300"
+                        class="product-img"
+                    />
+                  </div>
 
-                </div>
-                <div class="dz-content">
-                  <h6 class="title">
-                    <NuxtLink :to="`/shop/product/${product.url.split('/produit/')[1].replace('/', '')}`" class="stretched-link">{{product.value}}</NuxtLink>
-                  </h6>
-                  <h6 class="price" v-html="product.price"></h6>
-                </div>
+                  <div class="dz-content flex-column">
+                    <h6 class="title">
+                      {{ product.name }}
+                    </h6>
 
+                    <h6 class="price">
+                      {{ product.price }} DA
+                    </h6>
+                  </div>
+
+                </NuxtLink>
+              </div>
             </SwiperSlide>
 
             <span
@@ -291,6 +344,63 @@ onUnmounted(() => {
   display: block !important;
 }
 
+.shop-card {
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
 
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.dz-media {
+  aspect-ratio: 1 / 1;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.shop-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.dz-content {
+  padding: 12px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;  /* يمنع الاسم من تخريب التصميم */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 36px;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 6px;
+  color: var(--bs-primary);
+}
 
 </style>
