@@ -50,6 +50,8 @@ watch(suggSearch, (value) => {
     suggProducts.value = res.hits
     lastQueryID = res.queryID || null
 
+    localStorage.setItem('algolia:lastQueryID', res.queryID)
+
     if (res.hits?.length) {
       $aa('viewedObjectIDs', {
         eventName: 'Autocomplete Results Viewed',
@@ -60,18 +62,17 @@ watch(suggSearch, (value) => {
   }, 250)
 })
 
-function onSuggestionClick(hit, position) {
+function onSuggestionClick(hit) {
   if (!lastQueryID) return
 
   $aa('clickedObjectIDsAfterSearch', {
-    eventName: 'Autocomplete Product Clicked',
+    eventName: 'Product Clicked',
     index: 'products',
     objectIDs: [String(hit.objectID)],
-    positions: [position],
     queryID: lastQueryID,
   })
 
-  // navigate بعدها
+
 }
 
 
@@ -294,7 +295,7 @@ onUnmounted(() => {
 
             <SwiperSlide class="swiper-slide" v-for="(product,index) in suggProducts" :key="product.objectID">
               <div class="shop-card">
-                <NuxtLink :to="`/shop/product/${product.slug}`" class="card-link" @click="onSuggestionClick(product,index+1)">
+                <NuxtLink :to="`/shop/product/${product.slug}`" class="card-link" @click="onSuggestionClick(product)">
 
                   <div class="dz-media">
                     <img

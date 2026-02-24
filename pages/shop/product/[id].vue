@@ -18,6 +18,8 @@ const currentUrl = computed(() => {
       : ''
 })
 
+const { $aa } = useNuxtApp()
+
 
 
 
@@ -100,6 +102,26 @@ useFetch("/api/wc/products/", {
       })
 
     })
+
+    const queryID = localStorage.getItem('algolia:lastQueryID')
+    const objectID = product.value?.id
+    if (!objectID) return
+
+    if (queryID) {
+      $aa('convertedObjectIDsAfterSearch', {
+        eventName: 'Product Viewed (as conversion)',
+        index: 'products',
+        objectIDs: [String(objectID)],
+        queryID,
+      })
+    } else {
+      $aa('convertedObjectIDs', {
+        eventName: 'Product Viewed (as conversion)',
+        index: 'products',
+        objectIDs: [String(objectID)],
+      })
+    }
+
   }
 
   useHead({
@@ -121,8 +143,6 @@ useFetch("/api/wc/products/", {
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
-
-
 
 
 
