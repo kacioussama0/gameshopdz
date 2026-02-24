@@ -20,57 +20,71 @@ const suggSearch = ref('');
 const suggProducts = ref([]);
 
 
-let timeout: any = null
-let currentSearchId = 0
 let lastQueryID: string | null = null
 
 const { $aa } = useNuxtApp()
 
+let timeout = null
+let currentSearchId = 0
+
 watch(suggSearch, (value) => {
+
   clearTimeout(timeout)
 
+  const term = value?.trim() || ''
+
+  // ⛔ منع البحث أقل من 2 حروف
+  if (term.length < 2) {
+    suggProducts.value = []
+    return
+  }
+
   timeout = setTimeout(async () => {
-    const term = value.trim()
-    if (!term) {
-      suggProducts.value = []
-      return
-    }
 
     const searchId = ++currentSearchId
-    const index = $algolia.initIndex('products')
 
-    const res = await index.search(term, {
-      hitsPerPage: 6,
-      clickAnalytics: true,
-      analytics: true,
-    })
+    try {
+      const index = $algolia.initIndex('products')
 
-    if (searchId !== currentSearchId) return
-
-    const qid = res.queryID || null
-    lastQueryID = qid
-
-    // ✅ خزن queryID + وقت التخزين (باش تقدر TTL)
-    if (process.client) {
-      localStorage.setItem('algolia:lastQueryID', qid || '')
-      localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
-    }
-
-    // ✅ اربط queryID بكل hit (باش click يستعمل الصحيح)
-    suggProducts.value = (res.hits || []).map(h => ({
-      ...h,
-      __queryID: qid,
-    }))
-
-    // ✅ viewedObjectIDs ما تقبلش queryID
-    if (res.hits?.length) {
-      $aa('viewedObjectIDs', {
-        eventName: 'Autocomplete Results Viewed',
-        index: 'products',
-        objectIDs: res.hits.map(h => String(h.objectID)),
+      const res = await index.search(term, {
+        hitsPerPage: 8,
+        clickAnalytics: true,
       })
+
+      // 🔒 منع نتيجة قديمة تظهر
+      if (searchId !== currentSearchId) return
+
+      const qid = res.queryID || null
+      lastQueryID = qid
+
+      // 💾 تخزين queryID مع TTL
+      if (process.client && qid) {
+        localStorage.setItem('algolia:lastQueryID', qid)
+        localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
+      }
+
+      // 🧠 ربط queryID بكل نتيجة
+      suggProducts.value = (res.hits || []).map(hit => ({
+        ...hit,
+        __queryID: qid,
+      }))
+
+      // 👁️ إرسال Viewed Event (أفضل طريقة)
+      if (res.hits?.length && qid) {
+        $aa('viewedObjectIDsAfterSearch', {
+          eventName: 'Autocomplete Results Viewed',
+          index: 'products',
+          objectIDs: res.hits.map(h => String(h.objectID)),
+          queryID: qid,
+        })
+      }
+
+    } catch (err) {
+      console.error('Algolia search error:', err)
     }
-  }, 250)
+
+  }, 400)
+
 })
 
 function onSuggestionClick(hit) {
