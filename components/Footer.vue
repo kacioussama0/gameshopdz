@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+const { itemsCount} = useWcCart()
+
 </script>
 <template>
   <footer class="site-footer footer-map footer-dark">
@@ -73,12 +76,20 @@
     <!-- Footer Top End -->
 
     <section class="position-fixed bottom-0 end-0 w-100 border-top d-block d-lg-none bg-white z-3 ">
-      <div class="d-flex justify-content-between  align-items-center container w-100 py-3">
-        <NuxtLink to="/" class="vstack text-dark align-items-center"><i class="iconly-Curved-Home text-dark"></i>Accueil</NuxtLink>
-        <NuxtLink to="/shop" class="vstack text-dark align-items-center"><i class="iconly-Curved-Search text-dark"></i>Recherche</NuxtLink>
-        <NuxtLink to="/categories" class="vstack text-dark align-items-center"><i class="iconly-Curved-Category text-dark"></i>Categories</NuxtLink>
-        <NuxtLink to="tel:0550779973" class="vstack text-dark align-items-center"><i class="iconly-Curved-Call text-dark "></i>Contact</NuxtLink>
+      <div class="container">
+        <div class="d-flex justify-content-between  align-items-center  w-100 py-3">
+          <NuxtLink to="/" class="vstack text-dark align-items-center"><i class="iconly-Curved-Home text-dark"></i>Accueil</NuxtLink>
+          <NuxtLink to="/cart" class="vstack text-dark align-items-center position-relative">
+          <span>
+              <span class="badge badge-circle position-absolute top-0 ms-3 d-flex justify-content-center align-items-center" style="width: 25px ; height: 25px"> {{itemsCount}}</span>
+              <i class="iconly-Curved-Bag text-dark"></i>
+          </span>
+            Panier
+          </NuxtLink>
+          <NuxtLink to="tel:0550779973" class="vstack text-dark align-items-center"><i class="iconly-Curved-Call text-dark "></i>Contact</NuxtLink>
+        </div>
       </div>
+
     </section>
 
   </footer>
