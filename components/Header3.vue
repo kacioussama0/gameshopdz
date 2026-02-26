@@ -290,7 +290,7 @@ onUnmounted(() => {
       ×
     </button>
     <div class="container">
-      <form class="header-item-search">
+      <form class="header-item-search" @submit.prevent>
         <div class="input-group search-input">
           <input
             type="search"
@@ -298,9 +298,6 @@ onUnmounted(() => {
             placeholder="Search Product"
             v-model="suggSearch"
           />
-          <button class="btn" type="button">
-            <i class="iconly-Light-Search"></i>
-          </button>
         </div>
 
       </form>

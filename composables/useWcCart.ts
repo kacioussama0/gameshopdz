@@ -21,14 +21,30 @@ export const useWcCart = () => {
         if (!cart.value) cart.value = { items: [], totals: {} }
     }
 
-    const addLocal = (id: number, quantity: number) => {
+    const addLocal = (id: number, quantity: number, variation: any = null) => {
         ensureCart()
-        // ملاحظة: بعض APIs ترجع product_id أو id، عدّل حسب اللي عندك
-        const item = cart.value.items.find((i: any) => i.id === id || i.product_id === id)
-        if (item) item.quantity = (item.quantity || 0) + quantity
-        else cart.value.items.push({ id, product_id: id, quantity })
-    }
 
+        const item = cart.value.items.find((i: any) => {
+            const sameId = i.id === id
+
+            const sameVariation =
+                JSON.stringify(i.variation || {}) ===
+                JSON.stringify(variation || {})
+
+            return sameId && sameVariation
+        })
+
+        if (item) {
+            item.quantity = (item.quantity || 0) + quantity
+        } else {
+            cart.value.items.push({
+                id,                  // variation ID OR simple product ID
+                product_id: id,
+                quantity,
+                variation
+            })
+        }
+    }
     const updateLocal = (key: string, quantity: number) => {
         ensureCart()
         const item = cart.value.items.find((i: any) => i.key === key)
@@ -43,10 +59,10 @@ export const useWcCart = () => {
     }
 
     // ✅ Actions (instant UI + refresh confirm)
-    const addItem = async (id: number, quantity = 1) => {
-        addLocal(id, quantity)
+    const addItem = async (id: number, quantity = 1,variation = []) => {
+        addLocal(id, quantity,variation)
         try {
-            await $fetch("/api/wc/cart/add-item", { method: "POST", body: { id, quantity } })
+            await $fetch("/api/wc/cart/add-item", { method: "POST", body: { id, quantity,variation } })
         } catch (e) {
             await refresh()
             throw e

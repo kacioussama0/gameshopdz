@@ -40,6 +40,8 @@ export default defineEventHandler(async (event) => {
                 'tags': product.tags,
                 'images': product.images,
                 'related_ids': product.related_ids,
+                'attributes': product.attributes,
+                'variations': product.variations,
                 'stock_status': product.stock_status,
             }
         }),

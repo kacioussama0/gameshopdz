@@ -18,16 +18,20 @@ const currentUrl = computed(() => {
       : ''
 })
 
+const variation = ref([])
+
+const variationVal = ref('')
+
 const { $aa } = useNuxtApp()
 
 const addedCart = ref(false)
 
 
-const addToCart = async (productId) => {
+const addToCart = async (productId,variationId = null) => {
   try {
     addedCart.value = true
 
-    const result = await useWcCart().addItem(productId, qty.value)
+    const result = await useWcCart().addItem(productId, qty.value,variation.value)
 
     const objectID = String(product.value?.objectID || product.value?.id || productId)
     if (!objectID) return result
@@ -90,9 +94,16 @@ useFetch("/api/wc/products/", {
 }).then(( response) => {
 
 
-
   product.value = response.data.value.products[0];
 
+  if(product.value.attributes) {
+    variation.value = [
+      {
+        'attribute': product.value.attributes[0].name,
+        'value': product.value.attributes[0].options[0]
+      }
+    ]
+  }
 
 
   const ids = product.value['related_ids'];
@@ -469,90 +480,36 @@ useFetch("/api/wc/products/", {
                     ></span>
                     </div>
                   </div>
-<!--                  <div class="d-block">-->
-<!--                    <label class="form-label">Size</label>-->
-<!--                    <div class="btn-group product-size m-0">-->
-<!--                      <input-->
-<!--                          type="radio"-->
-<!--                          class="btn-check"-->
-<!--                          name="btnradio1"-->
-<!--                          id="btnradio101"-->
-<!--                      />-->
-<!--                      <label class="btn" for="btnradio101">S</label>-->
+                  <div class="d-block" v-if="product.attributes">
 
-<!--                      <input-->
-<!--                          type="radio"-->
-<!--                          class="btn-check"-->
-<!--                          name="btnradio1"-->
-<!--                          id="btnradiol02"-->
-<!--                      />-->
-<!--                      <label class="btn" for="btnradiol02">M</label>-->
+                    <div v-for="attribute in product.attributes">
+                      <label class="form-label">{{attribute.name}}</label>
+                      <div class="btn-group product-size m-0" >
 
-<!--                      <input-->
-<!--                          type="radio"-->
-<!--                          class="btn-check"-->
-<!--                          name="btnradio1"-->
-<!--                          id="btnradiol03"-->
-<!--                      />-->
-<!--                      <label class="btn" for="btnradiol03">L</label>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="meta-content">-->
-<!--                    <label class="form-label">Color</label>-->
-<!--                    <div class="d-flex align-items-center color-filter">-->
-<!--                      <div class="form-check">-->
-<!--                        <input-->
-<!--                            class="form-check-input"-->
-<!--                            type="radio"-->
-<!--                            name="radioNoLabel"-->
-<!--                            id="radioNoLabel21"-->
-<!--                            value="#24262B"-->
-<!--                            aria-label="..."-->
-<!--                        />-->
-<!--                        <span style="background-color: rgb(36, 38, 43)"></span>-->
-<!--                      </div>-->
-<!--                      <div class="form-check">-->
-<!--                        <input-->
-<!--                            class="form-check-input"-->
-<!--                            type="radio"-->
-<!--                            name="radioNoLabel"-->
-<!--                            id="radioNoLabel22"-->
-<!--                            value="#8CB2D1"-->
-<!--                            aria-label="..."-->
-<!--                        />-->
-<!--                        <span-->
-<!--                            style="background-color: rgb(140, 178, 209)"-->
-<!--                        ></span>-->
-<!--                      </div>-->
-<!--                      <div class="form-check">-->
-<!--                        <input-->
-<!--                            class="form-check-input"-->
-<!--                            type="radio"-->
-<!--                            name="radioNoLabel"-->
-<!--                            id="radioNoLabel23"-->
-<!--                            value="#0D775E"-->
-<!--                            aria-label="..."-->
-<!--                        />-->
-<!--                        <span style="background-color: rgb(13, 119, 94)"></span>-->
-<!--                      </div>-->
-<!--                      <div class="form-check">-->
-<!--                        <input-->
-<!--                            class="form-check-input"-->
-<!--                            type="radio"-->
-<!--                            name="radioNoLabel"-->
-<!--                            id="radioNoLabel24"-->
-<!--                            value="#FEC4C4"-->
-<!--                            aria-label="..."-->
-<!--                        />-->
-<!--                        <span-->
-<!--                            style="background-color: rgb(254, 196, 196)"-->
-<!--                        ></span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
+                        <span v-for="(option,index) in attribute.options">
+                          <input
+                              type="radio"
+                              class="btn-check"
+                              :name="'attribute-'+attribute.id"
+                              :id="'option-'+ index"
+                              :value="option"
+                              v-model="variationVal"
+                              :checked="index == 0"
+                          />
+                        <label class="btn" :for="'option-'+ index">{{option}}</label>
+                        </span>
+
+
+
+                      </div>
+                    </div>
+
+
+                  </div>
+
                 </div>
                 <div class="btn-group cart-btn">
-                  <button class="btn btn-secondary text-uppercase rounded-0" @click="addToCart(product.id)" :disabled="product.stock_status != 'instock'">
+                  <button class="btn btn-secondary text-uppercase rounded-0" @click="addToCart(product.id,variationId)" :disabled="product.stock_status != 'instock'">
                     <i class="iconly-Curved-Bag2 me-2"></i>
                     Ajouter Panier
                   </button>

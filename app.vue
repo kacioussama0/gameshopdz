@@ -18,6 +18,20 @@ router.afterEach(() => {
   finish()
 })
 
+
+useSeoMeta({
+  title: 'Gameshopdz - Leader Gaming Shop en Algérie',
+  description: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.',
+  ogTitle: 'Gameshopdz - Leader Gaming Shop en Algérie',
+  ogDescription: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.',
+  ogImage: 'https://gameshopdz.com/banner.jpg',
+  ogUrl: 'https://gameshopdz.com/',
+  twitterTitle: 'Gameshopdz - Leader Gaming Shop en Algérie',
+  twitterDescription: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.',
+  twitterImage: 'https://gameshopdz.com/banner.jpg',
+  twitterCard: 'summary_large_image'
+})
+
 </script>
 
 <template>
