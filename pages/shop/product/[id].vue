@@ -2,7 +2,7 @@
 import RelatedProduct from "~/elements/RelatedProduct.vue";
 import { SwiperSlide, Swiper } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
-import { ref } from "vue";
+import {ref, watch} from "vue";
 import Header from "~/components/Header.vue";
 import Header3 from "~/components/Header3.vue";
 import img1 from "assets/images/products/lady-1.png";
@@ -20,9 +20,14 @@ const currentUrl = computed(() => {
 
 const variation = ref([])
 
+
 const variationVal = ref('')
 
 const { $aa } = useNuxtApp()
+
+watch(variationVal,function (val) {
+  variation.value[0]['value'] = val
+})
 
 const addedCart = ref(false)
 
@@ -55,6 +60,7 @@ const addToCart = async (productId,variationId = null) => {
         objectIDs: [String(objectID)],
       })
     }
+
 
     return result
   } catch (error) {
