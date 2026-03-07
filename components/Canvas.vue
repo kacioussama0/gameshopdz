@@ -1,14 +1,29 @@
 <script lang="ts" setup>
-import { IMAGES } from "@/constent/theme";
-import MultiRangeSlide from "@/elements/MultiRangeSlide.vue";
-import { reactive, ref } from "vue";
-import { RouterLink } from "vue-router";
 
-const cartItems = reactive([
-  { img: IMAGES.shop_cartpic1, name: "Sophisticated Swagger Suit", price: "50.00", qty: 1 },
-  { img: IMAGES.shop_cartpic2, name: "Cozy Knit Cardigan Sweater", price: "40.00", qty: 1 },
-  { img: IMAGES.shop_cartpic3, name: "Athletic Mesh Sports Leggings", price: "65.00", qty: 1 },
-]);
+
+const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
+  credentials: 'include',
+  server: false
+})
+
+const items = computed(() => cart.value?.items ?? [])
+const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
+
+watch(cart,async ()=> {
+
+  await refresh()
+})
+
+const removeItem = async (key: string) => {
+  await $fetch('/api/wc/cart/remove-item', {
+    method: 'POST',
+    credentials: 'include',
+    body: { key }
+  })
+
+  await refresh()
+}
+
 
 function quantity(ind: number, category: string) {
   switch (category) {
@@ -24,6 +39,7 @@ function quantity(ind: number, category: string) {
   }
 }
 
+
 function removeItems(ind: number) {
   document.querySelectorAll(".cart_items")[ind].remove();
 }
@@ -34,117 +50,76 @@ function removeItems(ind: number) {
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">×</button>
     <div class="offcanvas-body">
       <div class="product-description">
-        <div class="dz-tabs">
-          <ul class="nav nav-tabs center" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="shopping-cart"
-                data-bs-toggle="tab"
-                data-bs-target="#shopping-cart-pane"
-                type="button"
-                role="tab"
-                aria-controls="shopping-cart-pane"
-                aria-selected="true"
-              >
-                Shopping Cart
-                <span class="badge badge-light">5</span>
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="wishlist" data-bs-toggle="tab" data-bs-target="#wishlist-pane" type="button" role="tab" aria-controls="wishlist-pane" aria-selected="false" tabindex="-1">
-                Wishlist
-                <span class="badge badge-light">2</span>
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content pt-4" id="dz-shopcart-sidebar">
-            <div class="tab-pane fade show active" id="shopping-cart-pane" role="tabpanel" aria-labelledby="shopping-cart" tabindex="0">
-              <div class="shop-sidebar-cart">
-                <ul class="sidebar-cart-list">
-                  <li v-for="({ img, name, price, qty }, ind) in cartItems" :key="ind">
-                    <div class="cart-widget">
-                      <div class="dz-media me-3">
-                        <img :src="img" alt="" />
-                      </div>
-                      <div class="cart-content">
-                        <h6 class="title">
-                          <RouterLink to="/product-thumbnail">{{ name }}</RouterLink>
-                        </h6>
-                        <div class="d-flex align-items-center">
-                          <div class="btn-quantity light quantity-sm me-3">
-                            <div class="input-group bootstrap-touchspin">
+        <div class="tab-content pt-4" id="dz-shopcart-sidebar">
+          <div class="tab-pane fade show active" id="shopping-cart-pane" role="tabpanel" aria-labelledby="shopping-cart" tabindex="0">
+            <div class="shop-sidebar-cart">
+              <ul class="sidebar-cart-list">
+                <li v-for="(item, ind) in items" :key="ind">
+                  <div class="cart-widget">
+                    <div class="dz-media me-3">
+                      <img :src="item.images[0].thumbnail" alt="" />
+                    </div>
+                    <div class="cart-content">
+                      <h6 class="title">
+                        <RouterLink to="/product-thumbnail">
+                          {{ item.name }}
+                          <span v-if="item.type = 'variation'">
+                        <span v-for="v in item.variation">
+                          | {{v.attribute}} : {{v.value}}
+                        </span>
+                      </span>
+                        </RouterLink>
+                      </h6>
+                      <div class="d-flex align-items-center">
+                        <div class="btn-quantity light quantity-sm me-3">
+                          <div class="input-group bootstrap-touchspin">
                               <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none"></span
-                              ><input type="text" :value="qty" name="demo_vertical2" class="form-control" style="display: block" /><span
-                                class="input-group-addon bootstrap-touchspin-postfix"
-                                style="display: none"
-                              ></span>
-                              <span class="input-group-btn-vertical"
-                                ><button @click="quantity(ind, 'plus')" class="btn btn-default bootstrap-touchspin-up" type="button">
+                              ><input type="text" :value="item.quantity" name="demo_vertical2" class="form-control" style="display: block" /><span
+                              class="input-group-addon bootstrap-touchspin-postfix"
+                              style="display: none"
+                          ></span>
+                            <span class="input-group-btn-vertical"
+                            ><button @click="quantity(ind, 'plus')" class="btn btn-default bootstrap-touchspin-up" type="button">
                                   <i class="fa-solid fa-plus"></i></button
-                                ><button @click="quantity(ind, 'minus')" class="btn btn-default bootstrap-touchspin-down" type="button">
+                            ><button @click="quantity(ind, 'minus')" class="btn btn-default bootstrap-touchspin-down" type="button">
                                   <i class="fa-solid fa-minus"></i>
                                 </button>
                               </span>
-                            </div>
                           </div>
-                          <h6 class="dz-price mb-0">${{ price }}</h6>
                         </div>
-                      </div>
-                      <RouterLink to="" class="dz-close">
-                        <i class="ti-close"></i>
-                      </RouterLink>
-                    </div>
-                  </li>
-                </ul>
-                <div class="cart-total">
-                  <h5 class="mb-0">Subtotal:</h5>
-                  <h5 class="mb-0">300.00$</h5>
-                </div>
-                <div class="mt-auto">
-                  <div class="shipping-time">
-                    <div class="dz-icon">
-                      <i class="flaticon flaticon-ship"></i>
-                    </div>
-                    <div class="shipping-content">
-                      <h6 class="title pe-4">Congratulations , you've got free shipping!</h6>
-                      <div class="progress">
-                        <div class="progress-bar progress-animated border-0" style="width: 75%" role="progressbar">
-                          <span class="sr-only">75% Complete</span>
-                        </div>
+                        <h6 class="dz-price mb-0">{{item.prices.price}} DA</h6>
+
+
+
                       </div>
                     </div>
+                    <RouterLink to="" @click="removeItem(item.key)"><i class="ti-close"></i></RouterLink>
                   </div>
-                  <RouterLink to="/shop-checkout" class="btn btn-outline-secondary btn-block m-b20">Checkout</RouterLink>
-                  <RouterLink to="/shop-cart" class="btn btn-secondary btn-block">View Cart</RouterLink>
-                </div>
+                </li>
+              </ul>
+              <div class="cart-total">
+                <h5 class="mb-0">Sous-total:</h5>
+                <h5 class="mb-0">{{totalPrice}} DA</h5>
               </div>
-            </div>
-            <div class="tab-pane fade" id="wishlist-pane" role="tabpanel" aria-labelledby="wishlist" tabindex="0">
-              <div class="shop-sidebar-cart">
-                <ul class="sidebar-cart-list">
-                  <li v-for="({ img, name, price }, ind) in cartItems" :key="ind" class="cart_items">
-                    <div class="cart-widget">
-                      <div class="dz-media me-3">
-                        <img :src="img" alt="" />
-                      </div>
-                      <div class="cart-content">
-                        <h6 class="title">
-                          <RouterLink to="/product-thumbnail">{{ price }}</RouterLink>
-                        </h6>
-                        <div class="d-flex align-items-center">
-                          <h6 class="dz-price mb-0">${{ name }}</h6>
-                        </div>
-                      </div>
-                      <RouterLink to="" class="dz-close" @click="removeItems(ind)">
-                        <i class="ti-close"></i>
-                      </RouterLink>
-                    </div>
-                  </li>
-                </ul>
-                <div class="mt-auto">
-                  <RouterLink to="/shop-wishlist" class="btn btn-secondary btn-block">Check Your Favourite</RouterLink>
-                </div>
+
+              <div class="spinner-border text-dark mx-auto" role="status" v-if="pending">
+                <span class="sr-only">Loading...</span>
+              </div>
+
+              <div class="mt-auto">
+
+                <i class="fa fa-truck-fast fa-3x text-dark mb-4"></i>
+
+                <p class="mb-0">
+                  Payer à la livraison. Le prix de l’expédition (Livraison) compte les frais de livraison et services.
+                </p>
+
+                <p class="mb-5">
+                  الدفع عند التسليم. سعر الشحن (التوصيل) يشمل التوصيل والخدمة
+                </p>
+
+                <RouterLink to="/cart" class="btn btn-outline-secondary btn-block m-b20">Voir Mon Panier</RouterLink>
+                <RouterLink to="/checkout" class="btn btn-secondary btn-block">Finaliser Ma Commande</RouterLink>
               </div>
             </div>
           </div>

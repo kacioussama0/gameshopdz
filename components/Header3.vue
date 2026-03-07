@@ -10,11 +10,7 @@ const { $algolia } = useNuxtApp()
 
 const menu = ref(false);
 
-
-
-
 const { itemsCount, pending } = useWcCart()
-
 
 const suggSearch = ref('');
 const suggProducts = ref([]);
@@ -27,7 +23,7 @@ const { $aa } = useNuxtApp()
 let timeout = null
 let currentSearchId = 0
 
-watch(suggSearch, (value) => {
+watch(suggSearch, (value, oldValue) => {
 
   clearTimeout(timeout)
 
@@ -38,6 +34,8 @@ watch(suggSearch, (value) => {
     suggProducts.value = []
     return
   }
+
+  if(term === oldValue) return
 
   timeout = setTimeout(async () => {
 
@@ -83,7 +81,7 @@ watch(suggSearch, (value) => {
       console.error('Algolia search error:', err)
     }
 
-  }, 400)
+  }, 700)
 
 })
 
@@ -153,12 +151,12 @@ onUnmounted(() => {
       isFixed ? 'is-fixed' : ''
     }`"
   >
-    <div class="main-bar clearfix">
-      <div class="container clearfix d-lg-flex align-items-center d-block">
+    <div class="main-bar  bg-primary gradient clearfix">
+      <div class="container  d-flex align-items-center justify-content-between">
         <!-- Website Logo -->
-        <div class="logo-header logo-dark">
+        <div class="logo-header">
           <NuxtLink to="/">
-            <img src="../assets/images/logo.svg" alt="logo"/>
+            <img src="../assets/images/logo-white.svg"  alt="logo"/>
           </NuxtLink>
         </div>
 
@@ -185,7 +183,7 @@ onUnmounted(() => {
               data-bs-target="#offcanvasTop"
               aria-controls="offcanvasTop"
           >
-                  <i class="iconly-Light-Search"></i>
+                  <i class="iconly-Light-Search text-white"></i>
 
           </NuxtLink>
         </span>
@@ -200,7 +198,7 @@ onUnmounted(() => {
         >
           <div class="logo-header d-flex">
             <NuxtLink to="/"
-              ><img src="../assets/images/logo.svg" alt=""
+              ><img src="../assets/images/logo-white.svg" width="150px" height="90px"
             /></NuxtLink>
           </div>
 
@@ -252,19 +250,21 @@ onUnmounted(() => {
                   data-bs-target="#offcanvasTop"
                   aria-controls="offcanvasTop"
                 >
-                  <i class="iconly-Light-Search"></i>
+                  <i class="iconly-Light-Search text-white"></i>
                 </NuxtLink>
               </li>
               <li class="nav-item cart-link ">
-                <NuxtLink
-                  to="/cart"
-                  class="nav-link cart-btn"
-
+                <RouterLink
+                    to="?"
+                    class="nav-link cart-btn"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
                 >
-                  <i class="iconly-Broken-Buy" ></i>
+                  <i class="iconly-Broken-Buy text-white" ></i>
                   <span class="badge badge-circle"> {{itemsCount}}</span>
 
-                </NuxtLink>
+                </RouterLink>
               </li>
             </ul>
           </div>
@@ -429,5 +429,11 @@ onUnmounted(() => {
   margin-top: 6px;
   color: var(--bs-primary);
 }
+
+.navicon {
+  background: #164094 !important;
+}
+
+
 
 </style>

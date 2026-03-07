@@ -1,15 +1,26 @@
 <script lang="ts" setup>
-import Header from "~/components/Header.vue";
 
+const loading = ref(true)
 const { refresh } = useWcCart()
-onMounted(() => refresh())
 
+onMounted(() => {
+
+  if (sessionStorage.getItem("app_loaded")) {
+    loading.value = false
+    return
+  }
+
+  sessionStorage.setItem("app_loaded", "true")
+  refresh()
+  setTimeout(() => {
+    loading.value = false
+  }, 1500)
+
+})
 
 const { start, finish } = useLoadingIndicator()
-
 const router = useRouter()
 
-// 🔁 Routing loading
 router.beforeEach(() => {
   start({ force: true })
 })
@@ -36,17 +47,33 @@ useSeoMeta({
 
 <template>
 
-
-
   <div class="page-wraper">
 
-    <NuxtLoadingIndicator color="#04113C" error-color="#FF0000" :height="3" :throttle="0" :duration="2000" />
+    <AppLoader v-if="loading" />
+
+    <NuxtLoadingIndicator color="#FFFFFF" error-color="#FF0000" :height="3" :throttle="0" :duration="2000" />
 
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage  />
       <Footer />
-
-
     </NuxtLayout>
+
+
+
   </div>
 </template>
+
+<style>
+
+
+.logo-header {
+  height: 60px !important;
+}
+
+.new-gradient {
+  background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0) !important;
+}
+.page-wrapper {
+  position: relative;
+}
+</style>

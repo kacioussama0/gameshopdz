@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import CommonBanner from "@/elements/CommonBanner.vue";
-import bg from "@/assets/images/background/bg1.jpg";
-import CustomeSelect from "@/elements/CustomeSelect.vue";
-import Header from "~/components/Header.vue";
+
 import Header3 from "~/components/Header3.vue";
 import cities from '../assets/cities.json'
-import shipping from "../assets/shipping.json"
 import {navigateTo} from "nuxt/app";
 import { z } from "zod"
 import {useWcCart} from "#imports";
 const { $aa } = useNuxtApp()
+
+
 
 const isLoading = ref(false);
 const checkoutSchema = z.object({
@@ -38,7 +36,7 @@ const checkoutSchema = z.object({
 
 
 const errors = ref<any>({})
-
+const wilayaName = ref<string>("")
 
 useHead({
   title: 'Gameshopdz - Confirmation de votre Commande',
@@ -64,7 +62,9 @@ if(!items.value.length) {
 }
 
 const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_price)  ?? 0)
-const totalPrice = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
+const totalPriceCompute = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
+
+const totalPrice = ref(0);
 
 const wilaya = ref(null)
 const commune = ref(null)
@@ -135,7 +135,7 @@ const submitOrder = async () => {
             city: form.commune,
             state: `DZ-${form.wilaya}`,
             country: "DZ",
-            postcode: "00000"
+            address_1: wilayaName.value,
           },
 
           shipping: {
@@ -144,7 +144,7 @@ const submitOrder = async () => {
             city: form.commune,
             state: `DZ-${form.wilaya}`,
             country: "DZ",
-            postcode: "00000"
+            address_1: wilayaName.value,
           },
 
           shipping_method: {
@@ -153,7 +153,6 @@ const submitOrder = async () => {
             total: selectedMethod.value.cost
           },
 
-          note: form.note
         }
 
       })
@@ -161,10 +160,8 @@ const submitOrder = async () => {
       const orderId = order?.data.value.id
 
       if (orderId) {
-        // ✅ objectIDs = products في السلة (لازم يطابقوا Algolia objectID)
         const objectIDs = items.value.map(i => String(i.id))
 
-        // ✅ queryID من localStorage مع TTL
         const qid = localStorage.getItem('algolia:lastQueryID')
         const qidAt = Number(localStorage.getItem('algolia:lastQueryIDAt') || 0)
         const TTL_MS = 30 * 60 * 1000
@@ -193,7 +190,6 @@ const submitOrder = async () => {
       useWcCart().clearCart()
 
 
-
       navigateTo('/success?orderId=' + order.data.value.id)
 
 
@@ -210,52 +206,91 @@ watch(selectedMethod, (newValue, oldValue) => {
 
 
 const wilayaOptions = ref([
-  { value: '', title: 'Veuillez sélectionner votre wilaya' , disabled: true , selected: true }
+  {  title: 'Veuillez sélectionner votre wilaya' , disabled: true , selected: true }
 ])
 
 const communeOptions = ref([
-  { value: '', title: 'Veuillez sélectionner votre commune' , disabled: true , selected: true }
+  {  "nom": 'Veuillez sélectionner votre commune' , disabled: true , selected: true }
 ])
 
-function getCommune(wilayaCode) {
+async function getCommune(wilayaCode) {
 
   form.commune = null;
-  const wilaya = cities.filter((city) => city.wilaya_code === wilayaCode);
 
-  const communes = wilaya.map((commune) => {
-        return {
-          "title": `${commune.commune_name_ascii} | ${commune.commune_name}`,
-          "value": `${commune.commune_name_ascii} | ${commune.commune_name}`
-        }
-      }
-  );
+  wilayaName.value = cities.filter((wilaya => {
+    return wilaya.wilaya_code == wilayaCode
+  }))[0];
 
-  communeOptions.value = communes.filter(
-      (w, index, self) =>
-          index === self.findIndex(x => x.title === w.title)
-  ).sort((a, b) => {
-    return a.title.localeCompare(b.title);
-  });
 
-  zone.value = shipping[wilayaCode];
+  wilayaName.value = `${wilayaName.value.wilaya_name_ascii} | ${wilayaName.value.wilaya_name}`
+
+
+  const wilayaCommunes = await $fetch('/api/ecotrack/commune');
+
+
+  const filtredCommunes = ref([])
+
+  for(let commune of Object.values(wilayaCommunes)) {
+    if(commune.wilaya_id == wilayaCode) filtredCommunes.value.push(commune)
+  }
+
+  communeOptions.value = filtredCommunes.value
+
+  communeOptions.value.unshift({ "nom": 'Veuillez sélectionner votre commune' , disabled: true , selected: true })
+
+
+}
+
+async function getCost() {
+
+  const cost = await $fetch('/api/ecotrack/cost?wilaya_id=' + form.wilaya);
+
+  console.log(cost)
+
+  console.log(communeOptions.value)
+
+  zone.value = {
+    "methods": [
+      {
+        "method_id": "flat_rate",
+        "name": "A Domicile - توصيل للمنزل",
+        "cost": cost[0].tarif
+      },
+    ]
+  }
+
+  const filteredCommune = communeOptions.value.filter((commune) => commune.nom == form.commune);
+
+  if(filteredCommune[0]['has_stop_desk']) {
+    zone.value.methods.push({
+      "method_id": "flat_rate",
+      "name": "Au Bureau - توصيل للمكتب",
+      "cost": cost[0].tarif_stopdesk
+    })
+
+  }
+
+  if(form.wilaya == 16) {
+    zone.value.methods.push({
+      "method_id": "flat_rate",
+      "name": "Retrait Magasin - الاستلام من المتجر",
+      "cost": 0
+    })
+  }
+
   selectedMethod.value = zone.value.methods[0]
-
-
-
-  communeOptions.value.unshift({ value: '', title: 'Veuillez sélectionner votre commune' , disabled: true , selected: true })
-
-
 }
 
 
 onMounted(() => {
 
 
+
   const wilayas = cities.map((wilaya) => {
 
         return {
           'title': `${wilaya.wilaya_code} - ${wilaya.wilaya_name_ascii} | ${wilaya.wilaya_name}`,
-          "value": wilaya.wilaya_code,
+          "value": String(wilaya.wilaya_code).padStart(2, '0'),
         }
       }
 
@@ -353,9 +388,9 @@ onMounted(() => {
               <div class="col-md-12">
                 <div class="m-b25">
                   <label class="label-title">Commune البلدية <span class="text-danger">*</span></label>
-                  <select class="form-control" v-model="form.commune" :disabled="isLoading">
-                    <option v-for="commune in communeOptions" :value="commune.value" :disabled="commune.disabled" :selected="commune.selected">
-                      {{commune.title}}
+                  <select class="form-control" v-model="form.commune" :disabled="isLoading" @change="getCost">
+                    <option v-for="commune in communeOptions" :value="commune.nom" :disabled="commune.disabled" :selected="commune.selected">
+                      {{commune.nom}}
                     </option>
 
                   </select>
@@ -394,15 +429,14 @@ onMounted(() => {
               <table>
                 <tbody>
                   <tr class="subtotal">
-
                     <td>Sous-total</td>
                     <td class="price">{{subTotal}} DA</td>
                   </tr>
-                  <tr class="title" v-if="zone.methods">
+                  <tr class="title" v-if="zone.methods != null">
                     <td><h6 class="title font-weight-500 mt-3"><i class="fa fa-truck-fast me-2"></i> Mode de livraison</h6></td>
                     <td></td>
                   </tr>
-                  <tr class="shipping" v-if="zone != null">
+                  <tr class="shipping" v-if="zone.methods != null">
                     <td>
                       <div class="custom-control custom-checkbox" v-for="(method,index) in zone.methods">
                         <input class="form-check-input radio" type="radio" name="shipping-radio" :checked="index == 0" :id="`shipping-radio-${index+1}`" :value="method" v-model="selectedMethod" />
@@ -411,10 +445,11 @@ onMounted(() => {
 
                     </td>
                     <td class="price">{{selectedMethod.cost}} DA</td>
+
                   </tr>
                   <tr class="total">
                     <td>Total</td>
-                    <td class="price fw-bold">{{totalPrice}} DA</td>
+                    <td class="price fw-bold">{{totalPriceCompute}} DA</td>
                   </tr>
                 </tbody>
               </table>

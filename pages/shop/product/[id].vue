@@ -102,7 +102,7 @@ useFetch("/api/wc/products/", {
 
   product.value = response.data.value.products[0];
 
-  if(product.value.attributes) {
+  if(product.value.attributes.length) {
     variation.value = [
       {
         'attribute': product.value.attributes[0].name,
@@ -111,8 +111,12 @@ useFetch("/api/wc/products/", {
     ]
   }
 
+  console.log(product.value)
+
 
   const ids = product.value['related_ids'];
+
+  console.log(ids)
 
   if(ids.length) {
     useFetch('/api/wc/products/', {
@@ -121,7 +125,6 @@ useFetch("/api/wc/products/", {
         per_page: ids.length,
       }
     }).then((response)=> {
-
       relatedProducts.value = response.data.value.products.map((product) => {
           return {
             id: product.id,
@@ -244,11 +247,19 @@ useFetch("/api/wc/products/", {
                     v-if="product.images"
                 >
                   <SwiperSlide class="swiper-slide" v-for="image in product.images">
-                    <img
-                        :src="image.src"
-                        alt="image"
 
+                    <NuxtImg
+                        :src="image.src"
+                        :alt="product.name"
+                        placeholder
+                        format="webp"
+                        width="300"
+                        height="300"
+                        class="product-img"
+                        loading="lazy"
                     />
+
+
                   </SwiperSlide>
 
                 </Swiper>
@@ -271,6 +282,18 @@ useFetch("/api/wc/products/", {
                         :src="image.thumbnail"
                         alt="image"
                     />
+
+                    <NuxtImg
+                        :src="image.src"
+                        :alt="product.name"
+                        placeholder
+                        format="webp"
+                        width="300"
+                        height="300"
+                        class="product-img"
+                        loading="lazy"
+                    />
+
                   </SwiperSlide>
                 </Swiper>
               </div>
@@ -471,14 +494,14 @@ useFetch("/api/wc/products/", {
                     ><span class="input-group-btn-vertical"
                     ><button
                         @click="qty++"
-                        class="btn btn-default bootstrap-touchspin-up"
+                        class="btn  new-gradient btn-default bootstrap-touchspin-up"
                         type="button"
                         :disabled="product.stock_status != 'instock'"
                     >
                           <i class="fa-solid fa-plus"></i></button
                     ><button
                         @click="qty > 1 ? qty-- : qty"
-                        class="btn btn-default bootstrap-touchspin-down"
+                        class="btn btn-default new-gradient bootstrap-touchspin-down"
                         type="button"
                         :disabled="product.stock_status != 'instock'"
                     >
@@ -495,12 +518,13 @@ useFetch("/api/wc/products/", {
                         <span v-for="(option,index) in attribute.options">
                           <input
                               type="radio"
-                              class="btn-check"
+                              class="btn-check new-gradient"
                               :name="'attribute-'+attribute.id"
                               :id="'option-'+ index"
                               :value="option"
                               v-model="variationVal"
                               :checked="index == 0"
+                              style="width: 60px;height: 60px"
                           />
                         <label class="btn" :for="'option-'+ index">{{option}}</label>
                         </span>
@@ -515,19 +539,26 @@ useFetch("/api/wc/products/", {
 
                 </div>
                 <div class="btn-group cart-btn">
-                  <button class="btn btn-secondary text-uppercase rounded-0" @click="addToCart(product.id,variationId)" :disabled="product.stock_status != 'instock'">
-                    <i class="iconly-Curved-Bag2 me-2"></i>
-                    Ajouter Panier
+
+                  <button
+                      to="?"
+                      class="btn btn-secondary text-uppercase rounded-0 new-gradient"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasRight"
+                      aria-controls="offcanvasRight"
+                      @click="addToCart(product.id,variationId)"
+                      :disabled="product.stock_status != 'instock'"
+                  >
+
+                    <i class="fa fa-cart-plus me-2"></i>
+                    Ajouter au Panier
+
                   </button>
 
-                  <div class="alert alert-info my-3 w-100 d-flex align-items-center justify-content-between" v-if="addedCart">
-
-                    <span>Produit a été ajouté à votre panier.</span>
-                    <NuxtLink to="/cart" class="link-primary">Voir Panier</NuxtLink>
-
-                  </div>
 
                 </div>
+
+
                 <div class="dz-info">
                   <ul v-if="product.sku">
                     <li><strong>SKU:</strong></li>
@@ -588,25 +619,7 @@ useFetch("/api/wc/products/", {
                   </ul>
                 </div>
               </div>
-              <div class="banner-social-media">
-                <ul>
-                  <li>
-                    <NuxtLink to="https://www.instagram.com/dexignzone/"
-                    >Instagram</NuxtLink
-                    >
-                  </li>
-                  <li>
-                    <NuxtLink to="https://www.facebook.com/dexignzone"
-                    >Facebook</NuxtLink
-                    >
-                  </li>
-                  <li>
-                    <NuxtLink to="https://twitter.com/dexignzones"
-                    >twitter</NuxtLink
-                    >
-                  </li>
-                </ul>
-              </div>
+
             </div>
           </div>
         </div>
@@ -655,7 +668,7 @@ useFetch("/api/wc/products/", {
       </div>
     </section>
 
-    <section class="content-inner-1 overflow-hidden">
+    <section class="content-inner-1 overflow-hidden" v-if="relatedProducts.length">
       <div class="container">
         <div
             class="section-head style-2 d-md-flex align-items-center justify-content-between"
@@ -684,5 +697,10 @@ useFetch("/api/wc/products/", {
     height: 250px !important;
   }
 }
+
+.new-gradient {
+  background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0) !important;
+}
+
 
 </style>

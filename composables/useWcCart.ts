@@ -66,8 +66,9 @@ export const useWcCart = () => {
         } catch (e) {
             await refresh()
             throw e
+        }finally {
+            await refresh()
         }
-        await refresh()
     }
 
     const updateItem = async (key: string, quantity: number) => {
@@ -77,8 +78,9 @@ export const useWcCart = () => {
         } catch (e) {
             await refresh()
             throw e
+        }finally {
+            await refresh()
         }
-        await refresh()
     }
 
     const removeItem = async (key: string) => {

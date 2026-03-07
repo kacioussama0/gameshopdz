@@ -2,15 +2,16 @@
 
 const props = defineProps<{
   product: Object;
-  showStock: {type:boolean,required:false},
+  showStock: Boolean,
 }>();
 
 
 const addToCart = async (productId) => {
 
   try {
+    const add = await useWcCart().addItem(productId)
+    await useWcCart().refresh()
 
-    return await useWcCart().addItem(productId)
 
   }catch (error) {
     console.log(error)
@@ -24,9 +25,13 @@ const addToCart = async (productId) => {
 <template>
   <div class="shop-card" v-if="product">
     <div class="dz-media position-relative shadow-sm h-100">
-      <img
+      <NuxtImg
           :src="product.thumbnail"
           :alt="product.name"
+          placeholder
+          format="webp"
+          width="300"
+          height="300"
           class="product-img"
           loading="lazy"
       />
@@ -51,18 +56,24 @@ const addToCart = async (productId) => {
           <span class="text-danger fw-bold" v-else>Non disponible - غير متوفر</span>
         </div>
 
-        <button
-            class="btn btn-primary add-btn mt-3"
+        <NuxtLink
+            to="?"
+            class="btn btn-primary add-btn  new-gradient mt-3"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
             @click="addToCart(product.id)"
             v-if="product.stock == 'instock'"
         >
+
           <i class="fa fa-cart-plus me-2"></i>
           Ajouter au Panier
-        </button>
+
+        </NuxtLink>
 
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
-            class="btn btn-primary add-btn mt-3"
+            class="btn btn-primary add-btn mt-3 new-gradient"
             v-else
         >
           <i class="fa fa-cart-plus me-2"></i>
@@ -150,7 +161,7 @@ const addToCart = async (productId) => {
 /* ✅ Phones */
 @media (max-width: 576px) {
   .product-img {
-    height: 190px;            /* أصغر بكثير في الهاتف */
+    height: 190px;
   }
 
   .dz-content {
@@ -184,14 +195,13 @@ const addToCart = async (productId) => {
 
 /* very small phones */
 @media (max-width: 360px) {
-  .product-img { height: 165px; }
   .add-btn { font-size: 10.5px; padding: 8px 9px; }
 }
 
 @media (max-width: 576px) {
   .add-btn { width: 100%; }
   .product-img {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
   }
 }

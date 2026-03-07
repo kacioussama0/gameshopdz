@@ -534,15 +534,15 @@ onMounted(() => {
               <div class="col-md-4 col-sm-6">
                 <RouterLink to="" class="menu-title">Jeux Retro</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop-standard">Neuf sous blister</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Complet boîte + notice</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Jeux Rétro Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop">Neuf sous blister</RouterLink></li>
+                  <li><RouterLink to="/shop">Complet boîte + notice</RouterLink></li>
+                  <li><RouterLink to="/shop">Jeux Rétro Occasion</RouterLink></li>
                 </ul>
 
                 <RouterLink to="" class="menu-title">Accessoires Rétro</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop-standard">Manettes Rétro d’origine</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Mémoire & Connectique</RouterLink></li>
+                  <li><RouterLink to="/shop">Manettes Rétro d’origine</RouterLink></li>
+                  <li><RouterLink to="/shop">Mémoire & Connectique</RouterLink></li>
                 </ul>
 
               </div>
@@ -550,8 +550,8 @@ onMounted(() => {
               <div class="col-md-4 col-sm-6">
                 <RouterLink to="" class="menu-title">Collector & Goodies</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop-standard">Rétro Éditions collector</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Figurines Rétro</RouterLink></li>
+                  <li><RouterLink to="/shop">Rétro Éditions collector</RouterLink></li>
+                  <li><RouterLink to="/shop">Figurines Rétro</RouterLink></li>
 
                 </ul>
               </div>
@@ -573,3 +573,21 @@ onMounted(() => {
 
   </ul>
 </template>
+
+<style scoped>
+
+
+
+@media screen and (min-width: 900px) {
+  .site-header.style-2 .main-bar .header-nav .nav > li > a {
+    color: #FFFFFF !important;
+    padding:  20px;
+  }
+}
+
+.site-header.style-2 .main-bar .header-nav .nav > li > a > span {
+  font-size: 16px !important;
+}
+
+
+</style>

@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-import ProductSlider from "~/components/ProductSlider.vue";
-import MainBanner2 from "~/elements/MainBanner2.vue";
-import { onMounted, ref } from "vue";
-import ModelVideo from "~/elements/ModelVideo.vue";
 import Header3 from "~/components/Header3.vue";
 import {Swiper, SwiperSlide} from "swiper/vue";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -16,7 +12,6 @@ useHead({
 
 
 const isOpen = ref(false);
-
 
 const openVideo = () => {
   isOpen.value = true;
@@ -172,15 +167,17 @@ useFetch("/api/wc/products", {
 
   <div class="page-content bg-light mb-0">
 
-    <section class="pt-0 z-index-unset bg-white overflow-hidden" v-if="carousel.length">
+    <section class="pt-0 z-index-unset bg-white overflow-hidden ">
 
         <div class="container-fluid p-0">
           <Swiper
               class="swiper portfolio-gallery2"
-              :space-between="30"
-              :modules="[Autoplay, Navigation]"
+              :modules="[Navigation,Pagination,Autoplay]"
               :loop="true"
-              :autoplay="{ delay: 1500 }"
+              :autoplay="{
+                delay: 4000,
+              }"
+              :pagination="{ clickable: true }"
               :speed="1500"
               :navigation="{
             prevEl: '.swiper-button-prev',
@@ -190,18 +187,21 @@ useFetch("/api/wc/products", {
             <SwiperSlide class="swiper-slide" v-for="product in carousel">
               <div class="portfolio-box style-2 rounded-0">
                 <div class="dz-media">
-                  <img :src="product.images[1].src" class="img-fluid" alt="">
+                  <NuxtImg
+                      placeholder
+                      :src="product.images[1].src"
+                      format="webp"
+                      loading="lazy"
+                  />
                 </div>
                 <div class="dz-content justify-content-end">
 
-
                   <div class="container">
-                    <h6 class="sub-title text-light mb-1 fw-light" style="letter-spacing: 4px">DECOUVREZ</h6>
+                    <h6 class="sub-title text-light mb-1 fw-light" style="letter-spacing: 2px">DECOUVREZ</h6>
                     <h1 class="title mb-3">
-                      <RouterLink to="/shop/product/nioh-3-ps5">{{product.name}}</RouterLink>
+                      <RouterLink :to="'/shop/product/' + product.slug">{{product.name}}</RouterLink>
                     </h1>
 
-<!--                    <p class="mb-4 w-50 text-light  d-none d-lg-block">NIOH 3 | PS5 Préparez-vous à affronter les ténèbres une nouvelle fois avec Nioh 3, l’évolution ultime du "Masocore" de la Team NINJA, exclusivement conçue pour la PlayStation 5. Plongez dans une version fantastique et brutale de l’histoire …</p>-->
 
                     <RouterLink  :to="'/shop/product/' + product.slug" class="btn btn-outline-light rounded-0 mb-5">ACHETEZ MAINTENANT</RouterLink>
 
@@ -211,17 +211,79 @@ useFetch("/api/wc/products", {
                 </div>
               </div>
             </SwiperSlide>
+
+            <span class=" swiper-button-prev slick-arrow new-gradient" style=""></span>
+            <span class=" swiper-button-next slick-arrow new-gradient" style=""></span>
+
           </Swiper>
         </div>
       </section>
 
 
 
+    <!-- Shortcuts-->
+    <section class="content-inner-1 pb-2 pt-5 bg-white overflow-hidden shortcuts">
+      <div class="container">
+
+        <div class="row gy-3 gx-0 text-center">
+
+          <div class="col">
+            <RouterLink  to="/shop">
+              <i class="fa fa-compact-disc mb-3" style="font-size: 30px"></i>
+              <h6>Jeux</h6>
+            </RouterLink>
+          </div>
+
+
+          <div class="col">
+
+            <RouterLink  to="/shop">
+              <i class="fa-brands fa-playstation mb-3" style="font-size: 30px"></i>
+              <h6>Console</h6>
+            </RouterLink>
+          </div>
+
+          <div class="col">
+            <RouterLink  to="/shop">
+              <i class="fa fa-headset mb-3" style="font-size: 30px"></i>
+              <h6>Accessoires</h6>
+            </RouterLink>
+          </div>
+
+          <div class="col">
+            <RouterLink  to="/shop">
+              <i class="fa fa-box-open mb-3" style="font-size: 30px"></i>
+              <h6>Occasions</h6>
+            </RouterLink>
+          </div>
+
+
+          <div class="col">
+            <RouterLink  to="/shop">
+              <i class="fa fa-percent mb-3" style="font-size: 30px"></i>
+              <h6>Promotions</h6>
+            </RouterLink>
+          </div>
+
+          <div class="col">
+            <RouterLink  to="/shop">
+              <i class="fa fa-clock-rotate-left mb-3" style="font-size: 30px"></i>
+              <h6>Retro</h6>
+            </RouterLink>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+    <!-- Shortcuts-->
 
 
 
-    <!-- New Sart-->
-    <section class="content-inner-1 overflow-hidden" v-if="newProducts.length">
+
+    <!-- Gameshop hits Start-->
+    <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="hitsProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -230,24 +292,30 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title">
-                  <i class="iconly-Curved-Plus me-1"></i>
-                  Nouveautés
+                <h2 class="title" >
+                  <i class="iconly-Curved-Game me-1"></i>
+                  Gameshop Hits
                 </h2>
               </div>
             </div>
           </div>
 
         </div>
-        <ProductSlider :products="newProducts"/>
+
+        <ProductSlider  :products="hitsProducts"/>
       </div>
     </section>
-    <!-- New Stop-->
+    <!-- Gameshop hits Stop-->
+
+
+
+
+
 
 
 
     <!-- Discount Start-->
-    <section class="content-inner-1 pt-0 overflow-hidden" v-if="discountProducts.length">
+    <section class="content-inner-1 pt-5 overflow-hidden" v-if="discountProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -275,7 +343,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Gameshop hits Start-->
-    <section class="content-inner-1 pt-0 overflow-hidden" v-if="hitsProducts.length">
+    <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="hitsProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -303,7 +371,7 @@ useFetch("/api/wc/products", {
 
 
     <!-- Selection Sart-->
-    <section class="content-inner-1 py-0 overflow-hidden" v-if="ourSelection.length">
+    <section class="content-inner-1 pt-5 overflow-hidden" v-if="ourSelection.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -330,7 +398,7 @@ useFetch("/api/wc/products", {
 
 
 
-    <section class="content-inner pb-0  overflow-hidden d-none d-lg-block">
+    <section class="content-inner  bg-white  overflow-hidden d-none d-lg-block">
       <div class=" container-md">
         <NuxtLink to="/shop">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
@@ -774,7 +842,7 @@ useFetch("/api/wc/products", {
 
               <div class="col-md-4" v-for="console in consoles">
 
-                  <ProductCard :product="console"  />
+                  <ProductCard :show-stock="false" :product="console"  />
 
               </div>
 
@@ -1004,48 +1072,6 @@ useFetch("/api/wc/products", {
 
 <style scoped>
 
-.swiper-wrapper,.swiper-slide ,.portfolio-box{
-  min-height: 50vh!important;
-  max-height: 40vh!important;
-}
-
-
-.swiper .dz-media video ,.swiper .dz-media img {
-  min-height: 50vh!important;
-  max-height: 40vh!important;
-  width: 100%;
-  object-fit: cover !important;
-}
-
-@media screen and (max-width: 1440px) {
-  .swiper-wrapper,.swiper-slide ,.portfolio-box{
-    min-height: 60vh!important;
-    max-height: 60vh!important;
-  }
-
-  .swiper .dz-media video ,.swiper .dz-media img {
-    min-height: 60vh!important;
-    max-height: 60vh!important;
-    width: 100%;
-    object-fit: cover !important;
-  }
-}
-
-
-@media screen and (max-width: 767px) {
-  .swiper-wrapper,.swiper-slide ,.portfolio-box{
-    min-height: 40vh!important;
-    max-height: 40vh!important;
-  }
-
-  .swiper .dz-media video ,.swiper .dz-media img {
-    min-height: 40vh!important;
-    max-height: 40vh!important;
-    width: 100%;
-    object-fit: cover !important;
-  }
-}
-
 
 .social-media  li {
   width: 60px;
@@ -1075,6 +1101,61 @@ useFetch("/api/wc/products", {
 
   color: #0F1E4A;
 
+}
+
+.portfolio-gallery2 ,.swiper-slide,.portfolio-box ,swiper-wrapper{
+  min-height: 385px;
+  max-height: 480px;
+}
+
+.slick-arrow {
+  background: #164094;
+  width: 45px;
+
+  border: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: #fff0df;
+  z-index: 5;
+  outline: none;
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  left: 0;
+  border-bottom-right-radius: 90px;
+  border-top-right-radius: 90px;
+}
+
+.swiper-button-next {
+  right: 0;
+  border-bottom-left-radius: 90px;
+  border-top-left-radius: 90px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: 22px;
+}
+
+.shortcuts > div {
+  cursor: pointer;
+}
+
+.shortcuts i {
+
+  background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 </style>

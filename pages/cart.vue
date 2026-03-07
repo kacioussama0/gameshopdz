@@ -16,7 +16,7 @@ const removeItem = async (key) => {
     credentials: 'include',
     body: { key }
   })
-  await refresh() // refresh تاع useFetch cart
+  await refresh()
  await useWcCart().refresh()
 }
 
@@ -62,7 +62,7 @@ useHead({
         </span>
 
 
-        <div class="row">
+        <div class="row" v-if="items.length">
           <div class="col-lg-8">
             <div class="table-responsive">
               <table class="table check-tbl">
@@ -79,7 +79,14 @@ useHead({
                 <tbody>
                   <tr v-for="(item, ind) in items" :key="ind">
                     <td class="product-item-img"><img :src="item.images[0].thumbnail" alt="/" /></td>
-                    <td class="fs-6" style="width: 10%">{{ item.name }}</td>
+                    <td class="fs-6" style="width: 10%">
+                      {{ item.name }}
+                      <span v-if="item.type = 'variation'">
+                        <span v-for="v in item.variation">
+                          | {{v.attribute}} : {{v.value}}
+                        </span>
+                      </span>
+                    </td>
                     <td class="product-item-price">{{item.prices.price}} DA</td>
                     <td class="product-item-quantity">
                       <div class="quantity btn-quantity style-1 me-3">
@@ -102,9 +109,17 @@ useHead({
                     <td class="product-item-close">
                       <RouterLink to="" @click="removeItem(item.key)"><i class="ti-close"></i></RouterLink>
                     </td>
+
                   </tr>
                 </tbody>
               </table>
+
+
+              <div class="spinner-border text-dark mx-auto text-center" role="status" v-if="pending">
+                <span class="sr-only">Loading...</span>
+              </div>
+
+
             </div>
           </div>
           <div class="col-lg-4">
@@ -167,6 +182,15 @@ useHead({
             </div>
           </div>
         </div>
+
+        <div class="card" v-else>
+            <div class="card-body vstack gap-3 align-items-start">
+              <h3 class="mb-0">Vous n’avez pas d’achats en cours</h3>
+              <p>Partez en quête de nouveaux produits pour composer votre panier  !</p>
+              <NuxtLink to="/" class="btn btn-secondary">Débuter mon shopping</NuxtLink>
+            </div>
+        </div>
+
       </div>
       <!-- Product END -->
     </section>

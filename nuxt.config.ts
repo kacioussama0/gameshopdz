@@ -11,15 +11,16 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: { preset: 'node-server' },
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
 
   css: [
+    "~/assets/other/swiper/swiper-bundle.css",
+    "~/assets/css/skin/skin-1.css",
+    "~/assets/css/style.css",
     "lightgallery/css/lg-zoom.css",
     "lightgallery/css/lg-thumbnail.css",
     "lightgallery/css/lightgallery.css",
     "~/assets/other/swiper/swiper-bundle.css",
-    "~/assets/css/skin/skin-1.css",
-    "~/assets/css/style.css",
   ],
 
   plugins: [
@@ -53,7 +54,10 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/algolia"]
+  modules: ["@nuxtjs/algolia", "@nuxt/image"],
+  image: {
+    domains: ["woo.gameshopdz.com"],
+  }
 });
 
 declare class Isotope {
