@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "chmod +x node_modules/.bin/nuxt && chmod +x node_modules/@esbuild/linux-x64/bin/esbuild"
+    "postinstall": "chmod +x node_modules/.bin/nuxt"
   },
   "engines": {
     "node": ">=18"
@@ -18,7 +18,7 @@
     "@popperjs/core": "^2.11.8",
     "@types/isotope-layout": "^3.0.14",
     "algoliasearch": "^4.26.0",
-    "apexcharts": "^4.0.0",
+    "apexcharts": "^5.10.3",
     "bootstrap": "^5.3.3",
     "countup.js": "^2.8.0",
     "lg-thumbnail": "^1.2.1",

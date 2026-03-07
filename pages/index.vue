@@ -225,48 +225,48 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 pb-2 pt-5 bg-white overflow-hidden shortcuts">
       <div class="container">
 
-        <div class="row gy-3 gx-0 text-center">
+        <div class="row gy-5 gx-0 text-center">
 
-          <div class="col">
-            <RouterLink  to="/shop">
-              <i class="fa fa-compact-disc mb-3" style="font-size: 30px"></i>
+          <div class="col-6 col-md-2">
+            <RouterLink  to="/shop?category=815">
+              <i class="fa fa-gamepad mb-3" style="font-size: 30px"></i>
               <h6>Jeux</h6>
             </RouterLink>
           </div>
 
 
-          <div class="col">
+          <div class="col-6 col-md-2">
 
-            <RouterLink  to="/shop">
+            <RouterLink  to="/shop?category=821">
               <i class="fa-brands fa-playstation mb-3" style="font-size: 30px"></i>
               <h6>Console</h6>
             </RouterLink>
           </div>
 
-          <div class="col">
-            <RouterLink  to="/shop">
+          <div class="col-6 col-md-2">
+            <RouterLink  to="/shop?category=829">
               <i class="fa fa-headset mb-3" style="font-size: 30px"></i>
               <h6>Accessoires</h6>
             </RouterLink>
           </div>
 
-          <div class="col">
-            <RouterLink  to="/shop">
-              <i class="fa fa-box-open mb-3" style="font-size: 30px"></i>
+          <div class="col-6 col-md-2">
+            <RouterLink  to="/shop?category=854" >
+              <i class="fa fa-box-archive mb-3" style="font-size: 30px"></i>
               <h6>Occasions</h6>
             </RouterLink>
           </div>
 
 
-          <div class="col">
-            <RouterLink  to="/shop">
+          <div class="col-6 col-md-2">
+            <RouterLink  to="/shop?on_sale=1">
               <i class="fa fa-percent mb-3" style="font-size: 30px"></i>
               <h6>Promotions</h6>
             </RouterLink>
           </div>
 
-          <div class="col">
-            <RouterLink  to="/shop">
+          <div class="col-6 col-md-2">
+            <RouterLink  to="/shop?category=2714">
               <i class="fa fa-clock-rotate-left mb-3" style="font-size: 30px"></i>
               <h6>Retro</h6>
             </RouterLink>

@@ -85,7 +85,9 @@ const fetchProducts = async (productIds = []) => {
         category: category.value,
         tag: tag.value,
         brand: brand.value,
-        include: productIds.join(',')
+        include: productIds.join(','),
+        on_sale: route.query.on_sale
+
       },
     })
 
