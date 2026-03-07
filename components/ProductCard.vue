@@ -201,9 +201,14 @@ const addToCart = async (productId) => {
 @media (max-width: 576px) {
   .add-btn { width: 100%; }
   .product-img {
-    height: 250px;
+    height: 150px;
     object-fit: cover;
   }
+
+  .badge {
+    font-size: 7px;
+  }
+
 }
 
 </style>

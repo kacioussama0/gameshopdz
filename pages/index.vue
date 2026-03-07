@@ -238,7 +238,11 @@ useFetch("/api/wc/products", {
           <div class="col-6 col-md-2">
 
             <RouterLink  to="/shop?category=821">
-              <i class="fa-brands fa-playstation mb-3" style="font-size: 30px"></i>
+              <span class="d-flex gap-2 align-items-center mb-3 justify-content-center">
+                 <i class="fa-brands fa-playstation" style="font-size: 30px"></i>
+                 <i class="fa-brands fa-xbox" style="font-size: 30px"></i>
+                 <img src="../assets/nintendo.svg" width="30px" height="30px" />
+              </span>
               <h6>Console</h6>
             </RouterLink>
           </div>
@@ -252,7 +256,7 @@ useFetch("/api/wc/products", {
 
           <div class="col-6 col-md-2">
             <RouterLink  to="/shop?category=854" >
-              <i class="fa fa-box-archive mb-3" style="font-size: 30px"></i>
+              <i class="fa fa-recycle mb-3" style="font-size: 30px"></i>
               <h6>Occasions</h6>
             </RouterLink>
           </div>

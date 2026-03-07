@@ -24,8 +24,7 @@ const props = defineProps<{
 
       :breakpoints="{
 
-        0: { slidesPerView: 1, spaceBetween: 15 },
-        390: { slidesPerView: 2, spaceBetween: 15 },
+        0: { slidesPerView: 2, spaceBetween: 15 },
         768: { slidesPerView: 3, spaceBetween: 20 },
         992: { slidesPerView: 4, spaceBetween: 20 },
         1400: { slidesPerView: 5, spaceBetween: 25 },
