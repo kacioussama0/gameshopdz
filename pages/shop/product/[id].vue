@@ -515,20 +515,9 @@ useFetch("/api/wc/products/", {
                       <label class="form-label">{{attribute.name}}</label>
                       <div class="btn-group product-size m-0" >
 
-                        <span v-for="(option,index) in attribute.options">
-                          <input
-                              type="radio"
-                              class="btn-check new-gradient"
-                              :name="'attribute-'+attribute.id"
-                              :id="'option-'+ index"
-                              :value="option"
-                              v-model="variationVal"
-                              :checked="index == 0"
-                              style="width: 60px;height: 60px"
-                          />
-                        <label class="btn" :for="'option-'+ index">{{option}}</label>
-                        </span>
-
+                          <select   :name="'attribute-0'+attribute.id" id="" class="form-select"   v-model="variationVal">
+                            <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
+                          </select>
 
 
                       </div>

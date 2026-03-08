@@ -859,7 +859,7 @@ useFetch("/api/wc/products", {
 
             <div class="row gy-3 gx-3">
 
-              <div class="col-md-4" v-for="console in consoles">
+              <div class="col-6 col-md-4" v-for="console in consoles">
 
                   <ProductCard :show-stock="false" :product="console"  />
 
@@ -880,11 +880,11 @@ useFetch("/api/wc/products", {
   <!--    Start Testemonials-->
 
     <section class="content-inner bg-white">
-      <div class="container">
+
 
         <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
 
-      </div>
+
     </section>
   <!--    End Testemonials-->
 
@@ -957,44 +957,44 @@ useFetch("/api/wc/products", {
 
 
           <div
-            class="item-wrap mt-3 gy-5 g-lg-5 row"
+            class="item-wrap  gy-5 g-lg-5 row"
           >
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class=" rounded-4 overflow-hidden ">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
-            <div class="item col-md-4">
+            <div class="item col-6 col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
                   <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" class="rounded-5" />

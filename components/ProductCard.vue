@@ -200,8 +200,8 @@ const addToCart = async (productId) => {
   .add-btn { width: 100%; }
 
   .product-img:not(.swiper-slide .product-img) {
-    height: 350px;
-    object-fit: cover;
+    height: 180px;
+    object-fit: contain;
   }
 
   .product-img {
@@ -214,6 +214,7 @@ const addToCart = async (productId) => {
 
   .badge {
     font-size: 7px;
+    min-height: fit-content;
   }
 
 }

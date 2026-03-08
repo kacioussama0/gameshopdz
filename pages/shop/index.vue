@@ -5,6 +5,10 @@ const route = useRoute()
 const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
 const brand = computed(() => route.query.brand as string | undefined)
+const search = computed(() => route.query.search as string | undefined)
+
+
+
 
 useHead({
   title: 'Gameshopdz - Leader Gaming Shop en Algérie',
@@ -130,7 +134,27 @@ const goTo = async (page: number) => {
 
 onMounted(async ()=> {
 
-  await fetchProducts()
+  let ids = []
+
+  if(search.value != '') {
+    const { $algolia } = useNuxtApp()
+
+    const index = $algolia.initIndex('products')
+
+    const res = await index.search(search.value, {
+      hitsPerPage: 12,
+      clickAnalytics: true,
+    })
+
+   ids = (res.hits || []).map(hit => hit.objectID)
+
+  }
+
+
+
+
+
+  await fetchProducts(ids)
 
 })
 
@@ -164,31 +188,15 @@ onMounted(async ()=> {
 
             <div class="filter-wrapper p-t10">
 
+
               <div class="filter-left-area">
-<!--                <ul class="filter-tag">-->
-<!--                  <li>-->
-<!--                    <RouterLink to="" class="tag-btn"-->
-<!--                      >Dresses-->
-<!--                      <i @click="removeFilter" class="icon feather icon-x tag-close"></i>-->
-<!--                    </RouterLink>-->
-<!--                  </li>-->
-<!--                  <li>-->
-<!--                    <RouterLink to="" class="tag-btn"-->
-<!--                      >Tops-->
-<!--                      <i @click="removeFilter" class="icon feather icon-x tag-close"></i>-->
-<!--                    </RouterLink>-->
-<!--                  </li>-->
-<!--                  <li>-->
-<!--                    <RouterLink to="" class="tag-btn"-->
-<!--                      >Outerwear-->
-<!--                      <i @click="removeFilter" class="icon feather icon-x tag-close"></i>-->
-<!--                    </RouterLink>-->
-<!--                  </li>-->
-<!--                </ul>-->
                 <span>Affichage de {{ start }} à {{ end }} sur {{ total }} résultats</span>
 
               </div>
             </div>
+
+
+            <h1 v-if="search">Résultats - {{search}}</h1>
 
 
             <div class="row g-4">
@@ -221,13 +229,6 @@ onMounted(async ()=> {
                 <nav aria-label="Blog Pagination">
 
                   <ul class="pagination style-1">
-<!--                    <li class="page-item">-->
-<!--                      <a href="#" class="page-link prev"-->
-<!--                         :class="{ disabled: currentPage === 1 }"-->
-<!--                         @click.prevent="goTo(currentPage - 1)">-->
-<!--                        Prev-->
-<!--                      </a>-->
-<!--                    </li>-->
 
                     <li v-for="(p, idx) in paginationItems" :key="idx"
                         class="page-item" :class="{ disabled: p === '...' }">
@@ -240,13 +241,7 @@ onMounted(async ()=> {
                       </a>
                     </li>
 
-<!--                    <li class="page-item">-->
-<!--                      <a href="#" class="page-link next"-->
-<!--                         :class="{ disabled: currentPage === totalPages }"-->
-<!--                         @click.prevent="goTo(currentPage + 1)">-->
-<!--                        Next-->
-<!--                      </a>-->
-<!--                    </li>-->
+
                   </ul>
 
                 </nav>

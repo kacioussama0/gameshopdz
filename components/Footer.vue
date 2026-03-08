@@ -4,7 +4,7 @@ const { itemsCount} = useWcCart()
 
 </script>
 <template>
-  <footer class="site-footer footer-map footer-dark">
+  <footer class="site-footer footer-map new-gradient footer-dark">
     <!-- Footer Top -->
     <div class="container">
       <div class="row">
@@ -62,7 +62,7 @@ const { itemsCount} = useWcCart()
                 <p class="copyright-text">
                   ©
                   <span class="current-year">{{ new Date().getFullYear() }}</span>
-                  <NuxtLink to="https://www.gameshopdz.com/" class="mx-1">GameShopDZ</NuxtLink>
+                  GameshopDZ
                   Tous les droits sont réservés.
                 </p>
               </div>

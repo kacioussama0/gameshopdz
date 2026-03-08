@@ -1036,19 +1036,19 @@ onUnmounted(() => {
           <input
             type="search"
             class="form-control"
-            placeholder="Search Product"
+            placeholder="example: ps5 , cd ps5 , ps4 , xbox , gta ..."
           />
           <button class="btn" type="button">
             <i class="iconly-Light-Search"></i>
           </button>
         </div>
-        <ul class="recent-tag">
-          <li class="pe-0"><span>Quick Search :</span></li>
-          <li><NuxtLink to="/shop-list">Clothes</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">UrbanSkirt</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">VelvetGown</NuxtLink></li>
-          <li><NuxtLink to="/shop-list">LushShorts</NuxtLink></li>
-        </ul>
+<!--        <ul class="recent-tag">-->
+<!--          <li class="pe-0"><span>Quick Search :</span></li>-->
+<!--          <li><NuxtLink to="/shop-list">Clothes</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">UrbanSkirt</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">VelvetGown</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">LushShorts</NuxtLink></li>-->
+<!--        </ul>-->
       </form>
       <div class="row">
         <div class="col-xl-12">

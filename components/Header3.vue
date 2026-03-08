@@ -5,6 +5,7 @@ import Menu from "@/elements/Menu.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 import Canvas from "@/components/Canvas.vue";
+import {navigateTo} from "nuxt/app";
 
 const { $algolia } = useNuxtApp()
 
@@ -15,10 +16,15 @@ const { itemsCount, pending } = useWcCart()
 const suggSearch = ref('');
 const suggProducts = ref([]);
 
-
 let lastQueryID: string | null = null
 
 const { $aa } = useNuxtApp()
+
+function searchProducts() {
+  navigateTo('/')
+  navigateTo('/shop?search=' + suggSearch.value)
+}
+
 
 let timeout = null
 let currentSearchId = 0
@@ -29,7 +35,7 @@ watch(suggSearch, (value, oldValue) => {
 
   const term = value?.trim() || ''
 
-  // ⛔ منع البحث أقل من 2 حروف
+
   if (term.length < 2) {
     suggProducts.value = []
     return
@@ -290,15 +296,29 @@ onUnmounted(() => {
       ×
     </button>
     <div class="container">
-      <form class="header-item-search" @submit.prevent>
+      <form class="header-item-search" @submit.prevent @submit="searchProducts">
         <div class="input-group search-input">
           <input
             type="search"
             class="form-control"
-            placeholder="Search Product"
+            placeholder="Rechercher PS5, GTA, FIFA, Xbox..."
             v-model="suggSearch"
           />
+
+          <button class="btn" type="submit">
+            <i class="iconly-Light-Search"></i>
+          </button>
+
         </div>
+
+<!--        <ul class="recent-tag">-->
+<!--          <li class="pe-0"><span>Quick Search :</span></li>-->
+<!--          <li><NuxtLink to="/shop-list">Clothes</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">UrbanSkirt</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">VelvetGown</NuxtLink></li>-->
+<!--          <li><NuxtLink to="/shop-list">LushShorts</NuxtLink></li>-->
+<!--        </ul>-->
+
 
       </form>
       <div class="row"  v-if="suggProducts.length">
