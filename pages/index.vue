@@ -414,7 +414,7 @@ useFetch("/api/wc/products", {
 
 
 
-    <section class="content-inner  bg-white  overflow-hidden d-none d-lg-block">
+    <section class="content-inner   overflow-hidden d-none  d-lg-block">
       <div class=" container-md">
         <NuxtLink to="/shop">
           <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
@@ -845,7 +845,7 @@ useFetch("/api/wc/products", {
 
         <div class="row">
 
-          <div class="col-md-4">
+          <div class="col-md-4  d-none  d-lg-block">
             <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_997.png?resize=531%2C1024&ssl=1" class="h-100 rounded-4" alt="">
           </div>
 
@@ -879,7 +879,7 @@ useFetch("/api/wc/products", {
 
   <!--    Start Testemonials-->
 
-    <section class="content-inner">
+    <section class="content-inner bg-white">
       <div class="container">
 
         <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
@@ -892,8 +892,8 @@ useFetch("/api/wc/products", {
     <!-- Products Section Start-->
 
 
-    <section class="content-inner-3 companies-section overflow-hidden">
-      <div class="container">
+    <section class="content-inner-3 companies-section  bg-white">
+      <div class="container ">
         <div class="row justify-content-between align-items-end">
           <div class="col-lg-8 col-md-8 col-sm-12">
             <div
@@ -921,7 +921,7 @@ useFetch("/api/wc/products", {
           >
             <NuxtLink
               class="icon-button d-md-inline-block d-none"
-              to="/blog-tag"
+              to="/shop"
             >
               <div
                 class="text-row word-rotate-box c-black border-secondary bg-secondary"
@@ -957,47 +957,47 @@ useFetch("/api/wc/products", {
 
 
           <div
-            class="item-wrap g-5 row mt-5"
+            class="item-wrap mt-3 gy-5 g-lg-5 row"
           >
             <div class="item col-md-4">
-              <NuxtLink to="" class=" rounded-5 overflow-hidden companies-wrapper">
+              <NuxtLink to="" class=" rounded-4 overflow-hidden ">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" c />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
             <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
             <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
             <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
             <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
             <div class="item col-md-4">
               <NuxtLink to="" class="companies-wrapper">
                 <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" />
+                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" class="rounded-5" />
                 </div>
               </NuxtLink>
             </div>
@@ -1009,7 +1009,7 @@ useFetch("/api/wc/products", {
     </section>
 
     <!-- Services Start -->
-    <section class="content-inner">
+    <section class="content-inner pb-0">
       <div class="container">
         <div
           class="section-head style-1 wow fadeInUp d-md-flex justify-content-between align-items-center"
@@ -1017,34 +1017,37 @@ useFetch("/api/wc/products", {
         >
         </div>
         <div class="row blog-shap">
-          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
+          <div class="col-12 col-sm-6 col-md-3 m-lg-b30 m-b50 wow fadeInUp">
 
-            <i class="fa fa-3x fa-shield text-dark"></i>
-            <h3>Garantie Gameshop</h3>
+            <div class="bg-white rounded-4 shadow-sm p-3 text-center vstack gap-3 ">
+              <i class="fa fa-3x fa-shield text-dark"></i>
+              <h4>Garantie Gameshop</h4>
 
-          </div>
-
-
-
-          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
-
-            <i class="fa fa-3x fa-truck-fast text-dark"></i>
-            <h3>Livraision Express</h3>
+            </div>
 
           </div>
 
-          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
 
+
+          <div class="col-12   col-sm-6 col-md-3  m-lg-b30 m-b50 wow fadeInUp">
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
+              <i class="fa fa-3x fa-truck-fast text-dark"></i>
+              <h4>Livraision Express</h4>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6  col-md-3 m-lg-b30 m-b50 wow fadeInUp">
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
             <i class="fa fa-3x fa-users text-dark"></i>
-            <h3>Service Client Dynamique</h3>
-
+            <h4>Service Client Dynamique</h4>
+            </div>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-3 text-center vstack gap-3 m-lg-b30 m-b50 wow fadeInUp">
-
-            <i class="fa fa-3x fa-certificate text-dark"></i>
-            <h3>Produits certifiés</h3>
-
+          <div class="col-12 col-sm-6 col-md-3  m-lg-b30 m-b50 wow fadeInUp">
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
+              <i class="fa fa-3x fa-certificate text-dark"></i>
+              <h4>Produits certifiés</h4>
+            </div>
           </div>
 
         </div>
@@ -1053,14 +1056,13 @@ useFetch("/api/wc/products", {
     <!-- Services End -->
 
     <!-- Feature Box -->
-    <div class="content-inner py-0">
-      <div class="container px-0">
-
+    <div class="content-inner ">
+      <div class="container">
 
         <h3 class="text-center">Rejoignez nous sur nos réseaux officiels</h3>
 
 
-          <ul class="hstack gap-4 align-items-center justify-content-center social-media py-5">
+          <ul class="hstack gap-4 align-items-center justify-content-center social-media py-4">
             <li>
               <NuxtLink
                   class="fa-brands  fa-3x  fa-facebook"

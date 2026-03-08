@@ -102,4 +102,12 @@ const props = defineProps<{
 .swiper-button-next:after, .swiper-button-prev:after {
   font-size: 22px;
 }
+
+@media screen and (max-width: 500px) {
+
+  .swiper-button-prev , .swiper-button-next  {
+    display: none;
+  }
+}
+
 </style>

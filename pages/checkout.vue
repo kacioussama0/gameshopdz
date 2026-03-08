@@ -326,15 +326,12 @@ onMounted(() => {
 
 
 
-  <div class="page-content bg-light">
-
-
-
+  <div class="page-content bg-white">
 
 
 
     <!-- inner page banner End-->
-    <div class="content-inner-1">
+    <div class="content-inner-1 pb-0">
       <div class="container">
 
         <span class="d-flex align-items-center mb-5">
@@ -343,21 +340,6 @@ onMounted(() => {
             Validation de la commande
           </h1>
         </span>
-
-
-
-        <!--    Start Testemonials-->
-
-        <section class="content-inner">
-          <div class="container">
-
-            <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
-
-          </div>
-        </section>
-        <!--    End Testemonials-->
-
-
 
 
 
@@ -534,6 +516,20 @@ onMounted(() => {
       </div>
 
     </div>
+
+
+    <!--    Start Testemonials-->
+
+    <section class="content-inner">
+      <div class="container">
+
+        <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
+
+      </div>
+    </section>
+    <!--    End Testemonials-->
+
+
   </div>
 
 

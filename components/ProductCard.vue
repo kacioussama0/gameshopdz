@@ -194,21 +194,39 @@ const addToCart = async (productId) => {
 }
 
 /* very small phones */
-@media (max-width: 360px) {
-  .add-btn { font-size: 10.5px; padding: 8px 9px; }
-}
+
 
 @media (max-width: 576px) {
   .add-btn { width: 100%; }
-  .product-img {
-    height: 150px;
+
+  .product-img:not(.swiper-slide .product-img) {
+    height: 350px;
     object-fit: cover;
   }
+
+  .product-img {
+    height: 250px;
+    object-fit: cover;
+  }
+
+
+
 
   .badge {
     font-size: 7px;
   }
 
 }
+
+@media (max-width: 375px) {
+  .add-btn { font-size: 10.5px; padding: 8px 9px; }
+
+  .product-img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+}
+
 
 </style>
