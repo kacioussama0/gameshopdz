@@ -6,7 +6,7 @@ const category = computed(() => route.query.category as string | undefined)
 const tag = computed(() => route.query.tag as string | undefined)
 const brand = computed(() => route.query.brand as string | undefined)
 const search = computed(() => route.query.search as string | undefined)
-
+const stock = computed(() => route.query.stock_status as string | undefined)
 
 
 
@@ -78,21 +78,27 @@ const paginationItems = computed(() => {
 const fetchProducts = async (productIds = []) => {
 
 
+
   try {
 
     loading.value = true
 
-    const res = await $fetch("/api/wc/products", {
-      query: {
-        per_page: perPage.value,
-        page: currentPage.value,
-        category: category.value,
-        tag: tag.value,
-        brand: brand.value,
-        include: productIds.join(','),
-        on_sale: route.query.on_sale
+    const reqQuery = {
+      per_page: perPage.value,
+      page: currentPage.value,
+      category: category.value,
+      tag: tag.value,
+      stock_status: stock.value,
+      brand: brand.value,
+      on_sale: route.query.on_sale
+    }
 
-      },
+    if(productIds.length) {
+      reqQuery.include = productIds.join(',')
+    }
+
+    const res = await $fetch("/api/wc/products", {
+      query: reqQuery,
     })
 
     total.value = res.total
@@ -136,7 +142,7 @@ onMounted(async ()=> {
 
   let ids = []
 
-  if(search.value != '') {
+  if(search.value != undefined) {
     const { $algolia } = useNuxtApp()
 
     const index = $algolia.initIndex('products')

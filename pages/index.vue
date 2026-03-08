@@ -240,7 +240,7 @@ useFetch("/api/wc/products", {
         <div class="row gy-5 gx-0 text-center">
 
           <div class="col-6 col-md-2">
-            <RouterLink  to="/shop?category=815">
+            <RouterLink  to="/shop?category=815&stock_status=instock">
               <i class="fa fa-gamepad mb-3" style="font-size: 30px"></i>
               <h6>Jeux</h6>
             </RouterLink>
@@ -249,7 +249,7 @@ useFetch("/api/wc/products", {
 
           <div class="col-6 col-md-2">
 
-            <RouterLink  to="/shop?category=821">
+            <RouterLink  to="/shop?category=821&stock_status=instock">
               <span class="d-flex gap-2 align-items-center mb-3 justify-content-center">
                  <i class="fa-brands fa-playstation" style="font-size: 30px"></i>
                  <i class="fa-brands fa-xbox" style="font-size: 30px"></i>
@@ -260,14 +260,14 @@ useFetch("/api/wc/products", {
           </div>
 
           <div class="col-6 col-md-2">
-            <RouterLink  to="/shop?category=829">
+            <RouterLink  to="/shop?category=829&stock_status=instock">
               <i class="fa fa-headset mb-3" style="font-size: 30px"></i>
               <h6>Accessoires</h6>
             </RouterLink>
           </div>
 
           <div class="col-6 col-md-2">
-            <RouterLink  to="/shop?category=854" >
+            <RouterLink  to="/shop?category=854&stock_status=instock" >
               <i class="fa fa-recycle mb-3" style="font-size: 30px"></i>
               <h6>Occasions</h6>
             </RouterLink>
@@ -275,14 +275,14 @@ useFetch("/api/wc/products", {
 
 
           <div class="col-6 col-md-2">
-            <RouterLink  to="/shop?on_sale=1">
+            <RouterLink  to="/shop?on_sale=1&stock_status=instock">
               <i class="fa fa-percent mb-3" style="font-size: 30px"></i>
               <h6>Promotions</h6>
             </RouterLink>
           </div>
 
           <div class="col-6 col-md-2">
-            <RouterLink  to="/shop?category=2714">
+            <RouterLink  to="/shop?category=2714&stock_status=instock">
               <i class="fa fa-clock-rotate-left mb-3" style="font-size: 30px"></i>
               <h6>Retro</h6>
             </RouterLink>
