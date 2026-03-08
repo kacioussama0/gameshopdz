@@ -50,6 +50,9 @@ export default defineNuxtConfig({
         {
           src: "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
         },
+        {
+          src: "https://www.jotform.com/website-widgets/embed/019ccb4c526477e79d3bdd4b5afa7c84f074"
+        }
       ],
     },
   },

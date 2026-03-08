@@ -10,6 +10,18 @@ useHead({
   ],
 })
 
+onMounted(()=> {
+
+
+  const script = document.createElement('script')
+  script.src = 'https://www.jotform.com/website-widgets/embed/019ccb4c526477e79d3bdd4b5afa7c84f074'
+  script.async = true
+  script.defer = true
+  script.setAttribute('data-jf-widget', 'reviews')
+
+  document.body.appendChild(script)
+})
+
 
 const isOpen = ref(false);
 
@@ -823,6 +835,9 @@ useFetch("/api/wc/products", {
       </div>
     </section>
 
+
+
+
     <!-- Products  Section Start-->
     <section class="content-inner">
       <div class="container">
@@ -860,7 +875,22 @@ useFetch("/api/wc/products", {
 
       </div>
     </section>
+
+
+  <!--    Start Testemonials-->
+
+    <section class="content-inner">
+      <div class="container">
+
+        <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
+
+      </div>
+    </section>
+  <!--    End Testemonials-->
+
+
     <!-- Products Section Start-->
+
 
     <section class="content-inner-3 companies-section overflow-hidden">
       <div class="container">
@@ -1072,6 +1102,9 @@ useFetch("/api/wc/products", {
       </div>
     </div>
     <!-- Feature Box End -->
+
+
+
 </template>
 
 <style scoped>
