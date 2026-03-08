@@ -151,9 +151,6 @@ onMounted(async ()=> {
   }
 
 
-
-
-
   await fetchProducts(ids)
 
 })
@@ -201,7 +198,7 @@ onMounted(async ()=> {
 
             <div class="row g-4">
 
-              <div class="col-6 col-md-4 col-lg-3   mb-4"
+              <div class="col-6 col-md-4 col-lg-3 col-xl-3   mb-4"
                    v-if="!loading"
                    v-for="product in allProducts"
                    :key="product.id">

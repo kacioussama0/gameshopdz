@@ -666,9 +666,10 @@ useFetch("/api/wc/products/", {
             <h2 class="title mb-0">Produits associés</h2>
           </div>
           <NuxtLink
-              to="/shop-list"
+              to="/shop"
               class="text-secondary font-14 d-flex align-items-center gap-1"
-          >Voir tous les produits
+          >
+            Voir tous les produits
             <i class="icon feather icon-chevron-right font-18"></i>
           </NuxtLink>
         </div>

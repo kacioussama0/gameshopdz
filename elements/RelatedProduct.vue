@@ -27,10 +27,11 @@ const props = defineProps<{
         nextEl: '.btn-next',
       }"
       :breakpoints="{
-        1200: { slidesPerView: 4 },
-        991: { slidesPerView: 3 },
-        775: { slidesPerView: 2 },
-        240: { slidesPerView: 1 },
+        0: { slidesPerView: 2, spaceBetween: 15 },
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        992: { slidesPerView: 4, spaceBetween: 20 },
+        1400: { slidesPerView: 5, spaceBetween: 25 },
+
       }"
     >
       <SwiperSlide class="swiper-slide" v-for="product in products">
