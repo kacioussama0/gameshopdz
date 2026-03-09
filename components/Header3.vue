@@ -63,13 +63,11 @@ watch(suggSearch, (value, oldValue) => {
         clickAnalytics: true,
       })
 
-      // 🔒 منع نتيجة قديمة تظهر
       if (searchId !== currentSearchId) return
 
       const qid = res.queryID || null
       lastQueryID = qid
 
-      // 💾 تخزين queryID مع TTL
       if (process.client && qid) {
         localStorage.setItem('algolia:lastQueryID', qid)
         localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
