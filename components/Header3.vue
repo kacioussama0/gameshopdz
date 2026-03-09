@@ -9,6 +9,7 @@ import {navigateTo} from "nuxt/app";
 
 const { $algolia } = useNuxtApp()
 
+
 const menu = ref(false);
 
 const { itemsCount, pending } = useWcCart()
@@ -28,6 +29,13 @@ function searchProducts() {
 
 let timeout = null
 let currentSearchId = 0
+
+
+const route = useRoute()
+
+watch(route, () => {
+  document.querySelector('.navbar-toggler').click()
+})
 
 watch(suggSearch, (value, oldValue) => {
 
