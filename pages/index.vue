@@ -10,6 +10,21 @@ useHead({
   ],
 })
 
+
+
+const  logos = ref([
+  "https://gmedia.playstation.com/is/image/SIEPDC/ps-plus-black-badge-01-22sep20?$400px--t$",
+  "https://upload.wikimedia.org/wikipedia/commons/5/5c/PlayStation_logo_and_wordmark.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/d/d7/Xbox_logo_%282019%29.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Xbox_Game_Pass_new_logo_-_colored_version.svg/1280px-Xbox_Game_Pass_new_logo_-_colored_version.svg.png",
+  "https://www.hatchwise.com/wp-content/uploads/2023/02/image-48.png",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQfNR-GjrukHGen1bho6CZBVm3DJ0s9LLaxw&s",
+  "https://upload.wikimedia.org/wikipedia/en/4/40/Razer_snake_logo.svg",
+  "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/HyperX_Logo.svg/1280px-HyperX_Logo.svg.png",
+  "https://media.printables.com/media/prints/78f9e114-141b-4b28-b1aa-eda3c5a7e3e6/images/10282283_c8fd3225-5d0e-4c96-ad74-105f80f3def9_77213108-93f3-45ca-9a27-1f9cf1b1a3d2/thumbs/inside/1280x960/png/gamesir-logo-new.webp",
+    "https://www.dobe-game.com/uploads/image/20200608/1591609282.png"
+])
+
 onMounted(()=> {
 
 
@@ -845,8 +860,10 @@ useFetch("/api/wc/products", {
 
         <div class="row">
 
-          <div class="col-md-4  d-none  d-lg-block">
-            <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_997.png?resize=531%2C1024&ssl=1" class="h-100 rounded-4" alt="">
+          <div class="col-md-4  d-none  d-lg-block ">
+            <span class="rounded-4 overflow-hidden">
+              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_997.png?resize=531%2C1024&ssl=1" class="h-100 object-fit-contain" alt="">
+            </span>
           </div>
 
 
@@ -892,119 +909,47 @@ useFetch("/api/wc/products", {
     <!-- Products Section Start-->
 
 
-    <section class="content-inner-3 companies-section  bg-white">
-      <div class="container ">
-        <div class="row justify-content-between align-items-end">
-          <div class="col-lg-8 col-md-8 col-sm-12">
-            <div
-              class="section-head style-2 wow fadeInUp m-0"
-              data-wow-delay="0.1s"
-              style="
-                visibility: visible;
-                animation-delay: 0.1s;
-                animation-name: fadeInUp;
-              "
-            >
-              <h2 class="title text-white">
-                Trouvez tout ce qui est nouveau sur votre Brand préféré
-              </h2>
-            </div>
-          </div>
-          <div
-            class="col-lg-4 col-md-4 col-sm-12 text-md-center m-b30 wow fadeInUp"
-            data-wow-delay="0.2s"
-            style="
-              visibility: visible;
-              animation-delay: 0.2s;
-              animation-name: fadeInUp;
-            "
-          >
-            <NuxtLink
-              class="icon-button d-md-inline-block d-none"
-              to="/shop"
-            >
-              <div
-                class="text-row word-rotate-box c-black border-secondary bg-secondary"
-              >
-                <img src="../assets/images/icon0.svg" alt="" width="80">
-                <span class="text__char" style="--char-rotate: 0deg">g</span
-                ><span class="text__char" style="--char-rotate: 18deg">a</span
-                ><span class="text__char" style="--char-rotate: 36deg">m</span
-                ><span class="text__char" style="--char-rotate: 54deg">e</span
-                ><span class="text__char" style="--char-rotate: 72deg">s</span
-                ><span class="text__char" style="--char-rotate: 90deg">h</span
-                ><span class="text__char" style="--char-rotate: 108deg">o</span
-                ><span class="text__char" style="--char-rotate: 126deg">p</span
-                ><span class="text__char" style="--char-rotate: 144deg">-</span
-                ><span class="text__char" style="--char-rotate: 162deg"> </span
-                ><span class="text__char" style="--char-rotate: 180deg">g</span
-                ><span class="text__char" style="--char-rotate: 198deg">a</span
-                ><span class="text__char" style="--char-rotate: 216deg">m</span
-                ><span class="text__char" style="--char-rotate: 234deg">e</span
-                ><span class="text__char" style="--char-rotate: 252deg">s</span
-                ><span class="text__char" style="--char-rotate: 270deg">h</span
-                ><span class="text__char" style="--char-rotate: 288deg">o</span
-                ><span class="text__char" style="--char-rotate: 306deg">p</span
-                ><span class="text__char" style="--char-rotate: 324deg">-</span
-                ><span class="text__char" style="--char-rotate: 342deg"> </span>
-              </div>
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-
+    <section class="content-inner-3 py-0 companies-section  new-gradient">
       <div class="container-fluid">
 
 
-          <div
-            class="item-wrap  gy-5 g-lg-5 row"
-          >
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class=" rounded-4 overflow-hidden ">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS14.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS16.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS15.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS126.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS17.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="item col-6 col-md-4">
-              <NuxtLink to="" class="companies-wrapper">
-                <div class="companies-media">
-                  <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS125.png?w=448&ssl=1" alt="" class="rounded-5" />
-                </div>
-              </NuxtLink>
-            </div>
+        <div class="companies-slider-wrapper">
+          <div class="companies-slider">
 
+            <Swiper
+                class="swiper-five"
+                :modules="[Autoplay, Pagination]"
+                :loop="true"
+                :pagination="{ clickable: true }"
+                :speed="1200"
+                :space-between="20"
+                :breakpoints="{
+        0: { slidesPerView: 2 },
+        576: { slidesPerView: 3 },
+        768: { slidesPerView: 4 },
+        992: { slidesPerView: 5 },
+        1200: { slidesPerView: 6 }
+      }"
+                :navigation="{
+        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next'
+      }"
+            >
+
+              <SwiperSlide v-for="(logo,i) in logos" :key="i">
+                <div class="company-card p-3">
+                  <img :src="logo">
+                </div>
+              </SwiperSlide>
+
+            </Swiper>
 
           </div>
         </div>
+
+      </div>
+
+
 
     </section>
 
@@ -1088,14 +1033,6 @@ useFetch("/api/wc/products", {
               ></NuxtLink>
             </li>
 
-            <li>
-              <NuxtLink
-
-                  class="fab fa-3x fa-snapchat-ghost"
-                  target="_blank"
-                  to="https://www.snapchat.com/add/gameshop.dz?sender_web_id=1626268c-ffd5-4cbb-9b2d-4025523a74d7&device_type=desktop&is_copy_url=true"
-              ></NuxtLink>
-            </li>
 
           </ul>
         </div>
@@ -1195,6 +1132,49 @@ useFetch("/api/wc/products", {
   0% {background-position:0% 50%;}
   50% {background-position:100% 50%;}
   100% {background-position:0% 50%;}
+}
+
+/* Center wrapper */
+
+.companies-slider-wrapper{
+  display:flex;
+  justify-content:center;
+  width:100%;
+}
+
+/* Control slider width */
+
+.companies-slider{
+  width:90%;
+  max-width:1200px;
+  position:relative;
+}
+
+/* Center slides */
+
+.swiper-slide{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Card */
+
+.company-card{
+  width:100%;
+  height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:12px;
+  border:1px solid #eee;
+}
+
+.company-card img{
+  max-width:100%;
+  max-height:70px;
+  object-fit:contain;
 }
 
 </style>
