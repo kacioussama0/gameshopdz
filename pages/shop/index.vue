@@ -107,6 +107,7 @@ const fetchProducts = async (productIds = []) => {
     allProducts.value = res.products.map((product: any) => ({
       id: product.id,
       name: product.name,
+      type: product.type,
       slug: product.slug,
       thumbnail: product.images?.[0]?.thumbnail || product.images?.[0]?.src || "",
       price: product.price,

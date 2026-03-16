@@ -57,19 +57,32 @@ const addToCart = async (productId) => {
         </div>
 
         <NuxtLink
+            :to="`/shop/product/${product.slug}`"
+            class="btn btn-primary add-btn  new-gradient mt-3"
+            v-if="product.type == 'variable'"
+        >
+
+          <i class="fa fa-cog me-2"></i>
+          Choisir options
+
+        </NuxtLink>
+
+
+        <NuxtLink
             to="?"
             class="btn btn-primary add-btn  new-gradient mt-3"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"
             @click="addToCart(product.id)"
-            v-if="product.stock == 'instock'"
+            v-else-if="product.stock == 'instock'"
         >
 
           <i class="fa fa-cart-plus me-2"></i>
           Ajouter au Panier
 
         </NuxtLink>
+
 
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
