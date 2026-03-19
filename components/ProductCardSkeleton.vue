@@ -13,7 +13,7 @@
 
 
                   <div class="placeholder-glow" >
-                    <span class="placeholder col-12" style="height: 258px"></span>
+                    <span class="placeholder col-12" style="height: 150px"></span>
                   </div>
 
                   <div class="dz-content d-flex flex-column p-3">

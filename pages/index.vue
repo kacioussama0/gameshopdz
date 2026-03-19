@@ -11,7 +11,6 @@ useHead({
 })
 
 
-
 const  logos = ref([
   "https://gmedia.playstation.com/is/image/SIEPDC/ps-plus-black-badge-01-22sep20?$400px--t$",
   "https://upload.wikimedia.org/wikipedia/commons/5/5c/PlayStation_logo_and_wordmark.svg",
@@ -23,6 +22,33 @@ const  logos = ref([
   "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/HyperX_Logo.svg/1280px-HyperX_Logo.svg.png",
   "https://media.printables.com/media/prints/78f9e114-141b-4b28-b1aa-eda3c5a7e3e6/images/10282283_c8fd3225-5d0e-4c96-ad74-105f80f3def9_77213108-93f3-45ca-9a27-1f9cf1b1a3d2/thumbs/inside/1280x960/png/gamesir-logo-new.webp",
     "https://www.dobe-game.com/uploads/image/20200608/1591609282.png"
+])
+
+const comingSoon = ref([
+  {
+    'name': 'Life Is Strange Reunion',
+    'image': 'https://www.micromania.fr/on/demandware.static/-/Sites-Micromania-Library/default/dw3ad32437/Homepage/HitaVenir/tuile-life-is-strange.png',
+    'day': '26',
+    'month': 'Mars',
+  },
+  {
+    'name': 'Super Mario Bros  Wonder Switch 2',
+    'image': 'https://www.micromania.fr/on/demandware.static/-/Sites-Micromania-Library/default/dwe67dea32/Homepage/HitaVenir/mario-wonder-parc-bellabel.png',
+    'day': '26',
+    'month': 'Mars',
+  },
+  {
+    'name': 'Starfield PS5',
+    'image': 'https://www.micromania.fr/on/demandware.static/-/Sites-Micromania-Library/default/dw4d5110e5/Homepage/HitaVenir/Starfield.png',
+    'day': '7',
+    'month': 'Avril',
+  },
+  {
+    'name': 'Xenoblade Chronicles X Definitive Edition SWITCH 2',
+    'image': 'https://www.micromania.fr/on/demandware.static/-/Sites-Micromania-Library/default/dw0cebc789/Homepage/HitaVenir/xenoblade-switch2.png',
+    'day': '16',
+    'month': 'Avril',
+  }
 ])
 
 onMounted(()=> {
@@ -147,7 +173,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 6, page: 1  ,status:'publish',category: '821',stock_status:'instock'}
+  query: { per_page: 10, page: 1  ,status:'publish',category: '821',stock_status:'instock'}
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
     id: product.id,
@@ -219,6 +245,7 @@ useFetch("/api/wc/products", {
                       :src="product.images[1].src"
                       format="webp"
                       loading="lazy"
+                      class="vw-100"
                   />
                 </div>
                 <div class="dz-content justify-content-end">
@@ -309,6 +336,77 @@ useFetch("/api/wc/products", {
       </div>
     </section>
     <!-- Shortcuts-->
+
+
+    <!-- Preorders -->
+    <section class="content-inner-1 bg-white pt-5 overflow-hidden">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title" >
+                  <i class="iconly-Curved-TimeCircle me-1"></i>
+                  Bientôt disponible
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row my-3">
+
+          <div class="col-md-3" v-for="product in comingSoon">
+
+            <div class="card position-relative overflow-hidden coming-soon" style="height: 310px">
+
+
+              <div class="coming-soon-bg z-2 position-absolute start-0 top-0 w-100 h-100"></div>
+
+              <NuxtImg
+                  :src="product.image"
+                  placeholder
+                  format="webp"
+                  height="310"
+                  class="position-absolute start-0 top-0 w-100 h-100"
+                  loading="lazy"
+              />
+
+              <div class="badge new-gradient position-absolute start-0 top-0 m-1 z-3">
+                <h4 class="text-warning mb-1">{{product.day}}</h4>
+                <span>{{product.month}}</span>
+              </div>
+
+
+              <div class="w-100  p-4 text-center position-absolute start-50 top-50 translate-middle bg-transparent  z-3">
+                <h3 class="text-warning">{{product.name}}</h3>
+
+<!--                <NuxtLink-->
+<!--                    to="#"-->
+<!--                    class="btn btn-primary add-btn mt-3 new-gradient"-->
+<!--                >-->
+<!--                  <i class="fa fa-cart-arrow-down me-2"></i>-->
+<!--                  Je Précommande-->
+
+<!--                </NuxtLink>-->
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- Preorders -->
 
 
 
@@ -854,43 +952,24 @@ useFetch("/api/wc/products", {
 
 
     <!-- Products  Section Start-->
-    <section class="content-inner">
+    <section class="content-inner" v-if="consoles.length">
       <div class="container">
-<!--        <ProductGallery />-->
 
-        <div class="row">
-
-          <div class="col-md-4  d-none  d-lg-block ">
-            <span class="rounded-4 overflow-hidden">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_997.png?resize=531%2C1024&ssl=1" class="h-100 object-fit-contain" alt="">
-            </span>
-          </div>
-
-
-          <div class="col-md-8">
 
             <div class="left-content mb-3">
               <h2 class="title mb-0 ">Découvrez nos nouvelles consoles en magasin !</h2>
               <p class="mb-0">Nouvelles consoles en stock !</p>
             </div>
 
-            <div class="row gy-3 gx-3">
 
-              <div class="col-6 col-md-4" v-for="console in consoles">
+            <ProductSlider :products="consoles" />
 
-                  <ProductCard :show-stock="false" :product="console"  />
-
-              </div>
-
-
-            </div>
 
 
           </div>
 
-        </div>
 
-      </div>
+
     </section>
 
 
@@ -964,10 +1043,9 @@ useFetch("/api/wc/products", {
         <div class="row blog-shap">
           <div class="col-12 col-sm-6 col-md-3 m-lg-b30 m-b50 wow fadeInUp">
 
-            <div class="bg-white rounded-4 shadow-sm p-3 text-center vstack gap-3 ">
-              <i class="fa fa-3x fa-shield text-dark"></i>
+            <div class="bg-white rounded-4 shadow-sm p-3 text-center vstack gap-2 justify-content-center align-items-center">
+              <img src="https://woo.gameshopdz.com/wp-content/uploads/elementor/thumbs/GS120-qgyvaqnagtyzhqqyulzst61fl8h2ztgsc77u3ymfag.png" width="100"  alt="produit-certifier">
               <h4>Garantie Gameshop</h4>
-
             </div>
 
           </div>
@@ -975,22 +1053,22 @@ useFetch("/api/wc/products", {
 
 
           <div class="col-12   col-sm-6 col-md-3  m-lg-b30 m-b50 wow fadeInUp">
-            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
-              <i class="fa fa-3x fa-truck-fast text-dark"></i>
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-2 justify-content-center align-items-center">
+              <img src="https://woo.gameshopdz.com/wp-content/uploads/elementor/thumbs/GS121-qgyvaqnagtyzhqqyulzst61fl8h2ztgsc77u3ymfag.png" width="100"  alt="produit-certifier">
               <h4>Livraision Express</h4>
             </div>
           </div>
 
           <div class="col-12 col-sm-6  col-md-3 m-lg-b30 m-b50 wow fadeInUp">
-            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
-            <i class="fa fa-3x fa-users text-dark"></i>
-            <h4>Service Client Dynamique</h4>
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-2 justify-content-center align-items-center">
+              <img src="https://woo.gameshopdz.com/wp-content/uploads/elementor/thumbs/GS124-qgyvaqnagtyzhqqyulzst61fl8h2ztgsc77u3ymfag.png" width="100"  alt="produit-certifier">
+              <h4>Service Client Dynamique</h4>
             </div>
           </div>
 
           <div class="col-12 col-sm-6 col-md-3  m-lg-b30 m-b50 wow fadeInUp">
-            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-3 ">
-              <i class="fa fa-3x fa-certificate text-dark"></i>
+            <div class=" bg-white rounded-4 shadow-sm  p-3 text-center vstack gap-2 justify-content-center align-items-center">
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/GS123.png?w=300&ssl=1" width="100"  alt="produit-certifier">
               <h4>Produits certifiés</h4>
             </div>
           </div>
@@ -1010,27 +1088,30 @@ useFetch("/api/wc/products", {
           <ul class="hstack gap-4 align-items-center justify-content-center social-media py-4">
             <li>
               <NuxtLink
-                  class="fa-brands  fa-3x  fa-facebook"
                   target="_blank"
                   to="https://www.facebook.com/gameshopdz2"
-              ></NuxtLink>
+              >
+                <svg class="social-icon" width="42" height="42" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="outline" d="M21 42C9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21-9.402 21-21 21zm0-1.715c10.65 0 19.285-8.634 19.285-19.285 0-10.65-8.634-19.285-19.285-19.285C10.35 1.715 1.715 10.349 1.715 21c0 10.65 8.634 19.285 19.285 19.285z" fill="#DCE0E3" fill-rule="nonzero"></path><path d="M30.625 10.5h-19.25a.875.875 0 00-.875.875v19.25c0 .483.392.875.875.875h10.281v-7.875h-2.625v-3.281h2.625v-2.625c0-2.713 1.718-4.047 4.137-4.047a22.6 22.6 0 012.445.124v2.835l-1.678.001c-1.315 0-1.622.625-1.622 1.543v2.169h3.28l-.655 3.281h-2.625l.052 7.875h5.635a.875.875 0 00.875-.875v-19.25a.875.875 0 00-.875-.875" fill="#435FA0"></path></g></svg>
+              </NuxtLink>
             </li>
 
             <li>
               <NuxtLink
-                  class="fab fa-3x fa-tiktok"
-
                   target="_blank"
                   to="https://www.tiktok.com/@gameshop.dz"
-              ></NuxtLink>
+              >
+                <svg class="social-icon" width="42" height="42" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="outline" d="M21 42C9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21-9.402 21-21 21zm0-1.715c10.65 0 19.285-8.634 19.285-19.285 0-10.65-8.634-19.285-19.285-19.285C10.35 1.715 1.715 10.349 1.715 21c0 10.65 8.634 19.285 19.285 19.285z" fill="#DCE0E3" fill-rule="nonzero"></path><circle fill="#000" cx="21" cy="21" r="15.75"></circle><path d="M17.978 27.289a2.498 2.498 0 01-.595-1.612c0-1.469 1.307-2.66 2.918-2.66.3 0 .601.043.885.125v-3.215a6.9 6.9 0 00-1.01-.052v2.5a3.242 3.242 0 00-.885-.125c-1.61 0-2.918 1.195-2.918 2.664 0 1.037.652 1.938 1.605 2.375zm9.958-11.194c-.693-.691-1.147-1.583-1.246-2.568v-.402h-.956c.24 1.25 1.061 2.323 2.202 2.97zm-1.246 3.173a8.8 8.8 0 004.81 1.402v-3.147c-.339 0-.678-.03-1.01-.096v2.477a8.8 8.8 0 01-4.81-1.402v6.42c0 3.209-2.854 5.814-6.38 5.814a6.776 6.776 0 01-3.55-.985c1.16 1.082 2.774 1.749 4.56 1.749 3.526 0 6.38-2.603 6.38-5.814v-6.418z" fill="#EE1D52"></path><path d="M24.3 16.113a7.84 7.84 0 004.575 1.46V14.99a4.603 4.603 0 01-2.429-1.39 4.592 4.592 0 01-2.094-3.101h-2.393v13.108a2.774 2.774 0 01-2.775 2.764 2.776 2.776 0 01-2.21-1.091 2.78 2.78 0 01-1.53-2.481 2.779 2.779 0 013.621-2.646v-2.609a6.064 6.064 0 00-4.21 10.302A6.067 6.067 0 0024.3 22.81v-6.696z" fill="#FFF"></path><path d="M19.629 18.44v-.754a5.156 5.156 0 00-.785-.058c-3.158 0-5.719 2.752-5.719 6.142 0 2.128 1.006 4.003 2.536 5.105-1.009-1.108-1.63-2.623-1.63-4.295 0-3.35 2.495-6.072 5.598-6.14zm4.983-7.13a4.345 4.345 0 01-.05-.382V10.5h-3.11v13.27c-.006 1.549-1.175 2.802-2.617 2.802a2.51 2.51 0 01-1.177-.299c.478.675 1.232 1.106 2.083 1.106 1.44 0 2.61-1.25 2.616-2.8V11.31h2.255zm4.263 4.544v-.705a4.06 4.06 0 01-2.29-.702 4.244 4.244 0 002.29 1.407z" fill="#69C9D0"></path></g></svg>
+
+              </NuxtLink>
             </li>
             <li>
               <NuxtLink
-
-                  class="fab fa-3x fa-instagram"
                   target="_blank"
                   to="https://www.instagram.com/gameshop.dz/"
-              ></NuxtLink>
+              >
+                <svg class="social-icon" width="42" height="42" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="87.952%" y1="13.972%" x2="17.921%" y2="87.584%" id="ainstagram"><stop stop-color="#C10292" offset="0%"></stop><stop stop-color="#EA001D" offset="63.081%"></stop><stop stop-color="orange" offset="100%"></stop></linearGradient></defs><g fill="none"><path class="outline" d="M21 42C9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21-9.402 21-21 21zm0-1.715c10.65 0 19.285-8.634 19.285-19.285 0-10.65-8.634-19.285-19.285-19.285C10.35 1.715 1.715 10.349 1.715 21c0 10.65 8.634 19.285 19.285 19.285z" fill="#DCE0E3"></path><path d="M15.892 10.5a5.4 5.4 0 00-5.392 5.392v10.216a5.4 5.4 0 005.392 5.392h10.216a5.4 5.4 0 005.392-5.392V15.892a5.4 5.4 0 00-5.392-5.392H15.892zm0 1.703h10.216c2.059 0 3.69 1.63 3.69 3.689v10.216a3.663 3.663 0 01-3.69 3.69H15.892a3.663 3.663 0 01-3.69-3.69V15.892a3.663 3.663 0 013.69-3.69zm10.784 1.702a1.134 1.134 0 10-.002 2.27 1.134 1.134 0 00.002-2.27zM21 15.892A5.12 5.12 0 0015.892 21 5.12 5.12 0 0021 26.108 5.12 5.12 0 0026.108 21 5.12 5.12 0 0021 15.892zm0 1.703A3.392 3.392 0 0124.405 21 3.392 3.392 0 0121 24.405 3.392 3.392 0 0117.595 21 3.392 3.392 0 0121 17.595z" fill="url(#ainstagram)"></path></g></svg>
+
+              </NuxtLink>
             </li>
 
 
@@ -1050,21 +1131,18 @@ useFetch("/api/wc/products", {
 
 
 .social-media  li {
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0F1E4A;
-  transition: .3s;
+  transition: .1s;
   cursor: pointer;
 }
 
-.social-media li a {
-  font-size: 25px;
-  color: #ffff;
-}
+
+
 
 
 .social-media li:hover {
@@ -1079,7 +1157,7 @@ useFetch("/api/wc/products", {
 
 }
 
-.portfolio-gallery2 ,.swiper-slide,.portfolio-box ,swiper-wrapper{
+.portfolio-gallery2 ,.swiper-slide,.portfolio-box ,.swiper-wrapper{
   min-height: 385px;
   max-height: 480px;
 }
@@ -1175,6 +1253,10 @@ useFetch("/api/wc/products", {
   max-width:100%;
   max-height:70px;
   object-fit:contain;
+}
+
+.coming-soon-bg {
+  background: linear-gradient(135deg, rgba(15, 47, 109, 0.5), rgba(22, 64, 148, 0.5), rgba(106, 61, 240, 0.5));
 }
 
 </style>
