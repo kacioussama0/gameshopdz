@@ -91,8 +91,27 @@ const consoles = ref([])
 const carousel = ref([])
 const discountProducts = ref([]);
 const hitsProducts = ref([])
+const topSales = ref([])
 
 
+useFetch("/api/wc/products", {
+  query: { per_page: 10, page: 2 ,status:'publish',  orderby: 'popularity',stock_status:'instock'}
+}).then(( response) => {
+
+  topSales.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
+    name: product.name,
+    slug: product.slug,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
 
 
 useFetch("/api/wc/products", {
@@ -338,6 +357,60 @@ useFetch("/api/wc/products", {
     <!-- Shortcuts-->
 
 
+
+    <!-- Top Sales Start-->
+    <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="topSales.length">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title" >
+                  <i class="iconly-Curved-Star me-1"></i>
+                  Top Ventes
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <ProductSlider  :products="topSales"/>
+      </div>
+    </section>
+    <!-- Top Sales Stop-->
+
+
+
+    <!-- Discount Start-->
+    <section class="content-inner-1 pt-5 overflow-hidden" v-if="discountProducts.length">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title text-danger">
+                  <i class="iconly-Curved-Discount me-1"></i>
+                  Promotion
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <ProductSlider :products="discountProducts"/>
+      </div>
+    </section>
+    <!-- Discount Stop-->
+
+
     <!-- Preorders -->
     <section class="content-inner-1 bg-white pt-5 overflow-hidden">
       <div class="container-fluid">
@@ -386,14 +459,14 @@ useFetch("/api/wc/products", {
               <div class="w-100  p-4 text-center position-absolute start-50 top-50 translate-middle bg-transparent  z-3">
                 <h3 class="text-warning">{{product.name}}</h3>
 
-<!--                <NuxtLink-->
-<!--                    to="#"-->
-<!--                    class="btn btn-primary add-btn mt-3 new-gradient"-->
-<!--                >-->
-<!--                  <i class="fa fa-cart-arrow-down me-2"></i>-->
-<!--                  Je Précommande-->
+                <!--                <NuxtLink-->
+                <!--                    to="#"-->
+                <!--                    class="btn btn-primary add-btn mt-3 new-gradient"-->
+                <!--                >-->
+                <!--                  <i class="fa fa-cart-arrow-down me-2"></i>-->
+                <!--                  Je Précommande-->
 
-<!--                </NuxtLink>-->
+                <!--                </NuxtLink>-->
 
               </div>
 
@@ -407,67 +480,6 @@ useFetch("/api/wc/products", {
       </div>
     </section>
     <!-- Preorders -->
-
-
-
-
-    <!-- Gameshop hits Start-->
-    <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="hitsProducts.length">
-      <div class="container-fluid">
-        <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
-            <div
-                class="section-head style-1 m-b30 wow fadeInUp"
-                data-wow-delay="0.2s"
-            >
-              <div class="left-content">
-                <h2 class="title" >
-                  <i class="iconly-Curved-Game me-1"></i>
-                  Gameshop Hits
-                </h2>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <ProductSlider  :products="hitsProducts"/>
-      </div>
-    </section>
-    <!-- Gameshop hits Stop-->
-
-
-
-
-
-
-
-
-    <!-- Discount Start-->
-    <section class="content-inner-1 pt-5 overflow-hidden" v-if="discountProducts.length">
-      <div class="container-fluid">
-        <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
-            <div
-                class="section-head style-1 m-b30 wow fadeInUp"
-                data-wow-delay="0.2s"
-            >
-              <div class="left-content">
-                <h2 class="title text-danger">
-                  <i class="iconly-Curved-Discount me-1"></i>
-                  Promotion
-                </h2>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <ProductSlider :products="discountProducts"/>
-      </div>
-    </section>
-    <!-- Discount Stop-->
-
 
 
 
