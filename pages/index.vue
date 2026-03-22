@@ -434,7 +434,7 @@ useFetch("/api/wc/products", {
 
         <div class="row my-3">
 
-          <div class="col-md-3" v-for="product in comingSoon">
+          <div class="col-6 col-md-4 col-lg-3" v-for="product in comingSoon">
 
             <div class="card position-relative overflow-hidden coming-soon" style="height: 310px">
 
@@ -446,7 +446,7 @@ useFetch("/api/wc/products", {
                   placeholder
                   format="webp"
                   height="310"
-                  class="position-absolute start-0 top-0 w-100 h-100"
+                  class="position-absolute start-0 top-0 w-100 h-100 "
                   loading="lazy"
               />
 
@@ -1269,6 +1269,18 @@ useFetch("/api/wc/products", {
 
 .coming-soon-bg {
   background: linear-gradient(135deg, rgba(15, 47, 109, 0.5), rgba(22, 64, 148, 0.5), rgba(106, 61, 240, 0.5));
+}
+
+@media screen and (max-width: 500px) {
+
+  .coming-soon {
+    height: 200px !important;
+  }
+
+  .coming-soon h3 {
+    display: none;
+  }
+
 }
 
 </style>
