@@ -17,9 +17,8 @@ const props = defineProps<{
       class="swiper swiper-four"
 
       :space-between="30"
-      :loop="true"
       :modules="[Autoplay,Navigation]"
-      :speed="2000"
+      :speed="300"
 
 
       :breakpoints="{
