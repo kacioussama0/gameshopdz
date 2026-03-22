@@ -1290,4 +1290,8 @@ useFetch("/api/wc/products", {
   }
 }
 
+.category-section .dz-media {
+  box-shadow: 0 3px 30px rgba(255,255,255,.2);
+}
+
 </style>
