@@ -17,10 +17,9 @@ const props = defineProps<{
       class="swiper swiper-four"
 
       :space-between="30"
-      :modules="[Autoplay,Navigation]"
+      :modules="[Autoplay,Navigation,Pagination]"
       :speed="300"
-
-
+      :pagination="{ clickable: true }"
       :breakpoints="{
 
         0: { slidesPerView: 2, spaceBetween: 15 },
@@ -101,6 +100,12 @@ const props = defineProps<{
 .swiper-button-next:after, .swiper-button-prev:after {
   font-size: 22px;
 }
+
+.swiper-four {
+  position: relative;
+  padding-bottom: 80px; /* creates space for dots */
+}
+
 
 @media screen and (max-width: 500px) {
 

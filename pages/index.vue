@@ -250,7 +250,7 @@ useFetch("/api/wc/products", {
                 delay: 4000,
               }"
               :pagination="{ clickable: true }"
-              :speed="1500"
+              :speed="300"
               :navigation="{
             prevEl: '.swiper-button-prev',
             nextEl: '.swiper-button-next',
