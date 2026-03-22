@@ -548,7 +548,7 @@ useFetch("/api/wc/products", {
     </section>
 
     <!--Featured Section Start-->
-    <div class="content-inner category-section my-5">
+    <div class="content-inner new-gradient category-section my-5">
 
       <div class="container">
         <div class="clearfix">
