@@ -112,6 +112,7 @@ function onSuggestionClick(hit) {
   localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
 
   navigateTo(`/shop/product/${hit.slug}`)
+
 }
 
 
@@ -187,17 +188,16 @@ onUnmounted(() => {
           </button>
 
           <span class="d-md-none d-block">
-          <NuxtLink
+          <a
               class="nav-link"
-              to="#"
-              @click.prevent
+              href="#"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasTop"
               aria-controls="offcanvasTop"
           >
                   <i class="iconly-Light-Search text-white"></i>
 
-          </NuxtLink>
+          </a>
         </span>
 
         </div>
@@ -457,8 +457,9 @@ onUnmounted(() => {
 }
 
 .navicon {
-  background: #164094 !important;
+  background: transparent !important;
 }
+
 
 
 
