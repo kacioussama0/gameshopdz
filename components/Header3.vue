@@ -460,7 +460,9 @@ onUnmounted(() => {
   background: transparent !important;
 }
 
-
+button.open span {
+  background: var(--bs-primary) !important;
+}
 
 
 </style>
