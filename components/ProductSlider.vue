@@ -103,7 +103,7 @@ const props = defineProps<{
 
 .swiper-four {
   position: relative;
-  padding-bottom: 80px; /* creates space for dots */
+  padding-bottom: 50px; /* creates space for dots */
 }
 
 
@@ -113,5 +113,7 @@ const props = defineProps<{
     display: none;
   }
 }
+
+
 
 </style>

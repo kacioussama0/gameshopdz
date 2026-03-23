@@ -63,7 +63,7 @@ const addToCart = async (productId) => {
         >
 
           <i class="fa fa-cog me-2"></i>
-          Choisir options
+          <span class="btn-text">Choisir options</span>
 
         </NuxtLink>
 
@@ -79,7 +79,7 @@ const addToCart = async (productId) => {
         >
 
           <i class="fa fa-cart-plus me-2"></i>
-          Ajouter au Panier
+          <span class="btn-text">Ajouter au Panier</span>
 
         </NuxtLink>
 
@@ -90,7 +90,7 @@ const addToCart = async (productId) => {
             v-else
         >
           <i class="fa fa-cart-plus me-2"></i>
-          Lire la suite
+          <span class="btn-text">Lire la suite</span>
         </NuxtLink>
       </div>
 
@@ -223,11 +223,17 @@ const addToCart = async (productId) => {
   }
 
 
-
-
   .badge {
     font-size: 7px;
     min-height: fit-content;
+  }
+
+  .price-line .text-muted {
+    display: none;
+  }
+
+  .btn-text {
+    display: none;
   }
 
 }

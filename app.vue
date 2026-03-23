@@ -70,12 +70,13 @@ useSeoMeta({
   height: 60px !important;
 }
 
-.new-gradient {
+.new-gradient,.swiper-pagination-bullet-active {
   background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0) !important;
 }
 .page-wrapper {
   position: relative;
 }
+
 
 
 
