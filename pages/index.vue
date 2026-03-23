@@ -1012,7 +1012,7 @@ useFetch("/api/wc/products", {
                 :modules="[Autoplay, Pagination]"
                 :loop="true"
                 :pagination="{ clickable: true }"
-                :speed="1200"
+                :speed="300"
                 :space-between="20"
                 :breakpoints="{
         0: { slidesPerView: 2 },
