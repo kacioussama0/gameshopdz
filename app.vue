@@ -3,6 +3,9 @@
 const loading = ref(true)
 const { refresh } = useWcCart()
 
+const { itemsCount} = useWcCart()
+
+
 onMounted(() => {
 
   if (sessionStorage.getItem("app_loaded")) {
@@ -55,6 +58,7 @@ useSeoMeta({
 
     <NuxtLayout>
       <NuxtPage  />
+      <MobileBottomNav :itemsCount="itemsCount" />
       <Footer />
     </NuxtLayout>
 

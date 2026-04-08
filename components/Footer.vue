@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-const { itemsCount} = useWcCart()
 
 </script>
 <template>
@@ -110,23 +109,6 @@ const { itemsCount} = useWcCart()
 
     <!-- Footer Top End -->
 
-    <section class="position-fixed bottom-0  new-gradient  end-0 w-100  d-block d-lg-none  z-3">
-      <div class="container">
-        <div class="d-flex justify-content-between  align-items-center  w-100 py-2 ">
-          <NuxtLink to="/" class="vstack text-dark justify-content-center align-items-center text-white"><i class="iconly-Curved-Home"></i>Accueil</NuxtLink>
-          <NuxtLink to="/cart" class="vstack justify-content-center align-items-center position-relative">
-          <span>
-              <span class="badge badge-circle position-absolute top-0 ms-3 d-flex justify-content-center align-items-center" style="width: 25px ; height: 25px"> {{itemsCount}}</span>
-              <i class="iconly-Curved-Bag "></i>
-          </span>
-            Panier
-          </NuxtLink>
-          <NuxtLink to="/shop" class="vstack justify-content-center  text-dark align-items-center text-white"><i class="iconly-Curved-Game "></i>Shop</NuxtLink>
-          <NuxtLink to="tel:0550779973" class="vstack justify-content-center text-dark align-items-center text-white"><i class="iconly-Curved-Call "></i>Contact</NuxtLink>
-        </div>
-      </div>
-
-    </section>
 
   </footer>
 </template>
