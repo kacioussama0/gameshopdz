@@ -134,7 +134,7 @@ useFetch("/api/wc/products", {
 });
 
 useFetch("/api/wc/products", {
-  query: { per_page: 10, page: 1 ,status:'publish',category: '3040'}
+  query: { per_page: 10, page: 1 ,status:'publish',category: '3040',stock_status: 'instock'}
 }).then(( response) => {
   hitsProducts.value = response.data.value.products.map((product: any) => ({
     id: product.id,
@@ -264,7 +264,7 @@ useFetch("/api/wc/products", {
                       :src="product.images[1].src"
                       format="webp"
                       loading="lazy"
-                      class="vw-100"
+                      class="vw-100 h-100"
                   />
                 </div>
                 <div class="dz-content justify-content-end">
