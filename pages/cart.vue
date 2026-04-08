@@ -26,6 +26,9 @@ const itemsCount = computed(() => cart.value?.items_count ?? 0)
 const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
 
 
+
+
+
 useHead({
   title: 'Gameshopdz - Panier',
   meta: [
@@ -97,9 +100,9 @@ useHead({
                             style="display: none"
                           ></span
                           ><span class="input-group-btn-vertical"
-                            ><button @click="quantity('plus', ind)" class="btn btn-default bootstrap-touchspin-up" type="button">
+                            ><button class="btn btn-default bootstrap-touchspin-up" type="button">
                               <i class="fa-solid fa-plus"></i></button
-                            ><button @click="quantity('minus', ind)" class="btn btn-default bootstrap-touchspin-down" type="button">
+                            ><button @click="quantity('dec',item)" class="btn btn-default bootstrap-touchspin-down" type="button">
                               <i class="fa-solid fa-minus"></i></button
                           ></span>
                         </div>

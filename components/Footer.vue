@@ -27,13 +27,14 @@ const { itemsCount} = useWcCart()
                   <h5 class="footer-title">Le Magazin</h5>
                   <ul class="widget-address">
                     <li>
-                      <p><span>Address</span> : 77 Bis 01 Rue Ouled Sidi Chikh Mohammadia, Alger</p>
+                      <p><span class="iconly-Curved-Location"></span> 77 Bis 01 Rue Ouled Sidi Chikh Mohammadia, Alger</p>
+                    </li>
+
+                    <li>
+                      <p><span class="iconly-Curved-Call"></span> (213) 550-779-973</p>
                     </li>
                     <li>
-                      <p><span>E-mail</span> : contact@gamezonedz.com</p>
-                    </li>
-                    <li>
-                      <p><span>Phone</span> : (213) 550-779-973</p>
+                      <p><span class="iconly-Curved-Call"></span> (213) 793-333-023</p>
                     </li>
                   </ul>
 
@@ -57,15 +58,49 @@ const { itemsCount} = useWcCart()
           </div>
           <!-- Footer Bottom -->
           <div class="footer-bottom">
-            <div class="fb-inner">
-              <div class="text-start">
-                <p class="copyright-text">
+            <div class="fb-inner d-flex justify-content-between align-items-center flex-wrap">
+
+                <p class="copyright-text text-white">
                   ©
                   <span class="current-year">{{ new Date().getFullYear() }}</span>
                   GameshopDZ
                   Tous les droits sont réservés.
                 </p>
-              </div>
+
+                <ul class="hstack gap-4 align-items-center justify-content-center ">
+                <li>
+                  <NuxtLink
+                      class="fa-brands fa-2x fa-facebook"
+                      target="_blank"
+                      to="https://www.facebook.com/gameshopdz2"
+                  >
+
+                  </NuxtLink>
+                </li>
+
+                <li>
+                  <NuxtLink
+                      class="fa-brands fa-2x fa-tiktok"
+                      target="_blank"
+                      to="https://www.tiktok.com/@gameshop.dz"
+                  >
+
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink
+                      class="fa-brands fa-2x fa-instagram"
+                      target="_blank"
+                      to="https://www.instagram.com/gameshopbackup/"
+                  >
+
+                  </NuxtLink>
+                </li>
+
+
+              </ul>
+
+
             </div>
           </div>
           <!-- Footer Bottom End -->

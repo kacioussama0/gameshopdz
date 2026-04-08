@@ -412,73 +412,73 @@ useFetch("/api/wc/products", {
 
 
     <!-- Preorders -->
-    <section class="content-inner-1 bg-white pt-5 overflow-hidden">
-      <div class="container-fluid">
-        <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
-            <div
-                class="section-head style-1 m-b30 wow fadeInUp"
-                data-wow-delay="0.2s"
-            >
-              <div class="left-content">
-                <h2 class="title" >
-                  <i class="iconly-Curved-TimeCircle me-1"></i>
-                  Bientôt disponible
-                </h2>
-              </div>
-            </div>
-          </div>
+<!--    <section class="content-inner-1 bg-white pt-5 overflow-hidden">-->
+<!--      <div class="container-fluid">-->
+<!--        <div class="row justify-content-md-between align-items-center">-->
+<!--          <div class="col-lg-6 col-md-8 col-sm-12">-->
+<!--            <div-->
+<!--                class="section-head style-1 m-b30 wow fadeInUp"-->
+<!--                data-wow-delay="0.2s"-->
+<!--            >-->
+<!--              <div class="left-content">-->
+<!--                <h2 class="title" >-->
+<!--                  <i class="iconly-Curved-TimeCircle me-1"></i>-->
+<!--                  Bientôt disponible-->
+<!--                </h2>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
 
-        </div>
-
-
-        <div class="row my-3">
-
-          <div class="col-6 col-md-4 col-lg-3" v-for="product in comingSoon">
-
-            <div class="card position-relative overflow-hidden coming-soon" style="height: 250px">
+<!--        </div>-->
 
 
-              <div class="coming-soon-bg z-2 position-absolute start-0 top-0 w-100 h-100"></div>
+<!--        <div class="row my-3">-->
 
-              <NuxtImg
-                  :src="product.image"
-                  placeholder
-                  format="webp"
-                  height="310"
-                  class="position-absolute start-0 top-0 w-100 h-100 object-fit-cover"
-                  loading="lazy"
-              />
+<!--          <div class="col-6 col-md-4 col-lg-3" v-for="product in comingSoon">-->
 
-              <div class="badge new-gradient position-absolute start-0 top-0 m-1 z-3">
-                <h4 class="text-warning mb-1">{{product.day}}</h4>
-                <span>{{product.month}}</span>
-              </div>
+<!--            <div class="card position-relative overflow-hidden coming-soon" style="height: 250px">-->
 
 
-              <div class="w-100  p-4 text-center position-absolute start-50 top-50 translate-middle bg-transparent  z-3">
-                <h3 class="text-warning">{{product.name}}</h3>
+<!--              <div class="coming-soon-bg z-2 position-absolute start-0 top-0 w-100 h-100"></div>-->
 
-                <!--                <NuxtLink-->
-                <!--                    to="#"-->
-                <!--                    class="btn btn-primary add-btn mt-3 new-gradient"-->
-                <!--                >-->
-                <!--                  <i class="fa fa-cart-arrow-down me-2"></i>-->
-                <!--                  Je Précommande-->
+<!--              <NuxtImg-->
+<!--                  :src="product.image"-->
+<!--                  placeholder-->
+<!--                  format="webp"-->
+<!--                  height="310"-->
+<!--                  class="position-absolute start-0 top-0 w-100 h-100 object-fit-cover"-->
+<!--                  loading="lazy"-->
+<!--              />-->
 
-                <!--                </NuxtLink>-->
+<!--              <div class="badge new-gradient position-absolute start-0 top-0 m-1 z-3">-->
+<!--                <h4 class="text-warning mb-1">{{product.day}}</h4>-->
+<!--                <span>{{product.month}}</span>-->
+<!--              </div>-->
 
-              </div>
+
+<!--              <div class="w-100  p-4 text-center position-absolute start-50 top-50 translate-middle bg-transparent  z-3">-->
+<!--                <h3 class="text-warning">{{product.name}}</h3>-->
+
+<!--                &lt;!&ndash;                <NuxtLink&ndash;&gt;-->
+<!--                &lt;!&ndash;                    to="#"&ndash;&gt;-->
+<!--                &lt;!&ndash;                    class="btn btn-primary add-btn mt-3 new-gradient"&ndash;&gt;-->
+<!--                &lt;!&ndash;                >&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <i class="fa fa-cart-arrow-down me-2"></i>&ndash;&gt;-->
+<!--                &lt;!&ndash;                  Je Précommande&ndash;&gt;-->
+
+<!--                &lt;!&ndash;                </NuxtLink>&ndash;&gt;-->
+
+<!--              </div>-->
 
 
-            </div>
+<!--            </div>-->
 
-          </div>
+<!--          </div>-->
 
-        </div>
+<!--        </div>-->
 
-      </div>
-    </section>
+<!--      </div>-->
+<!--    </section>-->
     <!-- Preorders -->
 
 
@@ -1119,7 +1119,7 @@ useFetch("/api/wc/products", {
             <li>
               <NuxtLink
                   target="_blank"
-                  to="https://www.instagram.com/gameshop.dz/"
+                  to="https://www.instagram.com/gameshopbackup/"
               >
                 <svg class="social-icon" width="42" height="42" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="87.952%" y1="13.972%" x2="17.921%" y2="87.584%" id="ainstagram"><stop stop-color="#C10292" offset="0%"></stop><stop stop-color="#EA001D" offset="63.081%"></stop><stop stop-color="orange" offset="100%"></stop></linearGradient></defs><g fill="none"><path class="outline" d="M21 42C9.402 42 0 32.598 0 21S9.402 0 21 0s21 9.402 21 21-9.402 21-21 21zm0-1.715c10.65 0 19.285-8.634 19.285-19.285 0-10.65-8.634-19.285-19.285-19.285C10.35 1.715 1.715 10.349 1.715 21c0 10.65 8.634 19.285 19.285 19.285z" fill="#DCE0E3"></path><path d="M15.892 10.5a5.4 5.4 0 00-5.392 5.392v10.216a5.4 5.4 0 005.392 5.392h10.216a5.4 5.4 0 005.392-5.392V15.892a5.4 5.4 0 00-5.392-5.392H15.892zm0 1.703h10.216c2.059 0 3.69 1.63 3.69 3.689v10.216a3.663 3.663 0 01-3.69 3.69H15.892a3.663 3.663 0 01-3.69-3.69V15.892a3.663 3.663 0 013.69-3.69zm10.784 1.702a1.134 1.134 0 10-.002 2.27 1.134 1.134 0 00.002-2.27zM21 15.892A5.12 5.12 0 0015.892 21 5.12 5.12 0 0021 26.108 5.12 5.12 0 0026.108 21 5.12 5.12 0 0021 15.892zm0 1.703A3.392 3.392 0 0124.405 21 3.392 3.392 0 0121 24.405 3.392 3.392 0 0117.595 21 3.392 3.392 0 0121 17.595z" fill="url(#ainstagram)"></path></g></svg>
 
@@ -1152,9 +1152,6 @@ useFetch("/api/wc/products", {
   transition: .1s;
   cursor: pointer;
 }
-
-
-
 
 
 .social-media li:hover {
@@ -1272,6 +1269,10 @@ useFetch("/api/wc/products", {
 }
 
 @media screen and (max-width: 500px) {
+
+  .slick-arrow {
+    display: none !important;
+  }
 
   .coming-soon {
     height: 150px !important;
