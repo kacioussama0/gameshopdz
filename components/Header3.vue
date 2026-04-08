@@ -1,59 +1,46 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
-import CustomeSelect from "@/elements/CustomeSelect.vue";
+import { ref, watch, onMounted, onUnmounted, onUpdated } from "vue";
+import { navigateTo } from "nuxt/app";
 import Menu from "@/elements/Menu.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper/modules";
-import Canvas from "@/components/Canvas.vue";
-import {navigateTo} from "nuxt/app";
-
-const { $algolia } = useNuxtApp()
 
 
-const menu = ref(false);
 
-const { itemsCount, pending } = useWcCart()
-
-const suggSearch = ref('');
-const suggProducts = ref([]);
-
-let lastQueryID: string | null = null
-
-const { $aa } = useNuxtApp()
-
-function searchProducts() {
-  navigateTo('/')
-  navigateTo('/shop?search=' + suggSearch.value)
-}
-
-
-let timeout = null
-let currentSearchId = 0
-
-
+const { $algolia, $aa } = useNuxtApp()
 const route = useRoute()
 
-watch(route, () => {
-  document.querySelector('.navbar-toggler').click()
-})
+/* ================= STATE ================= */
+const suggSearch = ref('')
+const suggProducts = ref<any[]>([])
+const isLoading = ref(false)
+const menu = ref(false);
+const { itemsCount, pending } = useWcCart()
 
-watch(suggSearch, (value, oldValue) => {
+const isMenu = ref(false);
 
-  clearTimeout(timeout)
 
-  const term = value?.trim() || ''
+const isOpen = ref(false)
+const activeIndex = ref(-1)
+const recentSearches = ref<string[]>([])
 
+let timeout: ReturnType<typeof setTimeout> | null = null
+let currentSearchId = 0
+let lastQueryID: string | null = null
+
+/* ================= SEARCH ================= */
+watch(suggSearch, (value) => {
+  if (timeout) clearTimeout(timeout)
+
+  const term = value.trim()
 
   if (term.length < 2) {
     suggProducts.value = []
+    isOpen.value = false
     return
   }
 
-  if(term === oldValue) return
-
   timeout = setTimeout(async () => {
-
     const searchId = ++currentSearchId
+    isLoading.value = true
 
     try {
       const index = $algolia.initIndex('products')
@@ -73,31 +60,33 @@ watch(suggSearch, (value, oldValue) => {
         localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
       }
 
-      // 🧠 ربط queryID بكل نتيجة
       suggProducts.value = (res.hits || []).map(hit => ({
         ...hit,
         __queryID: qid,
       }))
 
-      // 👁️ إرسال Viewed Event (أفضل طريقة)
       if (res.hits?.length && qid) {
         $aa('viewedObjectIDsAfterSearch', {
-          eventName: 'Autocomplete Results Viewed',
+          eventName: 'Autocomplete Viewed',
           index: 'products',
           objectIDs: res.hits.map(h => String(h.objectID)),
           queryID: qid,
         })
       }
 
+      isOpen.value = true
+
     } catch (err) {
-      console.error('Algolia search error:', err)
+      console.error(err)
+    } finally {
+      isLoading.value = false
     }
 
-  }, 700)
-
+  }, 400)
 })
 
-function onSuggestionClick(hit) {
+/* ================= CLICK ================= */
+function onSuggestionClick(hit: any) {
   if (!hit.__queryID) return
 
   $aa('clickedObjectIDsAfterSearch', {
@@ -112,18 +101,80 @@ function onSuggestionClick(hit) {
   localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
 
   navigateTo(`/shop/product/${hit.slug}`)
-
 }
 
+/* ================= SEARCH SUBMIT ================= */
+function searchProducts() {
+  if (!suggSearch.value.trim()) return
 
-const isMenu = ref(false);
-const isFixed = ref(false);
+  recentSearches.value = [
+    suggSearch.value,
+    ...recentSearches.value.filter(s => s !== suggSearch.value)
+  ].slice(0, 5)
+
+  localStorage.setItem('recentSearches', JSON.stringify(recentSearches.value))
+
+  navigateTo('/shop?search=' + suggSearch.value)
+}
+
+/* ================= KEYBOARD ================= */
+function onKeyDown(e: KeyboardEvent) {
+  if (!isOpen.value) return
+
+  if (e.key === 'ArrowDown') {
+    activeIndex.value = (activeIndex.value + 1) % suggProducts.value.length
+  }
+
+  if (e.key === 'ArrowUp') {
+    activeIndex.value =
+        (activeIndex.value - 1 + suggProducts.value.length) %
+        suggProducts.value.length
+  }
+
+  if (e.key === 'Enter') {
+    if (activeIndex.value >= 0) {
+      onSuggestionClick(suggProducts.value[activeIndex.value])
+    } else {
+      searchProducts()
+    }
+  }
+}
+
+/* ================= HIGHLIGHT ================= */
+function highlight(text: string, query: string) {
+  if (!query) return text
+  const regex = new RegExp(`(${query})`, 'gi')
+  return text.replace(regex, '<mark>$1</mark>')
+}
+
+/* ================= LIFECYCLE ================= */
+onMounted(() => {
+  const saved = localStorage.getItem('recentSearches')
+  if (saved) recentSearches.value = JSON.parse(saved)
+
+  window.addEventListener("scroll", scrollHandler)
+})
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", scrollHandler)
+})
+
+watch(suggSearch, () => {
+  activeIndex.value = -1
+})
+
+watch(route, () => {
+  const btn = document.querySelector('.navbar-toggler') as HTMLElement | null
+  btn?.click()
+})
 
 onUpdated(()=> {
   document.body.style.overflow = ""
   document.documentElement.style.overflow = ""
 })
 
+/* ================= UI ================= */
+const isFixed = ref(false)
 
 onMounted(() => {
   const menus = document.querySelectorAll(".navbar-nav > li");
@@ -139,20 +190,12 @@ onMounted(() => {
   });
 });
 
-function scrollHandler() {
-  if (window.scrollY > 90) {
-    isFixed.value = true;
-  } else {
-    isFixed.value = false;
-  }
-}
-onMounted(() => {
-  window.addEventListener("scroll", scrollHandler);
-});
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", scrollHandler);
-});
+function scrollHandler() {
+  isFixed.value = window.scrollY > 90
+}
+
+
 </script>
 
 <template>
@@ -302,85 +345,56 @@ onUnmounted(() => {
       ×
     </button>
     <div class="container">
-      <form class="header-item-search" @submit.prevent @submit="searchProducts">
+      <form class="header-item-search" @submit.prevent="searchProducts">
         <div class="input-group search-input">
           <input
-            type="search"
-            class="form-control"
-            placeholder="Rechercher PS5, GTA, FIFA, Xbox..."
-            v-model="suggSearch"
+              type="search"
+              class="form-control"
+              placeholder="Search PS5, FIFA, GTA..."
+              v-model="suggSearch"
+              @focus="isOpen = true"
+              @keydown="onKeyDown"
           />
 
           <button class="btn" type="submit">
-            <i class="iconly-Light-Search"></i>
+            🔍
           </button>
-
         </div>
-
-<!--        <ul class="recent-tag">-->
-<!--          <li class="pe-0"><span>Quick Search :</span></li>-->
-<!--          <li><NuxtLink to="/shop-list">Clothes</NuxtLink></li>-->
-<!--          <li><NuxtLink to="/shop-list">UrbanSkirt</NuxtLink></li>-->
-<!--          <li><NuxtLink to="/shop-list">VelvetGown</NuxtLink></li>-->
-<!--          <li><NuxtLink to="/shop-list">LushShorts</NuxtLink></li>-->
-<!--        </ul>-->
-
-
       </form>
-      <div class="row"  v-if="suggProducts.length">
-        <div class="col-xl-12">
 
-          <Swiper
-            class="swiper category-swiper2 swiper-initialized swiper-horizontal swiper-backface-hidden"
-            :slides-per-view="6"
-            :autoplay="{ delay: 3000 }"
-            :modules="[Autoplay]"
-            :space-between="30"
-            :breakpoints="{
-              1200: { slidesPerView: 6 },
-              991: { slidesPerView: 5 },
-              775: { slidesPerView: 4 },
-              575: { slidesPerView: 3 },
-              240: { slidesPerView: 2 },
-            }"
-          >
+      <!-- LOADING -->
+      <div v-if="isLoading">
+        <p>Loading...</p>
+      </div>
 
-            <SwiperSlide class="swiper-slide" v-for="(product,index) in suggProducts" :key="product.objectID">
-              <div class="shop-card">
-                <NuxtLink :to="`/shop/product/${product.slug}`" class="card-link" @click="onSuggestionClick(product)">
+      <!-- RECENT -->
+      <div v-if="!suggProducts.length && recentSearches.length">
+        <p>Recent:</p>
+        <ul>
+          <li v-for="s in recentSearches" :key="s" @click="suggSearch = s">
+            {{ s }}
+          </li>
+        </ul>
+      </div>
 
-                  <div class="dz-media">
-                    <img
-                        :src="product.image"
-                        :alt="product.name"
-                        loading="lazy"
-                        decoding="async"
-                        width="300"
-                        height="300"
-                        class="product-img"
-                    />
-                  </div>
+      <!-- EMPTY -->
+      <div v-if="!isLoading && suggSearch.length > 2 && !suggProducts.length">
+        <p>No results 😢</p>
+      </div>
 
-                  <div class="dz-content flex-column">
-                    <h6 class="title">
-                      {{ product.name }}
-                    </h6>
-
-                    <h6 class="price">
-                      {{ product.price }} DA
-                    </h6>
-                  </div>
-
-                </NuxtLink>
-              </div>
-            </SwiperSlide>
-
-            <span
-              class="swiper-notification"
-              aria-live="assertive"
-              aria-atomic="true"
-            ></span>
-          </Swiper>
+      <!-- RESULTS -->
+      <div v-if="suggProducts.length">
+        <div
+            v-for="(product, index) in suggProducts"
+            :key="product.objectID"
+            :class="['item', { active: index === activeIndex }]"
+            @click="onSuggestionClick(product)"
+        >
+          <img :src="product.image" width="60" />
+          <div>
+            <span v-html="highlight(product.name, suggSearch)"></span>
+            <p>{{ product.price }} DA</p>
+          </div>
         </div>
       </div>
     </div>
@@ -462,6 +476,29 @@ onUnmounted(() => {
 
 button.open span {
   background: var(--bs-primary) !important;
+}
+
+
+.item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.item:hover {
+  background: #f5f5f5;
+}
+
+.active {
+  background: #e6f0ff;
+  border: 1px solid #0d6efd;
+}
+
+mark {
+  background: #ffe58a;
+  padding: 0 2px;
 }
 
 

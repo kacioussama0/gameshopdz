@@ -45,11 +45,11 @@ onMounted(() => {
   <ul class="nav navbar-nav">
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink to="#" @click.prevent>
         <span class="iconly-Curved-Game me-2"></span>
         <span>Jeux</span>
       </RouterLink>
-      <div class="mega-menu shop-menu">
+      <div class="mega-menu shop-menu" @click.stop>
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
