@@ -241,9 +241,9 @@ useFetch("/api/wc/products", {
 
     <section class="pt-0 z-index-unset bg-white overflow-hidden ">
 
-        <div class="container-fluid p-0">
+        <div class="container p-0">
           <Swiper
-              class="swiper portfolio-gallery2"
+              class="swiper portfolio-gallery2 hero-swiper"
               :modules="[Navigation,Pagination,Autoplay]"
               :loop="true"
               :autoplay="{
@@ -256,35 +256,57 @@ useFetch("/api/wc/products", {
             nextEl: '.swiper-button-next',
           }"
           >
-            <SwiperSlide class="swiper-slide" v-for="product in carousel">
-              <div class="portfolio-box style-2 rounded-0">
-                <div class="dz-media">
-                  <NuxtImg
-                      placeholder
-                      :src="product.images[1].src"
-                      format="webp"
-                      loading="lazy"
-                      class="vw-100 h-100"
-                  />
-                </div>
-                <div class="dz-content justify-content-end">
+            <SwiperSlide
+                class="swiper-slide hero-slide"
+                v-for="product in carousel"
+                :key="product.id"
+            >
+              <div class="portfolio-box style-2 rounded-0 h-100">
+                <div class="dz-media h-100">
+                  <picture class="hero-picture">
+                    <!-- Desktop -->
+                    <source
+                        media="(min-width: 700px)"
+                        :srcset="product.images[1]?.src"
+                    />
 
+
+
+                    <!-- Mobile -->
+                    <img
+                        :src="product.images[2]?.src || product.images[1]?.src"
+                        :alt="product.name"
+                        class="hero-img"
+                        loading="lazy"
+                    />
+                  </picture>
+                </div>
+
+                <div class="dz-content justify-content-end">
                   <div class="container">
-                    <h6 class="sub-title text-light mb-1 fw-light" style="letter-spacing: 2px">DECOUVREZ</h6>
+                    <h6
+                        class="sub-title text-light mb-1 fw-light"
+                        style="letter-spacing: 2px"
+                    >
+                      DECOUVREZ
+                    </h6>
+
                     <h1 class="title mb-3">
-                      <RouterLink :to="'/shop/product/' + product.slug">{{product.name}}</RouterLink>
+                      <RouterLink :to="'/shop/product/' + product.slug">
+                        {{ product.name }}
+                      </RouterLink>
                     </h1>
 
-
-                    <RouterLink  :to="'/shop/product/' + product.slug" class="btn btn-outline-light rounded-0 mb-5">ACHETEZ MAINTENANT</RouterLink>
-
+                    <RouterLink
+                        :to="'/shop/product/' + product.slug"
+                        class="btn btn-outline-light rounded-0 mb-5"
+                    >
+                      ACHETEZ MAINTENANT
+                    </RouterLink>
                   </div>
-
-
                 </div>
               </div>
             </SwiperSlide>
-
             <span class=" swiper-button-prev slick-arrow new-gradient" style=""></span>
             <span class=" swiper-button-next slick-arrow new-gradient" style=""></span>
 
@@ -1166,10 +1188,18 @@ useFetch("/api/wc/products", {
 
 }
 
-.portfolio-gallery2 ,.swiper-slide,.portfolio-box ,.swiper-wrapper{
+
+
+.hero-slide , .dz-media {
   min-height: 385px;
-  max-height: 480px;
+
 }
+
+.portfolio-gallery2 .swiper-wrapper .swiper-slide img {
+  height: 50vh !important;
+  min-height: auto;
+}
+
 
 .slick-arrow {
   background: #164094;
@@ -1293,6 +1323,32 @@ useFetch("/api/wc/products", {
 
 .category-section .dz-media {
   box-shadow: 0 3px 30px rgba(255,255,255,.2);
+}
+
+
+
+.hero-slide .portfolio-box {
+  position: relative;
+}
+
+.hero-slide .dz-media {
+  position: relative;
+}
+
+.hero-slide .dz-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: end;
+}
+
+.hero-slide .dz-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.1));
+  z-index: -1;
 }
 
 </style>
