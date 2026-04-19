@@ -241,7 +241,7 @@ useFetch("/api/wc/products", {
 
     <section class="pt-0 z-index-unset bg-white overflow-hidden ">
 
-        <div class="container p-0">
+        <div class="container-fluid p-0">
           <Swiper
               class="swiper portfolio-gallery2 hero-swiper"
               :modules="[Navigation,Pagination,Autoplay]"
@@ -261,7 +261,7 @@ useFetch("/api/wc/products", {
                 v-for="product in carousel"
                 :key="product.id"
             >
-              <div class="portfolio-box style-2 rounded-0 h-100">
+              <div class="portfolio-box style-2 rounded-0 w-100 h-100">
                 <div class="dz-media h-100">
                   <picture class="hero-picture">
                     <!-- Desktop -->
@@ -284,22 +284,22 @@ useFetch("/api/wc/products", {
 
                 <div class="dz-content justify-content-end">
                   <div class="container">
-                    <h6
-                        class="sub-title text-light mb-1 fw-light"
-                        style="letter-spacing: 2px"
-                    >
-                      DECOUVREZ
-                    </h6>
+<!--                    <h6-->
+<!--                        class="sub-title text-light mb-1 fw-light"-->
+<!--                        style="letter-spacing: 2px"-->
+<!--                    >-->
+<!--                      DECOUVREZ-->
+<!--                    </h6>-->
 
-                    <h1 class="title mb-3">
-                      <RouterLink :to="'/shop/product/' + product.slug">
-                        {{ product.name }}
-                      </RouterLink>
-                    </h1>
+<!--                    <h1 class="title mb-3">-->
+<!--                      <RouterLink :to="'/shop/product/' + product.slug">-->
+<!--                        {{ product.name }}-->
+<!--                      </RouterLink>-->
+<!--                    </h1>-->
 
                     <RouterLink
                         :to="'/shop/product/' + product.slug"
-                        class="btn btn-outline-light rounded-0 mb-5"
+                        class="btn btn-sm  btn-outline-light rounded-0 mb-5"
                     >
                       ACHETEZ MAINTENANT
                     </RouterLink>
@@ -1196,6 +1196,7 @@ useFetch("/api/wc/products", {
 }
 
 .portfolio-gallery2 .swiper-wrapper .swiper-slide img {
+  width: 100%;
   height: 50vh !important;
   min-height: auto;
 }
