@@ -374,7 +374,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <RouterLink to="#">
         <span class="iconly-Curved-Star me-2"></span>
-        <span>Collector & Goodies</span>
+        <span>Collector</span>
       </RouterLink>
       <div class="mega-menu shop-menu">
         <div class="row">
@@ -581,12 +581,12 @@ onMounted(() => {
 @media screen and (min-width: 900px) {
   .site-header.style-2 .main-bar .header-nav .nav > li > a {
     color: #FFFFFF !important;
-    padding:  20px;
+    padding:  10px;
   }
 }
 
 .site-header.style-2 .main-bar .header-nav .nav > li > a > span {
-  font-size: 16px !important;
+  font-size: 13px !important;
 }
 
 

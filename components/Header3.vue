@@ -296,7 +296,7 @@ function scrollHandler() {
         <div class="extra-nav d-none d-lg-flex">
           <div class="extra-cell">
             <ul class="header-right">
-              <li class="nav-item search-link">
+              <li class="nav-item search-link" >
                 <NuxtLink
                   class="nav-link"
                   to="#"
@@ -305,7 +305,7 @@ function scrollHandler() {
                   data-bs-target="#offcanvasTop"
                   aria-controls="offcanvasTop"
                 >
-                  <i class="iconly-Light-Search text-white"></i>
+                  <i class="iconly-Light-Search text-white" style="font-size: 16px"></i>
                 </NuxtLink>
               </li>
               <li class="nav-item cart-link ">
@@ -316,7 +316,7 @@ function scrollHandler() {
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
                 >
-                  <i class="iconly-Broken-Buy text-white" ></i>
+                  <i class="iconly-Broken-Buy text-white" style="font-size: 16px"></i>
                   <span class="badge badge-circle"> {{itemsCount}}</span>
 
                 </RouterLink>

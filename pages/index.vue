@@ -320,63 +320,84 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 pb-2 pt-5 bg-white overflow-hidden shortcuts">
       <div class="container">
 
-        <div class="row gy-5 gx-0 text-center">
 
-          <div class="col-6 col-md-2">
+        <Swiper
+            class="swiper swiper-four text-center"
+
+            :space-between="30"
+            :modules="[Autoplay]"
+            :speed="300"
+            :pagination="{ clickable: true }"
+            :breakpoints="{
+
+        0: { slidesPerView: 2, spaceBetween: 15 },
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        992: { slidesPerView: 4, spaceBetween: 20 },
+        1400: { slidesPerView: 5, spaceBetween: 25 },
+        2000: { slidesPerView: 6, spaceBetween: 30 },
+        2500: { slidesPerView: 7, spaceBetween: 35 }
+      }"
+            :navigation="{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }"
+        >
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?category=815&stock_status=instock">
               <i class="fa fa-gamepad mb-3" style="font-size: 30px"></i>
               <h6>Jeux</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
-
-          <div class="col-6 col-md-2">
-
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?category=821&stock_status=instock">
-              <span class="d-flex gap-2 align-items-center mb-3 justify-content-center">
-                 <i class="fa-brands fa-playstation" style="font-size: 30px"></i>
-                 <i class="fa-brands fa-xbox" style="font-size: 30px"></i>
-                 <img src="../assets/nintendo.svg" width="30px" height="30px" />
-              </span>
+                <span class="d-flex gap-2 align-items-center mb-3 justify-content-center">
+                   <i class="fa-brands fa-playstation" style="font-size: 30px"></i>
+                   <i class="fa-brands fa-xbox" style="font-size: 30px"></i>
+                   <img src="../assets/nintendo.svg" width="30px" height="30px" />
+                </span>
               <h6>Console</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
-          <div class="col-6 col-md-2">
+
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?category=829&stock_status=instock">
               <i class="fa fa-headset mb-3" style="font-size: 30px"></i>
               <h6>Accessoires</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
-          <div class="col-6 col-md-2">
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?category=854&stock_status=instock" >
               <i class="fa fa-recycle mb-3" style="font-size: 30px"></i>
               <h6>Occasions</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
 
-          <div class="col-6 col-md-2">
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?on_sale=1&stock_status=instock">
               <i class="fa fa-percent mb-3" style="font-size: 30px"></i>
               <h6>Promotions</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
-          <div class="col-6 col-md-2">
+          <SwiperSlide class="swiper-slide">
             <RouterLink  to="/shop?category=2714&stock_status=instock">
               <i class="fa fa-clock-rotate-left mb-3" style="font-size: 30px"></i>
               <h6>Retro</h6>
             </RouterLink>
-          </div>
+          </SwiperSlide>
 
 
-        </div>
+
+        </Swiper>
+
+
 
       </div>
-    </section>
-    <!-- Shortcuts-->
+    </section>    <!-- Shortcuts-->
 
 
 
