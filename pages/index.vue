@@ -263,7 +263,7 @@ useFetch("/api/wc/products", {
             >
               <div class="portfolio-box style-2 rounded-0 w-100 h-100">
                 <div class="dz-media h-100">
-                  <picture class="hero-picture">
+                  <picture class="hero-picture h-100">
                     <!-- Desktop -->
                     <source
                         media="(min-width: 700px)"
@@ -291,11 +291,11 @@ useFetch("/api/wc/products", {
 <!--                      DECOUVREZ-->
 <!--                    </h6>-->
 
-<!--                    <h1 class="title mb-3">-->
-<!--                      <RouterLink :to="'/shop/product/' + product.slug">-->
-<!--                        {{ product.name }}-->
-<!--                      </RouterLink>-->
-<!--                    </h1>-->
+                    <h1 class="title mb-3">
+                      <RouterLink :to="'/shop/product/' + product.slug">
+                        {{ product.name }}
+                      </RouterLink>
+                    </h1>
 
                     <RouterLink
                         :to="'/shop/product/' + product.slug"
@@ -1211,15 +1211,12 @@ useFetch("/api/wc/products", {
 
 
 
-.hero-slide , .dz-media {
-  min-height: 385px;
 
-}
 
 .portfolio-gallery2 .swiper-wrapper .swiper-slide img {
   width: 100%;
-  height: 50vh !important;
-  min-height: auto;
+  max-height: 50vh !important;
+
 }
 
 
