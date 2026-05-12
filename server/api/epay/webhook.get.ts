@@ -1,4 +1,4 @@
-// server/api/epay/webhook.post.ts
+// server/api/epay/webhook.get.ts
 
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
