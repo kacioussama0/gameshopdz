@@ -82,8 +82,8 @@ export default defineEventHandler(async (event) => {
                     quantity: Number(i.quantity),
                     price: Number(i.price),
                 })),
-                url: `https://gameshopdz/payment/result`,
-                webhook_url: `https://gameshopdz/api/epay/webhook`,
+                url: `https://gameshopdz.com/payment/result`,
+                webhook_url: `https://gameshopdz.com/api/epay/webhook`,
                 webhook_signature: `gameshopdz_${order.id}`,
                 webhook_meta_data: [
                     {

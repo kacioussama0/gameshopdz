@@ -56,16 +56,32 @@ const addToCart = async (productId) => {
           <span class="text-danger fw-bold" v-else>Non disponible - غير متوفر</span>
         </div>
 
+
+
+
+        <NuxtLink
+            :to="`/shop/product/${product.slug}`"
+            class="btn btn-primary add-btn mt-3 new-gradient"
+            v-if="product.is_epay == true"
+        >
+          <i class="fa fa-credit-card me-2"></i>
+          <span class="btn-text">EPay</span>
+        </NuxtLink>
+
+
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
             class="btn btn-primary add-btn  new-gradient mt-3"
-            v-if="product.type == 'variable'"
+            v-else-if="product.type == 'variable'"
         >
 
           <i class="fa fa-cog me-2"></i>
           <span class="btn-text">Choisir options</span>
 
         </NuxtLink>
+
+
+
 
 
         <NuxtLink
@@ -82,6 +98,7 @@ const addToCart = async (productId) => {
           <span class="btn-text">Ajouter au Panier</span>
 
         </NuxtLink>
+
 
 
         <NuxtLink
