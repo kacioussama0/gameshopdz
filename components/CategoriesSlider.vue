@@ -51,7 +51,7 @@ const categories = [
           :speed="300"
           :pagination="{ clickable: true }"
           :breakpoints="{
-            0: { slidesPerView: 2, spaceBetween: 15 },
+            0: { slidesPerView: 3, spaceBetween: 15 },
             768: { slidesPerView: 4, spaceBetween: 20 },
             992: { slidesPerView: 5, spaceBetween: 20 },
             1400: { slidesPerView: 6, spaceBetween: 25 },

@@ -50,7 +50,7 @@ defineProps({
   width: 100%;
   background: linear-gradient(45deg, #111, #333);
   z-index: 999;
-  padding: 8px 25px;
+  padding: 16px;
 }
 
 .nav-wrapper {

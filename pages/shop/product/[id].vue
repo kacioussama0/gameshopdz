@@ -8,6 +8,9 @@ import Header3 from "~/components/Header3.vue";
 import img1 from "assets/images/products/lady-1.png";
 import img2 from "assets/images/products/lady-2.png";
 import img3 from "assets/images/products/lady-3.png";
+import z from "zod";
+import {useWcCart} from "~/composables/useWcCart";
+import {navigateTo} from "#app";
 
 const qty = ref(1);
 const thumbsSwiper = ref(null);
@@ -18,7 +21,37 @@ const currentUrl = computed(() => {
       : ''
 })
 
+const checkoutSchema = z.object({
+  first_name: z.string()
+      .min(2, "Le prénom est requis")
+      .max(50),
+
+  last_name: z.string()
+      .min(2, "Le nom est requis")
+      .max(50),
+
+  phone: z.string()
+      .regex(/^(05|06|07)[0-9]{8}$/, "Numéro de téléphone invalide"),
+
+  email: z
+      .email("Adresse e-mail invalide"),
+
+  note: z.string().max(500).optional()
+})
+
+const errors = ref<any>({})
+
+
+
+
+const selectedVariation = ref(null)
+
+const selectVariation = (variation) => {
+  selectedVariation.value = variation
+}
+
 const variation = ref([])
+const isLoading = ref(false);
 
 
 const variationVal = ref('')
@@ -30,6 +63,14 @@ watch(variationVal,function (val) {
 })
 
 const addedCart = ref(false)
+
+const form = reactive({
+  first_name: '',
+  last_name: '',
+  phone: '',
+  email: '',
+  note: '',
+})
 
 
 const addToCart = async (productId,variationId = null) => {
@@ -111,12 +152,9 @@ useFetch("/api/wc/products/", {
     ]
   }
 
-  console.log(product.value)
 
 
   const ids = product.value['related_ids'];
-
-  console.log(ids)
 
   if(ids.length) {
     useFetch('/api/wc/products/', {
@@ -162,6 +200,83 @@ useFetch("/api/wc/products/", {
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
+
+
+const validateCheckout = () => {
+  const result = checkoutSchema.safeParse({
+    first_name: form.first_name,
+    last_name: form.last_name,
+    phone: form.phone,
+    email: form.email,
+    note: form.note
+  })
+
+  if (!result.success) {
+    errors.value = {}
+
+    result.error.issues.forEach(issue => {
+      const key = issue.path[0]
+      errors.value[key] = issue.message
+    })
+
+    return false
+  }
+
+  errors.value = {}
+  return true
+
+}
+
+
+
+
+const submitOrder = async () => {
+
+  if(!validateCheckout()) return;
+
+  isLoading.value = true
+
+  try {
+
+    const order = await useFetch("/api/epay/pay", {
+      method: "POST",
+      body: {
+
+        items: [
+          {
+            product_id: product.value.id,
+            quantity: 1,
+            variation_id: null
+          }
+        ],
+
+        billing: {
+          first_name: form.first_name,
+          last_name: form.last_name,
+          phone: form.phone,
+          email: form.email,
+          country: "DZ",
+        },
+
+        note: form.note,
+
+
+      }
+
+    })
+
+    if(order) {
+      window.location = order.data.value.invoice.url
+    }
+
+
+  }catch (error) {
+    errors.value = {}
+  }finally {
+    isLoading.value = false
+  }
+}
+
 
 
 
@@ -425,7 +540,7 @@ useFetch("/api/wc/products/", {
                 <div class="meta-content m-b20 d-flex align-items-end">
                   <div class="me-3">
                     <span class="form-label">Prix</span>
-                    <span class="price" v-if="product.on_sale === false">{{product.price}} DA</span>
+                    <span class="price fs-1" v-if="product.on_sale === false">{{product.price}} DA</span>
                     <span class="price text-danger" v-else-if="product.on_sale === true"><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
                     <span class="placeholder-glow mb-3" v-else>
                       <span class="placeholder col-12"></span>
@@ -434,48 +549,14 @@ useFetch("/api/wc/products/", {
 
 
 
-                  <div
-                      class="btn-quantity quantity-sm light d-xl-none d-blcok d-sm-block"
-                  >
-                    <label class="form-label">Quantité</label>
-                    <div class="input-group bootstrap-touchspin">
-                      <span
-                          class="input-group-addon bootstrap-touchspin-prefix"
-                          style="display: none"
-                      ></span
-                      ><input
-                        type="text"
-                        :value="qty"
-                        name="demo_vertical2"
-                        class="form-control"
-                        style="display: block"
-                    /><span
-                        class="input-group-addon bootstrap-touchspin-postfix"
-                        style="display: none"
-                    ></span
-                    ><span class="input-group-btn-vertical"
-                    ><button
-                        @click="qty++"
-                        class="btn btn-default bootstrap-touchspin-up"
-                        type="button"
-                    >
-                          <i class="fa-solid fa-plus"></i></button
-                    ><button
-                        @click="qty > 1 ? qty-- : qty"
-                        class="btn btn-default bootstrap-touchspin-down"
-                        type="button"
-                    >
-                          <i class="fa-solid fa-minus"></i></button
-                    ></span>
-                    </div>
-                  </div>
+
                 </div>
 
 
-                <div class="product-num">
-                  <div class="btn-quantity light d-xl-block d-sm-none d-none">
+                <div class="product-num"  v-if="!product.is_epay">
+                  <div class="btn-quantity light d-block">
                     <label class="form-label">Quantity</label>
-                    <div class="input-group bootstrap-touchspin">
+                    <div class="input-group w-100 bootstrap-touchspin">
                       <span
                           class="input-group-addon bootstrap-touchspin-prefix"
                           style="display: none"
@@ -509,28 +590,78 @@ useFetch("/api/wc/products/", {
                     ></span>
                     </div>
                   </div>
-                  <div class="d-block" v-if="product.attributes">
 
-                    <div v-for="attribute in product.attributes">
-                      <label class="form-label">{{attribute.name}}</label>
-                      <div class="btn-group product-size m-0" >
-
-                          <select   :name="'attribute-0'+attribute.id" id="" class="form-select"   v-model="variationVal">
-                            <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
-                          </select>
+                </div>
 
 
-                      </div>
+                <div class="mb-3"  v-if="product.attributes && product.is_pay == false">
+
+                  <div class="w-100 " v-for="attribute in product.attributes">
+
+                    <label class="form-label">{{attribute.name}}</label>
+                    <div class="btn-group product-size m-0" >
+
+                      <select   :name="'attribute-0'+attribute.id" id="" class="form-select w-100"   v-model="variationVal">
+                        <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
+                      </select>
+
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+
+                  <button
+                      v-for="variation in product.variations"
+                      :key="variation.id"
+                      @click="selectVariation(variation)"
+                      :disabled="variation.stock_status !== 'instock'"
+                      class="btn"
+
+                      :class="[
+        selectedVariation?.id === variation.id
+          ? 'btn-dark'
+          : 'btn-outline-dark'
+      ]"
+                  >
+
+                    <div class="fw-semibold">
+                      {{
+                        variation.attributes
+                            .map(attr => attr.option)
+                            .join(' / ')
+                      }}
                     </div>
 
 
+
+                  </button>
+
+                </div>
+
+
+                <div v-if="selectedVariation" class="mt-4">
+
+                  <h4 class="fw-bold">
+                    {{ selectedVariation.price }} DZD
+                  </h4>
+
+                  <div
+                      v-for="attr in selectedVariation.attributes"
+                      :key="attr.name"
+                  >
+                    {{ attr.name }}: {{ attr.option }}
                   </div>
 
                 </div>
-                <div class="btn-group cart-btn">
+
+                <div class="btn-group cart-btn" v-if="product.is_epay == false">
 
                   <button
-                      to="?"
                       class="btn btn-secondary text-uppercase rounded-0 new-gradient"
                       data-bs-toggle="offcanvas"
                       data-bs-target="#offcanvasRight"
@@ -545,6 +676,98 @@ useFetch("/api/wc/products/", {
                   </button>
 
 
+                </div>
+
+                <div class="epay-checkout" v-else>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group m-b25">
+                        <label class="label-title">Prénom الإ سم <span class="text-danger">*</span></label>
+                        <input  v-model="form.first_name" class="form-control" :disabled="isLoading" />
+                        <p v-if="errors.first_name" class="text-danger">
+                          {{ errors.first_name }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group m-b25">
+                        <label class="label-title">Nom اللقب <span class="text-danger">*</span></label>
+                        <input v-model="form.last_name"  class="form-control" :disabled="isLoading" />
+                        <p v-if="errors.last_name" class="text-danger">
+                          {{ errors.last_name }}
+                        </p>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                      <div class="form-group m-b25">
+                        <label class="label-title">Email البريد الإلكتروني <span class="text-danger">*</span></label>
+                        <input v-model="form.email"  class="form-control" :disabled="isLoading"/>
+                        <p v-if="errors.email" class="text-danger">
+                          {{ errors.email }}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group m-b25">
+                        <label class="label-title">Téléphone رقم هاتف <span class="text-danger">*</span></label>
+                        <input v-model="form.phone"  class="form-control" :disabled="isLoading"/>
+                        <p v-if="errors.phone" class="text-danger">
+                          {{ errors.phone }}
+                        </p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 m-b25">
+                      <div class="form-group">
+                        <label class="label-title">معلومات إضافية حول طلبك (facultatif) </label>
+                        <textarea id="comments" v-model="form.note" :disabled="isLoading"  placeholder="ملاحظة حول طلبك, إذا لزم الأمر" class="form-control" name="comment" cols="90" rows="5"></textarea>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 m-b25">
+
+                      <button
+                          class="w-100 btn btn-secondary text-uppercase rounded-0 new-gradient mb-3"
+                          @click="submitOrder"
+                          :disabled="isLoading"
+                      >
+
+                        <i class="fa fa-credit-card  me-2"></i>
+                        {{isLoading ? "Patienter ..." : "Payer الدفع"}}
+
+                      </button>
+
+
+                      <span>Secure payment via :</span>
+                      <img src="https://www.poste.dz/assets/ap_logo-DKTxjdB6.svg" width="90" height="60"/>
+                      <img src="https://bitakati.dz/assets/front/img/logo.svg" width="60" height="40"/>
+
+
+                      <div class="alert alert-warning">
+                        <h3 class="alert-heading">Important !</h3>
+                        <p class="mb-0" >Après confirmation du paiement, notre équipe vous contactera sur WhatsApp pour la livraison et les instructions d’activation de votre produit.</p>
+                      </div>
+
+                      <div class="alert alert-warning" dir="rtl">
+                        <h3 class="alert-heading">هام !</h3>
+                        <p class="mb-0"> بعد تأكيد الدفع، سيتواصل معك فريقنا عبر واتساب لتسليم المنتج الرقمي وشرح طريقة التفعيل .</p>
+                      </div>
+
+                    </div>
+
+
+
+
+
+
+                  </div>
                 </div>
 
 

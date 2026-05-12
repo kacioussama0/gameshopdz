@@ -13,7 +13,7 @@ const suggSearch = ref('')
 const suggProducts = ref<any[]>([])
 const isLoading = ref(false)
 const menu = ref(false);
-const { itemsCount, pending } = useWcCart()
+const { itemsCount } = useWcCart()
 
 const isMenu = ref(false);
 

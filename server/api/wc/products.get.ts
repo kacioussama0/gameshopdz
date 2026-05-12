@@ -21,30 +21,59 @@ export default defineEventHandler(async (event) => {
         }
     )
 
-    return {
-        products: res._data.map((product)=> {
+    const products = await Promise.all(
+        res._data.map(async (product) => {
+            let variations = []
+
+            if (product.type === 'variable') {
+                variations = await $fetch(
+                    `https://woo.gameshopdz.com/wp-json/wc/v3/products/${product.id}/variations`,
+                    {
+                        headers: {
+                            Authorization:
+                                "Basic " + Buffer.from(ck + ":" + cs).toString("base64"),
+                        },
+                    }
+                )
+            }
+
             return {
-                'id': product.id,
-                'name': product.name,
-                'slug': product.slug,
-                'sku': product.sku,
-                'type': product.type,
+                id: product.id,
+                name: product.name,
+                slug: product.slug,
+                sku: product.sku,
+                type: product.type,
+                price: product.price,
                 'description': product.description,
                 'short_description': product.short_description,
-                'price': product.price,
-                'regular_price': product.regular_price,
-                'sale_price': product.sale_price,
-                'on_sale': product.on_sale,
-                'purchasable': product.purchasable,
-                'categories': product.categories,
-                'tags': product.tags,
-                'images': product.images,
+                regular_price: product.regular_price,
+                sale_price: product.sale_price,
+                on_sale: product.on_sale,
+                purchasable: product.purchasable,
+                categories: product.categories,
+                tags: product.tags,
+                images: product.images,
+                attributes: product.attributes,
                 'related_ids': product.related_ids,
-                'attributes': product.attributes,
-                'variations': product.variations,
-                'stock_status': product.stock_status,
+                variations: variations.map(v => ({
+                    id: v.id,
+                    price: v.price,
+                    regular_price: v.regular_price,
+                    sale_price: v.sale_price,
+                    stock_status: v.stock_status,
+                    attributes: v.attributes,
+                })),
+
+                stock_status: product.stock_status,
+                is_epay: product.tags.some(tag =>
+                    tag.name.toLowerCase().includes('epay')
+                ),
             }
-        }),
+        })
+    )
+
+    return {
+        products,
         total: Number(res.headers.get("x-wp-total")),
         totalPages: Number(res.headers.get("x-wp-totalpages")),
     }
