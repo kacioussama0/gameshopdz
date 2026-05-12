@@ -18,7 +18,7 @@
   z-index: 99999;
   background:
       radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 35%),
-      linear-gradient(180deg, #0b1020 0%, #070b16 100%);
+      linear-gradient(180deg, #0f2f6d 0%, #6a3df0 100%);
   display: flex;
   align-items: center;
   justify-content: center;

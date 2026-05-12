@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+
+  vite: {
+    server: {
+      allowedHosts: [
+        '6a6c-105-98-31-217.ngrok-free.app'
+      ]
+    }
+  },
+
   runtimeConfig: {
     wcConsumerKey: process.env.WC_CONSUMER_KEY,
     wcConsumerSecret: process.env.WC_CONSUMER_SECRET,
@@ -60,7 +69,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/algolia", "@nuxt/image"],
   image: {
     domains: ["woo.gameshopdz.com"],
-  }
+  },
 });
 
 declare class Isotope {

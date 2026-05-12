@@ -112,6 +112,7 @@ const fetchProducts = async (productIds = []) => {
       thumbnail: product.images?.[0]?.thumbnail || product.images?.[0]?.src || "",
       price: product.price,
       on_sale: product.on_sale,
+      is_epay: product.is_epay,
       regular_price: product.regular_price,
       stock: product.stock_status,
       occasion: product.categories?.some((c: any) => c.slug === "occasion"),

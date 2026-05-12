@@ -317,6 +317,14 @@ useFetch("/api/wc/products", {
 
     <CategoriesSlider />
 
+    <section class="content-inner py-3 bg-white   overflow-hidden d-none  d-lg-block">
+      <div class="container">
+        <NuxtLink to="/shop">
+          <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
+        </NuxtLink>
+      </div>
+    </section>
+
 
 
     <!-- Top Sales Start-->
@@ -500,13 +508,6 @@ useFetch("/api/wc/products", {
 
 
 
-    <section class="content-inner   overflow-hidden d-none  d-lg-block">
-      <div class=" container-md">
-        <NuxtLink to="/shop">
-          <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS_991.png?resize=1536%2C198&ssl=1" alt="" class=" w-100 rounded-4">
-        </NuxtLink>
-      </div>
-    </section>
 
     <!--Featured Section Start-->
     <div class="content-inner new-gradient category-section my-5">
@@ -610,316 +611,316 @@ useFetch("/api/wc/products", {
     <!--Featured Section End-->
 
 
-    <section class="video-section">
-      <div
-        class="video-wrapper bg-img-fix"
-        :style="`background-image: url(https://lh3.googleusercontent.com/p/AF1QipN19apdG8TofDnbwxWFcRNsYi1oSl2YzxrwbsdL=s1360-w1360-h1020-rw)`"
-      >
-        <div class="container">
-          <div class="d-flex justify-content-center d-none">
-            <NuxtLink
-              class="icon-button popup-youtube"
-              to=""
-              @click="openVideo"
-            >
-              <div class="text-row word-rotate-box border-white c-black">
-                <svg
-                  class="badge__emoji"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                >
-                  <g clip-path="url(#clip0_671_345)">
-                    <path
-                      d="M34.6779 15.3843L11.0529 0.821429C9.34369 -0.230839 7.2772 -0.274589 5.52493 0.704398C3.77266 1.68323 2.72656 3.46612 2.72656 5.47323V34.4664C2.72656 37.5013 5.17188 39.9835 8.17735 39.9999C8.18556 39.9999 8.19376 40 8.20181 40C9.14103 39.9999 10.1198 39.7056 11.0339 39.1478C11.7693 38.6991 12.0017 37.7392 11.5531 37.0039C11.1044 36.2685 10.1444 36.0361 9.40923 36.4848C8.98165 36.7456 8.56407 36.8805 8.19415 36.8804C7.06016 36.8742 5.84602 35.9028 5.84602 34.4665V5.47331C5.84602 4.6123 6.29477 3.84769 7.04634 3.42776C7.79798 3.00784 8.68431 3.02659 9.41658 3.47745L33.0417 18.0404C33.7518 18.4776 34.1581 19.2065 34.1564 20.0405C34.1547 20.8743 33.7454 21.6016 33.0314 22.0373L15.9503 32.4958C15.2156 32.9456 14.9847 33.9059 15.4346 34.6405C15.8843 35.3752 16.8446 35.6061 17.5792 35.1563L34.6583 24.6991C36.2935 23.7015 37.2721 21.9624 37.276 20.0467C37.2799 18.1312 36.3083 16.3881 34.6779 15.3843Z"
-                      fill="#FEEB9D"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_671_345">
-                      <rect width="40" height="40" fill="white"></rect>
-                    </clipPath>
-                  </defs>
-                </svg>
-                <span class="text__char" style="--char-rotate: 0deg">s</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 13.333333333333334deg"
-                  >h</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 26.666666666666668deg"
-                  >o</span
-                ><span class="text__char" style="--char-rotate: 40deg">p</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 53.333333333333336deg"
-                >
-                </span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 66.66666666666667deg"
-                  >-</span
-                ><span class="text__char" style="--char-rotate: 80deg"> </span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 93.33333333333334deg"
-                  >s</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 106.66666666666667deg"
-                  >h</span
-                ><span class="text__char" style="--char-rotate: 120deg">o</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 133.33333333333334deg"
-                  >p</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 146.66666666666669deg"
-                >
-                </span
-                ><span class="text__char" style="--char-rotate: 160deg">-</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 173.33333333333334deg"
-                >
-                </span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 186.66666666666669deg"
-                  >s</span
-                ><span class="text__char" style="--char-rotate: 200deg">h</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 213.33333333333334deg"
-                  >o</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 226.66666666666669deg"
-                  >p</span
-                ><span class="text__char" style="--char-rotate: 240deg"> </span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 253.33333333333334deg"
-                  >-</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 266.6666666666667deg"
-                >
-                </span
-                ><span class="text__char" style="--char-rotate: 280deg">s</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 293.33333333333337deg"
-                  >h</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 306.6666666666667deg"
-                  >o</span
-                ><span class="text__char" style="--char-rotate: 320deg">p</span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 333.33333333333337deg"
-                >
-                </span
-                ><span
-                  class="text__char"
-                  style="--char-rotate: 346.6666666666667deg"
-                  >-</span
-                >
-              </div>
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-      <div class="dz-features-wrapper overflow-hidden">
-        <ul class="dz-features text-wrapper">
-          <li class="item">
-            <h2 class="title">Console</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">PS4 / PS5</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Abonnement</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Retro</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Jeux</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Collector & Goodies</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">PC</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Retro</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Occasions</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-          <li class="item">
-            <h2 class="title">Jeux</h2>
-          </li>
-          <li class="item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="61"
-              height="60"
-              viewBox="0 0 61 60"
-              fill="none"
-            >
-              <path
-                opacity="0.3"
-                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"
-                fill="black"
-              />
-            </svg>
-          </li>
-        </ul>
-      </div>
-    </section>
+<!--    <section class="video-section">-->
+<!--      <div-->
+<!--        class="video-wrapper bg-img-fix"-->
+<!--        :style="`background-image: url(https://lh3.googleusercontent.com/p/AF1QipN19apdG8TofDnbwxWFcRNsYi1oSl2YzxrwbsdL=s1360-w1360-h1020-rw)`"-->
+<!--      >-->
+<!--        <div class="container">-->
+<!--          <div class="d-flex justify-content-center d-none">-->
+<!--            <NuxtLink-->
+<!--              class="icon-button popup-youtube"-->
+<!--              to=""-->
+<!--              @click="openVideo"-->
+<!--            >-->
+<!--              <div class="text-row word-rotate-box border-white c-black">-->
+<!--                <svg-->
+<!--                  class="badge__emoji"-->
+<!--                  xmlns="http://www.w3.org/2000/svg"-->
+<!--                  width="40"-->
+<!--                  height="40"-->
+<!--                  viewBox="0 0 40 40"-->
+<!--                  fill="none"-->
+<!--                >-->
+<!--                  <g clip-path="url(#clip0_671_345)">-->
+<!--                    <path-->
+<!--                      d="M34.6779 15.3843L11.0529 0.821429C9.34369 -0.230839 7.2772 -0.274589 5.52493 0.704398C3.77266 1.68323 2.72656 3.46612 2.72656 5.47323V34.4664C2.72656 37.5013 5.17188 39.9835 8.17735 39.9999C8.18556 39.9999 8.19376 40 8.20181 40C9.14103 39.9999 10.1198 39.7056 11.0339 39.1478C11.7693 38.6991 12.0017 37.7392 11.5531 37.0039C11.1044 36.2685 10.1444 36.0361 9.40923 36.4848C8.98165 36.7456 8.56407 36.8805 8.19415 36.8804C7.06016 36.8742 5.84602 35.9028 5.84602 34.4665V5.47331C5.84602 4.6123 6.29477 3.84769 7.04634 3.42776C7.79798 3.00784 8.68431 3.02659 9.41658 3.47745L33.0417 18.0404C33.7518 18.4776 34.1581 19.2065 34.1564 20.0405C34.1547 20.8743 33.7454 21.6016 33.0314 22.0373L15.9503 32.4958C15.2156 32.9456 14.9847 33.9059 15.4346 34.6405C15.8843 35.3752 16.8446 35.6061 17.5792 35.1563L34.6583 24.6991C36.2935 23.7015 37.2721 21.9624 37.276 20.0467C37.2799 18.1312 36.3083 16.3881 34.6779 15.3843Z"-->
+<!--                      fill="#FEEB9D"-->
+<!--                    ></path>-->
+<!--                  </g>-->
+<!--                  <defs>-->
+<!--                    <clipPath id="clip0_671_345">-->
+<!--                      <rect width="40" height="40" fill="white"></rect>-->
+<!--                    </clipPath>-->
+<!--                  </defs>-->
+<!--                </svg>-->
+<!--                <span class="text__char" style="&#45;&#45;char-rotate: 0deg">s</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 13.333333333333334deg"-->
+<!--                  >h</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 26.666666666666668deg"-->
+<!--                  >o</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 40deg">p</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 53.333333333333336deg"-->
+<!--                >-->
+<!--                </span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 66.66666666666667deg"-->
+<!--                  >-</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 80deg"> </span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 93.33333333333334deg"-->
+<!--                  >s</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 106.66666666666667deg"-->
+<!--                  >h</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 120deg">o</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 133.33333333333334deg"-->
+<!--                  >p</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 146.66666666666669deg"-->
+<!--                >-->
+<!--                </span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 160deg">-</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 173.33333333333334deg"-->
+<!--                >-->
+<!--                </span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 186.66666666666669deg"-->
+<!--                  >s</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 200deg">h</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 213.33333333333334deg"-->
+<!--                  >o</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 226.66666666666669deg"-->
+<!--                  >p</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 240deg"> </span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 253.33333333333334deg"-->
+<!--                  >-</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 266.6666666666667deg"-->
+<!--                >-->
+<!--                </span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 280deg">s</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 293.33333333333337deg"-->
+<!--                  >h</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 306.6666666666667deg"-->
+<!--                  >o</span-->
+<!--                ><span class="text__char" style="&#45;&#45;char-rotate: 320deg">p</span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 333.33333333333337deg"-->
+<!--                >-->
+<!--                </span-->
+<!--                ><span-->
+<!--                  class="text__char"-->
+<!--                  style="&#45;&#45;char-rotate: 346.6666666666667deg"-->
+<!--                  >-</span-->
+<!--                >-->
+<!--              </div>-->
+<!--            </NuxtLink>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="dz-features-wrapper overflow-hidden">-->
+<!--        <ul class="dz-features text-wrapper">-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Console</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">PS4 / PS5</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Abonnement</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Retro</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Jeux</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Collector & Goodies</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">PC</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Retro</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Occasions</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <h2 class="title">Jeux</h2>-->
+<!--          </li>-->
+<!--          <li class="item">-->
+<!--            <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="61"-->
+<!--              height="60"-->
+<!--              viewBox="0 0 61 60"-->
+<!--              fill="none"-->
+<!--            >-->
+<!--              <path-->
+<!--                opacity="0.3"-->
+<!--                d="M29.302 -0.00499268L38.533 21.2005L60.3307 28.9297L39.1253 38.1607L31.396 59.9585L22.165 38.753L0.367297 31.0237L21.5728 21.7928L29.302 -0.00499268Z"-->
+<!--                fill="black"-->
+<!--              />-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </section>-->
 
 
 
@@ -951,7 +952,9 @@ useFetch("/api/wc/products", {
     <section class="content-inner bg-white">
 
 
-        <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
+       <div class="container">
+         <div id="JFWebsiteWidget-019ccb4c526477e79d3bdd4b5afa7c84f074"></div>
+       </div>
 
 
     </section>
@@ -970,10 +973,11 @@ useFetch("/api/wc/products", {
 
             <Swiper
                 class="swiper-five"
-                :modules="[Autoplay, Pagination]"
+                :modules="[Autoplay]"
                 :loop="true"
                 :pagination="{ clickable: true }"
                 :speed="300"
+                autoplay="normal"
                 :space-between="20"
                 :breakpoints="{
         0: { slidesPerView: 2 },
@@ -1169,18 +1173,21 @@ useFetch("/api/wc/products", {
   font-size: 22px;
 }
 
+
+.companies-section .companies-slider-wrapper {
+  padding: 45px 15px;
+}
+
+.companies-section .swiper {
+  margin-bottom: 0;
+}
+
 .shortcuts > div {
   cursor: pointer;
 }
 
-.shortcuts i {
 
-  background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientMove 6s ease infinite;
-  background-size: 400% 400%;
-}
+
 
 @keyframes gradientMove {
   0% {background-position:0% 50%;}

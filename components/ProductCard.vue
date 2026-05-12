@@ -65,7 +65,7 @@ const addToCart = async (productId) => {
             v-if="product.is_epay == true"
         >
           <i class="fa fa-credit-card me-2"></i>
-          <span class="btn-text">EPay</span>
+          <span class="btn-text">E-Paiement</span>
         </NuxtLink>
 
 
@@ -79,9 +79,6 @@ const addToCart = async (productId) => {
           <span class="btn-text">Choisir options</span>
 
         </NuxtLink>
-
-
-
 
 
         <NuxtLink
