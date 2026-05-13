@@ -56,8 +56,8 @@
             </div>
           </div>
           <!-- Footer Bottom -->
-          <div class="footer-bottom">
-            <div class="fb-inner d-flex justify-content-between align-items-center flex-wrap">
+          <div class="footer-bottom my-5 py-5 py-lg-0 my-lg-0">
+            <div class="fb-inner d-flex justify-content-lg-between justify-content-center text-center text-lg-start align-items-center flex-wrap gap-3">
 
                 <p class="copyright-text text-white">
                   ©
