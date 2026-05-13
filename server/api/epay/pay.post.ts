@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
             method: "POST",
             headers: {
                 Accept: "application/json",
-                Authorization: `Bearer 43467|vNUAQkWDBXeqPLXn3Pf7Ew1IjmO2ZCibqf5MuzcV`,
+                Authorization: `Bearer 43504|mk5lfMKyrxTYIGTknWI8oSWxPetHAXjqM0dONr9Z`,
             },
             body: {
                 amount: Number(order.total),

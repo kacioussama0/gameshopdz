@@ -9,7 +9,10 @@ const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
 const items = computed(() => cart.value?.items ?? [])
 const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
 
+watch(cart,async ()=> {
 
+  await refresh()
+})
 
 const removeItem = async (key: string) => {
   await $fetch('/api/wc/cart/remove-item', {
