@@ -1,8 +1,10 @@
 // server/api/epay/webhook.post.ts
 
 export default defineEventHandler(async (event) => {
-    const config = useRuntimeConfig()
+
     const body = await readBody(event)
+
+
 
     const base = 'https://woo.gameshopdz.com/wp-json/wc/v3'
     const ck = 'ck_72b4dc376adad9c2bd355b1b9cf448393d83b4e6'
@@ -19,7 +21,7 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    const isPaid = Number(body.pay_status) === 1
+    const isPaid = Number(body.completed) === 1
 
     try {
         await $fetch(`${base}/orders/${orderId}`, {
@@ -34,18 +36,9 @@ export default defineEventHandler(async (event) => {
             },
             timeout: 10000,
         })
-
-        return {
-            success: true,
-            order_id: orderId,
-            paid: isPaid,
-        }
-    } catch (error: any) {
+    } catch (error) {
         console.error('WooCommerce update failed:', error)
-
-        throw createError({
-            statusCode: 500,
-            statusMessage: 'WooCommerce update failed',
-        })
     }
+
+    return true
 })
