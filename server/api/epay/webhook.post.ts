@@ -21,24 +21,31 @@ export default defineEventHandler(async (event) => {
 
     const isPaid = Number(body.pay_status) === 1
 
-    await $fetch(`${base}/orders/${orderId}`, {
-        method: 'PUT',
-        headers: {
-            Authorization:
-                'Basic ' +
-                Buffer.from(
-                    `${ck}:${cs}`
-                ).toString('base64'),
-        },
-        body: {
-            status: isPaid ? 'completed' : 'failed',
-            set_paid: isPaid,
-        },
-    })
+    try {
+        await $fetch(`${base}/orders/${orderId}`, {
+            method: 'PUT',
+            headers: {
+                Authorization:
+                    'Basic ' + Buffer.from(`${ck}:${cs}`).toString('base64'),
+            },
+            body: {
+                status: isPaid ? 'completed' : 'failed',
+                set_paid: isPaid,
+            },
+            timeout: 10000,
+        })
 
-    return {
-        success: true,
-        order_id: orderId,
-        paid: isPaid,
+        return {
+            success: true,
+            order_id: orderId,
+            paid: isPaid,
+        }
+    } catch (error: any) {
+        console.error('WooCommerce update failed:', error)
+
+        throw createError({
+            statusCode: 500,
+            statusMessage: 'WooCommerce update failed',
+        })
     }
 })
