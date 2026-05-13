@@ -45,10 +45,10 @@ onMounted(() => {
   <ul class="nav navbar-nav">
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-Game me-2"></span>
         <span>Jeux</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu" @click.stop>
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -128,11 +128,11 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="fa-brands iconly-Curved-Bag me-2"></span>
         <span>Consoles</span>
 
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -192,10 +192,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-Discount me-2"></span>
         <span>Occasions</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -248,10 +248,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-Setting me-2"></span>
         <span>Accessoires</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -304,10 +304,10 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-Wallet me-2"></span>
         <span>Digital</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -371,10 +371,10 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-Star me-2"></span>
         <span>Collector</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
@@ -506,10 +506,10 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink>
+      <a>
         <span class="iconly-Curved-TimeCircle me-2"></span>
         <span>Retro</span>
-      </RouterLink>
+      </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
