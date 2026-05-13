@@ -4,7 +4,9 @@ export default defineNuxtConfig({
   vite: {
     server: {
       allowedHosts: [
-        '6a6c-105-98-31-217.ngrok-free.app'
+        '6a6c-105-98-31-217.ngrok-free.app',
+        'slick-pay.com',
+        'gameshopdz.com',
       ]
     }
   },
