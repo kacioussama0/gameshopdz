@@ -11,8 +11,6 @@ const addToCart = async (productId) => {
   try {
     const add = await useWcCart().addItem(productId)
     await useWcCart().refresh()
-
-
   }catch (error) {
     console.log(error)
   }

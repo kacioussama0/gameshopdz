@@ -45,7 +45,7 @@ onMounted(() => {
   <ul class="nav navbar-nav">
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#" @click.prevent>
+      <RouterLink>
         <span class="iconly-Curved-Game me-2"></span>
         <span>Jeux</span>
       </RouterLink>
@@ -128,8 +128,7 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
-
+      <RouterLink>
         <span class="fa-brands iconly-Curved-Bag me-2"></span>
         <span>Consoles</span>
 
@@ -193,7 +192,7 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink>
         <span class="iconly-Curved-Discount me-2"></span>
         <span>Occasions</span>
       </RouterLink>
@@ -249,7 +248,7 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink>
         <span class="iconly-Curved-Setting me-2"></span>
         <span>Accessoires</span>
       </RouterLink>
@@ -305,7 +304,7 @@ onMounted(() => {
     </li>
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink>
         <span class="iconly-Curved-Wallet me-2"></span>
         <span>Digital</span>
       </RouterLink>
@@ -372,7 +371,7 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink>
         <span class="iconly-Curved-Star me-2"></span>
         <span>Collector</span>
       </RouterLink>
@@ -507,7 +506,7 @@ onMounted(() => {
 
 
     <li class="has-mega-menu sub-menu-down">
-      <RouterLink to="#">
+      <RouterLink>
         <span class="iconly-Curved-TimeCircle me-2"></span>
         <span>Retro</span>
       </RouterLink>
@@ -587,6 +586,25 @@ onMounted(() => {
 
 .site-header.style-2 .main-bar .header-nav .nav > li > a > span {
   font-size: 13px !important;
+}
+
+
+
+.header-menu .header-nav .nav > li > a {
+  color: red !important;
+  line-height: 24px;
+  padding: 30px 50px;
+  width: 100%;
+}
+@media only screen and (max-width: 1199px) {
+  .header-menu .header-nav .nav > li > a {
+    padding: 20px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .header-menu .header-nav .nav > li > a {
+    padding: 10px 0;
+  }
 }
 
 

@@ -13,7 +13,7 @@ const suggSearch = ref('')
 const suggProducts = ref<any[]>([])
 const isLoading = ref(false)
 const menu = ref(false);
-const { itemsCount } = useWcCart()
+const { itemsCount, pending } = useWcCart()
 
 const isMenu = ref(false);
 
@@ -406,6 +406,8 @@ function scrollHandler() {
 
 
 <style scoped>
+
+
 
 .cart-link {
   display: block !important;

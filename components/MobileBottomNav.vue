@@ -50,7 +50,7 @@ defineProps({
   width: 100%;
   background: linear-gradient(45deg, #111, #333);
   z-index: 999;
-  padding: 16px;
+  padding: 16px 25px;
 }
 
 .nav-wrapper {
@@ -64,13 +64,14 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 12px;
+  font-size: 16px;
   color: white;
+  font-weight: 600;
   text-decoration: none;
 }
 
 .nav-item i {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .icon-wrapper {
