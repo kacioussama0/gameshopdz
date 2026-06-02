@@ -58,7 +58,7 @@ export const useWcCart = () => {
         cart.value.items = cart.value.items.filter((i: any) => i.key !== key)
     }
 
-    // ✅ Actions (instant UI + refresh confirm)
+
     const addItem = async (id: number, quantity = 1,variation = []) => {
         addLocal(id, quantity,variation)
         try {
@@ -66,8 +66,6 @@ export const useWcCart = () => {
         } catch (e) {
             await refresh()
             throw e
-        }finally {
-            await refresh()
         }
     }
 

@@ -50,6 +50,7 @@ const selectVariation = (variation) => {
   selectedVariation.value = variation
 }
 
+
 const variation = ref([])
 const isLoading = ref(false);
 
@@ -60,6 +61,10 @@ const { $aa } = useNuxtApp()
 
 watch(variationVal,function (val) {
   variation.value[0]['value'] = val
+})
+
+watch(selectedVariation,function (val) {
+  console.log(val)
 })
 
 const addedCart = ref(false)
@@ -141,6 +146,8 @@ useFetch("/api/wc/products/", {
 }).then(( response) => {
 
 
+  console.log(response)
+
   product.value = response.data.value.products[0];
 
   if(product.value.attributes.length) {
@@ -150,6 +157,11 @@ useFetch("/api/wc/products/", {
         'value': product.value.attributes[0].options[0]
       }
     ]
+  }
+
+
+  if(product.value.variations.length) {
+    selectedVariation.value = product.value.variations[0];
   }
 
 
@@ -234,6 +246,7 @@ const submitOrder = async () => {
 
   if(!validateCheckout()) return;
 
+
   isLoading.value = true
 
   try {
@@ -246,7 +259,7 @@ const submitOrder = async () => {
           {
             product_id: product.value.id,
             quantity: 1,
-            variation_id: null
+            variation_id: selectedVariation.value?.id ? selectedVariation.value?.id : null,
           }
         ],
 
@@ -538,7 +551,7 @@ const submitOrder = async () => {
                   </span>
 
                 <div class="meta-content m-b20 d-flex align-items-end">
-                  <div class="me-3">
+                  <div class="me-3" v-if="!selectedVariation">
                     <span class="form-label">Prix</span>
                     <span class="price fs-1" v-if="product.on_sale === false">{{product.price}} DA</span>
                     <span class="price text-danger" v-else-if="product.on_sale === true"><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
@@ -546,6 +559,16 @@ const submitOrder = async () => {
                       <span class="placeholder col-12"></span>
                     </span>
                   </div>
+
+                  <div v-if="selectedVariation" class="mt-4">
+                    <span class="form-label">Prix</span>
+                    <span class="price fs-1">
+                      {{ selectedVariation.price }} DZD
+                    </span>
+
+
+                  </div>
+
 
 
 
@@ -593,27 +616,7 @@ const submitOrder = async () => {
 
                 </div>
 
-
-                <div class="mb-3"  v-if="product.attributes && product.is_pay == false">
-
-                  <div class="w-100 " v-for="attribute in product.attributes">
-
-                    <label class="form-label">{{attribute.name}}</label>
-                    <div class="btn-group product-size m-0" >
-
-                      <select   :name="'attribute-0'+attribute.id" id="" class="form-select w-100"   v-model="variationVal">
-                        <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
-                      </select>
-
-
-                    </div>
-                  </div>
-
-
-                </div>
-
-
-                <div class="d-flex flex-wrap gap-2 mb-3">
+                <div class="d-flex flex-wrap gap-2 mb-3" v-if="product.type == 'variable' && !product.is_pay">
 
                   <button
                       v-for="variation in product.variations"
@@ -643,42 +646,31 @@ const submitOrder = async () => {
 
                 </div>
 
+                <div class="mb-3"  v-else>
 
-                <div v-if="selectedVariation" class="mt-4">
+                  <div class="w-100 " v-for="(attribute,index) in product.attributes">
 
-                  <h4 class="fw-bold">
-                    {{ selectedVariation.price }} DZD
-                  </h4>
+                    <label class="form-label">{{attribute.name}}</label>
+                    <div class="btn-group product-size m-0" >
 
-                  <div
-                      v-for="attr in selectedVariation.attributes"
-                      :key="attr.name"
-                  >
-                    {{ attr.name }}: {{ attr.option }}
+                      <select   :name="'attribute-0'+attribute.id" id="" class="form-select w-100"   v-model="variationVal">
+                        <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
+                      </select>
+
+
+                    </div>
                   </div>
 
-                </div>
-
-                <div class="btn-group cart-btn" v-if="product.is_epay == false">
-
-                  <button
-                      class="btn btn-secondary text-uppercase rounded-0 new-gradient"
-                      data-bs-toggle="offcanvas"
-                      data-bs-target="#offcanvasRight"
-                      aria-controls="offcanvasRight"
-                      @click="addToCart(product.id,variationId)"
-                      :disabled="product.stock_status != 'instock'"
-                  >
-
-                    <i class="fa fa-cart-plus me-2"></i>
-                    Ajouter au Panier
-
-                  </button>
-
 
                 </div>
 
-                <div class="epay-checkout" v-else>
+
+
+
+
+
+
+                <div class="epay-checkout" v-if="product.is_epay">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group m-b25">
@@ -769,7 +761,24 @@ const submitOrder = async () => {
 
                   </div>
                 </div>
+                <div class="btn-group cart-btn" v-else>
 
+                  <button
+                      class="btn btn-secondary text-uppercase rounded-0 new-gradient"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasRight"
+                      aria-controls="offcanvasRight"
+                      @click="addToCart(product.id,variationId)"
+                      :disabled="product.stock_status != 'instock'"
+                  >
+
+                    <i class="fa fa-cart-plus me-2"></i>
+                    Ajouter au Panier
+
+                  </button>
+
+
+                </div>
 
                 <div class="dz-info">
                   <ul v-if="product.sku">
