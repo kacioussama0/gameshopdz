@@ -92,6 +92,7 @@ export default defineEventHandler(async (event) => {
                     }
                     ]
             },
+            timeout: 15000
         })
 
         return {
