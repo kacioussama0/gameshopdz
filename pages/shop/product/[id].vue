@@ -250,7 +250,7 @@ const submitOrder = async () => {
 
   try {
 
-    const order = await useFetch("https://webhook.gameshopdz.com/pay.php", {
+    const order = await useFetch("https://gameshopdz.com/api/epay/pay", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
