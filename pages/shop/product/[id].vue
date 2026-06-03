@@ -42,7 +42,7 @@ const checkoutSchema = z.object({
 const errors = ref<any>({})
 
 
-
+const lastRequest = ref(0)
 
 const selectedVariation = ref(null)
 
@@ -246,16 +246,24 @@ const submitOrder = async () => {
   if(!validateCheckout()) return;
 
 
+
+  const now = Date.now()
+
+  if (now - lastRequest.value < 10000) {
+    return
+  }
+
+  lastRequest.value = now
+
+  if (isLoading.value) return
+
   isLoading.value = true
+
 
   try {
 
     const order = await $fetch("https://gameshopdz.com/api/epay/pay", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
       body: {
 
         items: [
