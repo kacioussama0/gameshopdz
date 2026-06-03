@@ -250,7 +250,7 @@ const submitOrder = async () => {
 
   try {
 
-    const order = await useFetch("https://gameshopdz.com/api/epay/pay", {
+    const order = await $fetch("http://localhost:3000/api/epay/pay", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -281,8 +281,10 @@ const submitOrder = async () => {
 
     })
 
+
+
     if(order) {
-      window.location = order.data.value.invoice.url
+      window.location = order.invoice.url
     }
 
 
