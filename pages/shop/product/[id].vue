@@ -250,7 +250,7 @@ const submitOrder = async () => {
 
   try {
 
-    const order = await $fetch("http://localhost:3000/api/epay/pay", {
+    const order = await $fetch("https://gameshopdz.com/api/epay/pay", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
