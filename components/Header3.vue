@@ -46,7 +46,7 @@ watch(suggSearch, (value) => {
       const index = $algolia.initIndex('products')
 
       const res = await index.search(term, {
-        hitsPerPage: 8,
+        hitsPerPage: 100,
         clickAnalytics: true,
       })
 

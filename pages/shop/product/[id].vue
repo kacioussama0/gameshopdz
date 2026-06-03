@@ -55,17 +55,12 @@ const variation = ref([])
 const isLoading = ref(false);
 
 
-const variationVal = ref('')
+const variationVal = ref(null)
 
 const { $aa } = useNuxtApp()
 
-watch(variationVal,function (val) {
-  variation.value[0]['value'] = val
-})
 
-watch(selectedVariation,function (val) {
-  console.log(val)
-})
+
 
 const addedCart = ref(false)
 
@@ -82,7 +77,14 @@ const addToCart = async (productId,variationId = null) => {
   try {
     addedCart.value = true
 
-    const result = await useWcCart().addItem(productId, qty.value,variation.value)
+
+
+    const result = await useWcCart().addItem(productId, qty.value, [
+      {
+        'attribute': product.value.attributes[0].name,
+        'value': variation.value
+      }
+    ])
 
     const objectID = String(product.value?.objectID || product.value?.id || productId)
     if (!objectID) return result
@@ -146,17 +148,14 @@ useFetch("/api/wc/products/", {
 }).then(( response) => {
 
 
-  console.log(response)
+
 
   product.value = response.data.value.products[0];
 
+  product.value.variations = product.value.variations.reverse();
+
   if(product.value.attributes.length) {
-    variation.value = [
-      {
-        'attribute': product.value.attributes[0].name,
-        'value': product.value.attributes[0].options[0]
-      }
-    ]
+    variation.value = product.value.attributes[0].options[0]
   }
 
 
@@ -253,6 +252,10 @@ const submitOrder = async () => {
 
     const order = await useFetch("https://webhook.gameshopdz.com/pay.php", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
       body: {
 
         items: [
@@ -551,16 +554,9 @@ const submitOrder = async () => {
                   </span>
 
                 <div class="meta-content m-b20 d-flex align-items-end">
-                  <div class="me-3" v-if="!selectedVariation">
-                    <span class="form-label">Prix</span>
-                    <span class="price fs-1" v-if="product.on_sale === false">{{product.price}} DA</span>
-                    <span class="price text-danger" v-else-if="product.on_sale === true"><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
-                    <span class="placeholder-glow mb-3" v-else>
-                      <span class="placeholder col-12"></span>
-                    </span>
-                  </div>
 
-                  <div v-if="selectedVariation" class="mt-4">
+
+                  <div v-if="selectedVariation && product.is_epay" class="mt-4">
                     <span class="form-label">Prix</span>
                     <span class="price fs-1">
                       {{ selectedVariation.price }} DZD
@@ -569,7 +565,14 @@ const submitOrder = async () => {
 
                   </div>
 
-
+                  <div class="me-3" v-else>
+                    <span class="form-label">Prix</span>
+                    <span class="price fs-1" v-if="product.on_sale === false">{{product.price}} DA</span>
+                    <span class="price text-danger" v-else-if="product.on_sale === true"><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
+                    <span class="placeholder-glow mb-3" v-else>
+                      <span class="placeholder col-12"></span>
+                    </span>
+                  </div>
 
 
 
@@ -616,18 +619,18 @@ const submitOrder = async () => {
 
                 </div>
 
-                <div class="d-flex flex-wrap gap-2 mb-3" v-if="product.type == 'variable' && !product.is_pay">
+                <div class="d-flex flex-wrap gap-2 mb-3" v-if="product.type == 'variable' && product.is_epay">
 
                   <button
                       v-for="variation in product.variations"
                       :key="variation.id"
                       @click="selectVariation(variation)"
                       :disabled="variation.stock_status !== 'instock'"
-                      class="btn"
+                      class="btn "
 
                       :class="[
         selectedVariation?.id === variation.id
-          ? 'btn-dark'
+          ? 'btn-dark new-gradient'
           : 'btn-outline-dark'
       ]"
                   >
@@ -653,10 +656,9 @@ const submitOrder = async () => {
                     <label class="form-label">{{attribute.name}}</label>
                     <div class="btn-group product-size m-0" >
 
-                      <select   :name="'attribute-0'+attribute.id" id="" class="form-select w-100"   v-model="variationVal">
-                        <option  :selected="index == 0" :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
+                      <select   :name="'attribute-0'+attribute.id" id="" class="form-select w-100"   v-model="variation">
+                        <option  :value="option"  v-for="(option,index) in attribute.options">{{`${index+1} - ${option}`}}</option>
                       </select>
-
 
                     </div>
                   </div>
