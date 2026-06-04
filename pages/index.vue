@@ -92,6 +92,7 @@ const carousel = ref([])
 const discountProducts = ref([]);
 const hitsProducts = ref([])
 const topSales = ref([])
+const digitalProducts = ref([])
 
 
 useFetch("/api/wc/products", {
@@ -229,6 +230,28 @@ useFetch("/api/wc/products", {
 });
 
 
+useFetch("/api/wc/products", {
+  query: { per_page: 4, page: 1  ,status:'publish',category: '3076',stock_status:'instock'}
+}).then(( response) => {
+  digitalProducts.value = response.data.value.products.map((product: any) => ({
+    id: product.id,
+    name: product.name,
+    slug: product.slug,
+    images: product.images,
+    is_epay: product.is_epay,
+    type: product.type,
+    thumbnail: product.images[0]?.thumbnail || '',
+    price: product.price,
+    on_sale: product.on_sale,
+    regular_price: product.regular_price,
+    stock: product.stock_status,
+    occasion: product.categories.some((category) => category.slug == 'occasion')
+  }));
+}).catch((error) => {
+  console.error("Error fetching latest products:", error);
+});
+
+
 </script>
 
 <template>
@@ -291,7 +314,7 @@ useFetch("/api/wc/products", {
 <!--                      DECOUVREZ-->
 <!--                    </h6>-->
 
-                    <h1 class="title mb-3">
+                    <h1 class="title fs-6 mb-3">
                       <RouterLink :to="'/shop/product/' + product.slug">
                         {{ product.name }}
                       </RouterLink>
@@ -338,8 +361,9 @@ useFetch("/api/wc/products", {
             >
               <div class="left-content">
                 <h2 class="title" >
-                  <i class="iconly-Curved-Star me-1"></i>
+                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link"></NuxtLink>
                   Top Ventes
+                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -365,8 +389,10 @@ useFetch("/api/wc/products", {
             >
               <div class="left-content">
                 <h2 class="title text-danger">
+                  <NuxtLink to="/shop?onsale=1" class="stretched-link"></NuxtLink>
                   <i class="iconly-Curved-Discount me-1"></i>
                   Promotion
+                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -463,8 +489,9 @@ useFetch("/api/wc/products", {
             >
               <div class="left-content">
                 <h2 class="title" >
-                  <i class="iconly-Curved-Game me-1"></i>
+                  <NuxtLink to="/shop?category=3040" class="stretched-link"></NuxtLink>
                   Gameshop Hits
+                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -479,9 +506,8 @@ useFetch("/api/wc/products", {
 
 
 
-
-    <!-- Selection Sart-->
-    <section class="content-inner-1 pt-5 overflow-hidden" v-if="ourSelection.length">
+    <!-- Digital Sart-->
+    <section class="content-inner-1 pt-5 overflow-hidden" v-if="digitalProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
           <div class="col-lg-6 col-md-8 col-sm-12">
@@ -491,8 +517,38 @@ useFetch("/api/wc/products", {
             >
               <div class="left-content">
                 <h2 class="title ">
-                  <i class="iconly-Curved-TicketStar me-1"></i>
+                  <NuxtLink to="/shop?category=3076" class="stretched-link"></NuxtLink>
+                  Produits Digital
+                  <i class="iconly-Curved-ArrowRight me-1"></i>
+                </h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <ProductSlider :products="digitalProducts"/>
+      </div>
+    </section>
+    <!-- Digital Stop-->
+
+
+
+
+    <!-- Selection Sart-->
+    <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="ourSelection.length">
+      <div class="container-fluid">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            <div
+                class="section-head style-1 m-b30 wow fadeInUp"
+                data-wow-delay="0.2s"
+            >
+              <div class="left-content">
+                <h2 class="title ">
+                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link"></NuxtLink>
                   Notre Sélection
+                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -504,6 +560,8 @@ useFetch("/api/wc/products", {
       </div>
     </section>
     <!-- Selection Stop-->
+
+
 
 
 
