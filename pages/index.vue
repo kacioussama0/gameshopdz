@@ -1291,7 +1291,6 @@ useFetch("/api/wc/products", {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.1));
   z-index: -1;
 }
 
