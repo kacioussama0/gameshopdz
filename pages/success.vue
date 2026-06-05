@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import CommonBanner from "@/elements/CommonBanner.vue";
-import bg from "@/assets/images/background/bg1.jpg";
-import MyAccountSidebar from "@/elements/MyAccountSidebar.vue";
-import Header from "~/components/Header.vue";
-import Header3 from "~/components/Header3.vue";
 
+
+import Header3 from "~/components/Header3.vue";
 
 const route = useRoute();
 const orderId = route.query.orderId
