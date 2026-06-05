@@ -1,6 +1,7 @@
 export const useWcCart = () => {
     const cart = useState<any | null>("wc_cart", () => null)
     const pending = useState("wc_cart_pending", () => false)
+    const cartVersion = useState('cart_version', () => 0)
 
     const itemsCount = computed(() => {
         const items = cart.value?.items || []
@@ -62,7 +63,9 @@ export const useWcCart = () => {
     const addItem = async (id: number, quantity = 1,variation = []) => {
         addLocal(id, quantity,variation)
         try {
-            await $fetch("/api/wc/cart/add-item", { method: "POST", body: { id, quantity,variation } })
+            await $fetch("/api/wc/cart/add-item", { method: "POST",  credentials: "include", body: { id, quantity,variation } })
+            cartVersion.value++
+            await refresh()
         } catch (e) {
             await refresh()
             throw e
@@ -73,6 +76,7 @@ export const useWcCart = () => {
         updateLocal(key, quantity)
         try {
             await $fetch("/api/wc/cart/update", { method: "POST", body: { key, quantity } })
+            cartVersion.value++
         } catch (e) {
             await refresh()
             throw e
@@ -82,13 +86,16 @@ export const useWcCart = () => {
     }
 
     const removeItem = async (key: string) => {
-        removeLocal(key) // 👈 instant UI
+        removeLocal(key)
 
         try {
             await $fetch("/api/wc/cart/remove-item", {
                 method: "POST",
+                credentials: "include",
                 body: { key }
             })
+            cartVersion.value++
+            await refresh()
         } catch (e) {
             await refresh()
             throw e
@@ -125,13 +132,7 @@ export const useWcCart = () => {
     }
 
 
-    if (process.client) {
-        const loaded = useState("wc_cart_loaded", () => false)
-        if (!loaded.value) {
-            loaded.value = true
-            refresh()
-        }
-    }
 
-    return { cart, pending, itemsCount, refresh, addItem, updateItem, removeItem,clearCart }
+
+    return { cart, pending, itemsCount, refresh, addItem,cartVersion, updateItem, removeItem,clearCart }
 }

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 
-const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
+const { data: cart, pending, error, refresh} = await useFetch('/api/wc/cart', {
   credentials: 'include',
   server: false
 })
@@ -9,10 +9,7 @@ const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
 const items = computed(() => cart.value?.items ?? [])
 const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
 
-watch(cart,async ()=> {
 
-  await refresh()
-})
 
 const removeItem = async (key: string) => {
   await $fetch('/api/wc/cart/remove-item', {
@@ -24,6 +21,11 @@ const removeItem = async (key: string) => {
   await refresh()
 }
 
+const cartVersion = useState('cart_version', () => 0)
+
+watch(cartVersion, async () => {
+  await refresh()
+})
 
 function quantity(ind: number, category: string) {
   switch (category) {
@@ -118,7 +120,7 @@ function removeItems(ind: number) {
                   الدفع عند التسليم. سعر الشحن (التوصيل) يشمل التوصيل والخدمة
                 </p>
 
-                <RouterLink to="/cart" class="btn btn-outline-secondary btn-block m-b20">Voir Mon Panier</RouterLink>
+                <RouterLink to="/cart" class="btn  btn-outline-secondary btn-block m-b20">Voir Mon Panier</RouterLink>
                 <RouterLink to="/checkout" class="btn btn-secondary btn-block">Finaliser Ma Commande</RouterLink>
               </div>
             </div>

@@ -16,13 +16,15 @@ useHead({
 
 onMounted(() => {
 
+  refresh()
+
   if (sessionStorage.getItem("app_loaded")) {
     loading.value = false
     return
   }
 
   sessionStorage.setItem("app_loaded", "true")
-  refresh()
+
   setTimeout(() => {
     loading.value = false
   }, 1500)

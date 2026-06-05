@@ -6,18 +6,15 @@ const props = defineProps<{
 }>();
 
 
-const addToCart = async (productId) => {
+const { addItem } = useWcCart()
 
+const addToCart = async (productId: number) => {
   try {
-    const add = await useWcCart().addItem(productId)
-    await useWcCart().refresh()
-  }catch (error) {
+    await addItem(productId)
+  } catch (error) {
     console.log(error)
   }
-
-
 }
-
 </script>
 
 <template>
