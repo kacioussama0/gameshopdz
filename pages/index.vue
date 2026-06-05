@@ -360,10 +360,11 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title" >
-                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link"></NuxtLink>
+                <h2 class="title">
+                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link" />
+                  <i class="iconly-Curved-Graph ms-1"></i>
+
                   Top Ventes
-                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -389,10 +390,9 @@ useFetch("/api/wc/products", {
             >
               <div class="left-content">
                 <h2 class="title text-danger">
-                  <NuxtLink to="/shop?onsale=1" class="stretched-link"></NuxtLink>
-                  <i class="iconly-Curved-Discount me-1"></i>
-                  Promotion
-                  <i class="iconly-Curved-ArrowRight me-1"></i>
+                  <NuxtLink to="/shop?onsale=1" class="stretched-link" />
+                  <i class="iconly-Curved-Discount me-2"></i>
+                  Promotions
                 </h2>
               </div>
             </div>
@@ -488,10 +488,11 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title" >
-                  <NuxtLink to="/shop?category=3040" class="stretched-link"></NuxtLink>
+                <h2 class="title">
+                  <NuxtLink to="/shop?category=3040" class="stretched-link" />
+                  <i class="iconly-Curved-Show me-2"></i>
                   Gameshop Hits
-                  <i class="iconly-Curved-ArrowRight me-1"></i>
+
                 </h2>
               </div>
             </div>
@@ -516,10 +517,10 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title ">
-                  <NuxtLink to="/shop?category=3076" class="stretched-link"></NuxtLink>
-                  Produits Digital
-                  <i class="iconly-Curved-ArrowRight me-1"></i>
+                <h2 class="title">
+                  <NuxtLink to="/shop?category=3076" class="stretched-link" />
+                  <i class="iconly-Curved-Game me-2"></i>
+                  Produits Digitaux
                 </h2>
               </div>
             </div>
@@ -545,10 +546,10 @@ useFetch("/api/wc/products", {
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
-                <h2 class="title ">
-                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link"></NuxtLink>
+                <h2 class="title">
+                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link" />
+                  <i class="iconly-Curved-Heart me-2"></i>
                   Notre Sélection
-                  <i class="iconly-Curved-ArrowRight me-1"></i>
                 </h2>
               </div>
             </div>
@@ -1029,34 +1030,17 @@ useFetch("/api/wc/products", {
         <div class="companies-slider-wrapper">
           <div class="companies-slider">
 
-            <Swiper
-                class="swiper-five"
-                :modules="[Autoplay]"
-                :loop="true"
-                :pagination="{ clickable: true }"
-                :speed="300"
-                autoplay="normal"
-                :space-between="20"
-                :breakpoints="{
-        0: { slidesPerView: 2 },
-        576: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        992: { slidesPerView: 5 },
-        1200: { slidesPerView: 6 }
-      }"
-                :navigation="{
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
-      }"
-            >
-
-              <SwiperSlide v-for="(logo,i) in logos" :key="i">
-                <div class="company-card p-3">
-                  <img :src="logo">
+            <div class="marquee">
+              <div class="marquee-track">
+                <div
+                    v-for="(logo, i) in [...logos, ...logos]"
+                    :key="i"
+                    class="company-card"
+                >
+                  <img :src="logo" alt="Brand logo">
                 </div>
-              </SwiperSlide>
-
-            </Swiper>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -1324,10 +1308,21 @@ useFetch("/api/wc/products", {
 }
 
 .category-section .dz-media {
-  box-shadow: 0 3px 30px rgba(255,255,255,.2);
+  border-radius: 16px;
+
+  box-shadow:
+      0 10px 30px rgba(0,0,0,.25),
+      0 0 20px rgba(117, 213, 239, .15);
+  transition: .3s ease;
 }
 
 
+.category-section .dz-media:hover {
+  transform: translateY(-5px);
+  box-shadow:
+      0 15px 40px rgba(0,0,0,.35),
+      0 0 30px rgba(117, 213, 239, .3);
+}
 
 .hero-slide .portfolio-box {
   position: relative;
@@ -1350,6 +1345,54 @@ useFetch("/api/wc/products", {
   position: absolute;
   inset: 0;
   z-index: -1;
+}
+
+
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  animation: marquee 15s linear infinite;
+}
+
+.company-card {
+  width: 180px;
+  height: 100px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.company-card img {
+  max-width: 140px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 </style>

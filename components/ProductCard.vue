@@ -20,8 +20,8 @@ const addToCart =  (product: Object) => {
 </script>
 
 <template>
-  <div class="shop-card" v-if="product">
-    <div class="dz-media position-relative shadow-sm h-100">
+  <div class="shop-card rounded-4 overflow-hidden shadow-sm border border-opacity-50 border-primary" v-if="product">
+    <div class="dz-media position-relative shadow h-100">
       <NuxtImg
           :src="product.thumbnail"
           :alt="product.name"
@@ -29,7 +29,7 @@ const addToCart =  (product: Object) => {
           format="webp"
           width="300"
           height="300"
-          class="product-img"
+          class="product-img rounded-0 "
           loading="lazy"
       />
 
@@ -58,7 +58,7 @@ const addToCart =  (product: Object) => {
 
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
-            class="btn btn-primary add-btn mt-3 new-gradient"
+            class="btn btn-primary rounded-pill add-btn mt-3 new-gradient"
             v-if="product.is_epay == true"
         >
           <i class="fa fa-credit-card me-2"></i>
@@ -68,7 +68,7 @@ const addToCart =  (product: Object) => {
 
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
-            class="btn btn-primary add-btn  new-gradient mt-3"
+            class="btn btn-primary add-btn rounded-pill  new-gradient mt-3"
             v-else-if="product.type == 'variable'"
         >
 
@@ -80,7 +80,7 @@ const addToCart =  (product: Object) => {
 
         <NuxtLink
             to="?"
-            class="btn btn-primary add-btn  new-gradient mt-3"
+            class="btn btn-primary add-btn rounded-pill  new-gradient mt-3"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"
@@ -97,7 +97,7 @@ const addToCart =  (product: Object) => {
 
         <NuxtLink
             :to="`/shop/product/${product.slug}`"
-            class="btn btn-primary add-btn mt-3 new-gradient"
+            class="btn btn-primary rounded-pill add-btn mt-3 new-gradient"
             v-else
         >
           <i class="fa fa-cart-plus me-2"></i>

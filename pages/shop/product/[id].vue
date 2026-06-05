@@ -190,20 +190,20 @@ useFetch("/api/wc/products/", {
 
   }
 
-  useHead({
+  useSeoMeta({
+    title: `${product.value.name} - GameshopDZ`,
+    description: getShortDescription(product.value.description),
 
-    title: product.value.name + ' - Gameshopdz',
+    ogTitle: product.value.name,
+    ogDescription: getShortDescription(product.value.description),
+    ogImage: product.value.thumbnail,
+    ogUrl: currentUrl.value,
 
-    meta: [
-      { name: 'description', content: getShortDescription(product.value.description) },
-      { property: 'og:title', content: product.value.name },
-      { property: 'og:description', content: getShortDescription(product.value.description) },
-      { property: 'og:image', content: product.value.thumbnail },
-      { property: 'og:url', content: currentUrl.value },
-      { property: 'og:type', content: 'product' },
-    ]
+    twitterCard: 'summary_large_image',
+    twitterTitle: product.value.name,
+    twitterDescription: getShortDescription(product.value.description),
+    twitterImage: product.value.thumbnail
   })
-
 
 
 }).catch((error) => {
@@ -627,33 +627,36 @@ const submitOrder = async () => {
 
                 </div>
 
-                <div class="d-flex flex-wrap gap-2 mb-3" v-if="product.type == 'variable' && product.is_epay">
+                <div class="row g-3 my-3" v-if="product.type == 'variable' && product.is_epay">
 
-                  <button
-                      v-for="variation in product.variations"
-                      :key="variation.id"
-                      @click="selectVariation(variation)"
-                      :disabled="variation.stock_status !== 'instock'"
-                      class="btn "
+                    <div class="col-4"  v-for="variation in product.variations"
+                         :key="variation.id">
+                      <button
 
-                      :class="[
+                          @click="selectVariation(variation)"
+                          :disabled="variation.stock_status !== 'instock'"
+                          class="btn w-100"
+                          style="font-size: 14px"
+
+                          :class="[
         selectedVariation?.id === variation.id
           ? 'btn-dark new-gradient'
           : 'btn-outline-dark'
       ]"
-                  >
+                      >
 
-                    <div class="fw-semibold">
-                      {{
-                        variation.attributes
-                            .map(attr => attr.option)
-                            .join(' / ')
-                      }}
+                        <div class="fw-semibold">
+                          {{
+                            variation.attributes
+                                .map(attr => attr.option)
+                                .join(' - ')
+                          }}
+                        </div>
+
+
+
+                      </button>
                     </div>
-
-
-
-                  </button>
 
                 </div>
 
@@ -680,95 +683,105 @@ const submitOrder = async () => {
 
 
 
-                <div class="epay-checkout" v-if="product.is_epay">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group m-b25">
-                        <label class="label-title">Prénom الإ سم <span class="text-danger">*</span></label>
-                        <input  v-model="form.first_name" class="form-control" :disabled="isLoading" />
-                        <p v-if="errors.first_name" class="text-danger">
-                          {{ errors.first_name }}
-                        </p>
+                <div class="epay-checkout card rounded-2" v-if="product.is_epay">
+                  <div class="card-header">
+                    <h3>
+                      الدفع الإلكتروني EPAY
+                    </h3>
+
+                    <i class="fa fa-credit-card fa-3x"></i>
+
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group m-b25">
+                          <label class="label-title">Prénom الإ سم <span class="text-danger">*</span></label>
+                          <input  v-model="form.first_name" class="form-control" :disabled="isLoading" />
+                          <p v-if="errors.first_name" class="text-danger">
+                            {{ errors.first_name }}
+                          </p>
+                        </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group m-b25">
+                          <label class="label-title">Nom اللقب <span class="text-danger">*</span></label>
+                          <input v-model="form.last_name"  class="form-control" :disabled="isLoading" />
+                          <p v-if="errors.last_name" class="text-danger">
+                            {{ errors.last_name }}
+                          </p>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12">
+                        <div class="form-group m-b25">
+                          <label class="label-title">Email البريد الإلكتروني <span class="text-danger">*</span></label>
+                          <input v-model="form.email"  class="form-control" :disabled="isLoading"/>
+                          <p v-if="errors.email" class="text-danger">
+                            {{ errors.email }}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="form-group m-b25">
+                          <label class="label-title">Téléphone رقم هاتف <span class="text-danger">*</span></label>
+                          <input v-model="form.phone"  class="form-control" :disabled="isLoading"/>
+                          <p v-if="errors.phone" class="text-danger">
+                            {{ errors.phone }}
+                          </p>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-md-12 m-b25">
+                        <div class="form-group">
+                          <label class="label-title">معلومات إضافية حول طلبك (facultatif) </label>
+                          <textarea id="comments" v-model="form.note" :disabled="isLoading"  placeholder="ملاحظة حول طلبك, إذا لزم الأمر" class="form-control" name="comment" cols="90" rows="5"></textarea>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-md-12 m-b25">
+
+                        <button
+                            class="w-100 btn btn-secondary text-uppercase rounded-0 new-gradient mb-3"
+                            @click="submitOrder"
+                            :disabled="isLoading"
+                        >
+
+                          <i class="fa fa-credit-card  me-2"></i>
+                          {{isLoading ? "Patienter ..." : "Payer الدفع"}}
+
+                        </button>
+
+
+                        <span>Secure payment via :</span>
+                        <img src="https://www.poste.dz/assets/ap_logo-DKTxjdB6.svg" width="90" height="60"/>
+                        <img src="https://bitakati.dz/assets/front/img/logo.svg" width="60" height="40"/>
+
+
+                        <div class="alert alert-warning">
+                          <h3 class="alert-heading">Important !</h3>
+                          <p class="mb-0" >Après confirmation du paiement, notre équipe vous contactera sur WhatsApp pour la livraison et les instructions d’activation de votre produit.</p>
+                        </div>
+
+                        <div class="alert alert-warning" dir="rtl">
+                          <h3 class="alert-heading">هام !</h3>
+                          <p class="mb-0"> بعد تأكيد الدفع، سيتواصل معك فريقنا عبر واتساب لتسليم المنتج الرقمي وشرح طريقة التفعيل .</p>
+                        </div>
+
+                      </div>
+
+
+
+
+
+
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group m-b25">
-                        <label class="label-title">Nom اللقب <span class="text-danger">*</span></label>
-                        <input v-model="form.last_name"  class="form-control" :disabled="isLoading" />
-                        <p v-if="errors.last_name" class="text-danger">
-                          {{ errors.last_name }}
-                        </p>
-                      </div>
-                    </div>
-
-
-                    <div class="col-md-12">
-                      <div class="form-group m-b25">
-                        <label class="label-title">Email البريد الإلكتروني <span class="text-danger">*</span></label>
-                        <input v-model="form.email"  class="form-control" :disabled="isLoading"/>
-                        <p v-if="errors.email" class="text-danger">
-                          {{ errors.email }}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group m-b25">
-                        <label class="label-title">Téléphone رقم هاتف <span class="text-danger">*</span></label>
-                        <input v-model="form.phone"  class="form-control" :disabled="isLoading"/>
-                        <p v-if="errors.phone" class="text-danger">
-                          {{ errors.phone }}
-                        </p>
-                      </div>
-                    </div>
-
-
-
-                    <div class="col-md-12 m-b25">
-                      <div class="form-group">
-                        <label class="label-title">معلومات إضافية حول طلبك (facultatif) </label>
-                        <textarea id="comments" v-model="form.note" :disabled="isLoading"  placeholder="ملاحظة حول طلبك, إذا لزم الأمر" class="form-control" name="comment" cols="90" rows="5"></textarea>
-                      </div>
-                    </div>
-
-
-
-                    <div class="col-md-12 m-b25">
-
-                      <button
-                          class="w-100 btn btn-secondary text-uppercase rounded-0 new-gradient mb-3"
-                          @click="submitOrder"
-                          :disabled="isLoading"
-                      >
-
-                        <i class="fa fa-credit-card  me-2"></i>
-                        {{isLoading ? "Patienter ..." : "Payer الدفع"}}
-
-                      </button>
-
-
-                      <span>Secure payment via :</span>
-                      <img src="https://www.poste.dz/assets/ap_logo-DKTxjdB6.svg" width="90" height="60"/>
-                      <img src="https://bitakati.dz/assets/front/img/logo.svg" width="60" height="40"/>
-
-
-                      <div class="alert alert-warning">
-                        <h3 class="alert-heading">Important !</h3>
-                        <p class="mb-0" >Après confirmation du paiement, notre équipe vous contactera sur WhatsApp pour la livraison et les instructions d’activation de votre produit.</p>
-                      </div>
-
-                      <div class="alert alert-warning" dir="rtl">
-                        <h3 class="alert-heading">هام !</h3>
-                        <p class="mb-0"> بعد تأكيد الدفع، سيتواصل معك فريقنا عبر واتساب لتسليم المنتج الرقمي وشرح طريقة التفعيل .</p>
-                      </div>
-
-                    </div>
-
-
-
-
-
-
                   </div>
                 </div>
                 <div class="btn-group cart-btn" v-else>
