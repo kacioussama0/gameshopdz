@@ -72,7 +72,6 @@ const form = reactive({
 
 
 
-
 const addToCart = async (product: Object,variationId = null) => {
   try {
 
@@ -147,7 +146,6 @@ useFetch("/api/wc/products/", {
 
 
 
-
   product.value = response.data.value.products[0];
 
   product.value.variations = product.value.variations.reverse();
@@ -190,25 +188,14 @@ useFetch("/api/wc/products/", {
 
   }
 
-  useSeoMeta({
-    title: `${product.value.name} - GameshopDZ`,
-    description: getShortDescription(product.value.description),
-
-    ogTitle: product.value.name,
-    ogDescription: getShortDescription(product.value.description),
-    ogImage: product.value.thumbnail,
-    ogUrl: currentUrl.value,
-
-    twitterCard: 'summary_large_image',
-    twitterTitle: product.value.name,
-    twitterDescription: getShortDescription(product.value.description),
-    twitterImage: product.value.thumbnail
-  })
 
 
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
+
+
+
 
 
 const validateCheckout = () => {
@@ -302,7 +289,24 @@ const submitOrder = async () => {
 }
 
 
+watchEffect(() => {
+  if (!product.value) return
 
+  useSeoMeta({
+    title: `${product.value.name || "Product"} - GameshopDZ`,
+    description: getShortDescription(product.value.description),
+
+    ogTitle: product.value.name,
+    ogDescription: getShortDescription(product.value.description),
+    ogImage: product.value.thumbnail,
+    ogUrl: currentUrl.value,
+
+    twitterCard: 'summary_large_image',
+    twitterTitle: product.value.name,
+    twitterDescription: getShortDescription(product.value.description),
+    twitterImage: product.value.thumbnail
+  })
+})
 
 </script>
 

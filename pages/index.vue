@@ -280,7 +280,7 @@ useFetch("/api/wc/products", {
           }"
           >
             <SwiperSlide
-                class="swiper-slide hero-slide"
+                class="swiper-slide hero-slide position-relative"
                 v-for="product in carousel"
                 :key="product.id"
             >
@@ -314,7 +314,7 @@ useFetch("/api/wc/products", {
 <!--                      DECOUVREZ-->
 <!--                    </h6>-->
 
-                    <h1 class="title fs-6 mb-3">
+                    <h1 class="title d-none d-md-block fs-3 mb-3">
                       <RouterLink :to="'/shop/product/' + product.slug">
                         {{ product.name }}
                       </RouterLink>
@@ -322,7 +322,7 @@ useFetch("/api/wc/products", {
 
                     <RouterLink
                         :to="'/shop/product/' + product.slug"
-                        class="btn btn-sm  btn-outline-light rounded-0 mb-5"
+                        class="btn btn-lg stretched-link  purchase-btn  btn-outline-light rounded-0 mb-5"
                     >
                       ACHETEZ MAINTENANT
                     </RouterLink>
@@ -1393,6 +1393,15 @@ useFetch("/api/wc/products", {
 
 .marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+
+
+@media screen and (max-width: 500px) {
+
+  .purchase-btn {
+    width: 100%;
+  }
+
 }
 
 </style>
