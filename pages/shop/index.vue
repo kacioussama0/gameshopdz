@@ -175,9 +175,7 @@ onMounted(async ()=> {
 
 
 
-
   <div class="page-content bg-light">
-
 
 
 
@@ -187,14 +185,14 @@ onMounted(async ()=> {
           <div class="col-20 col-xl-3">
             <ShopSidebar />
           </div>
-          <div class="col-80 col-xl-9">
+          <div class="col-80 col-xl-9" v-if="loading || allProducts.length">
 
 
 
             <div class="filter-wrapper p-t10">
 
 
-              <div class="filter-left-area">
+              <div class="filter-left-area" v-if="allProducts.length">
                 <span>Affichage de {{ start }} à {{ end }} sur {{ total }} résultats</span>
 
               </div>
@@ -252,6 +250,34 @@ onMounted(async ()=> {
                 </nav>
               </div>
             </div>
+          </div>
+
+          <div class="col-80 col-xl-9" v-else>
+
+
+
+            <div class="card">
+
+              <div class="card-body py-5">
+                <div class="text-center py-5">
+                  <i class="fa-solid fa-magnifying-glass fa-3x mb-3 text-muted"></i>
+
+                  <h4>Aucun produit trouvé</h4>
+
+                  <p class="text-muted mb-4">
+                    Essayez avec d'autres mots-clés ou parcourez nos catégories.
+                  </p>
+
+                  <NuxtLink to="/shop" class="btn btn-primary new-gradient">
+                    Voir tous les produits
+                  </NuxtLink>
+                </div>
+              </div>
+
+            </div>
+
+
+
           </div>
         </div>
       </div>

@@ -2,8 +2,7 @@
 import { ref, watch, onMounted, onUnmounted, onUpdated } from "vue";
 import { navigateTo } from "nuxt/app";
 import Menu from "@/elements/Menu.vue";
-
-
+import {useLocalCart} from "~/composables/useLocalCart";
 
 const { $algolia, $aa } = useNuxtApp()
 const route = useRoute()
@@ -13,7 +12,7 @@ const suggSearch = ref('')
 const suggProducts = ref<any[]>([])
 const isLoading = ref(false)
 const menu = ref(false);
-const { itemsCount, pending } = useWcCart()
+const { itemsCount} = useLocalCart()
 
 const isMenu = ref(false);
 

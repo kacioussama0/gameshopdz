@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 
 const loading = ref(true)
-const { refresh } = useWcCart()
 
-const { itemsCount} = useWcCart()
+
+const { itemsCount} = useLocalCart()
 
 useHead({
   meta: [
@@ -16,7 +16,7 @@ useHead({
 
 onMounted(() => {
 
-  refresh()
+
 
   if (sessionStorage.getItem("app_loaded")) {
     loading.value = false
@@ -68,8 +68,8 @@ useSeoMeta({
 
     <NuxtLayout>
       <NuxtPage  />
-      <MobileBottomNav :itemsCount="itemsCount" />
       <Footer />
+      <MobileBottomNav :itemsCount="itemsCount" />
     </NuxtLayout>
 
 

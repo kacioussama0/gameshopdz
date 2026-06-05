@@ -14,7 +14,6 @@ useFetch("/api/wc/categories", {
   console.error("Error fetching categories:", error);
 });
 
-console.log(categories)
 
 </script>
 
@@ -35,16 +34,16 @@ console.log(categories)
           </h6>
         </div>
         <div class="widget">
-          <h6 class="widget-title">Filtrer par prix</h6>
+          <h6 class="widget-title">Prix</h6>
           <MultiRangeSlide />
         </div>
 
 
 
         <div class="widget widget_categories">
-          <h6 class="widget-title">Filtrer par Catégories</h6>
+          <h6 class="widget-title">Catégories</h6>
           <ul v-for="category in categories">
-            <li class="cat-item cat-item-26"><RouterLink :to="`/shop?category=${category.id}`">{{category.name}}</RouterLink></li>
+            <li class="cat-item cat-item-26"><RouterLink :to="`/shop?category=${category.id}`" v-html="category.name.toLowerCase()"></RouterLink></li>
           </ul>
         </div>
 

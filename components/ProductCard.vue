@@ -1,16 +1,18 @@
 <script lang="ts" setup>
 
+import {useLocalCart} from "~/composables/useLocalCart";
+
 const props = defineProps<{
   product: Object;
   showStock: Boolean,
 }>();
 
 
-const { addItem } = useWcCart()
+const { addItem } = useLocalCart()
 
-const addToCart = async (productId: number) => {
+const addToCart =  (product: Object) => {
   try {
-    await addItem(productId)
+     addItem(product)
   } catch (error) {
     console.log(error)
   }
@@ -82,7 +84,7 @@ const addToCart = async (productId: number) => {
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"
-            @click="addToCart(product.id)"
+            @click="addToCart(product)"
             v-else-if="product.stock == 'instock'"
         >
 

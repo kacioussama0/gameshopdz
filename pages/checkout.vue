@@ -4,7 +4,7 @@ import Header3 from "~/components/Header3.vue";
 import cities from '../assets/cities.json'
 import {navigateTo} from "nuxt/app";
 import { z } from "zod"
-import {useWcCart} from "#imports";
+
 const { $aa } = useNuxtApp()
 
 
@@ -45,26 +45,40 @@ useHead({
   ],
 })
 
-const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
-  credentials: 'include',
-})
 
 
 
-const items = computed(() => cart.value?.items ?? [])
+const {
+  cart,
+  totalPrice,
+  clearCart
+
+} = useLocalCart()
+
+const items = computed(() => cart.value)
+
+const itemsCount = computed(() =>
+    cart.value.reduce((sum, item) => sum + item.quantity, 0)
+
+)
 
 
-const itemsCount = computed(() => cart.value?.items_count ?? 0)
 const selectedMethod = ref({})
 
 if(!items.value.length) {
   navigateTo('/cart')
 }
 
-const subTotal = computed(() => Number.parseFloat(cart.value?.totals?.total_price)  ?? 0)
-const totalPriceCompute = computed(() => Number.parseFloat(cart.value?.totals?.total_price) + (selectedMethod.value.cost ?? 0))
+const subTotal = computed(() =>
+    items.value.reduce((sum, item) => {
+      return sum + Number(item.price) * item.quantity
+    }, 0)
+)
 
-const totalPrice = ref(0);
+const totalPriceCompute = computed(() =>
+    subTotal.value + Number(selectedMethod.value?.cost || 0)
+)
+
 
 const wilaya = ref(null)
 const commune = ref(null)
@@ -187,7 +201,7 @@ const submitOrder = async () => {
         localStorage.removeItem('algolia:lastQueryIDAt')
       }
 
-      useWcCart().clearCart()
+      clearCart()
 
 
       navigateTo('/success?orderId=' + order.data.value.id)
@@ -425,13 +439,18 @@ onMounted(() => {
             <h4 class="title m-b15">Votre commande</h4>
             <div class="order-detail sticky-top">
               <h5 class="mb-3"><i class="fa fa-box me-2"></i> Récapitulatif de la commande</h5>
-              <div class="cart-item style-1" v-for="item in items">
+              <div class="cart-item style-1" v-for="item in items" :key="item.id">
                 <div class="dz-media">
-                  <img :src="item.images[0].thumbnail" alt="/" />
+                  <img :src="item.image" alt="/" />
                 </div>
                 <div class="dz-content">
-                  <h6 class="title mb-0" style="width: 45%">{{ item.name }} <b>x {{ item.quantity }}</b></h6>
-                  <span class="price">{{item.prices.price}} DA</span>
+                  <h6 class="title mb-0" style="width: 45%">
+                    {{ item.name }} <b>x {{ item.quantity }}</b>
+                  </h6>
+
+                  <span class="price">
+                    {{ Number(item.price) * item.quantity }} DA
+                  </span>
                 </div>
               </div>
 

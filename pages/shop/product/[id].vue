@@ -3,14 +3,12 @@ import RelatedProduct from "~/elements/RelatedProduct.vue";
 import { SwiperSlide, Swiper } from "swiper/vue";
 import { Thumbs } from "swiper/modules";
 import {ref, watch} from "vue";
-import Header from "~/components/Header.vue";
+
 import Header3 from "~/components/Header3.vue";
-import img1 from "assets/images/products/lady-1.png";
-import img2 from "assets/images/products/lady-2.png";
-import img3 from "assets/images/products/lady-3.png";
+
 import z from "zod";
-import {useWcCart} from "~/composables/useWcCart";
-import {navigateTo} from "#app";
+import {useLocalCart} from "~/composables/useLocalCart";
+
 
 const qty = ref(1);
 const thumbsSwiper = ref(null);
@@ -41,6 +39,7 @@ const checkoutSchema = z.object({
 
 const errors = ref<any>({})
 
+const { addItem } = useLocalCart()
 
 const lastRequest = ref(0)
 
@@ -49,7 +48,6 @@ const selectedVariation = ref(null)
 const selectVariation = (variation) => {
   selectedVariation.value = variation
 }
-
 
 const variation = ref([])
 const isLoading = ref(false);
@@ -62,7 +60,6 @@ const { $aa } = useNuxtApp()
 
 
 
-const addedCart = ref(false)
 
 const form = reactive({
   first_name: '',
@@ -73,21 +70,24 @@ const form = reactive({
 })
 
 
-const addToCart = async (productId,variationId = null) => {
+
+
+
+const addToCart = async (product: Object,variationId = null) => {
   try {
-    addedCart.value = true
 
 
+    addItem(product,qty.value)
 
-    const result = await useWcCart().addItem(productId, qty.value, [
-      {
-        'attribute': product.value.attributes[0].name,
-        'value': variation.value
-      }
-    ])
+    // const result = await useWcCart().addItem(productId, qty.value, [
+    //   {
+    //     'attribute': product.value.attributes[0].name,
+    //     'value': variation.value
+    //   }
+    // ])
 
-    const objectID = String(product.value?.objectID || product.value?.id || productId)
-    if (!objectID) return result
+    const objectID = String(product.value?.objectID || product.value?.id || product.id)
+    if (!objectID) return false
 
     const qid = localStorage.getItem('algolia:lastQueryID')
     const qidAt = Number(localStorage.getItem('algolia:lastQueryIDAt') || 0)
@@ -109,8 +109,6 @@ const addToCart = async (productId,variationId = null) => {
       })
     }
 
-
-    return result
   } catch (error) {
     console.log(error)
   }
@@ -780,7 +778,7 @@ const submitOrder = async () => {
                       data-bs-toggle="offcanvas"
                       data-bs-target="#offcanvasRight"
                       aria-controls="offcanvasRight"
-                      @click="addToCart(product.id,variationId)"
+                      @click="addToCart(product,variationId)"
                       :disabled="product.stock_status != 'instock'"
                   >
 

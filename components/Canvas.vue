@@ -1,75 +1,70 @@
-<script lang="ts" setup>
+<script setup lang="ts">
+const cart = useState<any[]>('local_cart', () => [])
 
-
-const { data: cart, pending, error, refresh} = await useFetch('/api/wc/cart', {
-  credentials: 'include',
-  server: false
-})
-
-const items = computed(() => cart.value?.items ?? [])
-const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
-
-
-
-const removeItem = async (key: string) => {
-  await $fetch('/api/wc/cart/remove-item', {
-    method: 'POST',
-    credentials: 'include',
-    body: { key }
-  })
-
-  await refresh()
-}
-
-const cartVersion = useState('cart_version', () => 0)
-
-watch(cartVersion, async () => {
-  await refresh()
-})
-
-function quantity(ind: number, category: string) {
-  switch (category) {
-    case "plus":
-      cartItems[ind].qty++;
-      break;
-    case "minus":
-      cartItems[ind].qty > 1 ? cartItems[ind].qty-- : cartItems[ind].qty;
-      break;
-
-    default:
-      break;
+const loadCart = () => {
+  if (process.client) {
+    cart.value = JSON.parse(localStorage.getItem('cart') || '[]')
   }
 }
 
+const saveCart = () => {
+  if (process.client) {
+    localStorage.setItem('cart', JSON.stringify(cart.value))
+  }
+}
 
-function removeItems(ind: number) {
-  document.querySelectorAll(".cart_items")[ind].remove();
+onMounted(loadCart)
+
+const items = computed(() => cart.value)
+
+const totalPrice = computed(() =>
+    cart.value.reduce((sum, item) => {
+      return sum + Number(item.price || item.prices?.price || 0) * item.quantity
+    }, 0)
+)
+
+const removeItem = (id: number) => {
+  cart.value = cart.value.filter(item => item.id !== id)
+  saveCart()
+}
+
+const updateQuantity = (id: number, quantity: number) => {
+  if (quantity <= 0) {
+    removeItem(id)
+    return
+  }
+
+  const item = cart.value.find(item => item.id === id)
+  if (item) {
+    item.quantity = quantity
+    saveCart()
+  }
 }
 </script>
 
 <template>
-  <div class="offcanvas dz-offcanvas offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+  <div class="offcanvas dz-offcanvas offcanvas offcanvas-end"  data-bs-scroll="true" tabindex="-1" id="offcanvasRight">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">×</button>
     <div class="offcanvas-body">
-      <div class="product-description">
+      <div class="product-description" v-if="items.length">
         <div class="tab-content pt-4" id="dz-shopcart-sidebar">
           <div class="tab-pane fade show active" id="shopping-cart-pane" role="tabpanel" aria-labelledby="shopping-cart" tabindex="0">
             <div class="shop-sidebar-cart">
-              <ul class="sidebar-cart-list">
-                <li v-for="(item, ind) in items" :key="ind">
+              <ul class="sidebar-cart-list" >
+                <li v-for="item in items" :key="item.id">
                   <div class="cart-widget">
                     <div class="dz-media me-3">
-                      <img :src="item.images[0].thumbnail" alt="" />
+                      <img :src="item.image" alt="" />
                     </div>
                     <div class="cart-content">
                       <h6 class="title">
                         <RouterLink to="/product-thumbnail">
                           {{ item.name }}
-                          <span v-if="item.type = 'variation'">
-                        <span v-for="v in item.variation">
-                          | {{v.attribute}} : {{v.value}}
-                        </span>
-                      </span>
+                          <span v-if="item.type === 'variation'">
+                            <span v-for="v in item.variation" :key="v.attribute">
+                              | {{ v.attribute }} : {{ v.value }}
+                            </span>
+                          </span>
                         </RouterLink>
                       </h6>
                       <div class="d-flex align-items-center">
@@ -80,26 +75,35 @@ function removeItems(ind: number) {
                               class="input-group-addon bootstrap-touchspin-postfix"
                               style="display: none"
                           ></span>
-                            <span class="input-group-btn-vertical"
-                            ><button @click="quantity(ind, 'plus')" class="btn btn-default bootstrap-touchspin-up" type="button">
-                                  <i class="fa-solid fa-plus"></i></button
-                            ><button @click="quantity(ind, 'minus')" class="btn btn-default bootstrap-touchspin-down" type="button">
-                                  <i class="fa-solid fa-minus"></i>
-                                </button>
+                            <span class="input-group-btn-vertical">
+                              <button @click="updateQuantity(item.id, item.quantity + 1)" class="btn btn-default bootstrap-touchspin-up" type="button">
+                                  <i class="fa-solid fa-plus"></i>
+                              </button>
+
+                              <button @click="updateQuantity(item.id, item.quantity - 1)" class="btn btn-default bootstrap-touchspin-down" type="button">
+                                <i class="fa-solid fa-minus"></i>
+                              </button>
+
                               </span>
                           </div>
                         </div>
-                        <h6 class="dz-price mb-0">{{item.prices.price}} DA</h6>
+                        <h6 class="dz-price mb-0">{{ item.price }} DA</h6>
 
 
 
                       </div>
                     </div>
-                    <RouterLink to="" @click="removeItem(item.key)"><i class="ti-close"></i></RouterLink>
+                    <NuxtLink type="button" @click="removeItem(item.id)">
+                      <i class="ti-close"></i>
+                    </NuxtLink>
                   </div>
                 </li>
               </ul>
-              <div class="cart-total">
+
+
+
+
+              <div class="cart-total" v-if="totalPrice > 0">
                 <h5 class="mb-0">Sous-total:</h5>
                 <h5 class="mb-0">{{totalPrice}} DA</h5>
               </div>
@@ -120,12 +124,47 @@ function removeItems(ind: number) {
                   الدفع عند التسليم. سعر الشحن (التوصيل) يشمل التوصيل والخدمة
                 </p>
 
-                <RouterLink to="/cart" class="btn  btn-outline-secondary btn-block m-b20">Voir Mon Panier</RouterLink>
-                <RouterLink to="/checkout" class="btn btn-secondary btn-block">Finaliser Ma Commande</RouterLink>
+                <RouterLink to="/cart" class="btn  btn-outline-secondary  btn-block m-b20">
+                  Voir Mon Panier
+                  <i class="ti-shopping-cart ms-2"></i>
+                </RouterLink>
+                <RouterLink to="/checkout" class="btn btn-lg btn-secondary btn-block new-gradient">
+                  Finaliser Ma Commande
+                  <i class="ti-arrow-circle-right ms-2" />
+                </RouterLink>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="card" v-if="!items.length">
+
+        <div  class="text-center py-5 ">
+          <i class="fa-solid fa-cart-shopping fa-3x text-muted mb-3"></i>
+
+          <h5 class="mb-2">Votre panier est vide</h5>
+
+          <p class="text-muted mb-4">
+            Ajoutez des produits à votre panier pour continuer vos achats.
+          </p>
+
+          <p class="text-muted mb-4">
+            سلة التسوق فارغة، أضف منتجات للمتابعة.
+          </p>
+
+          <button
+              class="btn btn-secondary"
+              data-bs-dismiss="offcanvas"
+              @click="$router.push('/shop')"
+          >
+            Continuer vos achats
+          </button>
+
+
+        </div>
+
+
       </div>
     </div>
   </div>

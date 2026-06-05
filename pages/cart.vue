@@ -1,41 +1,36 @@
 <script setup lang="ts">
-import bg from "@/assets/images/background/bg1.jpg";
-import { IMAGES } from "@/constent/theme";
-import CommonBanner from "@/elements/CommonBanner.vue";
-import { reactive } from "vue";
-import Header from "~/components/Header.vue";
-import Header3 from "~/components/Header3.vue";
+  import Header3 from "~/components/Header3.vue"
 
-const { data: cart, pending, error, refresh } = await useFetch('/api/wc/cart', {
-  credentials: 'include',
-})
+  const {
+    cart,
+    removeItem,
+    updateItem,
+    totalPrice
+  } = useLocalCart()
 
-const removeItem = async (key) => {
-  await $fetch('/api/wc/cart/remove-item', {
-    method: 'POST',
-    credentials: 'include',
-    body: { key }
+  const items = computed(() => cart.value)
+
+  const itemsCount = computed(() =>
+      cart.value.reduce((sum, item) => sum + item.quantity, 0)
+  )
+
+  useHead({
+    title: 'Gameshopdz - Panier',
+    meta: [
+      {
+        name: 'description',
+        content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie.'
+      }
+    ]
   })
-  await refresh()
- await useWcCart().refresh()
-}
 
+  const increaseQuantity = (item) => {
+    updateItem(item.id, item.quantity + 1)
+  }
 
-const items = computed(() => cart.value?.items ?? [])
-const itemsCount = computed(() => cart.value?.items_count ?? 0)
-const totalPrice = computed(() => cart.value?.totals?.total_price ?? 0)
-
-
-
-
-
-useHead({
-  title: 'Gameshopdz - Panier',
-  meta: [
-    { name: 'description', content: 'Gameshopdz est le leader des boutiques de jeux vidéo en Algérie, offrant une vaste sélection de jeux, consoles et accessoires pour tous les passionnés de gaming.' },
-  ],
-})
-
+  const decreaseQuantity = (item) => {
+    updateItem(item.id, item.quantity - 1)
+  }
 
 </script>
 
@@ -80,54 +75,69 @@ useHead({
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, ind) in items" :key="ind">
-                    <td class="product-item-img"><img :src="item.images[0].thumbnail" alt="/" /></td>
-                    <td class="fs-6" style="width: 10%">
-                      {{ item.name }}
-                      <span v-if="item.type = 'variation'">
-                        <span v-for="v in item.variation">
-                          | {{v.attribute}} : {{v.value}}
-                        </span>
-                      </span>
-                    </td>
-                    <td class="product-item-price">{{item.prices.price}} DA</td>
-                    <td class="product-item-quantity">
-                      <div class="quantity btn-quantity style-1 me-3">
-                        <div class="input-group bootstrap-touchspin">
-                          <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none"></span
-                          ><input type="text" :value="item.quantity" name="demo_vertical2" class="form-control" style="display: block" /><span
-                            class="input-group-addon bootstrap-touchspin-postfix"
-                            style="display: none"
-                          ></span
-                          ><span class="input-group-btn-vertical"
-                            ><button class="btn btn-default bootstrap-touchspin-up" type="button">
-                              <i class="fa-solid fa-plus"></i></button
-                            ><button @click="quantity('dec',item)" class="btn btn-default bootstrap-touchspin-down" type="button">
-                              <i class="fa-solid fa-minus"></i></button
-                          ></span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="product-item-totle">{{item.totals.line_subtotal}} DA</td>
-                    <td class="product-item-close">
-                      <RouterLink to="" @click="removeItem(item.key)"><i class="ti-close"></i></RouterLink>
-                    </td>
+                <tr v-for="item in items" :key="item.id">
+                  <td class="product-item-img">
+                    <img :src="item.image" alt="/" />
+                  </td>
 
-                  </tr>
+                  <td class="fs-6" style="width: 10%">
+                    {{ item.name }}
+
+                    <span v-if="item.type === 'variation'">
+      <span v-for="v in item.variation" :key="v.attribute">
+        | {{ v.attribute }} : {{ v.value }}
+      </span>
+    </span>
+                  </td>
+
+                  <td class="product-item-price">
+                    {{ item.price }} DA
+                  </td>
+
+
+                  <td class="product-item-quantity">
+                    <div class="quantity btn-quantity style-1 me-3">
+                      <div class="input-group bootstrap-touchspin">
+                          <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none"></span
+                          ><input type="text" :value="item.quantity" readonly name="demo_vertical2" class="form-control" style="display: block" /><span
+                          class="input-group-addon bootstrap-touchspin-postfix"
+                          style="display: none"
+                      ></span
+                      ><span class="input-group-btn-vertical"
+                      ><button class="btn btn-default bootstrap-touchspin-up" type="button" @click="updateItem(item.id, item.quantity + 1)">
+                              <i class="fa-solid fa-plus"></i></button
+                      ><button @click="updateItem(item.id, item.quantity - 1)" class="btn btn-default bootstrap-touchspin-down" type="button">
+                              <i class="fa-solid fa-minus"></i></button
+                      ></span>
+                      </div>
+                    </div>
+                  </td>
+
+
+
+                  <td class="product-item-totle">
+                    {{ Number(item.price) * item.quantity }} DA
+                  </td>
+
+                  <td class="product-item-close">
+                    <RouterLink to="" @click="removeItem(item.id)"><i class="ti-close"></i></RouterLink>
+                  </td>
+
+
+                </tr>
                 </tbody>
               </table>
 
-
-              <div class="spinner-border text-dark mx-auto text-center" role="status" v-if="pending">
-                <span class="sr-only">Loading...</span>
-              </div>
 
 
             </div>
           </div>
           <div class="col-lg-4">
-            <h4 class="title mb15">Total</h4>
+
             <div class="cart-detail">
+
+              <h3 class="title m-b15">Total</h3>
+
               <div class="icon-bx-wraper style-4 m-b15">
                 <div class="icon-bx">
                   <i class="flaticon flaticon-delivery-truck"></i>
@@ -181,17 +191,34 @@ useHead({
                   </tr>
                 </tbody>
               </table>
-              <RouterLink to="/checkout" class="btn btn-secondary w-100" >Valider la commande</RouterLink>
+
+              <RouterLink to="/checkout" class="btn btn-lg btn-secondary btn-block new-gradient">
+                Finaliser Ma Commande
+                <i class="ti-arrow-circle-right ms-2" />
+              </RouterLink>
+
             </div>
           </div>
         </div>
 
-        <div class="card" v-else>
-            <div class="card-body vstack gap-3 align-items-start">
-              <h3 class="mb-0">Vous n’avez pas d’achats en cours</h3>
-              <p>Partez en quête de nouveaux produits pour composer votre panier  !</p>
-              <NuxtLink to="/" class="btn btn-secondary">Débuter mon shopping</NuxtLink>
-            </div>
+        <div class="card shadom-sm" v-else>
+          <div class="card-body text-center py-5">
+            <i class="fa-solid fa-cart-shopping fa-3x text-muted mb-3"></i>
+
+            <h3 class="mb-2">Votre panier est vide</h3>
+
+            <p class="text-muted mb-4">
+              Découvrez nos produits et ajoutez vos articles préférés à votre panier.
+            </p>
+
+            <p class="text-muted mb-4">
+              سلة التسوق فارغة، ابدأ بإضافة المنتجات التي ترغب في شرائها.
+            </p>
+
+            <NuxtLink to="/shop" class="btn btn-secondary">
+              Commencer mes achats
+            </NuxtLink>
+          </div>
         </div>
 
       </div>
