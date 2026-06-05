@@ -21,7 +21,7 @@ const  logos = ref([
   "https://upload.wikimedia.org/wikipedia/en/4/40/Razer_snake_logo.svg",
   "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/HyperX_Logo.svg/1280px-HyperX_Logo.svg.png",
   "https://media.printables.com/media/prints/78f9e114-141b-4b28-b1aa-eda3c5a7e3e6/images/10282283_c8fd3225-5d0e-4c96-ad74-105f80f3def9_77213108-93f3-45ca-9a27-1f9cf1b1a3d2/thumbs/inside/1280x960/png/gamesir-logo-new.webp",
-    "https://www.dobe-game.com/uploads/image/20200608/1591609282.png"
+  "https://www.dobe-game.com/uploads/image/20200608/1591609282.png"
 ])
 
 const comingSoon = ref([
@@ -239,6 +239,7 @@ useFetch("/api/wc/products", {
     slug: product.slug,
     images: product.images,
     is_epay: product.is_epay,
+    variations: product.variations,
     type: product.type,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
@@ -266,6 +267,7 @@ useFetch("/api/wc/products", {
 
         <div class="container-fluid p-0">
           <Swiper
+              v-if="carousel.length"
               class="swiper portfolio-gallery2 hero-swiper"
               :modules="[Navigation,Pagination,Autoplay]"
               :loop="true"
@@ -280,19 +282,27 @@ useFetch("/api/wc/products", {
           }"
           >
             <SwiperSlide
-                class="swiper-slide hero-slide position-relative"
+                class="swiper-slide hero-slide  position-relative "
                 v-for="product in carousel"
                 :key="product.id"
             >
-              <div class="portfolio-box style-2 rounded-0 w-100 h-100">
-                <div class="dz-media h-100">
-                  <picture class="hero-picture h-100">
+
+
+              <div class="portfolio-boxstyle-2 position-relative w-100 rounded-0 ">
+
+                <NuxtLink
+                    :to="'/shop/product/' + product.slug"
+                    class="stretched-link"
+                    :aria-label="product.name"
+                ></NuxtLink>
+
+                <div class="dz-media w-100 h-100">
+                  <picture class="hero-picture w-100 h-100">
                     <!-- Desktop -->
                     <source
                         media="(min-width: 700px)"
                         :srcset="product.images[1]?.src"
                     />
-
 
 
                     <!-- Mobile -->
@@ -303,37 +313,45 @@ useFetch("/api/wc/products", {
                         loading="lazy"
                     />
                   </picture>
+
                 </div>
 
-                <div class="dz-content justify-content-end">
+                <div class="dz-content  w-100 start-0  bottom-0 position-absolute  z-3  justify-content-end">
                   <div class="container">
-<!--                    <h6-->
-<!--                        class="sub-title text-light mb-1 fw-light"-->
-<!--                        style="letter-spacing: 2px"-->
-<!--                    >-->
-<!--                      DECOUVREZ-->
-<!--                    </h6>-->
+                    <!--                    <h6-->
+                    <!--                        class="sub-title text-light mb-1 fw-light"-->
+                    <!--                        style="letter-spacing: 2px"-->
+                    <!--                    >-->
+                    <!--                      DECOUVREZ-->
+                    <!--                    </h6>-->
 
-                    <h1 class="title d-none d-md-block fs-3 mb-3">
-                      <RouterLink :to="'/shop/product/' + product.slug">
+                    <h3 class="text-white d-none d-md-block fs-3  mb-3  ">
+                      <RouterLink :to="'/shop/product/' + product.slug" class="text-white">
                         {{ product.name }}
                       </RouterLink>
-                    </h1>
+                    </h3>
 
-                    <RouterLink
+                    <NuxtLink
                         :to="'/shop/product/' + product.slug"
-                        class="btn btn-lg stretched-link  purchase-btn  btn-outline-light rounded-0 mb-5"
+                        class="btn btn-sm  purchase-btn stretched-link  btn-outline-light  rounded-0 mb-5"
                     >
                       ACHETEZ MAINTENANT
-                    </RouterLink>
+                      <i class="fa fa-angles-right fa-1x ms-2"></i>
+                    </NuxtLink>
                   </div>
                 </div>
+
               </div>
             </SwiperSlide>
             <span class=" swiper-button-prev slick-arrow new-gradient" style=""></span>
             <span class=" swiper-button-next slick-arrow new-gradient" style=""></span>
 
           </Swiper>
+
+          <div class="placeholder-glow my-0 " style="height: 50vh" v-else>
+            <span class="placeholder col-12" style="height: 50vh"></span>
+          </div>
+
         </div>
       </section>
 
@@ -1183,17 +1201,19 @@ useFetch("/api/wc/products", {
 
 }
 
+.
+
 
 .slick-arrow {
   background: #164094;
   width: 45px;
-
+  padding: 30px;
   border: none;
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto;
-  color: #fff0df;
+  color: #fff0df !important;
   z-index: 5;
   outline: none;
   cursor: pointer;
@@ -1203,12 +1223,16 @@ useFetch("/api/wc/products", {
   left: 0;
   border-bottom-right-radius: 90px;
   border-top-right-radius: 90px;
+  color: #fff;
+  padding: 20px;
 }
 
 .swiper-button-next {
   right: 0;
   border-bottom-left-radius: 90px;
   border-top-left-radius: 90px;
+  color: #fff;
+  padding: 20px;
 }
 
 .swiper-button-next:after, .swiper-button-prev:after {
@@ -1332,19 +1356,21 @@ useFetch("/api/wc/products", {
   position: relative;
 }
 
-.hero-slide .dz-content {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: end;
-}
 
-.hero-slide .dz-content::before {
+
+.portfolio-boxstyle-2:after {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) 50%,
+      rgba(0,0,0,.5) 100%
+  );
 }
 
 
@@ -1399,7 +1425,7 @@ useFetch("/api/wc/products", {
 @media screen and (max-width: 500px) {
 
   .purchase-btn {
-    width: 100%;
+    width: fit-content;
   }
 
 }

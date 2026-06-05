@@ -522,7 +522,7 @@ onMounted(() => {
                   {{ errors.terms }}
                 </p>
               </div>
-              <button @click="submitOrder"  class="btn btn-secondary w-100" :disabled="isLoading">{{isLoading ? 'Patienter ...' : 'Commander (طلب)'}}</button>
+              <button @click="submitOrder"  class="btn btn-secondary new-gradient w-100" :disabled="isLoading">{{isLoading ? 'Patienter ...' : 'Commander (طلب)'}}</button>
             </div>
           </div>
 

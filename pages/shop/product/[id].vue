@@ -687,15 +687,15 @@ watchEffect(() => {
 
 
 
-                <div class="epay-checkout card rounded-2" v-if="product.is_epay">
-                  <div class="card-header">
-                    <h3>
+                <div class="epay-checkout card rounded-4 overflow-hidden" v-if="product.is_epay">
+                  <h3 class="card-header border-bottom-0 text-dark">
+
                       الدفع الإلكتروني EPAY
-                    </h3>
 
-                    <i class="fa fa-credit-card fa-3x"></i>
 
-                  </div>
+                    <i class="fa fa-credit-card fa-2x"></i>
+
+                  </h3>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-6">
@@ -752,7 +752,7 @@ watchEffect(() => {
                       <div class="col-md-12 m-b25">
 
                         <button
-                            class="w-100 btn btn-secondary text-uppercase rounded-0 new-gradient mb-3"
+                            class="w-100 btn btn-secondary text-uppercase rounded-pill new-gradient mb-3"
                             @click="submitOrder"
                             :disabled="isLoading"
                         >
@@ -768,12 +768,12 @@ watchEffect(() => {
                         <img src="https://bitakati.dz/assets/front/img/logo.svg" width="60" height="40"/>
 
 
-                        <div class="alert alert-warning">
+                        <div class="alert rounded-4 alert-warning">
                           <h3 class="alert-heading">Important !</h3>
                           <p class="mb-0" >Après confirmation du paiement, notre équipe vous contactera sur WhatsApp pour la livraison et les instructions d’activation de votre produit.</p>
                         </div>
 
-                        <div class="alert alert-warning" dir="rtl">
+                        <div class="alert rounded-4 alert-warning" dir="rtl">
                           <h3 class="alert-heading">هام !</h3>
                           <p class="mb-0"> بعد تأكيد الدفع، سيتواصل معك فريقنا عبر واتساب لتسليم المنتج الرقمي وشرح طريقة التفعيل .</p>
                         </div>
@@ -791,7 +791,7 @@ watchEffect(() => {
                 <div class="btn-group cart-btn" v-else>
 
                   <button
-                      class="btn btn-secondary text-uppercase rounded-0 new-gradient"
+                      class="btn btn-secondary rounded-pill text-uppercase  new-gradient"
                       data-bs-toggle="offcanvas"
                       data-bs-target="#offcanvasRight"
                       aria-controls="offcanvasRight"

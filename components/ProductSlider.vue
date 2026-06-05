@@ -15,10 +15,10 @@ const props = defineProps<{
   <div class="swiper-btn-center-lr">
     <Swiper
       class="swiper swiper-four"
-
+      loop
       :space-between="30"
       :modules="[Autoplay,Navigation,Pagination]"
-      :speed="300"
+      :speed="50"
       :pagination="{ clickable: true }"
       :breakpoints="{
 

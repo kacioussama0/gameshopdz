@@ -7,13 +7,13 @@
 <template>
 
 
-        <div class="shop-card bg-white rounded-0 wow fadeInUp">
+        <div class="shop-card bg-white rounded-4 overflow-hidden wow fadeInUp">
 
               <div class="dz-media position-relative rounded-0 border-0">
 
 
                   <div class="placeholder-glow" >
-                    <span class="placeholder col-12" style="height: 250px"></span>
+                    <span class="placeholder col-12" style="height: 200px"></span>
                   </div>
 
                   <div class="dz-content d-flex flex-column p-3">

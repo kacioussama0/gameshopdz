@@ -42,10 +42,14 @@ const addToCart =  (product: Object) => {
 
         <div class="price-line mt-1">
           <span class="price" v-if="!product.on_sale">{{ product.price }} DA</span>
+
           <span class="price text-danger" v-else>
             <del class="text-muted me-1">{{ product.regular_price }} DA</del>
             {{ product.price }} DA
           </span>
+
+          <span class="price" v-if="product.is_epay && product.variations && product.variations.length > 1"> - {{ product.variations[0].price }} DA </span>
+
         </div>
 
         <div v-if="showStock" class="stock mt-1">

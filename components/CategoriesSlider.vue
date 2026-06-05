@@ -48,7 +48,7 @@ const categories = [
 
           :space-between="30"
           :modules="[Autoplay,Pagination,Navigation]"
-          :speed="300"
+          :speed="50"
           :pagination="{ clickable: true }"
           :breakpoints="{
             0: { slidesPerView: 3, spaceBetween: 15 },

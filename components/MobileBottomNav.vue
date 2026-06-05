@@ -3,23 +3,23 @@
     <div class="container">
       <div class="nav-wrapper">
 
-        <NuxtLink to="/" class="nav-item" aria-label="Accueil">
-          <i class="iconly-Curved-Home"></i>
+        <NuxtLink to="/" class="nav-item" :class="`${route.path === '/' ? 'is-active' : ''}`" aria-label="Accueil">
+          <i :class="`${route.path === '/' ? 'iconly-Bold-Home' : 'iconly-Curved-Home'}`"></i>
           <span>Accueil</span>
         </NuxtLink>
 
-        <NuxtLink to="/cart" class="nav-item position-relative" aria-label="Panier">
+        <NuxtLink to="/cart" class="nav-item position-relative" :class="`${route.path.includes('/cart') ? 'is-active' : ''}`" aria-label="Panier">
           <div class="icon-wrapper">
             <span v-if="itemsCount > 0" class="badge">
               {{ itemsCount }}
             </span>
-            <i class="iconly-Curved-Bag"></i>
+            <i :class="`${route.path.includes('/cart') ? 'iconly-Bold-Bag' : 'iconly-Curved-Bag'}`"></i>
           </div>
           <span>Panier</span>
         </NuxtLink>
 
-        <NuxtLink to="/shop" class="nav-item" aria-label="Shop">
-          <i class="iconly-Curved-Game"></i>
+        <NuxtLink to="/shop" class="nav-item" aria-label="Shop" :class="`${route.path.includes('/shop') ? 'is-active' : ''}`" >
+          <i :class="`${route.path.includes('/shop') ? 'iconly-Bold-Game' : 'iconly-Curved-Game'}`"></i>
           <span>Shop</span>
         </NuxtLink>
 
@@ -34,6 +34,11 @@
 </template>
 
 <script setup>
+
+const route = useRoute();
+
+
+
 defineProps({
   itemsCount: {
     type: Number,
@@ -43,6 +48,13 @@ defineProps({
 </script>
 
 <style scoped>
+
+
+.is-active {
+  font-weight: bold;
+}
+
+
 .mobile-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -50,7 +62,7 @@ defineProps({
   width: 100%;
   background: linear-gradient(45deg, #111, #333);
   z-index: 999;
-  padding: 16px 25px;
+  padding: 16px 0;
 }
 
 .nav-wrapper {
@@ -66,7 +78,7 @@ defineProps({
   align-items: center;
   font-size: 16px;
   color: white;
-  font-weight: 600;
+
   text-decoration: none;
 }
 

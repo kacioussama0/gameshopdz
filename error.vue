@@ -1,6 +1,9 @@
 <template>
   <main class="error-page">
     <div class="error-card">
+
+      <img src="/assets/images/logo.svg" class="mb-4" height="250px"  alt="logo" />
+
       <h1>{{ error?.statusCode || 500 }}</h1>
 
       <h2>
