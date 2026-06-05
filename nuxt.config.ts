@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: { preset: 'node-server' },
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: [
     "~/assets/other/swiper/swiper-bundle.css",
