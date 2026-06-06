@@ -375,7 +375,7 @@ useSeoMeta({
                         @mouseout="removeHover"
                         :src="img.src"
                         style="height: 600px"
-                        class="object-fit-cover image-slider"
+                        class="object-fit-contain object-fit-xl-cover image-slider"
                         alt="image"
                     />
                   </div>
