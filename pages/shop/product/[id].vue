@@ -289,23 +289,42 @@ const submitOrder = async () => {
 }
 
 
-watchEffect(() => {
-  if (!product.value) return
 
-  useSeoMeta({
-    title: `${product.value.name || "Product"} - GameshopDZ`,
-    description: getShortDescription(product.value.description),
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: currentUrl
+    }
+  ]
+})
 
-    ogTitle: product.value.name,
-    ogDescription: getShortDescription(product.value.description),
-    ogImage: product.value.thumbnail,
-    ogUrl: currentUrl.value,
+const seoTitle = computed(() =>
+    `${product.value?.name || 'Product'} - GameshopDZ`
+)
 
-    twitterCard: 'summary_large_image',
-    twitterTitle: product.value.name,
-    twitterDescription: getShortDescription(product.value.description),
-    twitterImage: product.value.thumbnail
-  })
+const seoDescription = computed(() =>
+    getShortDescription(product.value?.description || '')
+)
+
+const seoImage = computed(() =>
+    product.value?.images?.[0]?.src || product.value?.thumbnail || ''
+)
+
+useSeoMeta({
+  title: seoTitle,
+  description: seoDescription,
+
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogImage: seoImage,
+  ogUrl: currentUrl,
+  ogType: 'product',
+
+  twitterCard: 'summary_large_image',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterImage: seoImage
 })
 
 </script>
