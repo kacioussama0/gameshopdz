@@ -7,6 +7,7 @@ const tag = computed(() => route.query.tag as string | undefined)
 const brand = computed(() => route.query.brand as string | undefined)
 const search = computed(() => route.query.search as string | undefined)
 const stock = computed(() => route.query.stock_status as string | undefined)
+const orderby = computed(() => route.query.orderby as string | undefined)
 
 
 
@@ -29,6 +30,10 @@ watch(tag, async () => {
 
 
 watch(brand, async () => {
+  await fetchProducts()
+})
+
+watch(orderby, async () => {
   await fetchProducts()
 })
 
@@ -86,6 +91,7 @@ const fetchProducts = async (productIds = []) => {
     const reqQuery = {
       per_page: perPage.value,
       page: currentPage.value,
+      orderby: orderby.value,
       category: category.value,
       tag: tag.value,
       stock_status: stock.value,

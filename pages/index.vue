@@ -333,7 +333,7 @@ useFetch("/api/wc/products", {
 
                     <NuxtLink
                         :to="'/shop/product/' + product.slug"
-                        class="btn btn-sm  purchase-btn stretched-link  btn-outline-light  rounded-0 mb-5"
+                        class="btn btn-sm d-none  d-md-inline-block btn-outline-light  rounded-0 mb-5"
                     >
                       ACHETEZ MAINTENANT
                       <i class="fa fa-angles-right fa-1x ms-2"></i>
@@ -372,21 +372,30 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="topSales.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
             <div
-                class="section-head style-1 m-b30 wow fadeInUp"
+                class="section-head d-flex w-100 align-items-center justify-content-between flex-wrap style-1 m-b30 wow fadeInUp"
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
                 <h2 class="title">
-                  <NuxtLink to="/shop?orderby=popularity" class="stretched-link" />
+                  <NuxtLink to="/shop?orderby=popularity" />
                   <i class="iconly-Curved-Graph ms-1"></i>
 
                   Top Ventes
                 </h2>
               </div>
+
+              <div class="right-content">
+
+                <NuxtLink to="/shop?orderby=popularity" class="stretched-link">
+                  Voir tout
+                  <i class="fa fa-chevron-right ms-1"></i>
+                </NuxtLink>
+
+              </div>
+
             </div>
-          </div>
+
 
         </div>
 
@@ -401,20 +410,31 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 pt-5 overflow-hidden" v-if="discountProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
+
             <div
-                class="section-head style-1 m-b30 wow fadeInUp"
+                class="section-head style-1 d-flex w-100 align-items-center justify-content-between flex-wrap  m-b30 wow fadeInUp"
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
                 <h2 class="title text-danger">
-                  <NuxtLink to="/shop?onsale=1" class="stretched-link" />
+                  <NuxtLink to="/shop?on_sale=1" class="stretched-link" />
                   <i class="iconly-Curved-Discount me-2"></i>
                   Promotions
                 </h2>
               </div>
+
+
+              <div class="right-content">
+
+                <NuxtLink to="/shop?on_sale=1" class="stretched-link">
+                  Voir tout
+                  <i class="fa fa-chevron-right ms-1"></i>
+                </NuxtLink>
+
+              </div>
+
             </div>
-          </div>
+
 
         </div>
 
@@ -500,9 +520,9 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="hitsProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
+
             <div
-                class="section-head style-1 m-b30 wow fadeInUp"
+                class="section-head style-1 m-b30 wow fadeInUp  d-flex w-100 align-items-center justify-content-between flex-wrap"
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
@@ -513,7 +533,17 @@ useFetch("/api/wc/products", {
 
                 </h2>
               </div>
-            </div>
+
+
+              <div class="right-content">
+
+                <NuxtLink to="/shop?category=3040" class="stretched-link" >
+                  Voir tout
+                  <i class="fa fa-chevron-right ms-1"></i>
+                </NuxtLink>
+
+              </div>
+
           </div>
 
         </div>
@@ -529,9 +559,9 @@ useFetch("/api/wc/products", {
     <section class="content-inner-1 pt-5 overflow-hidden" v-if="digitalProducts.length">
       <div class="container-fluid">
         <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
+
             <div
-                class="section-head style-1 m-b30 wow fadeInUp"
+                class="section-head style-1 m-b30 wow fadeInUp  d-flex w-100 align-items-center justify-content-between flex-wrap"
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
@@ -541,10 +571,20 @@ useFetch("/api/wc/products", {
                   Produits Digitaux
                 </h2>
               </div>
+
+
+              <div class="right-content">
+
+                <NuxtLink to="/shop?category=3076" class="stretched-link" >
+                  Voir tout
+                  <i class="fa fa-chevron-right ms-1"></i>
+                </NuxtLink>
+
+              </div>
+
             </div>
           </div>
 
-        </div>
 
         <ProductSlider :products="digitalProducts"/>
       </div>
@@ -557,10 +597,10 @@ useFetch("/api/wc/products", {
     <!-- Selection Sart-->
     <section class="content-inner-1 bg-white pt-5 overflow-hidden" v-if="ourSelection.length">
       <div class="container-fluid">
-        <div class="row justify-content-md-between align-items-center">
-          <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="row justify-content-md-between align-items-center ">
+
             <div
-                class="section-head style-1 m-b30 wow fadeInUp"
+                class="section-head style-1 m-b30 wow fadeInUp  d-flex w-100 align-items-center justify-content-between flex-wrap"
                 data-wow-delay="0.2s"
             >
               <div class="left-content">
@@ -570,10 +610,21 @@ useFetch("/api/wc/products", {
                   Notre Sélection
                 </h2>
               </div>
+
+              <div class="right-content">
+
+                <NuxtLink to="/shop?category=3076" class="stretched-link" >
+                  Voir tout
+                  <i class="fa fa-chevron-right ms-1"></i>
+                </NuxtLink>
+
+              </div>
+
+
             </div>
           </div>
 
-        </div>
+
 
         <ProductSlider :products="ourSelection"/>
       </div>
