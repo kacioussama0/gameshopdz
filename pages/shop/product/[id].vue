@@ -356,7 +356,7 @@ watchEffect(() => {
                         @mouseout="removeHover"
                         :src="img.src"
                         style="height: 600px"
-                        class="object-fit-contain image-slider"
+                        class="object-fit-cover image-slider"
                         alt="image"
                     />
                   </div>

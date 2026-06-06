@@ -1,5 +1,5 @@
 <template>
-  <section class="mobile-bottom-nav new-gradient d-lg-none">
+  <section class="mobile-bottom-nav container rounded-pill d-lg-none">
     <div class="container">
       <div class="nav-wrapper">
 
@@ -52,17 +52,38 @@ defineProps({
 
 .is-active {
   font-weight: bold;
+  color: rgb(100 22 220 / 0.9);
 }
 
 
 .mobile-bottom-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(45deg, #111, #333);
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(100% - 32px);
+  max-width: 500px;
+
+  background: linear-gradient(
+      135deg,
+      rgb(100 22 220 / 0.80),
+      rgb(16 50 116 / 0.6)
+  );
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  border-radius: 24px;
+
   z-index: 999;
-  padding: 16px 0;
+  padding: 12px;
 }
 
 .nav-wrapper {
@@ -76,14 +97,13 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 16px;
-  color: white;
-
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
 }
 
 .nav-item i {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .icon-wrapper {
