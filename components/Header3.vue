@@ -17,6 +17,8 @@ const { itemsCount} = useLocalCart()
 const isMenu = ref(false);
 
 
+
+
 const isOpen = ref(false)
 const activeIndex = ref(-1)
 const recentSearches = ref<string[]>([])
@@ -146,16 +148,27 @@ function highlight(text: string, query: string) {
   return text.replace(regex, '<mark>$1</mark>')
 }
 
+const searchInput = ref(null)
+
+const focusSearch = async () => {
+  await nextTick()
+
+  const offcanvas = document.getElementById('offcanvasTop')
+
+  if (offcanvas.classList.contains('show')) {
+    searchInput.value?.focus()
+  } else {
+    offcanvas.addEventListener('shown.bs.offcanvas', () => {
+      searchInput.value?.focus()
+    }, { once: true })
+  }
+}
+
 /* ================= LIFECYCLE ================= */
 onMounted(() => {
 
-  const search = document.querySelector('.search')
-  const searchInput = document.querySelector('.input-search')
 
-  search?.addEventListener('click', (e) => {
-    e.preventDefault()
-    searchInput?.focus()
-  })
+
 
   const saved = localStorage.getItem('recentSearches')
   if (saved) recentSearches.value = JSON.parse(saved)
@@ -251,6 +264,7 @@ function scrollHandler() {
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasTop"
               aria-controls="offcanvasTop"
+              @click="focusSearch"
 
           >
                   <i class="iconly-Light-Search text-white"></i>
@@ -364,16 +378,15 @@ function scrollHandler() {
         <div class="input-group search-input">
           <input
               type="search"
+              autofocus
+              name="searchProducts"
               class="form-control input-search"
               placeholder="Search PS5, FIFA, GTA..."
               v-model="suggSearch"
-              @focus="isOpen = true"
+              ref="searchInput"
               @keydown="onKeyDown"
           />
 
-          <button class="btn" type="submit">
-            🔍
-          </button>
         </div>
       </form>
 
