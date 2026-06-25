@@ -135,6 +135,8 @@ let relatedProducts = ref([])
 
 const id = useRoute().params.id;
 
+const isPrepay = ref(false)
+const prepayPrice = ref(0)
 
 useFetch("/api/wc/products/", {
 
@@ -147,6 +149,15 @@ useFetch("/api/wc/products/", {
 
 
   product.value = response.data.value.products[0];
+
+  isPrepay.value = product.value.tags.filter(tag => tag.name.includes('prepay')).length > 0
+
+  if(isPrepay.value){
+
+
+
+    prepayPrice.value =  product.value.tags.filter(tag => tag.name.includes('prepay'))[0].name.split('-')[1]
+  }
 
   product.value.variations = product.value.variations.reverse();
 
@@ -466,6 +477,7 @@ useSeoMeta({
               <div class="dz-content">
                 <div class="dz-content-footer">
                   <div class="dz-content-start">
+
                     <span class="badge text-bg-primary mb-2"  v-if="product.on_sale">Promo - تخـفيــض</span>
                     <h4 class="title mb-1" v-if="product.name">
                       {{product.name}}
@@ -561,6 +573,33 @@ useSeoMeta({
 
 
                 <div class="mb-3">
+
+
+
+                  <div
+                      class="alert rounded-4 alert-warning"
+                      v-if="isPrepay"
+                  >
+                    <h3 class="alert-heading">Important!</h3>
+                    <p class="mb-0">
+                      Paiement anticipé requis. Vous devez verser un acompte de
+                      <strong>{{prepayPrice}} DA</strong> pour réserver ce produit.
+                    </p>
+                  </div>
+
+                  <div
+                      class="alert rounded-4 alert-warning"
+                      v-if="isPrepay"
+                      dir="rtl"
+                  >
+                    <h3 class="alert-heading">هام!</h3>
+                    <p class="mb-0">
+                      الدفع المسبق مطلوب. يجب دفع مبلغ
+                      <strong>{{prepayPrice}} دج</strong>
+                      مقدماً لحجز هذا المنتج.
+                    </p>
+                  </div>
+
                    <span class=" text-bg-success badge fw-bold rounded-pill" v-if="product.stock_status == 'instock'">
                       Available - Disponible - متوفر
                   </span>

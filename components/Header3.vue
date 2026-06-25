@@ -45,7 +45,7 @@ watch(suggSearch, (value) => {
       const index = $algolia.initIndex('products')
 
       const res = await index.search(term, {
-        hitsPerPage: 100,
+        hitsPerPage: 1000,
         clickAnalytics: true,
       })
 
@@ -113,7 +113,7 @@ function searchProducts() {
 
   localStorage.setItem('recentSearches', JSON.stringify(recentSearches.value))
 
-  navigateTo('/shop?search=' + suggSearch.value)
+  document.location = '/shop?search=' + suggSearch.value
 }
 
 /* ================= KEYBOARD ================= */
@@ -148,6 +148,15 @@ function highlight(text: string, query: string) {
 
 /* ================= LIFECYCLE ================= */
 onMounted(() => {
+
+  const search = document.querySelector('.search')
+  const searchInput = document.querySelector('.input-search')
+
+  search?.addEventListener('click', (e) => {
+    e.preventDefault()
+    searchInput?.focus()
+  })
+
   const saved = localStorage.getItem('recentSearches')
   if (saved) recentSearches.value = JSON.parse(saved)
 
@@ -167,10 +176,15 @@ watch(route, () => {
   btn?.click()
 })
 
+const goToShop = (s) => {
+  window.location.href = `/shop?search=${encodeURIComponent(s)}`
+}
+
 onUpdated(()=> {
   document.body.style.overflow = ""
   document.documentElement.style.overflow = ""
 })
+
 
 /* ================= UI ================= */
 const isFixed = ref(false)
@@ -188,6 +202,7 @@ onMounted(() => {
     });
   });
 });
+
 
 
 function scrollHandler() {
@@ -231,11 +246,12 @@ function scrollHandler() {
 
           <span class="d-md-none d-block">
           <a
-              class="nav-link"
+              class="nav-link search"
               href="#"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasTop"
               aria-controls="offcanvasTop"
+
           >
                   <i class="iconly-Light-Search text-white"></i>
 
@@ -348,7 +364,7 @@ function scrollHandler() {
         <div class="input-group search-input">
           <input
               type="search"
-              class="form-control"
+              class="form-control input-search"
               placeholder="Search PS5, FIFA, GTA..."
               v-model="suggSearch"
               @focus="isOpen = true"
@@ -370,7 +386,7 @@ function scrollHandler() {
       <div v-if="!suggProducts.length && recentSearches.length">
         <p>Recent:</p>
         <ul>
-          <li v-for="s in recentSearches" :key="s" @click="suggSearch = s">
+          <li style="cursor: pointer" v-for="s in recentSearches" :key="s" @click="goToShop(s)">
             {{ s }}
           </li>
         </ul>

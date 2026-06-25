@@ -8,6 +8,7 @@ const brand = computed(() => route.query.brand as string | undefined)
 const search = computed(() => route.query.search as string | undefined)
 const stock = computed(() => route.query.stock_status as string | undefined)
 const orderby = computed(() => route.query.orderby as string | undefined)
+const include = computed(() => route.query.include as string | undefined)
 
 
 
@@ -41,6 +42,11 @@ watch(orderby, async () => {
 
 const currentPage = ref(1)
 const perPage = ref(12)
+
+if(search.value != "") {
+  perPage.value = 50
+}
+
 const total = ref(0)
 const totalPages = ref(0)
 const delta = 2
@@ -96,7 +102,8 @@ const fetchProducts = async (productIds = []) => {
       tag: tag.value,
       stock_status: stock.value,
       brand: brand.value,
-      on_sale: route.query.on_sale
+      on_sale: route.query.on_sale,
+      include: include.value,
     }
 
     if(productIds.length) {
@@ -157,7 +164,7 @@ onMounted(async ()=> {
     const index = $algolia.initIndex('products')
 
     const res = await index.search(search.value, {
-      hitsPerPage: 12,
+      hitsPerPage: 50,
       clickAnalytics: true,
     })
 

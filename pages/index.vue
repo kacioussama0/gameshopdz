@@ -218,13 +218,18 @@ useFetch("/api/wc/products", {
     name: product.name,
     slug: product.slug,
     images: product.images,
+    type: product.type,
+    grouped_products: product.grouped_products,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
     on_sale: product.on_sale,
     regular_price: product.regular_price,
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
+
   }));
+  console.log(carousel.value);
+
 }).catch((error) => {
   console.error("Error fetching latest products:", error);
 });
@@ -291,10 +296,19 @@ useFetch("/api/wc/products", {
               <div class="portfolio-boxstyle-2 position-relative w-100 rounded-0 ">
 
                 <NuxtLink
-                    :to="'/shop/product/' + product.slug"
+                    :to="'/shop?include=' + product.grouped_products.join(',')"
+                    v-if="product.type == 'grouped'"
                     class="stretched-link"
                     :aria-label="product.name"
                 ></NuxtLink>
+
+
+                <NuxtLink
+                    :to="'/shop/product/' + product.slug"
+                    class="stretched-link"
+                    v-else
+                >
+                </NuxtLink>
 
                 <div class="dz-media w-100 h-100">
                   <picture class="hero-picture w-100 h-100">
@@ -332,19 +346,30 @@ useFetch("/api/wc/products", {
                     </h3>
 
                     <NuxtLink
-                        :to="'/shop/product/' + product.slug"
+                        :to="'/shop?include=' + product.grouped_products.join(',')"
                         class="btn btn-sm d-none  d-md-inline-block btn-outline-light  rounded-0 mb-5"
+                        v-if="product.type == 'grouped'"
                     >
                       ACHETEZ MAINTENANT
                       <i class="fa fa-angles-right fa-1x ms-2"></i>
+                    </NuxtLink>
+
+                    <NuxtLink
+                        :to="'/shop/product/' + product.slug"
+                        class="btn btn-sm d-none  d-md-inline-block btn-outline-light  rounded-0 mb-5"
+                        v-else
+                    >
+                      ACHETEZ MAINTENANT
+                      <i class="fa fa-angles-right fa-1x ms-2"></i>
+
                     </NuxtLink>
                   </div>
                 </div>
 
               </div>
             </SwiperSlide>
-            <span class=" swiper-button-prev slick-arrow new-gradient" style=""></span>
-            <span class=" swiper-button-next slick-arrow new-gradient" style=""></span>
+            <span class=" swiper-button-prev slick-arrow new-gradient" style="opacity: .6"></span>
+            <span class=" swiper-button-next slick-arrow new-gradient" style="opacity: .6"></span>
 
           </Swiper>
 

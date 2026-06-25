@@ -53,7 +53,7 @@ export default cachedEventHandler(async (event) => {
                     attributes: product.attributes,
                     related_ids: product.related_ids,
                     stock_status: product.stock_status,
-
+                    grouped_products: product.type == "grouped" ? product.grouped_products : undefined,
                     variations: variations.map((v: any) => ({
                         id: v.id,
                         price: v.price,
@@ -76,7 +76,8 @@ export default cachedEventHandler(async (event) => {
             totalPages: Number(res.headers.get("x-wp-totalpages")),
         }
     }, {
-        maxAge: 60 * 10,
+        maxAge: 0,
+        // maxAge: 60 * 10,
         name: "wc-products",
 
         getKey: (event) => {
