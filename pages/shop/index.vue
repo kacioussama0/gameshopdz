@@ -88,8 +88,6 @@ const paginationItems = computed(() => {
 
 const fetchProducts = async (productIds = []) => {
 
-
-
   try {
 
     loading.value = true

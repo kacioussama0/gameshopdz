@@ -150,25 +150,27 @@ function highlight(text: string, query: string) {
 
 const searchInput = ref(null)
 
-const focusSearch = async () => {
-  await nextTick()
 
+const focusInput = () => {
+  searchInput.value?.focus()
+}
+
+
+
+onBeforeUnmount(() => {
   const offcanvas = document.getElementById('offcanvasTop')
+  offcanvas?.removeEventListener('shown.bs.offcanvas', focusInput)
+})
 
-  if (offcanvas.classList.contains('show')) {
-    searchInput.value?.focus()
-  } else {
-    offcanvas.addEventListener('shown.bs.offcanvas', () => {
-      searchInput.value?.focus()
-    }, { once: true })
-  }
+const focusSearch = () => {
+  searchInput.value?.focus()
 }
 
 /* ================= LIFECYCLE ================= */
 onMounted(() => {
 
-
-
+  const offcanvas = document.getElementById('offcanvasTop')
+  offcanvas?.addEventListener('shown.bs.offcanvas', focusInput)
 
   const saved = localStorage.getItem('recentSearches')
   if (saved) recentSearches.value = JSON.parse(saved)

@@ -27,7 +27,6 @@ export default defineEventHandler(async (event) => {
         set_paid: false,
         status: "pending",
         billing: body.billing,
-
         line_items: body.items.map((i: any) => ({
             product_id: Number(i.product_id),
             quantity: Number(i.quantity ?? i.qty ?? 1),
@@ -82,7 +81,7 @@ export default defineEventHandler(async (event) => {
                     quantity: Number(i.quantity),
                     price: Number(i.price),
                 })),
-                url: ' https://gameshopdz.com/payment/result',
+                url: 'https://gameshopdz.com/payment/result',
                 webhook_url: 'https://webhook.gameshopdz.com',
                 webhook_signature: `gameshopdz_${order.id}`,
                 webhook_meta_data: [
