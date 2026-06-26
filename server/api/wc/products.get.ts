@@ -76,8 +76,8 @@ export default cachedEventHandler(async (event) => {
             totalPages: Number(res.headers.get("x-wp-totalpages")),
         }
     }, {
-        maxAge: 0,
-        // maxAge: 60 * 10,
+
+        maxAge: 60 * 10,
         name: "wc-products",
 
         getKey: (event) => {
