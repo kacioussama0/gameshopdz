@@ -40,8 +40,7 @@ const categories = [
 
 <template>
   <section class="content-inner-1 pb-2 pt-5 bg-white overflow-hidden shortcuts">
-    <div class="container">
-
+    <div class="container-fluid">
 
       <Swiper
           class="swiper swiper-four text-center"
@@ -78,8 +77,8 @@ const categories = [
           </RouterLink>
         </SwiperSlide>
 
-        <span class=" swiper-button-prev slick-arrow new-gradient" style=""></span>
-        <span class=" swiper-button-next slick-arrow new-gradient" style=""></span>
+        <span class=" swiper-button-prev slick-arrow" style=""></span>
+        <span class=" swiper-button-next slick-arrow " style=""></span>
 
       </Swiper>
 
@@ -94,15 +93,17 @@ const categories = [
 
 
 .slick-arrow {
-  background: #164094;
-  width: 45px;
 
+  width: 45px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: none;
   position: absolute;
-  top: 0;
+  top: -50px;
   bottom: 0;
   margin: auto;
-  color: #fff0df;
+  background-color: rgb(68 62 199 / 0.5);
+  color: #FFFFFF;
   z-index: 5;
   outline: none;
   cursor: pointer;
@@ -125,7 +126,7 @@ const categories = [
 
 .swiper-four {
   position: relative;
-  padding-bottom: 50px; /* creates space for dots */
+  padding-bottom: 80px; /* creates space for dots */
 }
 
 

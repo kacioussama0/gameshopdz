@@ -154,8 +154,6 @@ useFetch("/api/wc/products/", {
 
   if(isPrepay.value){
 
-
-
     prepayPrice.value =  product.value.tags.filter(tag => tag.name.includes('prepay'))[0].name.split('-')[1]
   }
 
@@ -626,7 +624,7 @@ useSeoMeta({
                 <div class="meta-content m-b20 d-flex align-items-end">
 
 
-                  <div v-if="selectedVariation && product.is_epay" class="mt-4">
+                  <div v-if="selectedVariation && product.is_epay && !isPrepay" class="mt-4">
                     <span class="form-label">Prix</span>
                     <span class="price fs-1">
                       {{ selectedVariation.price }} DZD
@@ -637,7 +635,8 @@ useSeoMeta({
 
                   <div class="me-3" v-else>
                     <span class="form-label">Prix</span>
-                    <span class="price fs-1" v-if="product.on_sale === false">{{product.price}} DA</span>
+                    <span class="price fs-1" v-if="isPrepay" >{{product.price}} DA - <b class="text-danger">{{prepayPrice}} DA</b> = {{product.price - prepayPrice}} DA</span>
+                    <span class="price fs-1" v-else-if="product.on_sale === false">{{product.price}} DA</span>
                     <span class="price text-danger" v-else-if="product.on_sale === true"><del class="text-secondary">{{product.regular_price}} DA</del> {{product.price}} DA</span>
                     <span class="placeholder-glow mb-3" v-else>
                       <span class="placeholder col-12"></span>
@@ -649,7 +648,7 @@ useSeoMeta({
                 </div>
 
 
-                <div class="product-num"  v-if="!product.is_epay">
+                <div class="product-num"  v-if="!product.is_epay" >
                   <div class="btn-quantity light d-block">
                     <label class="form-label">Quantity</label>
                     <div class="input-group w-100 bootstrap-touchspin">
@@ -689,7 +688,7 @@ useSeoMeta({
 
                 </div>
 
-                <div class="row g-3 my-3" v-if="product.type == 'variable' && product.is_epay">
+                <div class="row g-3 my-3" v-if="product.type == 'variable' && product.is_epay && !isPrepay">
 
                     <div class="col-4"  v-for="variation in product.variations"
                          :key="variation.id">
@@ -826,12 +825,12 @@ useSeoMeta({
                         <img src="https://bitakati.dz/assets/front/img/logo.svg" width="60" height="40"/>
 
 
-                        <div class="alert rounded-4 alert-warning">
+                        <div class="alert rounded-4 alert-warning"       v-if="!isPrepay">
                           <h3 class="alert-heading">Important !</h3>
                           <p class="mb-0" >Après confirmation du paiement, notre équipe vous contactera sur WhatsApp pour la livraison et les instructions d’activation de votre produit.</p>
                         </div>
 
-                        <div class="alert rounded-4 alert-warning" dir="rtl">
+                        <div class="alert rounded-4 alert-warning" dir="rtl"       v-if="!isPrepay">
                           <h3 class="alert-heading">هام !</h3>
                           <p class="mb-0"> بعد تأكيد الدفع، سيتواصل معك فريقنا عبر واتساب لتسليم المنتج الرقمي وشرح طريقة التفعيل .</p>
                         </div>

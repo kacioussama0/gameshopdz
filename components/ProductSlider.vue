@@ -44,8 +44,8 @@ const props = defineProps<{
       </SwiperSlide>
 
 
-      <span class=" swiper-button-prev slick-arrow new-gradient"></span>
-      <span class=" swiper-button-next slick-arrow new-gradient"></span>
+      <span class=" swiper-button-prev slick-arrow"></span>
+      <span class=" swiper-button-next slick-arrow "></span>
 
 
 
@@ -71,15 +71,21 @@ const props = defineProps<{
 
 
 .slick-arrow {
-  background: #164094;
+
   width: 45px;
 
+
+
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: rgb(100 22 220 / 0.80);
   border: none;
   position: absolute;
-  top: 0;
+  top: -60px;
   bottom: 0;
   margin: auto;
-  color: #fff0df;
+
   z-index: 5;
   outline: none;
   cursor: pointer;
@@ -98,8 +104,11 @@ const props = defineProps<{
 }
 
 .swiper-button-next:after, .swiper-button-prev:after {
-  font-size: 22px;
+  font-size: 25px;
+
 }
+
+
 
 .swiper-four {
   position: relative;

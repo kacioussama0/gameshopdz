@@ -130,6 +130,8 @@ const fetchProducts = async (productIds = []) => {
       occasion: product.categories?.some((c: any) => c.slug === "occasion"),
     }))
 
+    allProducts.value = allProducts.value.filter((product: any) => product.type !== "grouped")
+
   } catch (error) {
     console.error("Error fetching products:", error)
   } finally {
@@ -219,11 +221,13 @@ onMounted(async ()=> {
               <div class="col-6 col-md-4 col-lg-3 col-xl-3   mb-4"
                    v-if="!loading"
                    v-for="product in allProducts"
-                   :key="product.id">
+                   :key="product.id"
+              >
 
                 <ProductCard
                     :product="product"
                     :show-stock="true"
+
                 />
               </div>
 

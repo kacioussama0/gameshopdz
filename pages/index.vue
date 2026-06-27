@@ -368,8 +368,8 @@ useFetch("/api/wc/products", {
 
               </div>
             </SwiperSlide>
-            <span class=" swiper-button-prev slick-arrow new-gradient" style="opacity: .6"></span>
-            <span class=" swiper-button-next slick-arrow new-gradient" style="opacity: .6"></span>
+            <span class=" swiper-button-prev slick-arrow" ></span>
+            <span class=" swiper-button-next slick-arrow" ></span>
 
           </Swiper>
 
@@ -638,7 +638,7 @@ useFetch("/api/wc/products", {
 
               <div class="right-content">
 
-                <NuxtLink to="/shop?category=3076" class="stretched-link" >
+                <NuxtLink to="/shop?category=3041" class="stretched-link" >
                   Voir tout
                   <i class="fa fa-chevron-right ms-1"></i>
                 </NuxtLink>
@@ -1281,7 +1281,9 @@ useFetch("/api/wc/products", {
 
 
 .slick-arrow {
-  background: #164094;
+
+
+
   width: 45px;
   padding: 30px;
   border: none;
@@ -1289,7 +1291,7 @@ useFetch("/api/wc/products", {
   top: 0;
   bottom: 0;
   margin: auto;
-  color: #fff0df !important;
+
   z-index: 5;
   outline: none;
   cursor: pointer;
@@ -1299,15 +1301,19 @@ useFetch("/api/wc/products", {
   left: 0;
   border-bottom-right-radius: 90px;
   border-top-right-radius: 90px;
-  color: #fff;
+  color: #787575;
   padding: 20px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .swiper-button-next {
   right: 0;
   border-bottom-left-radius: 90px;
   border-top-left-radius: 90px;
-  color: #fff;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #787575;
   padding: 20px;
 }
 
