@@ -2518,7 +2518,7 @@ textarea.form-control-lg {
 }
 
 .gradient {
-    background: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0) !important;
+    background: linear-gradient(135deg, #0f2f6d, , #6a3df0) !important;
 }
 
 .form-select,

@@ -17,6 +17,20 @@ const addToCart =  (product: Object) => {
     console.log(error)
   }
 }
+
+
+const priceVariant = (variants: Object) => {
+
+  const prices = variants.map((variant) => {
+    return Number(variant.price)
+  })
+
+
+
+  return `${Math.min(...prices)} DA - ${Math.max(...prices)} DA`
+}
+
+
 </script>
 
 <template>
@@ -34,21 +48,25 @@ const addToCart =  (product: Object) => {
       />
 
       <div class="dz-content d-flex flex-column p-3">
-        <h5 class="title mb-1 fw-bolder clamp-text-2">
+        <h5 class="title mb-1 fw-bolder clamp-text-2 w-100">
           <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link text-primary">
             {{ product.name }}
           </NuxtLink>
         </h5>
 
         <div class="price-line mt-1">
-          <span class="price" v-if="!product.on_sale">{{ product.price }} DA</span>
 
-          <span class="price text-danger" v-else>
+          <span class="price" v-if="(!product.on_sale && product.type != 'variable') || (product.variations &&  product.variations.length < 1 )">{{ product.price }} DA</span>
+
+          <span class="price" v-if="product.is_epay && product.variations && product.variations.length > 1">{{priceVariant(product.variations)}}</span>
+
+          <span class="price text-danger" v-if="product.on_sale">
             <del class="text-muted me-1">{{ product.regular_price }} DA</del>
             {{ product.price }} DA
           </span>
 
-          <span class="price" v-if="product.is_epay && product.variations && product.variations.length > 1"> - {{ product.variations[0].price }} DA </span>
+
+
 
         </div>
 
@@ -110,10 +128,10 @@ const addToCart =  (product: Object) => {
       </div>
 
       <!-- Badges داخل dz-media باش position absolute تخدم صح -->
-      <span class="badge badge-left"
+      <span class="badge badge-left rounded-pill"
             v-if="product.occasion || product.name.includes('OCCASION')">Occasion | مستعمل</span>
-      <span class="badge badge-left badge-info" v-else>Neuf | جديد</span>
-      <span class="badge badge-right"
+      <span class="badge badge-left badge-info rounded-pill" v-else>Neuf | جديد</span>
+      <span class="badge badge-right rounded-pill"
             v-if="product.on_sale">{{ Math.floor(((product.regular_price - product.price) / product.regular_price) * 100) }}%</span>
     </div>
   </div>
@@ -142,11 +160,10 @@ const addToCart =  (product: Object) => {
 
 /* title clamp */
 .clamp-text-2 {
-  overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  line-clamp: 2;
+  -webkit-line-clamp: 2; /* Change this number to your desired line count */
+  overflow: hidden;
 }
 
 /* title */

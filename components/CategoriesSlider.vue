@@ -45,7 +45,7 @@ const categories = [
       <Swiper
           class="swiper swiper-four text-center"
 
-          :space-between="30"
+          :space-between="0"
           :modules="[Autoplay,Pagination,Navigation]"
           :speed="50"
           :pagination="{ clickable: true }"
@@ -66,11 +66,11 @@ const categories = [
         <SwiperSlide
             v-for="(cat, index) in categories"
             :key="index"
-            class="swiper-slide px-lg-5"
+            class="swiper-slide"
         >
           <RouterLink :to="cat.link" class="text-center">
 
-            <img v-if="cat.image" :src="cat.image" width="100" height="100" class="rounded-circle mb-3" />
+            <img v-if="cat.image" :src="cat.image" width="150" height="150" class="rounded-circle mb-3" />
 
             <h6 class="text-center">{{ cat.name }}</h6>
 
@@ -99,7 +99,7 @@ const categories = [
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: none;
   position: absolute;
-  top: -50px;
+  top: -100px;
   bottom: 0;
   margin: auto;
   background-color: rgb(68 62 199 / 0.5);

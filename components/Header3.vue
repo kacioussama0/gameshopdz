@@ -236,7 +236,7 @@ function scrollHandler() {
       isFixed ? 'is-fixed' : ''
     }`"
   >
-    <div class="main-bar  bg-primary gradient clearfix">
+    <div class="main-bar  bg-primary  new-gradient clearfix">
       <div class="container  d-flex align-items-center justify-content-between">
         <!-- Website Logo -->
         <div class="logo-header">

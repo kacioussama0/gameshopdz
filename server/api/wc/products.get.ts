@@ -77,7 +77,7 @@ export default cachedEventHandler(async (event) => {
         }
     }, {
 
-        maxAge: 60 * 10,
+        maxAge: 60 * 5,
         name: "wc-products",
 
         getKey: (event) => {

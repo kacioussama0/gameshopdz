@@ -236,7 +236,7 @@ useFetch("/api/wc/products", {
 
 
 useFetch("/api/wc/products", {
-  query: { per_page: 4, page: 1  ,status:'publish',category: '3076',stock_status:'instock'}
+  query: { per_page: 10, page: 1  ,status:'publish',category: '3076',stock_status:'instock'}
 }).then(( response) => {
   digitalProducts.value = response.data.value.products.map((product: any) => ({
     id: product.id,

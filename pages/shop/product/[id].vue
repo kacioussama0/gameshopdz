@@ -744,7 +744,7 @@ useSeoMeta({
 
 
 
-                <div class="epay-checkout card rounded-4 overflow-hidden" v-if="product.is_epay">
+                <div class="epay-checkout card rounded-4 overflow-hidden" v-if="product.is_epay && product.stock_status == 'instock'">
                   <h3 class="card-header border-bottom-0 text-dark">
 
                       الدفع الإلكتروني EPAY
