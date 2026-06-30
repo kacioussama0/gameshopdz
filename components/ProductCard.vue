@@ -48,7 +48,7 @@ const priceVariant = (variants: Object) => {
       />
 
       <div class="dz-content d-flex flex-column p-3">
-        <h5 class="title mb-1 fw-bolder clamp-text-2 w-100">
+        <h5 class="title mb-1 fw-bolder clamp-text-2 w-100 lh-base">
           <NuxtLink :to="`/shop/product/${product.slug}`" class="stretched-link text-primary">
             {{ product.name }}
           </NuxtLink>
