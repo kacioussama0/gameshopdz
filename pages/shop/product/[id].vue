@@ -184,6 +184,7 @@ useFetch("/api/wc/products/", {
             id: product.id,
             name: product.name,
             slug: product.slug,
+            categories: product.categories,
             thumbnail: product.images[0]?.thumbnail || '',
             price: product.price,
             on_sale: product.on_sale,

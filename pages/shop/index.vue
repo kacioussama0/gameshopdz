@@ -123,6 +123,7 @@ const fetchProducts = async (productIds = []) => {
       thumbnail: product.images?.[0]?.thumbnail || product.images?.[0]?.src || "",
       price: product.price,
       on_sale: product.on_sale,
+      categories: product.categories,
       is_epay: product.is_epay,
       variations: product.variations,
       regular_price: product.regular_price,
@@ -130,7 +131,7 @@ const fetchProducts = async (productIds = []) => {
       occasion: product.categories?.some((c: any) => c.slug === "occasion"),
     }))
 
-    allProducts.value = allProducts.value.filter((product: any) => product.type !== "grouped")
+    allProducts.value = allProducts.value.sort((a,b) => a.stock.localeCompare(b.stock)).filter((product: any) => product.type !== "grouped")
 
   } catch (error) {
     console.error("Error fetching products:", error)

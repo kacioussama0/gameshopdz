@@ -102,6 +102,7 @@ useFetch("/api/wc/products", {
   topSales.value = response.data.value.products.map((product: any) => ({
     id: product.id,
     name: product.name,
+    categories: product.categories,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
@@ -122,6 +123,7 @@ useFetch("/api/wc/products", {
   newProducts.value = response.data.value.products.map((product: any) => ({
         id: product.id,
         name: product.name,
+        categories: product.categories,
         slug: product.slug,
         thumbnail: product.images[0]?.thumbnail || '',
         price: product.price,
@@ -144,6 +146,7 @@ useFetch("/api/wc/products", {
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
     on_sale: product.on_sale,
+    categories: product.categories,
     regular_price: product.regular_price,
     stock: product.stock_status,
     occasion: product.categories.some((category) => category.slug == 'occasion')
@@ -161,6 +164,7 @@ useFetch("/api/wc/products", {
     id: product.id,
     name: product.name,
     slug: product.slug,
+    categories: product.categories,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
     on_sale: product.on_sale,
@@ -178,6 +182,7 @@ useFetch("/api/wc/products", {
 }).then(( response) => {
   ourSelection.value = response.data.value.products.map((product: any) => ({
     id: product.id,
+    categories: product.categories,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -197,6 +202,7 @@ useFetch("/api/wc/products", {
 }).then(( response) => {
   consoles.value = response.data.value.products.map((product: any) => ({
     id: product.id,
+    categories: product.categories,
     name: product.name,
     slug: product.slug,
     thumbnail: product.images[0]?.thumbnail || '',
@@ -219,6 +225,7 @@ useFetch("/api/wc/products", {
     slug: product.slug,
     images: product.images,
     type: product.type,
+    categories: product.categories,
     grouped_products: product.grouped_products,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
@@ -246,6 +253,7 @@ useFetch("/api/wc/products", {
     is_epay: product.is_epay,
     variations: product.variations,
     type: product.type,
+    categories: product.categories,
     thumbnail: product.images[0]?.thumbnail || '',
     price: product.price,
     on_sale: product.on_sale,
@@ -339,7 +347,7 @@ useFetch("/api/wc/products", {
                     <!--                      DECOUVREZ-->
                     <!--                    </h6>-->
 
-                    <h3 class="text-white d-none d-md-block fs-3  mb-3  ">
+                    <h3 class="text-white d-none fs-3  mb-3  ">
                       <RouterLink :to="'/shop/product/' + product.slug" class="text-white">
                         {{ product.name }}
                       </RouterLink>
@@ -347,7 +355,7 @@ useFetch("/api/wc/products", {
 
                     <NuxtLink
                         :to="'/shop?include=' + product.grouped_products.join(',')"
-                        class="btn btn-sm d-none  d-md-inline-block btn-outline-light  rounded-0 mb-5"
+                        class="btn btn-sm d-none  btn-outline-light  rounded-0 mb-5"
                         v-if="product.type == 'grouped'"
                     >
                       ACHETEZ MAINTENANT

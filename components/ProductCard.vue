@@ -130,6 +130,10 @@ const priceVariant = (variants: Object) => {
       <!-- Badges داخل dz-media باش position absolute تخدم صح -->
       <span class="badge badge-left rounded-pill"
             v-if="product.occasion || product.name.includes('OCCASION')">Occasion | مستعمل</span>
+
+      <span class="badge badge-left  rounded-pill "
+            v-else-if="product.categories.some(category => category.name.includes('DIGITAL'))">Digital | رقمي</span>
+
       <span class="badge badge-left badge-info rounded-pill" v-else>Neuf | جديد</span>
       <span class="badge badge-right rounded-pill"
             v-if="product.on_sale">{{ Math.floor(((product.regular_price - product.price) / product.regular_price) * 100) }}%</span>
