@@ -1,11 +1,20 @@
-import algoliasearch from "algoliasearch"
+import { Meilisearch } from 'meilisearch'
+
 
 
 export default defineEventHandler(async () => {
 
 
-    const client = algoliasearch('NBN8MJS91Y', '354ba9073bab3ba4855792db36748f80')
-    const index = client.initIndex("products")
+    const client = new  Meilisearch({
+        host: 'https://search.gameshopdz.com',
+        apiKey: '29GXmbUSsbySVyhSovKjiegZ_uMuD10FZr6WY_SAll8',
+    })
+
+
+    const index = client.index('products')
+
+
+
 
     const ck = 'ck_72b4dc376adad9c2bd355b1b9cf448393d83b4e6'
     const cs = 'cs_0b640d5a089e7d9b3b0d7b031b78411a16b68efe'
@@ -25,8 +34,7 @@ export default defineEventHandler(async () => {
         if (!products.length) break
 
         const records = products.map((p) => ({
-            objectID: p.id,
-
+            id: p.id,
             name: p.name,
             slug: p.slug,
             sku: p.sku || null,
@@ -67,7 +75,7 @@ export default defineEventHandler(async () => {
             permalink: p.permalink,
         }))
 
-        await index.saveObjects(records)
+        await index.addDocuments(records)
 
         total += records.length
         page++

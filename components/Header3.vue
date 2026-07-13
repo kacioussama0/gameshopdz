@@ -44,36 +44,25 @@ watch(suggSearch, (value) => {
     isLoading.value = true
 
     try {
-      const index = $algolia.initIndex('products')
 
-      const res = await index.search(term, {
-        hitsPerPage: 1000,
-        clickAnalytics: true,
-      })
+
 
       if (searchId !== currentSearchId) return
 
-      const qid = res.queryID || null
-      lastQueryID = qid
 
-      if (process.client && qid) {
-        localStorage.setItem('algolia:lastQueryID', qid)
-        localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
-      }
+      const { data: sugg } = await useFetch('/api/search', {
+        query: {
+          q: term
+        }
+      })
 
-      suggProducts.value = (res.hits || []).map(hit => ({
+
+
+      suggProducts.value = (sugg.value.hits || []).map(hit => ({
         ...hit,
-        __queryID: qid,
+
       }))
 
-      if (res.hits?.length && qid) {
-        $aa('viewedObjectIDsAfterSearch', {
-          eventName: 'Autocomplete Viewed',
-          index: 'products',
-          objectIDs: res.hits.map(h => String(h.objectID)),
-          queryID: qid,
-        })
-      }
 
       isOpen.value = true
 
@@ -88,18 +77,7 @@ watch(suggSearch, (value) => {
 
 /* ================= CLICK ================= */
 function onSuggestionClick(hit: any) {
-  if (!hit.__queryID) return
 
-  $aa('clickedObjectIDsAfterSearch', {
-    eventName: 'Product Clicked',
-    index: 'products',
-    objectIDs: [String(hit.objectID)],
-    queryID: hit.__queryID,
-    positions: [hit.__position]
-  })
-
-  localStorage.setItem('algolia:lastQueryID', hit.__queryID)
-  localStorage.setItem('algolia:lastQueryIDAt', String(Date.now()))
 
   navigateTo(`/shop/product/${hit.slug}`)
 }

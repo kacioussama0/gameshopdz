@@ -7,7 +7,6 @@ const categories = ref([]);
 useFetch("/api/wc/categories", {
 }).then(( response) => {
 
-  console.log(response.data.value);
   categories.value = response.data.value.filter(category => category.parent == 0 && category.id != 29 && category.id != 3039 && category.id != 2216);
 
 }).catch((error) => {

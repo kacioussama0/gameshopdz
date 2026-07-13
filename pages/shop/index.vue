@@ -159,20 +159,25 @@ onMounted(async ()=> {
 
   let ids = []
 
-  if(search.value != undefined) {
-    const { $algolia } = useNuxtApp()
+  console.log(search.value)
 
-    const index = $algolia.initIndex('products')
+  if(search.value != "") {
 
-    const res = await index.search(search.value, {
-      hitsPerPage: 50,
-      clickAnalytics: true,
+
+    const res = await $fetch('/api/search', {
+      query: {
+        q: search.value
+      }
     })
 
-   ids = (res.hits || []).map(hit => hit.objectID)
+
+
+
+   ids = (res.hits || []).map(hit => hit.id)
+
+    console.log(ids)
 
   }
-
 
   await fetchProducts(ids)
 
