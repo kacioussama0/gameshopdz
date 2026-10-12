@@ -7,10 +7,18 @@ const { t } = useI18n()
 
 const formatPrice = (value: number | string) =>
     `${Number(value).toLocaleString('fr-FR')} ${t('common.currency')}`
+
+// Links close the drawer here rather than with data-bs-dismiss: Bootstrap
+// cancels the click on <a data-bs-dismiss>, which stops NuxtLink navigating
+const drawer = ref<HTMLElement | null>(null)
+const closeDrawer = () => {
+  const el = drawer.value
+  if (el) (window as any).bootstrap?.Offcanvas.getInstance(el)?.hide()
+}
 </script>
 
 <template>
-  <div class="offcanvas offcanvas-end cart-drawer" data-bs-scroll="false" tabindex="-1" id="offcanvasRight" aria-labelledby="cart-drawer-title">
+  <div ref="drawer" class="offcanvas offcanvas-end cart-drawer" data-bs-scroll="false" tabindex="-1" id="offcanvasRight" aria-labelledby="cart-drawer-title">
     <div class="drawer-header">
       <h2 class="drawer-title" id="cart-drawer-title">
         <i class="iconly-Curved-Buy" aria-hidden="true"></i>
@@ -26,12 +34,12 @@ const formatPrice = (value: number | string) =>
     <template v-if="cart.length">
       <ul class="drawer-items">
         <li v-for="item in cart" :key="keyOf(item)" class="drawer-item">
-          <NuxtLink :to="item.slug ? `/shop/product/${item.slug}` : '/cart'" class="item-media" data-bs-dismiss="offcanvas">
+          <NuxtLink :to="item.slug ? `/shop/product/${item.slug}` : '/cart'" class="item-media" @click="closeDrawer">
             <img :src="item.image" :alt="item.name" width="72" height="72" loading="lazy" />
           </NuxtLink>
 
           <div class="item-body">
-            <NuxtLink :to="item.slug ? `/shop/product/${item.slug}` : '/cart'" class="item-name" data-bs-dismiss="offcanvas">
+            <NuxtLink :to="item.slug ? `/shop/product/${item.slug}` : '/cart'" class="item-name" @click="closeDrawer">
               {{ item.name }}
             </NuxtLink>
 
@@ -70,11 +78,11 @@ const formatPrice = (value: number | string) =>
           {{ $t('cart.shippingAtCheckout') }}
         </p>
 
-        <NuxtLink to="/checkout" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="offcanvas">
+        <NuxtLink to="/checkout" class="btn btn-primary btn-lg btn-block" @click="closeDrawer">
           {{ $t('cart.checkout') }}
           <i class="fa-solid fa-arrow-right flip-rtl"></i>
         </NuxtLink>
-        <NuxtLink to="/cart" class="btn btn-outline-primary btn-block mt-2" data-bs-dismiss="offcanvas">
+        <NuxtLink to="/cart" class="btn btn-outline-primary btn-block mt-2" @click="closeDrawer">
           {{ $t('cart.viewCart') }}
         </NuxtLink>
       </div>
@@ -85,7 +93,7 @@ const formatPrice = (value: number | string) =>
       <AstroBot mood="sad" :size="120" />
       <h3>{{ $t('cart.empty') }}</h3>
       <p>{{ $t('cart.emptyCanvasText') }}</p>
-      <NuxtLink to="/shop" class="btn btn-primary" data-bs-dismiss="offcanvas">
+      <NuxtLink to="/shop" class="btn btn-primary" @click="closeDrawer">
         {{ $t('cart.continueShopping') }}
       </NuxtLink>
     </div>
