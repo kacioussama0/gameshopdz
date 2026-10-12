@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/algolia": "^1.11.2",
+    "@nuxtjs/i18n": "^9.5.6",
     "@popperjs/core": "^2.11.8",
     "@types/isotope-layout": "^3.0.14",
     "algoliasearch": "^4.26.0",

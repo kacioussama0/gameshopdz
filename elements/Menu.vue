@@ -47,7 +47,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-Game me-2"></span>
-        <span>Jeux</span>
+        <span>{{ $t('menu.games') }}</span>
       </a>
       <div class="mega-menu shop-menu" @click.stop>
         <div class="row">
@@ -59,8 +59,8 @@ onMounted(() => {
                   Playstation 5
                 </RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?category=817">Jeux Playstation 5</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1115">Exclusivité Playstation</RouterLink></li>
+                  <li><RouterLink to="/shop?category=817">{{ $t('menu.gamesPs5') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1115">{{ $t('menu.exclusivePs') }}</RouterLink></li>
                 </ul>
 
                 <RouterLink to="" class="menu-title" style="color: #0070D1">
@@ -69,7 +69,7 @@ onMounted(() => {
                 </RouterLink>
 
                 <ul>
-                  <li><RouterLink to="/shop?category=816">Jeux PlayStation 4</RouterLink></li>
+                  <li><RouterLink to="/shop?category=816">{{ $t('menu.gamesPs4') }}</RouterLink></li>
                 </ul>
 
               </div>
@@ -80,8 +80,8 @@ onMounted(() => {
                   Xbox Series X & S
                 </RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?category=818">Jeux Xbox Series X|S</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=882">Exclusivité Xbox</RouterLink></li>
+                  <li><RouterLink to="/shop?category=818">{{ $t('menu.gamesXboxSeries') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=882">{{ $t('menu.exclusiveXbox') }}</RouterLink></li>
                 </ul>
 
                 <RouterLink to="" class="menu-title" style="color: #3A3A3A">
@@ -90,7 +90,7 @@ onMounted(() => {
                 </RouterLink>
 
                 <ul>
-                  <li><RouterLink to="/shop?category=819">Jeux Xbox One</RouterLink></li>
+                  <li><RouterLink to="/shop?category=819">{{ $t('menu.gamesXboxOne') }}</RouterLink></li>
                 </ul>
 
               </div>
@@ -101,8 +101,8 @@ onMounted(() => {
                   Nintendo Switch
                 </RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?category=820">Jeux Nintendo Switch</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1012">Exclusivité Nintendo Switch</RouterLink></li>
+                  <li><RouterLink to="/shop?category=820">{{ $t('menu.gamesSwitch') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1012">{{ $t('menu.exclusiveSwitch') }}</RouterLink></li>
                 </ul>
 
                 <RouterLink to="" class="menu-title" style="color:#E60F11">
@@ -111,7 +111,7 @@ onMounted(() => {
                 </RouterLink>
 
                 <ul>
-                  <li><RouterLink to="/shop?category=2951">Jeux Nintendo Switch 2</RouterLink></li>
+                  <li><RouterLink to="/shop?category=2951">{{ $t('menu.gamesSwitch2') }}</RouterLink></li>
                 </ul>
 
               </div>
@@ -120,7 +120,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-games-Banner.png?w=896&ssl=1" alt="/"  />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/GS-All-games-Banner.png?w=896&ssl=1" alt="/"  />
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="fa-brands iconly-Curved-Bag me-2"></span>
-        <span>Consoles</span>
+        <span>{{ $t('menu.consoles') }}</span>
 
       </a>
       <div class="mega-menu shop-menu">
@@ -169,10 +169,10 @@ onMounted(() => {
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Console portable</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.portableConsole') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=2888">Consoles PC Portables</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2889">Emulation Portable</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2888">{{ $t('menu.pcHandhelds') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2889">{{ $t('menu.portableEmulation') }}</RouterLink></li>
                 </ul>
 
               </div>
@@ -180,7 +180,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-Consoles-Banner.png?w=896&ssl=1" alt="/"  />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/GS-All-Consoles-Banner.png?w=896&ssl=1" alt="/"  />
             </div>
           </div>
 
@@ -194,43 +194,43 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-Discount me-2"></span>
-        <span>Occasions</span>
+        <span>{{ $t('menu.used') }}</span>
       </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Jeux Vidéo</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.videoGames') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?brand=2876">Jeux Occasion PlayStation 5</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2874">Jeux Occasion PlayStation 4</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2880">Jeux Occasion Xbox Series X</RouterLink></li>
-                  <li><RouterLink to="/shop?category=860">Jeux Occasion Switch</RouterLink></li>
-                  <li><RouterLink to="/shop">Jeux Occasion Switch 2</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2876">{{ $t('menu.usedPs5Games') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2874">{{ $t('menu.usedPs4Games') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2880">{{ $t('menu.usedXboxSeriesGames') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?category=860">{{ $t('menu.usedSwitchGames') }}</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.usedSwitch2Games') }}</RouterLink></li>
 
                 </ul>
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Consoles</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.consoles') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?brand=2905">Consoles PS5 Occasion</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2906">Consoles PS4 Occasion</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2907">Consoles Xbox Series X Occasion</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2908">Consoles Xbox Series S Occasion</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2909">Consoles Switch Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2905">{{ $t('menu.usedPs5Consoles') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2906">{{ $t('menu.usedPs4Consoles') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2907">{{ $t('menu.usedXboxXConsoles') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2908">{{ $t('menu.usedXboxSConsoles') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2909">{{ $t('menu.usedSwitchConsoles') }}</RouterLink></li>
                 </ul>
               </div>
 
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Manettes</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.controllers') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?brand=2882">Manette Occasion PlayStation 5</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2883">Manette Occasion PlayStation 4</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2884">Manette Occasion Xbox</RouterLink></li>
-                  <li><RouterLink to="/shop?brand=2885">Manette Occasion Switch</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2882">{{ $t('menu.usedPs5Controller') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2883">{{ $t('menu.usedPs4Controller') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2884">{{ $t('menu.usedXboxController') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?brand=2885">{{ $t('menu.usedSwitchController') }}</RouterLink></li>
 
                 </ul>
               </div>
@@ -240,7 +240,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-occasion-Banner.png?w=896&ssl=1" alt="/" />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/GS-All-occasion-Banner.png?w=896&ssl=1" alt="/" />
             </div>
           </div>
         </div>
@@ -250,43 +250,43 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-Setting me-2"></span>
-        <span>Accessoires</span>
+        <span>{{ $t('menu.accessories') }}</span>
       </a>
       <div class="mega-menu shop-menu">
         <div class="row">
           <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Accessoires Consoles</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.consoleAccessories') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=86">Batterie Manette</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1593">Station de Charges</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2400">Station de refroidissement</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2622">Support Manette</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1916">Casques</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=86">{{ $t('menu.controllerBattery') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1593">{{ $t('menu.chargingStation') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2400">{{ $t('menu.coolingStation') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2622">{{ $t('menu.controllerStand') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1916">{{ $t('menu.headsets') }}</RouterLink></li>
                 </ul>
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Manettes</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.controllers') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=652">Manette PlayStation 5</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=999">Manette PlayStation 4</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=700">Manette Xbox</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2910">Manette Switch</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=580">Manette PDP</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=652">{{ $t('menu.ps5Controller') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=999">{{ $t('menu.ps4Controller') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=700">{{ $t('menu.xboxController') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2910">{{ $t('menu.switchController') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=580">{{ $t('menu.pdpController') }}</RouterLink></li>
 
                 </ul>
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Utilitaires</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.utilities') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?category=833">Skin Consoles</RouterLink></li>
-                  <li><RouterLink to="/shop?category=834">Pochette Consoles</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2389">Casque Gaming</RouterLink></li>
-                  <li><RouterLink to="/shop?category=831">Casque PlayStation</RouterLink></li>
-                  <li><RouterLink to="/shop?category=832">Casque Xbox</RouterLink></li>
+                  <li><RouterLink to="/shop?category=833">{{ $t('menu.consoleSkins') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?category=834">{{ $t('menu.consoleCases') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2389">{{ $t('menu.gamingHeadset') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?category=831">{{ $t('menu.psHeadset') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?category=832">{{ $t('menu.xboxHeadset') }}</RouterLink></li>
 
                 </ul>
               </div>
@@ -296,7 +296,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/GS-All-accessoires-Banner.png?w=896&ssl=1" alt="/" />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/GS-All-accessoires-Banner.png?w=896&ssl=1" alt="/" />
             </div>
           </div>
         </div>
@@ -306,7 +306,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-Wallet me-2"></span>
-        <span>Digital</span>
+        <span>{{ $t('menu.digital') }}</span>
       </a>
       <div class="mega-menu shop-menu">
         <div class="row">
@@ -314,30 +314,30 @@ onMounted(() => {
             <div class="row">
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Cartes Prépayées</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.prepaidCards') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=944">Cartes prépayées PS</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=943">Cartes prépayées Xbox</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1289">Cartes prépayées Steam</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1392">Cartes prepayées Nintendo</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=944">{{ $t('menu.prepaidPs') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=943">{{ $t('menu.prepaidXbox') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1289">{{ $t('menu.prepaidSteam') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1392">{{ $t('menu.prepaidNintendo') }}</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">100% Digital</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.fullDigital') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=1294">Jeu Digital</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1294">{{ $t('menu.digitalGame') }}</RouterLink></li>
                 </ul>
 
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Abonnements</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.subscriptions') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=525">Xbox Game Pass</RouterLink></li>
                   <li><RouterLink to="/shop?tag=2315">PlayStation Plus</RouterLink></li>
                   <li><RouterLink to="/shop?tag=1906">Nintendo Online</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Console Digitale</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.digitalConsole') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=1971">PlayStation 5 Digital</RouterLink></li>
                   <li><RouterLink to="/shop?tag=2556">PlayStation 5 PRO</RouterLink></li>
@@ -347,7 +347,7 @@ onMounted(() => {
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Streaming</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.streaming') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=644">Netflix</RouterLink></li>
                   <li><RouterLink to="/shop?tag=833">Disney +</RouterLink></li>
@@ -362,7 +362,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/DIGTAL-GS.png?w=896&ssl=1" alt="/" />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/DIGTAL-GS.png?w=896&ssl=1" alt="/" />
             </div>
           </div>
         </div>
@@ -373,7 +373,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-Star me-2"></span>
-        <span>Collector</span>
+        <span>{{ $t('menu.collector') }}</span>
       </a>
       <div class="mega-menu shop-menu">
         <div class="row">
@@ -381,14 +381,14 @@ onMounted(() => {
             <div class="row">
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Collectors</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.collectors') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=986">Steelbooks</RouterLink></li>
-                  <li><RouterLink to="/shop?category=848">Collectors</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2570">Console Editions</RouterLink></li>
+                  <li><RouterLink to="/shop?category=848">{{ $t('menu.collectors') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2570">{{ $t('menu.consoleEditions') }}</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Miniature</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.miniature') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=939">Hotwheels</RouterLink></li>
                   <li><RouterLink to="/shop?tag=935">Majorette</RouterLink></li>
@@ -398,26 +398,26 @@ onMounted(() => {
 
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Décoration</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.decoration') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=597">Lampe Gaming</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1303">Porte Manette</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=703">Figurines</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=597">{{ $t('menu.gamingLamp') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1303">{{ $t('menu.controllerHolder') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=703">{{ $t('menu.figurines') }}</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Textile</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.textile') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=1184">T-Shirt</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=2474">Sac à dos</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1184">{{ $t('menu.tshirt') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=2474">{{ $t('menu.backpack') }}</RouterLink></li>
                 </ul>
 
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Déco Setup</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.setupDeco') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop?tag=676">Tapis de souris</RouterLink></li>
-                  <li><RouterLink to="/shop?tag=1202">Porte casque</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=676">{{ $t('menu.mousepad') }}</RouterLink></li>
+                  <li><RouterLink to="/shop?tag=1202">{{ $t('menu.headsetHolder') }}</RouterLink></li>
                 </ul>
 
 
@@ -429,7 +429,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Collector-GS.png?w=896&ssl=1" alt="/" />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/Collector-GS.png?w=896&ssl=1" alt="/" />
             </div>
           </div>
         </div>
@@ -493,7 +493,7 @@ onMounted(() => {
 
 <!--            <div class="col-md-4 d-none d-lg-block">-->
 <!--              <div class="adv-media">-->
-<!--                <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/" />-->
+<!--                <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/PC-LAP-GS.png?w=896&ssl=1" alt="/" />-->
 <!--              </div>-->
 <!--            </div>-->
 
@@ -508,7 +508,7 @@ onMounted(() => {
     <li class="has-mega-menu sub-menu-down">
       <a>
         <span class="iconly-Curved-TimeCircle me-2"></span>
-        <span>Retro</span>
+        <span>{{ $t('menu.retro') }}</span>
       </a>
       <div class="mega-menu shop-menu">
         <div class="row">
@@ -516,12 +516,12 @@ onMounted(() => {
             <div class="row">
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Console Retro</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.retroConsoles') }}</RouterLink>
                 <ul>
                   <li><RouterLink to="/shop?tag=2957">PlayStation 1 (PS1)</RouterLink></li>
                   <li><RouterLink to="/shop?tag=3037">PlayStation 2 (PS2)</RouterLink></li>
                   <li><RouterLink to="/shop?tag=1799">Xbox Classic</RouterLink></li>
-                  <li><RouterLink to="/shop-standard">Nintendo 64</RouterLink></li>
+                  <li><RouterLink to="/shop?search=nintendo%2064">Nintendo 64</RouterLink></li>
                   <li><RouterLink to="/shop?tag=2717">GameCube</RouterLink></li>
                   <li><RouterLink to="/shop?tag=569">Game Boy / Advance</RouterLink></li>
                   <li><RouterLink to="/shop?tag=582">Super Nintendo</RouterLink></li>
@@ -531,26 +531,26 @@ onMounted(() => {
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Jeux Retro</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.retroGames') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop">Neuf sous blister</RouterLink></li>
-                  <li><RouterLink to="/shop">Complet boîte + notice</RouterLink></li>
-                  <li><RouterLink to="/shop">Jeux Rétro Occasion</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.sealedNew') }}</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.completeBox') }}</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.usedRetroGames') }}</RouterLink></li>
                 </ul>
 
-                <RouterLink to="" class="menu-title">Accessoires Rétro</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.retroAccessories') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop">Manettes Rétro d’origine</RouterLink></li>
-                  <li><RouterLink to="/shop">Mémoire & Connectique</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.originalRetroControllers') }}</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.memoryConnectors') }}</RouterLink></li>
                 </ul>
 
               </div>
 
               <div class="col-md-4 col-sm-6">
-                <RouterLink to="" class="menu-title">Collector & Goodies</RouterLink>
+                <RouterLink to="" class="menu-title">{{ $t('menu.collectorGoodies') }}</RouterLink>
                 <ul>
-                  <li><RouterLink to="/shop">Rétro Éditions collector</RouterLink></li>
-                  <li><RouterLink to="/shop">Figurines Rétro</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.retroCollector') }}</RouterLink></li>
+                  <li><RouterLink to="/shop">{{ $t('menu.retroFigurines') }}</RouterLink></li>
 
                 </ul>
               </div>
@@ -561,7 +561,7 @@ onMounted(() => {
           </div>
           <div class="col-md-4 d-none d-lg-block">
             <div class="adv-media">
-              <img src="https://i0.wp.com/gameshopdz.com/wp-content/uploads/2023/08/Retro-GS.png?w=896&ssl=1" alt="/" />
+              <img src="https://i0.wp.com/woo.gameshopdz.com/wp-content/uploads/2023/08/Retro-GS.png?w=896&ssl=1" alt="/" />
             </div>
           </div>
         </div>

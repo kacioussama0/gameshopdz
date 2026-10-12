@@ -16,6 +16,8 @@ export default defineNuxtConfig({
     wcConsumerSecret: process.env.WC_CONSUMER_SECRET,
     public: {
       wcStoreUrl: process.env.WC_STORE_URL,
+      // Absolute site URL for canonical links, Open Graph and the sitemap
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://gameshopdz.com',
     },
   },
 
@@ -28,10 +30,8 @@ export default defineNuxtConfig({
     "~/assets/other/swiper/swiper-bundle.css",
     "~/assets/css/skin/skin-1.css",
     "~/assets/css/style.css",
-    "lightgallery/css/lg-zoom.css",
-    "lightgallery/css/lg-thumbnail.css",
-    "lightgallery/css/lightgallery.css",
-    "~/assets/other/swiper/swiper-bundle.css",
+    "~/assets/css/design-system.css",
+    "~/assets/css/rtl.css",
   ],
 
   plugins: [
@@ -42,7 +42,10 @@ export default defineNuxtConfig({
     head: {
       title: "Gameshopdz - Leader Gaming Shop en Algérie",
       meta: [
-
+        // Browser UI colour on mobile, matching the header
+        { name: "theme-color", content: "#0F3375" },
+        { name: "application-name", content: "Gameshopdz" },
+        { name: "apple-mobile-web-app-title", content: "Gameshopdz" },
         {
           name: "description",
           content:
@@ -51,20 +54,13 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        {
-          rel: 'manifest',
-          href: '/site.webmanifest'
-        },
-        {
-          rel: 'apple-touch-icon',
-          href: '/apple-touch-icon.png'
-        },
-        {
-          rel: 'icon',
-          href: '/favicon.ico'
-        },
+        // Icons: .ico for old browsers, PNG for tabs/bookmarks, Apple + manifest for home screens
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+        { rel: 'manifest', href: '/site.webmanifest' },
         { rel: "preconnect", href: "https://fonts.gstatic.com" },
-        { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" },
+        { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" },
       ],
       script: [
         {
@@ -73,14 +69,32 @@ export default defineNuxtConfig({
         {
           src: "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
         },
-        {
-          src: "https://www.jotform.com/website-widgets/embed/019ccb4c526477e79d3bdd4b5afa7c84f074"
-        }
+        // the Jotform reviews script is loaded on demand by components/ReviewsWidget.vue
       ],
     },
   },
 
-  modules: ["@nuxtjs/algolia", "@nuxt/image"],
+  modules: ["@nuxtjs/algolia", "@nuxt/image", "@nuxtjs/i18n"],
+
+  i18n: {
+    baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://gameshopdz.com",
+    strategy: "no_prefix",
+    defaultLocale: "fr",
+    langDir: "locales",
+    locales: [
+      { code: "fr", language: "fr-DZ", name: "Français", dir: "ltr", file: "fr.json" },
+      { code: "ar", language: "ar-DZ", name: "العربية", dir: "rtl", file: "ar.json" },
+    ],
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_lang",
+      redirectOn: "root",
+      fallbackLocale: "fr",
+    },
+  },
   image: {
     domains: ["woo.gameshopdz.com"],
   },

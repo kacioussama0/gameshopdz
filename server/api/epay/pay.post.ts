@@ -31,6 +31,10 @@ export default defineEventHandler(async (event) => {
             product_id: Number(i.product_id),
             quantity: Number(i.quantity ?? i.qty ?? 1),
             variation_id: i.variation_id ? Number(i.variation_id) : undefined,
+            // options a variation leaves open ("any size"), e.g. [{ key: "Taille", value: "XL" }]
+            meta_data: Array.isArray(i.meta)
+                ? i.meta.slice(0, 10).map((m: any) => ({ key: String(m.key).slice(0, 100), value: String(m.value).slice(0, 100) }))
+                : undefined,
         })),
 
         note: body.note
@@ -63,6 +67,46 @@ export default defineEventHandler(async (event) => {
         }
 
 
+        // Products tagged "prepay-<amount>" are reserved with a deposit paid online;
+        // the rest is collected on delivery. The amount comes from the product's
+        // tag in WooCommerce, never from the browser.
+        let invoiceItems = order.line_items.map((i: any) => ({
+            name: i.name,
+            quantity: Number(i.quantity),
+            price: Number(i.price),
+        }))
+        let amount = Number(order.total)
+
+        const deposits = await Promise.all(order.line_items.map(async (i: any) => {
+            const product: any = await $fetch(`${base}/products/${i.product_id}`, {
+                headers: { Authorization: `Basic ${auth}` },
+            })
+            const tag = (product.tags || [])
+                .map((t: any) => String(t.name).trim().toLowerCase())
+                .find((name: string) => /^prepay-\d+$/.test(name))
+            return tag ? Number(tag.split('-')[1]) : 0
+        }))
+
+        if (deposits.some(d => d > 0)) {
+            invoiceItems = order.line_items.map((i: any, index: number) => deposits[index] > 0
+                ? { name: `Acompte - ${i.name}`, quantity: Number(i.quantity), price: deposits[index] }
+                : { name: i.name, quantity: Number(i.quantity), price: Number(i.price) })
+
+            amount = invoiceItems.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0)
+
+            await $fetch(`${base}/orders/${order.id}/notes`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Basic ${auth}`,
+                },
+                body: {
+                    note: `Acompte demandé en ligne : ${amount} DA. Reste à payer à la livraison : ${Number(order.total) - amount} DA.`,
+                    customer_note: false,
+                },
+            })
+        }
+
         const invoice = await $fetch("https://prodapi.slick-pay.com/api/v2/users/invoices", {
             method: "POST",
             headers: {
@@ -70,17 +114,13 @@ export default defineEventHandler(async (event) => {
                 Authorization: `Bearer 43504|mk5lfMKyrxTYIGTknWI8oSWxPetHAXjqM0dONr9Z`,
             },
             body: {
-                amount: Number(order.total),
+                amount,
                 firstname: orderPayload.billing.first_name,
                 lastname: orderPayload.billing.last_name,
                 email: orderPayload.billing.email,
                 phone: orderPayload.billing.phone,
                 address: "Algerie",
-                items: order.line_items.map((i: any) => ({
-                    name: i.name,
-                    quantity: Number(i.quantity),
-                    price: Number(i.price),
-                })),
+                items: invoiceItems,
                 url: 'https://gameshopdz.com/payment/result',
                 webhook_url: 'https://webhook.gameshopdz.com',
                 webhook_signature: `gameshopdz_${order.id}`,

@@ -1,0 +1,273 @@
+/* Gameshop design system: shared tokens, type and buttons.
+ * Loaded after the theme (style.css) so these win over its many per-page
+ * button styles. Only Bootstrap variant classes are targeted, so utility
+ * buttons such as .btn-close or the quantity spinners keep their own look. */
+
+:root {
+  --gs-gradient: linear-gradient(135deg, #0f2f6d, #164094, #6a3df0);
+  --gs-primary: #0A63D8;
+  --gs-ink: #0F1E4A;
+  --gs-muted: #6b7390;
+  --gs-border: #dfe3ee;
+  --gs-focus: 0 0 0 3px rgba(106, 61, 240, .35);
+  --gs-shadow-brand: 0 6px 16px rgba(106, 61, 240, .25);
+
+  --gs-font-body: "DM Sans", sans-serif;
+  --gs-font-heading: "Lufga", "DM Sans", sans-serif;
+}
+
+[dir="rtl"] {
+  --gs-font-body: "Cairo", sans-serif;
+  --gs-font-heading: "Cairo", sans-serif;
+}
+
+/* ---------- type ---------- */
+/* Form controls don't inherit the page font by default */
+button,
+input,
+select,
+textarea,
+.btn {
+  font-family: inherit;
+}
+
+/* Theme rules with a hard-coded family (some "Roboto", never loaded) that
+ * show up in the checkout; they also ignored Cairo in Arabic */
+.shop-checkout .form-group .form-check-label,
+.order-detail .dz-accordion .accordion-item .accordion-body p,
+.order-detail .form-group .form-check-label,
+.widget_categories.style-1 .cat-item,
+.tooltip,
+.popover {
+  font-family: var(--gs-font-body);
+}
+
+/* ---------- buttons ---------- */
+.btn:where(.btn-primary, .btn-secondary, .btn-dark, .btn-success, .btn-light,
+           .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: 999px !important;
+  font-family: var(--gs-font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none !important;
+  white-space: nowrap;
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.btn:where(.btn-primary, .btn-secondary, .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light) i {
+  font-size: 1.05em;
+}
+
+/* Filled: brand gradient */
+.btn:where(.btn-primary, .btn-secondary, .btn-dark) {
+  border: 0;
+  background: var(--gs-gradient) !important;
+  color: #fff !important;
+  box-shadow: var(--gs-shadow-brand);
+}
+
+.btn:where(.btn-primary, .btn-secondary, .btn-dark):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(106, 61, 240, .32);
+}
+
+/* Outline: white with brand border */
+.btn:where(.btn-outline-primary, .btn-outline-secondary, .btn-outline-dark) {
+  border: 1.5px solid var(--gs-border);
+  background: #fff;
+  color: var(--gs-ink);
+  box-shadow: none;
+}
+
+.btn:where(.btn-outline-primary, .btn-outline-secondary, .btn-outline-dark):hover {
+  border-color: var(--gs-primary);
+  background: rgba(10, 99, 216, .06);
+  color: var(--gs-primary);
+}
+
+/* Outline on dark imagery (hero) */
+.btn.btn-outline-light {
+  border: 1.5px solid rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.btn.btn-outline-light:hover {
+  background: #fff;
+  color: var(--gs-ink);
+}
+
+/* WhatsApp actions keep their recognisable green */
+.btn.btn-success {
+  border: 0;
+  background: #25d366;
+  color: #fff;
+}
+
+.btn.btn-success:hover {
+  background: #1ebe5b;
+  color: #fff;
+}
+
+.btn:where(.btn-primary, .btn-secondary, .btn-dark, .btn-success, .btn-light,
+           .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light):active {
+  transform: translateY(0);
+}
+
+.btn:where(.btn-primary, .btn-secondary, .btn-dark, .btn-success, .btn-light,
+           .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light):focus-visible {
+  outline: 0;
+  box-shadow: var(--gs-focus);
+}
+
+.btn:where(.btn-primary, .btn-secondary, .btn-dark, .btn-success, .btn-light,
+           .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light):disabled,
+.btn:where(.btn-primary, .btn-secondary, .btn-dark, .btn-success, .btn-light,
+           .btn-outline-primary, .btn-outline-secondary, .btn-outline-dark, .btn-outline-light).disabled {
+  opacity: .5;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Sizes */
+.btn.btn-lg {
+  min-height: 52px;
+  padding: 12px 28px;
+  font-size: 16px;
+}
+
+.btn.btn-sm {
+  min-height: 36px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.btn.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------- section rhythm ---------- */
+/* The theme pads sections anywhere from 48 to 130px (plus 60px under every
+ * slider for its dots), which left very uneven gaps between home rows.
+ * One scale everywhere; explicit utilities such as .pt-0 still win. */
+:root {
+  --gs-section-y: 56px;
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --gs-section-y: 32px;
+  }
+}
+
+.content-inner,
+.content-inner-1,
+.content-inner-2,
+.content-inner-3 {
+  padding-top: var(--gs-section-y);
+  padding-bottom: var(--gs-section-y);
+}
+
+/* Section titles: consistent space before their content */
+.section-head.m-b30 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .section-head .title {
+    font-size: 22px;
+  }
+}
+
+/* ---------- breadcrumb (product & shop pages) ---------- */
+.gs-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.gs-breadcrumb li {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  color: #6b7390;
+}
+
+/* Chevron separator drawn in CSS so it mirrors with the text direction */
+.gs-breadcrumb li + li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-inline: 10px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  opacity: .6;
+}
+
+[dir="rtl"] .gs-breadcrumb li + li::before {
+  transform: rotate(-135deg);
+}
+
+.gs-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--secondary, #0F1E4A);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.gs-breadcrumb a:hover {
+  color: var(--primary, #0A63D8);
+}
+
+.gs-breadcrumb a i {
+  font-size: 15px;
+}
+
+/* Long product names are cut with an ellipsis instead of wrapping the trail */
+.gs-breadcrumb li[aria-current="page"] {
+  flex: 1 1 0;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gs-breadcrumb li[aria-current="page"]::before {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ---------- home content width ---------- */
+/* All home sections share one width, a bit wider than Bootstrap's 1320px */
+@media (min-width: 1400px) {
+  .container.home-wide {
+    max-width: 1440px;
+  }
+}
+
+/* The theme capitalises every word of section titles and their links
+ * ("Tous Nos Rayons", "Voir Tout"): keep the text as written */
+.section-head.style-1 .title,
+.section-head.style-1 a,
+.section-head.style-2 .title {
+  text-transform: none;
+}

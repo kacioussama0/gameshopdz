@@ -33,6 +33,10 @@ export default defineEventHandler(async (event) => {
             product_id: Number(i.product_id),
             quantity: Number(i.quantity ?? i.qty ?? 1),
             variation_id: i.variation_id ? Number(i.variation_id) : undefined,
+            // options a variation leaves open ("any size"), e.g. [{ key: "Taille", value: "XL" }]
+            meta_data: Array.isArray(i.meta)
+                ? i.meta.slice(0, 10).map((m: any) => ({ key: String(m.key).slice(0, 100), value: String(m.value).slice(0, 100) }))
+                : undefined,
         })),
 
         shipping_lines: [{

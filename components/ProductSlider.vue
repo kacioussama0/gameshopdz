@@ -20,14 +20,13 @@ const props = defineProps<{
       :modules="[Autoplay,Navigation,Pagination]"
       :speed="50"
       :pagination="{ clickable: true }"
+      breakpoints-base="container"
       :breakpoints="{
-
-        0: { slidesPerView: 2, spaceBetween: 15 },
-        768: { slidesPerView: 3, spaceBetween: 20 },
-        992: { slidesPerView: 4, spaceBetween: 20 },
-        1400: { slidesPerView: 5, spaceBetween: 25 },
-        2000: { slidesPerView: 6, spaceBetween: 30 },
-        2500: { slidesPerView: 7, spaceBetween: 35 }
+        0: { slidesPerView: 2, spaceBetween: 12 },
+        560: { slidesPerView: 3, spaceBetween: 16 },
+        860: { slidesPerView: 4, spaceBetween: 20 },
+        1120: { slidesPerView: 5, spaceBetween: 20 },
+        1380: { slidesPerView: 6, spaceBetween: 24 }
       }"
       :navigation="{
             prevEl: '.swiper-button-prev',
@@ -112,7 +111,12 @@ const props = defineProps<{
 
 .swiper-four {
   position: relative;
-  padding-bottom: 60px; /* creates space for dots */
+  padding-bottom: 44px; /* creates space for dots */
+}
+
+/* Equal-height cards: each slide stretches to the tallest one in the row */
+.swiper-four :deep(.swiper-slide) {
+  height: auto;
 }
 
 

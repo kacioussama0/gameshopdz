@@ -34,6 +34,12 @@ export default cachedEventHandler(async (event) => {
                     )
                 }
 
+                // "epay" = paid online (digital goods); "prepay-500" = 500 DA deposit
+                // paid online to reserve. "prepay" also contains "epay", so match exactly.
+                const tagNames: string[] = product.tags.map((tag: any) => tag.name.trim().toLowerCase())
+                const prepayTag = tagNames.find(name => /^prepay-\d+$/.test(name))
+                const prepayAmount = prepayTag ? Number(prepayTag.split('-')[1]) : 0
+
                 return {
                     id: product.id,
                     name: product.name,
@@ -61,11 +67,12 @@ export default cachedEventHandler(async (event) => {
                         sale_price: v.sale_price,
                         stock_status: v.stock_status,
                         attributes: v.attributes,
+                        image: v.image?.src ? { id: v.image.id, src: v.image.src, alt: v.image.alt } : null,
                     })),
 
-                    is_epay: product.tags.some((tag: any) =>
-                        tag.name.toLowerCase().includes("epay")
-                    ),
+                    is_epay: tagNames.includes("epay"),
+                    is_prepay: prepayAmount > 0,
+                    prepay_amount: prepayAmount,
                 }
             })
         )
